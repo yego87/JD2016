@@ -1,10 +1,9 @@
-package by.it.akhmelev;
+package by.it.akhmelev.JD01_02;
 
 import java.io.IOException;
 
 public class Demo {
-    //master ok8
     public static void main(String[] args) throws IOException {
-        System.out.print("Hello World !!!");
+        System.out.print("Demo...");
     }
 }
