@@ -1,3 +1,0 @@
-<template>
-  <input-field default="by.it">IJ_BASE_PACKAGE</input-field>
-</template>
