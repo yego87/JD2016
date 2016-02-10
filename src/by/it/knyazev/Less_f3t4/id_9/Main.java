@@ -14,7 +14,6 @@ public class Main {
 	    String s = scan.nextLine();
         int i = Integer.parseInt(s);
         if (i>0 && i<=12) {
-
                          if (1 == i) {
                 System.out.println("Jan");
             }            if (2 == i) {
