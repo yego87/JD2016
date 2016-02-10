@@ -1,6 +1,6 @@
-package by.it.dorostchenok.lecture2.tasks;
+package by.it.dorostchenok.jd01_02.tasks;
 
-import by.it.dorostchenok.lecture2.utils.Matrix;
+import by.it.dorostchenok.jd01_02.utils.Matrix;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package by.it.dorostchenok.lecture2.tasks;
+package by.it.dorostchenok.jd01_02.tasks;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package by.it.dorostchenok.lecture2.utils;
+package by.it.dorostchenok.jd01_02.utils;
 
 
 import java.io.BufferedReader;
