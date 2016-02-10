@@ -1,6 +1,4 @@
-package by.it.dorostchenok.lecture2.tasks;
-
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+package by.it.dorostchenok.jd01_02.tasks;
 
 public class TaskB {
     /**

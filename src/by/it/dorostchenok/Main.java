@@ -1,11 +1,13 @@
-package by.it.dorostchenok.lecture2;
+package by.it.dorostchenok;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-import by.it.dorostchenok.lecture2.utils.Utils;
-import by.it.dorostchenok.lecture2.utils.Matrix;
-import by.it.dorostchenok.lecture2.tasks.*;
+import by.it.dorostchenok.jd01_02.tasks.TaskC;
+import by.it.dorostchenok.jd01_02.utils.Utils;
+import by.it.dorostchenok.jd01_02.utils.Matrix;
+import by.it.dorostchenok.jd01_02.tasks.TaskA;
+import by.it.dorostchenok.jd01_02.tasks.TaskB;
 
 public class Main {
 
