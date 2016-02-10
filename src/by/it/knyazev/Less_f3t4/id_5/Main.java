@@ -12,13 +12,14 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
+        /*
         InputStreamReader inputStreamReader=new InputStreamReader(System.in);
         BufferedReader bufferedReader=new BufferedReader(inputStreamReader);
         String text = bufferedReader.readLine();
         bufferedReader.close();
 
-        //String text = "1 23 404 3123 9815189";
+        */
+        String text = "1 23 404 3123 9815189";
 
         String[] mass = new String[text.length()];
 
