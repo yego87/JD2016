@@ -35,7 +35,6 @@ public class Main {
 
 
     }
-
     public static boolean bool(String s){
 
         char[] massbl = s.toCharArray();
