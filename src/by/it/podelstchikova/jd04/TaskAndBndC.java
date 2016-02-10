@@ -30,6 +30,7 @@ public class TaskAndBndC {
         nM= TaskAndBndC.reverseTrase(newmX,false,c);
         System.out.println("Обратный ход");
         TaskAndBndC.printMatrix(nM);
+
         c=TaskAndBndC.forwardTrace(newmX,true,c);
         c=TaskAndBndC.reverseTrase(newmX,true,c);
         for (int i = 0; i < n; i++) {
@@ -47,10 +48,13 @@ public class TaskAndBndC {
 
 
          TaskAndBndC.test(x,newmXTest,mY);
-         System.out.println("Обратная матрица:");
+         System.out.println("Обратная матрица:\n результат проверки");
+        boolean k=TaskAndBndC.test2(c,newmXTest);
+
+        System.out.println(k);
         for (int i=0;i<n;i++) {
             for (int j = 0; j < n; j++) {
-                System.out.print(c[i][j] + "\t");
+                System.out.print(c[i][j] + "\t\t");
             }
             System.out.println();
 
@@ -58,6 +62,27 @@ public class TaskAndBndC {
 return x;
     }
 
+    public static boolean  test2(double[][] c,double[][]nM)
+    {
+        double[][] rez = new double[c.length][nM[0].length];
+        for (int i = 0; i < c.length; i++) {
+            for (int j = 0; j <nM[0].length ; j++) {
+                for (int k = 0; k < nM.length; k++) {
+                    rez[i][j]+=c[i][k]*nM[k][j];
+                }
+            }
+        }
+        for (int i = 0; i < rez.length; i++) {
+            for (int j = 0; j < rez[i].length; j++) {
+                if((i!=j)&& (rez[i][j]==1)) return  false;
+                if ((i==j)&& (rez[i][j]!=1)) return false;
+                if ((i==j)&& (rez[i][j]==1)) return true;
+                if ((i!=j)&& (rez[i][j]!=1)) return true;
+            }
+
+        }
+        return  true;
+    }
     public static double[][] reverseTrase(double[][] newmX,boolean e,double[][] c )
     {
         int n=newmX.length;
@@ -65,6 +90,7 @@ return x;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (i==j)c[i][j]=1;
+                else c[i][j]=0;
             }
         }
         for (int i = n-1; i >0 ; i--) {
