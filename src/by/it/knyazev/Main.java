@@ -5,3 +5,4 @@ package by.it.knyazev;
  */
 public class Main {
 }
+public
