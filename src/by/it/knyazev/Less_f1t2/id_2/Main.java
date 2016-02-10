@@ -16,22 +16,18 @@ public class Main {
         for (int i=1; i<tex.length; i++) {
             if (tex[i].length()<min){
                 min=tex[i].length();
-                System.out.println("a - " + min);
             }
             if (tex[i].length()>max){
                 max=tex[i].length();
-                System.out.println("b -" + max);
             }
         }
         for (int i=0; i<tex.length; i++){
             if (tex[i].length()==max){
-                System.out.println("c - " + tex[i]);
             }
         }
         System.out.println("Max "+max);
         for (int i=0; i<tex.length; i++){
             if (tex[i].length()==min){
-                System.out.println("d - " + tex[i]);
             }
         }
         System.out.println("Min "+min);
