@@ -1,7 +1,5 @@
 package by.it.dorostchenok.jd01_02.tasks;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 public class TaskB {
     /**
      * Implementation of Task 1 from Group B
