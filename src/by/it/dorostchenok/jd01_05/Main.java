@@ -4,6 +4,7 @@ package by.it.dorostchenok.jd01_05;
 import by.it.dorostchenok.jd01_05.math.Task1;
 import by.it.dorostchenok.jd01_05.math.Task2;
 import by.it.dorostchenok.jd01_05.math.Task3;
+import by.it.dorostchenok.jd01_05.math.Task4;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,5 +15,6 @@ public class Main {
         System.out.println(Task2.calculate(0.3, -21.17));
 
         Task3.printTable();
+        System.out.println(Task4.calculate(2.408));
     }
 }
