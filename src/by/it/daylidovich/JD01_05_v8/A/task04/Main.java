@@ -1,6 +1,6 @@
-package by.it.daylidovich.JD01_05.A.task04;
+package by.it.daylidovich.JD01_05_v8.A.task04;
 
-import by.it.daylidovich.JD01_05.A.task03.Tabulation;
+import by.it.daylidovich.JD01_05_v8.A.task03.Tabulation;
 
 import java.io.IOException;
 

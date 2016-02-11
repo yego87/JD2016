@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD01_05.A.task01;
+package by.it.daylidovich.JD01_05_v8.A.task01;
 
 import static java.lang.Math.*;
 

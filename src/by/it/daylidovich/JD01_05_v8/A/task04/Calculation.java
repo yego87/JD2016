@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD01_05.A.task04;
+package by.it.daylidovich.JD01_05_v8.A.task04;
 
 public class Calculation {
     public static void Calc(double a, double b1, double b2, double db){

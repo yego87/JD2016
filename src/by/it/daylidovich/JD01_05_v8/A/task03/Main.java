@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD01_05.A.task03;
+package by.it.daylidovich.JD01_05_v8.A.task03;
 
 import java.io.IOException;
 
