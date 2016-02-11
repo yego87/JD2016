@@ -8,11 +8,12 @@
 *.war
 *.ear
 
-// удаление критичных файлов IDEA
+//Конфигурация собрана, отключаем общие настройки IDEA
 //workspace.xml
 out/
 .idea/
-
+.idea/*
+*.iml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
