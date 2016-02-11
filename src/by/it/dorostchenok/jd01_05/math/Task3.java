@@ -11,7 +11,9 @@ public class Task3 {
         for (double a = 3.5; a <= 25.5; a += 3.75){
             double y = (1.0 / tan(pow(x, 3))) + 2.24 * a * x;
             //if()
-            System.out.println("┃ " + a +"\t┃ " + y + "┃" );
+            //System.out.println("┃ " + a +"\t┃ " + y + "┃" );
+            String s = String.format("%1s%-12s%-1s%-15s%5s", "┃", a, "┃", y, "┃");
+            System.out.println(s);
         }
         System.out.println("");
         System.out.println("┏━━━━━━━┳━━━━━━━┓");
