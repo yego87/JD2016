@@ -1,4 +1,4 @@
-package by.it.dorostchenok;
+package by.it.dorostchenok.jd01_02;
 
 import java.io.IOException;
 import java.util.Arrays;
