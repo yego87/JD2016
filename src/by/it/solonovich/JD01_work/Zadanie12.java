@@ -18,11 +18,11 @@ public class Zadanie12 {
             if (max < grupp[i])
                 max = grupp[i];
 
-                System.out.println(max);
+                //System.out.println(max);
         for (int i = 0; i < grupp.length; i++)
-        if (max==grupp[i]);
+        if (max==grupp[i])
 
-System.out.println();
+System.out.println(i);
 
     }}
 
