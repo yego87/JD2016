@@ -16,6 +16,7 @@ public class Main {
             //  System.out.println("Введите B (0,371)");
             //  double b = InOut.consoleDoubleInput();
                 TaskA.taskA2(a, b);
+
                 break;
             }
            /* case "b":{

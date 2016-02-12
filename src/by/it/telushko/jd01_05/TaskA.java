@@ -4,7 +4,6 @@ import static java.lang.Math.*;
 public class TaskA {
     public static void taskA1(double x){
         System.out.println("Вычисление с разбиением на части:");
-
         double delimoeS1,delimoeS2,delimoe,delitel,S1,S2;
         delimoeS1= PI/8-1;delimoeS1=pow(delimoeS1,2);  //первое слагаемое делимого
         delimoeS1=sin(delimoeS1);delimoeS2=pow(x,2);
@@ -23,8 +22,10 @@ public class TaskA {
           (asin(toRadians(x/2))-5.236E-2)+log(abs(3.12-x));
         System.out.println("x="+x+" y="+y);
     }
+
     public static void taskA2(double a, double b){
     double y=tan(pow(a+b,2))-pow(a+1.5,1/3)+a*pow(b,5)-b/(log(pow(a,2)));
     System.out.println("y="+y);
     }
+
 }
