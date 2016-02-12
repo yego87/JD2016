@@ -1,10 +1,6 @@
 package by.it.dorostchenok.jd01_05;
 
-import by.it.dorostchenok.jd01_05.math.Task1;
-import by.it.dorostchenok.jd01_05.math.Task2;
-import by.it.dorostchenok.jd01_05.math.Task3;
-import by.it.dorostchenok.jd01_05.math.Task4;
-import by.it.dorostchenok.jd01_05.math.Task5;
+import by.it.dorostchenok.jd01_05.math.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,5 +13,9 @@ public class Main {
         Task3.printTable();
         System.out.println(Task4.calculate(2.408));
         Task5.calculate();
+        double a[] = Task6.getArray();
+        Task6 task6 = new Task6();
+        task6.printArray(a);
+        //System.out.println(avg);
     }
 }
