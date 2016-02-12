@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         String fraze="У лукоморья дуб зелёный и блабла";
         String changed= insert5th7thLetter(fraze);
-
+         System.out.print(changed);
 
     }
 
