@@ -24,6 +24,11 @@ public class InOut {
         int b = inStr.nextInt();//считываем число, соответствующее заданию
         return b;
     }
+    public static double consoleDoubleInput() {
+        Scanner inStr = new Scanner(System.in);
+        double b = inStr.nextDouble();//считываем число, соответствующее заданию
+        return b;
+    }
     public static int[] strToInt(String[] val){
         int[] v = new int[val.length];
         int i=0;
