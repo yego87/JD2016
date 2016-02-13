@@ -13,12 +13,11 @@ public class Task2{
         double y = (Math.pow((a + 1.15), 1 / 3) + Math.pow((a - b), 8) - (b / Math.asin(Math.pow(Math.abs(a), 2))));
         return y;
     }
-    public static double scan() throws IOException {
+    public static double scanValue() throws IOException {
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader=new BufferedReader(inputStreamReader);
-        String rLine = bufferedReader.readLine();
-        bufferedReader.close();
-        double rez = Double.parseDouble(rLine);
+        double rez = Double.parseDouble(bufferedReader.readLine());
+//        bufferedReader.close();
         return rez;
     }
 
