@@ -1,4 +1,4 @@
-package by.it.knyazev.Less_2.ls_numb;
+package by.it.knyazev.Less_2.A1;
 
 
 /**
@@ -12,22 +12,23 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args) {
-        String regex = "[а-я_А-Я]{0,}";
-        String f = "У лукоморья дуб срубили Кота на мясо зарубили Цепи с ветвей сорвали Русалку в шпроты посадили И наступила красота";
-        StringBuilder sb = new StringBuilder(f);
-        Pattern p2 = Pattern.compile(regex);
-        Matcher m2 = p2.matcher(f);
 
-        String[] mass = new String[f.length()];
-        mass = f.split(" ");
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine();
+        String[] massiv = new String[s.length()];
+        massiv = s.split(" ");
 
-        while (m2.find()){
-            Pattern check = Pattern.compile(m2.group());
-            //
-            for (int i = 0; i < f.length(); i++) {
+        String min = massiv[0],max = massiv[0];
 
+        for (int i = 0; i < massiv.length; i++) {
+            if (massiv[i].length()<min.length()){
+                min=massiv[i];
+            }
+            if (massiv[i].length()>max.length()){
+                max=massiv[i];
             }
         }
-        System.out.println(sb);
+        System.out.println("Короткое число "+min+ "- его длина: "+min.length());
+        System.out.println("Длинное число "+max+ "- его длина: "+max.length());
     }
 }
