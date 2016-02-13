@@ -1,4 +1,4 @@
-package by.it.novik.JD01_06;//package by.it.novik.JD01_06;
+package by.it.novik.JD01_06;
 
 
 
