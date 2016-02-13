@@ -1,7 +1,7 @@
 package by.it.chetovich.JD01_05Math;
 
 /**
- * JD01_05 Math 
+ * JD01_05 Math
  */
 public class Main {
     public static void main (String [] args){
@@ -45,6 +45,10 @@ public class Main {
         task7.createArrays();
         TableHorizontalForTask7 arrayTable = new TableHorizontalForTask7();
         TableVerticalForTask7 tableVertical = new TableVerticalForTask7();
+
+        //Math methods
+        ClassMethods methods = new ClassMethods();
+        methods.printClassMethods();
 
     }
 }
