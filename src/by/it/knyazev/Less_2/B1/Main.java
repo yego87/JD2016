@@ -12,7 +12,7 @@ public class Main {
         int n = Integer.valueOf(s);
         System.out.println();
         Scanner scan2 = new Scanner(System.in);
-        String f = scan.nextLine();
+        String f = scan2.nextLine();
 
         String[] interval = new String[f.length()];
         interval = f.split(" ");
