@@ -1,8 +1,7 @@
 package by.it.chetovich.JD01_05Math;
-import static java.lang.Math.*;
 
 /**
- * Created by user_2 on 10.02.2016.
+ * JD01_05 Math 
  */
 public class Main {
     public static void main (String [] args){
@@ -44,11 +43,8 @@ public class Main {
         //Task7
         Task7 task7 = new Task7();
         task7.createArrays();
-        ArrayTableForTask7 arrayTable = new ArrayTableForTask7();
-
-
-
-
+        TableHorizontalForTask7 arrayTable = new TableHorizontalForTask7();
+        TableVerticalForTask7 tableVertical = new TableVerticalForTask7();
 
     }
 }

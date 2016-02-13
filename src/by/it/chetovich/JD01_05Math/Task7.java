@@ -1,9 +1,7 @@
 package by.it.chetovich.JD01_05Math;
 
-import java.util.Arrays;
-
 /**
- * Created by Yultos_ on 11.02.2016.
+ * Creates 2 arrays with random elements in a predefined range
  */
 public class Task7 {
     public void createArrays(){
@@ -13,7 +11,7 @@ public class Task7 {
             double s = Math.random()*5+4; //diapazon ot 4 do 9
             s = (Math.rint(s * 100))/100;
             t[i] = s;
-            if (t[i]<0.4*i) count++;//srazu s4itaem skolko elementov budet vo vtorom massive
+            if (t[i]<0.4*i) count++;//srazu s4itaem skolko elementov budet vo vtorom massive (40% ot nomera elementa)
         }
 
         double [] k = new double[count];
@@ -25,11 +23,12 @@ public class Task7 {
             }
         }
 
-        int rowsT = defineRowsQuantity(t.length, 4);
-        int rowsK = defineRowsQuantity(k.length, 4);
-        System.out.println(rowsT);
+        int rowsT = defineRowsQuantity(t.length, 4); // v uslovii strok dolzhno bit min, eto vozmozhno pri maksimalom koli4estve
+        int rowsK = defineRowsQuantity(k.length, 4); // stolbcov, a ih po usloviyu ne bol6e 4, zna4it v na6ey tablice stolbcov 4
+        System.out.println("Rows quantity = "+rowsT);                   // opredelaem skolko strok
 
-        ArrayTableForTask7.arrayOut(k,rowsK,4);
+        TableHorizontalForTask7.arrayOut(t, rowsT, 4);
+        TableVerticalForTask7.arrayOut(k,rowsK,4);
 
     }
 
@@ -42,8 +41,7 @@ public class Task7 {
     private int defineRowsQuantity (int elementsQuantity, int cols){
 
         double rowsD = (double)elementsQuantity/cols;
-        int rows = (int)Math.round(rowsD);
-        return rows;
+        return (int)Math.round(rowsD);
     }
 
 

@@ -1,9 +1,9 @@
 package by.it.chetovich.JD01_05Math;
 
 /**
- * Created by Yultos_ on 11.02.2016.
+ * Creates a table where elements follow rows
  */
-public class ArrayTableForTask7 {
+public class TableHorizontalForTask7 {
     /**
      *
      * @param array massiv elementov, kotoriy nuzhno vivesti
@@ -11,10 +11,8 @@ public class ArrayTableForTask7 {
      * @param cols koli4estvo stolbcov
      */
     static void arrayOut (double [] array, int rows, int cols){
-        String s1 = "| [";
-        String s2 = "] = ";
-        String s3 = " |";
-        String s = s1 + s2 + s3 + array.length + 1.11; //sozdaem stroku, kotoraya po dline budet ravna ya4eyke v tablice
+        String s1 = "| [] =  |";
+        String s = s1 + array.length + 1.11; //sozdaem stroku, kotoraya po dline budet ravna ya4eyke v tablice
                                                        //array.length budet zanimat stolko zhe mesta, kak i naibol6iy indeks
                                                        //1.11 primer elementa, oni v diapazone 4-9 s to4nostyu do sotih
 
@@ -44,12 +42,12 @@ public class ArrayTableForTask7 {
                     System.out.print("|"); // palo4ka pravoy granici vne6ney tablici
                 }
             }
-            // pe4ataem i element s granicami ego ya4eyki
-            System.out.print(s1);
+            System.out.printf("| [%2d] = %.2f |",i,array[i]); // pe4ataem i element s granicami ego ya4eyki
+            /*System.out.print(s1);
             System.out.printf("%2d",i);
             System.out.print(s2);
             System.out.printf("%.2f",array[i]);
-            System.out.print(s3);
+            System.out.print(s3);*/
 
             //esli eto posledniy element, to mi pe4ataem granici pustih ya4eek
             if (i==array.length-1){
@@ -92,4 +90,6 @@ public class ArrayTableForTask7 {
         }
         System.out.println("|");
     }
+
+
 }
