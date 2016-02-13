@@ -24,20 +24,44 @@ public class Task6 {
         return sum / 10.0;
     }
 
-    public void printArray(double[] array){
-        double avg = getLastTenAvg(array);
-        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-        System.out.println("Array average of last ten elements: " + avg);
-        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    public void printArray(double[] array, String arrayName, boolean printAvg){
+        double avg;
+        String tableHeader = "Array: " + arrayName + ".";
+        if (printAvg && array.length >= 10){
+            avg = getLastTenAvg(array);
+            tableHeader += " Average of last ten elements: " + avg;
+        }
+        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+        System.out.println(tableHeader);
+        System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
         for (int index = 0; index < array.length; index++){
             System.out.println(String.format("%-1s%-1s%-1s%2s%20s", "[", index, "]", "=", array[index]));
         }
     }
 
+    /**
+     * Т.к. по заданию у меня получаются числа ~1, то вместо кратных трех возвращаются значения
+     * индексов массива кратных трем
+     * @param array
+     * @return
+     */
     public double[] getEveryThirdElement(double[] array){
-        double[] a = {0.0};
+        int count = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i % 3 == 0){
+                count++;
+            }
+        }
+        double[] newArray = new double[count];
+        int index = 0;
+        for (int i = 0; i < array.length; i++){
+            if (i % 3 == 0){
+                newArray[index] = array[i];
+                index++;
+            }
+        }
 
-        return a;
+        return newArray;
     }
 }
