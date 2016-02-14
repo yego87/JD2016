@@ -5,12 +5,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by user_2 on 12.02.2016.
+ * Change letters 5 and 7 in every word
  */
-public class Task1String {
+public class TaskA1String {
     public void changeLiterals(StringBuilder s) {
 
-        Pattern pat = Pattern.compile("[а-яА-Я]{5,}");
+        Pattern pat = Pattern.compile("[а-яА-ЯёЁ]{5,}");
         Matcher mat = pat.matcher(s);
         while (mat.find()){
             s.setCharAt(mat.start()+4,'#');
