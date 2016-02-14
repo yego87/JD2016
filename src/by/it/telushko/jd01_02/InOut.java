@@ -55,6 +55,24 @@ public class InOut {
             System.out.println("");
         }
     }
+    public static void printMatrixFormatted(double[]matrix,String name){
+        System.out.println("Индекс  Значение");
+        for (int i = 0; i <matrix.length ; i++) {
+            System.out.printf(name+"[%2d]=% 7.2f\n",i,matrix[i]);
+        }
+    }
+
+    public static void printArrayPseudo(double array[],String name,int row) {
+        //вычислим количество солбцов при заданном количестве строк
+        double t = (double) array.length / row;
+        int col = (int) Math.ceil(t);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(name);
+            System.out.printf("[%-2d]=%4.1f   ",i,array[i]);
+            if ( ((i+1) % col == 0)&&(i!=0) ) System.out.println("");
+        }
+        System.out.println("");
+    }
 }
 
 
