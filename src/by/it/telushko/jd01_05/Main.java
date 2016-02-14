@@ -1,4 +1,5 @@
 package by.it.telushko.jd01_05;
+import by.it.telushko.jd01_02.InOut;
 import by.it.telushko.jd01_05.Tasks.TaskA;
 import by.it.telushko.jd01_05.Tasks.TaskB;
 import by.it.telushko.jd01_05.Tasks.TaskC;
@@ -6,10 +7,10 @@ import by.it.telushko.jd01_05.Tasks.TaskC;
 public class Main {
     public static void main(String[] args) {
         System.out.println("ВАРИАНТ 7\nВыберите тип задач(а, b, c)\nМожно раскоментировать соответствующую букву в коде ");
-       // String taskNum=InOut.consoleLineInput(); //выбор типа задания
+        String taskNum= InOut.consoleLineInput(); //выбор типа задания
         //String taskNum="a";
         //String taskNum="b";
-        String taskNum="c";
+        //String taskNum="c";
         switch (taskNum){
             case "a":{
                 System.out.println("Задание А1----------------------------------------");
