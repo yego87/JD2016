@@ -1,6 +1,6 @@
 package by.it.dorostchenok.jd01_06.tasks;
 
-import by.it.dorostchenok.jd01_06.string.Constatnt;
+import by.it.dorostchenok.jd01_06.string.Constant;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,7 +16,7 @@ public class TaskA {
         // create empty buffer for final result
         StringBuilder stringBuilder = new StringBuilder();
         // create pattern to match punctuation marks;
-        Pattern pattern = Pattern.compile(Constatnt.PUNCTUATION_REGEX);
+        Pattern pattern = Pattern.compile(Constant.PUNCTUATION_REGEX);
         // split text to sentences
         for (String sentence : text.split("\n")){
             // separate builder for sentence.
@@ -32,7 +32,7 @@ public class TaskA {
                 // if punctuation mark at the end of the word
                 if (matcher.find()){
                     // split word to get rid of punctuation
-                    String cleanWord = trimedWord.split(Constatnt.PUNCTUATION_REGEX)[0];
+                    String cleanWord = trimedWord.split(Constant.PUNCTUATION_REGEX)[0];
                     // find punctuation mark to restore it in future
                     punctuationMark = trimedWord.split(cleanWord)[1];
                     trimedWord = cleanWord;
@@ -74,7 +74,7 @@ public class TaskA {
         StringBuilder stringBuilder = new StringBuilder(text);
         for (String s : text.split("\n")){
             for (String word : s.split(" ")){
-                String[] array = word.trim().split(Constatnt.NOT_A_WORD_REGEX);
+                String[] array = word.trim().split(Constant.NOT_A_WORD_REGEX);
                 if (array.length >= 1){
                     int count = 0;
                     String wordToFind = array[0];
@@ -113,7 +113,7 @@ public class TaskA {
      */
     public int countStartEndVowelWords(String text){
         int count = 0;
-        Pattern pattern = Pattern.compile(Constatnt.START_END_VOWEL_REGEX,
+        Pattern pattern = Pattern.compile(Constant.START_END_VOWEL_REGEX,
                 Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CHARACTER_CLASS | Pattern.UNICODE_CASE);
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()){
