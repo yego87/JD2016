@@ -44,6 +44,6 @@ public class TaskC {
                 }
         //вывод массива косинусов
         InOut.printArrayPseudo(cosArray,"cos",5);
-        InOut.printArrayPseudo(b,"b",5);
+        InOut.printArrayPseudo(b,"b",1);
     }
 }

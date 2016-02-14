@@ -66,12 +66,52 @@ public class InOut {
         //вычислим количество солбцов при заданном количестве строк
         double t = (double) array.length / row;
         int col = (int) Math.ceil(t);
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(name);
-            System.out.printf("[%-2d]=%4.1f   ",i,array[i]);
-            if ( ((i+1) % col == 0)&&(i!=0) ) System.out.println("");
+
+        //формируем горизонтальные линии
+        String upLine="╔";
+        String floor="╠";
+        String bottom="╚";
+        for (int i = 0; i <col; i++) {
+            if (((i+1)%col==0)&&(i!=0)) {
+                upLine = upLine + "═══════╗"; //шапка таблицы
+                floor+=           "═══════╣"; //"пол" для напечатанной строки
+                bottom+=          "═══════╝"; //"дно" тблицы
+            }
+            else {
+                upLine +=         "═══════╦";
+                floor+=           "═══════╬";
+                bottom+=          "═══════╩";
+            }
         }
-        System.out.println("");
+        System.out.println(upLine);
+
+        //после шапки печатаем левую стенку для первой строки
+        System.out.print("║");
+        for (int i = 0; i < array.length; i++) {
+            System.out.printf("%3s[%-2d]=%4.1f",name,i,array[i]);
+            System.out.print("\u2551");
+            if (((i+1) % col == 0)&&(i!=0)&&(i!=array.length-1)){
+
+                System.out.print("\n"+floor+"\n");
+               //при переносе строки печатаем 'пол' для напечатанной ранее строки
+            System.out.print("║");
+            }
+        }
+
+        //рассчитаем и напечатаем заглушку
+        // (для случая если последняя строка таблицы не заполняется до конца)
+        if((array.length%col)!=0) {
+            String rest="";
+            int restCount=col-(array.length%col);
+            for (int j = 0; j <restCount ; j++) {
+                rest+="            ║";
+            }
+            System.out.println(rest);
+        }
+        else System.out.println("");//если заглушка не нужна, идем на новую строку и печтаем "дно"
+        System.out.println(bottom);
+
+
     }
 }
 
