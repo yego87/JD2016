@@ -1,5 +1,7 @@
 package by.it.Baranova.JD01_05_Math;
 
+import java.lang.reflect.Method;
+
 /**
  * Created by Ekaterina on 2/11/16.
  */
@@ -117,5 +119,14 @@ public class InOut {
             }
         }
         System.out.println();
+    }
+
+    //Печать методов класса Math
+    public static void PrintMathMethod () {
+        Class cls = Math.class;
+        System.out.println(" методы класса Math");
+        for (Method method : cls.getDeclaredMethods()) {
+            System.out.println(method.getName());
+        }
     }
 }
