@@ -8,12 +8,16 @@ public class Zadanie13 {
         int[] mas = new int[10];
         for (int i = 0; i < mas.length; i++) {
             mas[i] = (int) Math.round(Math.random() * 100);
-            System.out.print(mas[i]+" ");}
+            System.out.print(mas[i] + " ");
+        }
         System.out.println();
-        for (int i = 0; i < 10/2; i++){
+        for (int i = 0; i < 10 / 2; i++) {
             int tmp = mas[i];
-            mas[i]=mas[10-i-1];
-            mas[10-i-1] = tmp;
-        System.out.print(mas[i]+" ");}
-    }}
+            mas[i] = mas[10 - i - 1];
+            mas[10 - i - 1] = tmp;
 
+            System.out.print(mas[i] + " ");
+
+        }
+    }
+}
