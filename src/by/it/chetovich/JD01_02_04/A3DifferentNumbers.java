@@ -5,7 +5,7 @@ package by.it.chetovich.JD01_02_04;
  */
 public class A3DifferentNumbers {
     public void differentNums(String[] array) {
-        System.out.print("Numbers with different digits are ");
+        System.out.print("Numbers  with different digits are ");
         for (String s : array) {
             if (check(s) == false) System.out.print(s+" ");
             ;
