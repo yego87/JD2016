@@ -11,6 +11,8 @@ public class Main {
         calculations.Task5();
         calculations.Task6();
         calculations.Task7();
+        System.out.println();
+        InOut.PrintMathMethod();
 
     }
 }
