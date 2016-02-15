@@ -23,6 +23,7 @@ public class InOut {
             for (int j = 0; j <m[0].length ; j++)
                 System.out.printf(name+"[%1d,%1d]=%-6.1f",i,j,m[i][j]);
         }
-        System.out.println("");
-    }
+        System.out.print("");
+
+}
 }
