@@ -1,6 +1,5 @@
 package by.it.dorostchenok.jd01_06;
 
-
 import by.it.dorostchenok.jd01_06.string.Constant;
 import by.it.dorostchenok.jd01_06.tasks.TaskA;
 import by.it.dorostchenok.jd01_06.tasks.TaskB;
@@ -22,7 +21,12 @@ public class Main {
         // B 2 show ordered sentences
         taskB.sortSentences(Constant.TEXT);
         System.out.println("#############################");
-        taskB.sortWordsBySymbolMatch(Constant.TEXT, "а");
+        // B 3
+        // get sorted array
+        String[] array = taskB.sortWordsBySymbolMatch(Constant.TEXT, "б");
+        // print to console
+        for (String s : array)
+            System.out.println(s);
 
     }
 }

@@ -29,6 +29,11 @@ public class TaskB {
 
     }
 
+    /**
+     * 2. Вывести все предложения заданного текста в порядке возрастания количества слов в каждом из
+       них. В предложениях убрать переносы строк.
+     * @param text
+     */
     public void sortSentences(String text){
 
         List<Sentence> sentencesList = new ArrayList();
@@ -45,6 +50,13 @@ public class TaskB {
         }
     }
 
+    /**
+     * 3. Отсортировать слова в тексте по убыванию количества вхождений з адан ного си мвола, в
+       случае равенства — по алфавиту.
+     * @param text text to sort
+     * @param symbolToMatch symbol to sort by
+     * @return sorted String[] array
+     */
     public String[] sortWordsBySymbolMatch(String text, String symbolToMatch){
         // List to store all the words from text
         List<Word> words = new ArrayList();
@@ -52,21 +64,30 @@ public class TaskB {
         Pattern pattern = Pattern.compile(Constant.WORD_REGEX, Pattern.UNICODE_CASE | Pattern.UNICODE_CHARACTER_CLASS);
         // Matcher
         Matcher matcher = pattern.matcher(text);
+        // Find word
         while (matcher.find()) {
+            // and get it from text string
             String word = text.substring(matcher.start(), matcher.end());
-            Word newWord = new Word(word);
+            // create new Word object representing word itself
+            Word newWord = new Word(word.toLowerCase());
+            // check if word not in list to avoid duplicates
             if (!words.contains(newWord)) {
+                // if true set matchig pattern for Word
                 newWord.setMatchesPattern(symbolToMatch);
+                // finally add Word to list
                 words.add(newWord);
             }
         }
+        // List to store final result
+        List<String> finalList = new ArrayList<>();
 
-        for (int j = 0; j <= getMaxMatchCount(words); j++){
-            Collections.sort(getWordsByMatchCount(j, words));
-            getWordsByMatchCount(j, words);
+        for (int j = getMaxMatchCount(words); j >= 0; j--){
+            List<String> ls = getWordsByMatchCount(j, words);
+            Collections.sort(ls);
+            finalList.addAll(ls);
         }
-        String[] str = new String[1];
-        return str;
+
+        return finalList.toArray(new String[finalList.size()]);
     }
 
 
@@ -82,13 +103,15 @@ public class TaskB {
         return maxCount;
     }
 
-    private List<Word> getWordsByMatchCount(int matchCount, List<Word> list){
-        List<Word> returnList = new ArrayList<>();
+    private List<String> getWordsByMatchCount(int matchCount, List<Word> list){
+        List<String> wordsList = new ArrayList<>();
 
         for (Word w : list){
             if (w.getMatchesCount() == matchCount){
-                returnList.add(w);
+                wordsList.add(w.toString());
             }
         }
+
+        return wordsList;
     }
 }
