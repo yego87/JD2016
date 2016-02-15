@@ -3,14 +3,18 @@ import by.it.telushko.jd01_02.InOut;
 import by.it.telushko.jd01_05.Tasks.TaskA;
 import by.it.telushko.jd01_05.Tasks.TaskB;
 import by.it.telushko.jd01_05.Tasks.TaskC;
-
+import java.lang.reflect.Method;
 public class Main {
     public static void main(String[] args) {
-        System.out.println("ВАРИАНТ 7\nВыберите тип задач(а, b, c)\nМожно раскоментировать соответствующую букву в коде ");
+
+        System.out.println("ВАРИАНТ 7\nВыберите тип задач(а, b, c)\n" +
+
+                "d-вывод всех методов класса Math"+ "\nМожно раскоментировать соответствующую букву в коде \n");
         String taskNum= InOut.consoleLineInput(); //выбор типа задания
       //String taskNum="a";
       //String taskNum="b";
       //String taskNum="c";
+
         switch (taskNum){
             case "a":{
                 System.out.println("Задание А1----------------------------------------");
@@ -38,7 +42,15 @@ public class Main {
                 TaskC.taskC(21);
                 break;
             }
+            case "d":{
+                Class cls = String.class;
 
+                System.out.println("String methods:");
+                for (Method method : cls.getDeclaredMethods()) {
+                    System.out.println(method.getName());
+                }
+                break;
+            }
             default :{
                 System.out.println("Ошибка!");
                 break;
