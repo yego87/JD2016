@@ -14,7 +14,7 @@ public class Main {
       //String taskNum="a";
       //String taskNum="b";
       //String taskNum="c";
-
+      //String taskNum="d";
         switch (taskNum){
             case "a":{
                 System.out.println("Задание А1----------------------------------------");
@@ -43,9 +43,9 @@ public class Main {
                 break;
             }
             case "d":{
-                Class cls = String.class;
+                Class cls = Math.class;
 
-                System.out.println("String methods:");
+                System.out.println("Методы Math:");
                 for (Method method : cls.getDeclaredMethods()) {
                     System.out.println(method.getName());
                 }
