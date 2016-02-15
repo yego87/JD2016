@@ -18,6 +18,9 @@ public class Main {
         // B 1
         TaskB taskB = new TaskB();
         System.out.println(taskB.deleteWordsOfFiveLength(Constant.TEXT));
+        System.out.println("#############################");
+        // B 2 show ordered sentences
+        taskB.sortSentences(Constant.TEXT);
 
     }
 }

@@ -1,6 +1,12 @@
 package by.it.dorostchenok.jd01_06.tasks;
 
 import by.it.dorostchenok.jd01_06.string.Constant;
+import by.it.dorostchenok.jd01_06.string.Sentence;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,5 +28,21 @@ public class TaskB {
             return text;
         }
 
+    }
+
+    public void sortSentences(String text){
+
+        List<Sentence> sentencesList = new ArrayList();
+        Pattern pattern = Pattern.compile(Constant.SENTENCE_REGEX);
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()){
+            String sentence = text.substring(matcher.start(), matcher.end()).replace("\n", " ").trim();
+            sentencesList.add(new Sentence(sentence));
+        }
+
+        Collections.sort(sentencesList);
+        for (Sentence s : sentencesList){
+            System.out.println(s);
+        }
     }
 }
