@@ -24,6 +24,11 @@ public class InOut {
         int b = inStr.nextInt();//считываем число, соответствующее заданию
         return b;
     }
+    public static double consoleDoubleInput() {
+        Scanner inStr = new Scanner(System.in);
+        double b = inStr.nextDouble();//считываем число, соответствующее заданию
+        return b;
+    }
     public static int[] strToInt(String[] val){
         int[] v = new int[val.length];
         int i=0;
@@ -49,6 +54,64 @@ public class InOut {
             }
             System.out.println("");
         }
+    }
+    public static void printMatrixFormatted(double[]matrix,String name){
+        System.out.println("Индекс  Значение");
+        for (int i = 0; i <matrix.length ; i++) {
+            System.out.printf(name+"[%2d]=% 7.2f\n",i,matrix[i]);
+        }
+    }
+
+    public static void printArrayPseudo(double array[],String name,int row) {
+        //вычислим количество солбцов при заданном количестве строк
+        double t = (double) array.length / row;
+        int col = (int) Math.ceil(t);
+
+        //формируем горизонтальные линии
+        String upLine="╔";
+        String floor="╠";
+        String bottom="╚";
+        for (int i = 0; i <col; i++) {
+            if (((i+1)%col==0)&&(i!=0)) {
+                upLine = upLine + "═══════╗"; //шапка таблицы
+                floor+=           "═══════╣"; //"пол" для напечатанной строки
+                bottom+=          "═══════╝"; //"дно" тблицы
+            }
+            else {
+                upLine +=         "═══════╦";
+                floor+=           "═══════╬";
+                bottom+=          "═══════╩";
+            }
+        }
+        System.out.println(upLine);
+
+        //после шапки печатаем левую стенку для первой строки
+        System.out.print("║");
+        for (int i = 0; i < array.length; i++) {
+            System.out.printf("%3s[%-2d]=%4.1f",name,i,array[i]);
+            System.out.print("\u2551");
+            if (((i+1) % col == 0)&&(i!=0)&&(i!=array.length-1)){
+
+                System.out.print("\n"+floor+"\n");
+               //при переносе строки печатаем 'пол' для напечатанной ранее строки
+            System.out.print("║");
+            }
+        }
+
+        //рассчитаем и напечатаем заглушку
+        // (для случая если последняя строка таблицы не заполняется до конца)
+        if((array.length%col)!=0) {
+            String rest="";
+            int restCount=col-(array.length%col);
+            for (int j = 0; j <restCount ; j++) {
+                rest+="            ║";
+            }
+            System.out.println(rest);
+        }
+        else System.out.println("");//если заглушка не нужна, идем на новую строку и печтаем "дно"
+        System.out.println(bottom);
+
+
     }
 }
 
