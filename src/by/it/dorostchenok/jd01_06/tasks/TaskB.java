@@ -45,24 +45,50 @@ public class TaskB {
         }
     }
 
-    public String[] sortWordsBySymbolMatch(String text, char symbolToMatch){
+    public String[] sortWordsBySymbolMatch(String text, String symbolToMatch){
         // List to store all the words from text
         List<Word> words = new ArrayList();
         // Pattern to match single word
-        Pattern pattern = Pattern.compile("\\w+", Pattern.UNICODE_CASE | Pattern.UNICODE_CHARACTER_CLASS);
+        Pattern pattern = Pattern.compile(Constant.WORD_REGEX, Pattern.UNICODE_CASE | Pattern.UNICODE_CHARACTER_CLASS);
         // Matcher
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()) {
             String word = text.substring(matcher.start(), matcher.end());
             Word newWord = new Word(word);
             if (!words.contains(newWord)) {
+                newWord.setMatchesPattern(symbolToMatch);
                 words.add(newWord);
             }
         }
 
-
-
+        for (int j = 0; j <= getMaxMatchCount(words); j++){
+            Collections.sort(getWordsByMatchCount(j, words));
+            getWordsByMatchCount(j, words);
+        }
         String[] str = new String[1];
         return str;
+    }
+
+
+    private int getMaxMatchCount(List<Word> wordsList){
+        int maxCount = 0;
+
+        for (Word w : wordsList){
+            if (w.getMatchesCount() > maxCount){
+                maxCount = w.getMatchesCount();
+            }
+        }
+
+        return maxCount;
+    }
+
+    private List<Word> getWordsByMatchCount(int matchCount, List<Word> list){
+        List<Word> returnList = new ArrayList<>();
+
+        for (Word w : list){
+            if (w.getMatchesCount() == matchCount){
+                returnList.add(w);
+            }
+        }
     }
 }

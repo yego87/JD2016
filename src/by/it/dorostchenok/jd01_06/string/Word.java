@@ -1,10 +1,31 @@
 package by.it.dorostchenok.jd01_06.string;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Word {
 
     private String word;
-    int matchesCount = 0;
+    private int matchesCount = 0;
+    private String matchesPattern = "";
 
+    public int getMatchesCount() {
+        return matchesCount;
+    }
+
+    public String getMatchesPattern() {
+        return matchesPattern;
+    }
+
+    public void setMatchesPattern(String matchesPattern) {
+        this.matchesCount = 0;
+        Pattern pattern = Pattern.compile(matchesPattern);
+        Matcher matcher = pattern.matcher(this.word);
+        while (matcher.find()){
+            this.matchesCount++;
+        }
+        this.matchesPattern = matchesPattern;
+    }
 
     public Word(String word){
         this.word = word;
@@ -28,6 +49,7 @@ public class Word {
 
     @Override
     public int hashCode() {
+
         return word != null ? word.hashCode() : 0;
     }
 }

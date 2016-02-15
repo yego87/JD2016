@@ -22,7 +22,7 @@ public class Main {
         // B 2 show ordered sentences
         taskB.sortSentences(Constant.TEXT);
         System.out.println("#############################");
-        taskB.sortWordsBySymbolMatch(Constant.TEXT, 'a');
+        taskB.sortWordsBySymbolMatch(Constant.TEXT, "а");
 
     }
 }
