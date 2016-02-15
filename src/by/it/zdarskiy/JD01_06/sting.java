@@ -5,7 +5,7 @@ package by.it.zdarskiy.JD01_06;
  */
 public class sting {
     public static  void main (String [] args){
-        String s = "У лукоморья дуб зелёный;\n" +
+        StringBuilder s = new StringBuilder( "У лукоморья дуб зелёный;\n" +
                 "Златая цепь на дубе том:\n" +
                 "И днём и ночью кот учёный\n" +
                 "Всё ходит по цепи кругом;\n" +
@@ -37,9 +37,10 @@ public class sting {
                 "И там я был, и мёд я пил;\n" +
                 "У моря видел дуб зелёный;\n" +
                 "Под ним сидел, и кот учёный\n" +
-                "Свои мне сказки говорил.";
+                "Свои мне сказки говорил.");
 
-        StringBuilder A = new StringBuilder(s);
+        ChangeSumbols.String(s);
+        System.out.println(s);
 
     }
 }
