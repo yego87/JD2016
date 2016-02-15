@@ -21,6 +21,8 @@ public class Main {
         System.out.println("#############################");
         // B 2 show ordered sentences
         taskB.sortSentences(Constant.TEXT);
+        System.out.println("#############################");
+        taskB.sortWordsBySymbolMatch(Constant.TEXT, 'a');
 
     }
 }

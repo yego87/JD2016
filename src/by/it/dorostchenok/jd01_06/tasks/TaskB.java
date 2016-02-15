@@ -2,9 +2,8 @@ package by.it.dorostchenok.jd01_06.tasks;
 
 import by.it.dorostchenok.jd01_06.string.Constant;
 import by.it.dorostchenok.jd01_06.string.Sentence;
-
+import by.it.dorostchenok.jd01_06.string.Word;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -44,5 +43,26 @@ public class TaskB {
         for (Sentence s : sentencesList){
             System.out.println(s);
         }
+    }
+
+    public String[] sortWordsBySymbolMatch(String text, char symbolToMatch){
+        // List to store all the words from text
+        List<Word> words = new ArrayList();
+        // Pattern to match single word
+        Pattern pattern = Pattern.compile("\\w+", Pattern.UNICODE_CASE | Pattern.UNICODE_CHARACTER_CLASS);
+        // Matcher
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            String word = text.substring(matcher.start(), matcher.end());
+            Word newWord = new Word(word);
+            if (!words.contains(newWord)) {
+                words.add(newWord);
+            }
+        }
+
+
+
+        String[] str = new String[1];
+        return str;
     }
 }
