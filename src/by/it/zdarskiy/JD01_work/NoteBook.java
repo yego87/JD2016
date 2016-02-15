@@ -3,7 +3,7 @@ package by.it.zdarskiy.JD01_work;
 
 public class NoteBook {
     public static void main (String [] args){
-        int s = 691805;
+        int s = 691800;
         int sec = s % 60;
         int m = (s-sec)/60;
         int min = m%60;
@@ -14,11 +14,11 @@ public class NoteBook {
         int day = d%7;
         int w = (d-day)/7;
         System.out.println(w+" недель "+ day +" дней ");
-        int x = 44; //задание 4
+        int x = 107; //задание 4
         if (x%10 == 7){
             System.out.println("Число "+x+" заканчивается на 7");
         }
-        else {System.out.println("Число "+x+" не заканчивается на 7");}
+        else {System.out.print("Число "+x+" не заканчивается на 7");}
         int a = 9;//задание 5
         int b = 5;
         int r = 3;
@@ -60,7 +60,7 @@ public class NoteBook {
 
         System.out.println(maxrand+ " Имеет большее значение)");
 
-        int cch = 6;// задание 10
+        int cch = 5;// задание 10
         int i;
         boolean hard = false;
         for (i = 2; i < cch; i++) {
