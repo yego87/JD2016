@@ -141,6 +141,12 @@ public class TaskC {
         return null;
     }
 
+    /**
+     * 3. Все слова текста рассортировать в порядке убывания их длин, при этом все слова одинаковой
+        длины рассортировать в порядке возрастания в них количества гласных букв. Одинаковые
+        слова сгруппировать и выводить один раз с числом их повторов в тексте.
+     * @param text
+     */
     public void sortWordsBackOrder(String text){
         List<Word> allWords = new ArrayList<>();
         Pattern pattern = Pattern.compile(Constant.WORD_REGEX, Pattern.UNICODE_CASE | Pattern.UNICODE_CHARACTER_CLASS);
@@ -156,16 +162,17 @@ public class TaskC {
             List<Word> list = getWordsOfLength(allWords, j);
 
             for (int x = getMinMatchCount(list); x <= getMaxMatchCount(list); x++){
-                List<Word> sortedlist = getWordsOfMatch(list, x);
+                List<Word> sList = getWordsOfMatch(list, x);
                 List<Word> duplicates = new ArrayList<>();
-                for (Word w1 : sortedlist){
-                    int duplacatesCount = countDuplicatesInList(w1, sortedlist);
-                    if (duplacatesCount - 1 == 0){
+                for (Word w1 : sList){
+                    int duplacatesCount = countDuplicatesInList(w1, sList);
+                    duplacatesCount--;
+                    if (duplacatesCount == 0){
                         System.out.println(w1);
                         continue;
                     }
-                    if (duplacatesCount - 1 != 0 && !duplicates.contains(w1)){
-                        System.out.println(w1 + " " + (duplacatesCount - 1));
+                    if (duplacatesCount != 0 && !duplicates.contains(w1)){
+                        System.out.println(w1 + " повторений: " + ++duplacatesCount);
                         duplicates.add(w1);
                     } else {
                         continue;
