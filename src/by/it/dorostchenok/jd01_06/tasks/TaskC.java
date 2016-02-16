@@ -140,4 +140,104 @@ public class TaskC {
 
         return null;
     }
+
+    public void sortWordsBackOrder(String text){
+        List<Word> allWords = new ArrayList<>();
+        Pattern pattern = Pattern.compile(Constant.WORD_REGEX, Pattern.UNICODE_CASE | Pattern.UNICODE_CHARACTER_CLASS);
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            String word = text.substring(matcher.start(), matcher.end());
+            Word wordObj = new Word(word.toLowerCase());
+            wordObj.setMatchesPattern(Constant.VOWEL_REGEX);
+            allWords.add(wordObj);
+        }
+
+        for (int j = getWordMaxLength(allWords); j > 0; j--){
+            List<Word> list = getWordsOfLength(allWords, j);
+
+            for (int x = getMinMatchCount(list); x <= getMaxMatchCount(list); x++){
+                List<Word> sortedlist = getWordsOfMatch(list, x);
+                List<Word> duplicates = new ArrayList<>();
+                for (Word w1 : sortedlist){
+                    int duplacatesCount = countDuplicatesInList(w1, sortedlist);
+                    if (duplacatesCount - 1 == 0){
+                        System.out.println(w1);
+                        continue;
+                    }
+                    if (duplacatesCount - 1 != 0 && !duplicates.contains(w1)){
+                        System.out.println(w1 + " " + (duplacatesCount - 1));
+                        duplicates.add(w1);
+                    } else {
+                        continue;
+                    }
+                }
+            }
+        }
+
+    }
+
+    private int getWordMaxLength(List<Word> list){
+        int length = 0;
+
+        for (Word w : list){
+            if (w.length > length){
+                length = w.length;
+            }
+        }
+
+        return length;
+    }
+
+    private List<Word> getWordsOfLength(List<Word> list,int length){
+        List<Word> result = new ArrayList<>();
+
+        for (Word word : list){
+            if (word.length == length) result.add(word);
+        }
+
+        return result;
+    }
+
+    private int getMinMatchCount(List<Word> list){
+        int min = Integer.MAX_VALUE;
+
+        for (Word word : list){
+            if (word.getMatchesCount() < min){
+                min = word.getMatchesCount();
+            }
+        }
+        return min;
+    }
+
+    private int getMaxMatchCount(List<Word> list){
+        int max = 0;
+
+        for (Word word : list){
+            if (word.getMatchesCount() > max){
+                max = word.getMatchesCount();
+            }
+        }
+        return max;
+    }
+
+    private List<Word> getWordsOfMatch(List<Word> list,int count){
+        List<Word> result = new ArrayList<>();
+
+        for (Word word : list){
+            if (word.getMatchesCount() == count)
+                result.add(word);
+        }
+
+        return result;
+    }
+
+    private int countDuplicatesInList(Word word, List<Word> list){
+        int duplicatesCount = 0;
+
+        for (Word w : list){
+            if (w.equals(word)) duplicatesCount++;
+        }
+
+        return duplicatesCount;
+    }
 }

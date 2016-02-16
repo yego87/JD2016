@@ -35,18 +35,20 @@ public class Main {
         String formatedText = taskC.formatText(Constant.TEXT);
         System.out.println(formatedText);
         // C 2
-        long before;
-        long after;
-        before = System.currentTimeMillis();
-        taskC.concatOneMillionString(Constant.TEXT, 100000);
-        after = System.currentTimeMillis();
-        long stringResult = after - before;
-        System.out.println("String Result: " + stringResult + " milliseconds");
-        before = System.currentTimeMillis();
-        taskC.concatOneMillionStringBuffered(Constant.TEXT, 100000);
-        after = System.currentTimeMillis();
-        long stringBuilderResult = after - before;
-        System.out.println("StringBuilder Result: " + stringBuilderResult + " milliseconds\n");
-        System.out.println("StringBuilder wins " + (stringResult - stringBuilderResult) + " milliseconds");
+//        long before;
+//        long after;
+//        before = System.currentTimeMillis();
+//        taskC.concatOneMillionString(Constant.TEXT, 100000);
+//        after = System.currentTimeMillis();
+//        long stringResult = after - before;
+//        System.out.println("String Result: " + stringResult + " milliseconds");
+//        before = System.currentTimeMillis();
+//        taskC.concatOneMillionStringBuffered(Constant.TEXT, 100000);
+//        after = System.currentTimeMillis();
+//        long stringBuilderResult = after - before;
+//        System.out.println("StringBuilder Result: " + stringBuilderResult + " milliseconds\n");
+//        System.out.println("StringBuilder wins " + (stringResult - stringBuilderResult) + " milliseconds");
+        taskC.sortWordsBackOrder(Constant.TEXT);
+
     }
 }
