@@ -1,5 +1,6 @@
 package by.it.chetovich.JD01_06StringTaskC2;
 
+//закомментировал Хмелев. Этого класса нет в репозитории. Поэтому все рушится у всех ;)
 //import by.it.chetovich.JD01_06StringTaskC2.C2ChoosingWordByLength;
 
 import java.util.Random;
