@@ -11,7 +11,7 @@
 #Конфигурация собрана, отключаем общие настройки IDEA (с сохранением в репо)
 
 out/
-.idea/ export-ignore
+.idea export-ignore
 *.iml export-ignore
 workspace.xml
 
