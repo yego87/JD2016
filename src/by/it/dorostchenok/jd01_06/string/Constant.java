@@ -5,7 +5,8 @@ public class Constant {
     public static final String START_END_VOWEL_REGEX = "\\b[аоэиуыеёюя]\\w*[аоэиуыеёюя]\\b";
     public static final String NOT_A_WORD_REGEX = "[.,!?:;…-]";
     public static final String PUNCTUATION_REGEX = "[.,!?:;…]";
-    public static final String TEXT_2 = "tut tut trar tart";
+    public static final String SENTENCE_REGEX = "[^.!?\\s][^.!?]*(?:[.!?](?!['\"]?\\s|$)[^.!?]*)*[.!?]?['\"]?(?=\\s|$)";
+    public static final String WORD_REGEX = "\\w+";
     public static final String TEXT = "У лукоморья дуб зелёный;\n" +
             "Златая цепь на дубе том:\n" +
             "И днём и ночью кот учёный\n" +
