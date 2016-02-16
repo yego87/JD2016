@@ -3,6 +3,7 @@ package by.it.dorostchenok.jd01_06;
 import by.it.dorostchenok.jd01_06.string.Constant;
 import by.it.dorostchenok.jd01_06.tasks.TaskA;
 import by.it.dorostchenok.jd01_06.tasks.TaskB;
+import by.it.dorostchenok.jd01_06.tasks.TaskC;
 
 public class Main {
 
@@ -27,6 +28,12 @@ public class Main {
         // print to console
         for (String s : array)
             System.out.println(s);
+
+        // Group of tasks C
+        //C 1
+        TaskC taskC = new TaskC();
+        String formatedText = taskC.formatText(Constant.TEXT);
+        System.out.println(formatedText);
 
     }
 }
