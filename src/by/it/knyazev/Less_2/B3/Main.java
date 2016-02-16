@@ -1,14 +1,11 @@
-package by.it.knyazev.Less_f3t4.id_8;
-
-
-/**
- * Created by Artsem Kniazeu on 10.02.2016.
- */
+package by.it.knyazev.Less_2.B3;
 
 import java.util.Scanner;
 
+/**
+ * Created by Artsem Kniazeu on 13.02.2016.
+ */
 public class Main {
-
     public static void main(String[] args) {
         System.out.println("Введите a b c | ax^2+bx+c");
         Scanner scan = new Scanner(System.in);
@@ -32,5 +29,4 @@ public class Main {
             System.out.println("Sorry");
         }
     }
-
 }

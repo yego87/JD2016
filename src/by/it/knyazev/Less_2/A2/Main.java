@@ -1,4 +1,4 @@
-package by.it.knyazev.Less_f1t2.id_3;
+package by.it.knyazev.Less_2.A2;
 
 /**
  * Created by Artsem Kniazeu on 10.02.2016.
@@ -14,7 +14,6 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         String text = scan.nextLine();
         String[] massiv = new String[text.length()];
-
         massiv = text.split(" ");
 
         int min = massiv[0].length(),max = massiv[0].length();
