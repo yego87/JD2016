@@ -20,7 +20,7 @@ public class Main {
         return Math.pow(m1,2);
     }
     public static double sqrt(double x){
-        double m2 = x*Math.sqrt(3+Math.pow(x,2));
+        double m2 = x*Math.pow(Math.sqrt(3+Math.pow(x,2)),3);
         return m2;
     }
     public static double tg(double x){
