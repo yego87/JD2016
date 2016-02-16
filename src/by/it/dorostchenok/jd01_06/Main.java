@@ -30,10 +30,26 @@ public class Main {
             System.out.println(s);
 
         // Group of tasks C
-        //C 1
+        // C 1
         TaskC taskC = new TaskC();
         String formatedText = taskC.formatText(Constant.TEXT);
         System.out.println(formatedText);
+        // C 2
+        long before;
+        long after;
+        before = System.currentTimeMillis();
+        taskC.concatOneMillionString(Constant.TEXT, 100000);
+        after = System.currentTimeMillis();
+        long stringResult = after - before;
+        System.out.println("String Result: " + stringResult + " milliseconds");
+        before = System.currentTimeMillis();
+        taskC.concatOneMillionStringBuffered(Constant.TEXT, 100000);
+        after = System.currentTimeMillis();
+        long stringBuilderResult = after - before;
+        System.out.println("StringBuilder Result: " + stringBuilderResult + " milliseconds\n");
+        System.out.println("StringBuilder wins " + (stringResult - stringBuilderResult) + " milliseconds");
+        // C 3
+        taskC.sortWordsBackOrder(Constant.TEXT);
 
     }
 }

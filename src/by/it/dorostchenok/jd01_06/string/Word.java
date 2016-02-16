@@ -9,6 +9,8 @@ public class Word {
     private int matchesCount = 0;
     private String matchesPattern = "";
 
+    public final int length;
+
     public int getMatchesCount() {
         return matchesCount;
     }
@@ -29,6 +31,7 @@ public class Word {
 
     public Word(String word){
         this.word = word;
+        this.length = word.length();
     }
 
     @Override

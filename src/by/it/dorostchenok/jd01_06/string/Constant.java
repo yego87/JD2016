@@ -2,6 +2,7 @@ package by.it.dorostchenok.jd01_06.string;
 
 public class Constant {
     public static final String FIVE_LEN_WORD_REGEX = "\\b[бвгджзйклмнпрстфхцчшщ]\\w{4,4}\\b";
+    public static final String VOWEL_REGEX = "[аоэиуыеёюя]";
     public static final String START_END_VOWEL_REGEX = "\\b[аоэиуыеёюя]\\w*[аоэиуыеёюя]\\b";
     public static final String NOT_A_WORD_REGEX = "[.,!?:;…-]";
     public static final String PUNCTUATION_REGEX = "[.,!?:;…]";
