@@ -11,7 +11,7 @@ public class Main {
         find(s);
     }
     public static String find(String f){
-        Pattern pat = Pattern.compile("\\s[чсмтбждлрпвфйцкнгшщзх]{1}[а-яА-ЯёЁ][чсмтбждлрпвфйцкнгшщзх]{1}\\b");
+        Pattern pat = Pattern.compile("\\s[чсмтбждлрпвфйцкнгшщзх]{1}[а-яА-ЯёЁ]{0,}[чсмтбждлрпвфйцкнгшщзх]{1}\\b");
         String [] array = pat.split(f);
         for (String s : array) {
             System.out.print(s);
