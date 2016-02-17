@@ -10,27 +10,32 @@ import java.util.regex.Pattern;
  */
 public class SameWords {
     public static void sameWords(String str) {
-        String regex = "[а-яА-ЯЁё]{2,}";
+        String regex = "[а-яА-ЯЁё]+";
         Pattern pat = Pattern.compile(regex);
         Matcher mat = pat.matcher(str);
         ArrayList<String> list1 = new ArrayList<String>();
         boolean check = true;
+        ArrayList<Integer> index = new ArrayList<Integer>();
         while (mat.find()) {
             if (list1.isEmpty()) {
                 list1.add(mat.group());
+                index.add(1);
             } else {
-                for (String s : list1) {
-                    if (s.equals(mat.group())) {
+                for (int i=0;i<list1.size();i++) {
+                    if (list1.get(i).equals(mat.group())) {
+                        int k=index.get(i);
+                        index.set(i,k+1);
                         check = false;
-
                     }
                 }
-                if (check) list1.add(mat.group());
+                if (check) {
+                    list1.add(mat.group());
+                    index.add(1);
+                }
             }
-
         }
-        for (String s : list1) {
-            System.out.print(s + " ");
+        for (int i=0;i<list1.size();i++) {
+            System.out.print(list1.get(i) +index.get(i)+ " ");
 
         }
     }
