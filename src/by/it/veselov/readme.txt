@@ -23,3 +23,4 @@
     - VCS -> Commit Changes (укажите, что нового добавлено)     //запись в локальное хранилище
     - VCS -> Git -> Push    (укажите, что нового добавлено)     //запись в свой fork на github
     - Create pull request (операция доступна на сайте github)   //сдача: запись в master
+    tests
