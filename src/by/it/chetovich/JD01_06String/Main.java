@@ -1,40 +1,50 @@
 package by.it.chetovich.JD01_06String;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Random;
 
 /**
  * JD01_06 String
  */
 public class Main {
     public static void main (String [] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String text = reader.readLine();
+        String text = "У лукоморья дуб зелёный.\nЗлатая цепь на дубе том:\nИ днём и ночью кот учёный\nВсё ходит по цепи кругом.\nИдёт направо - песнь заводит,\nНалево - сказку говорит.";
         StringBuilder textB = new StringBuilder(text);
+        String s = "Я больше не могу. У лукоморья дуб? Мы знакомы - много лет. Сколько можно: это должно прекратиться! Мама!";
+
 
         //TaskA1
-        //TaskA1String taskA1 = new TaskA1String();
+        //A1ChangingLetters taskA1 = new A1ChangingLetters();
         //taskA1.changeLiterals(textB);
 
         //TaskA2
-        //TaskA2String taskA2 = new TaskA2String();
+        //A2CountingWords taskA2 = new A2CountingWords();
         //taskA2.CalculateWords(textB);
 
         //Task A3
-        //TaskA3String taskA3 = new TaskA3String();
+        //A3ConsonantWords taskA3 = new A3ConsonantWords();
         //taskA3.calcWordsWithConsonant(textB);
 
         //Task B1
-        //TaskB1String taskB1 = new TaskB1String();
+        //B1DeletingConsonantWords taskB1 = new B1DeletingConsonantWords();
         //taskB1.deleteWordsStartConsonant(textB);
 
         //Task B2
-        //TaskB2String taskB2 = new TaskB2String();
-        //taskB2.sortTextBySentences(textB);
+        B2SortingSentences.sortTextBySentences(s);
 
-        TaskB3String taskB3 = new TaskB3String();
-        taskB3.sortWordsByLetter(textB, "�");
+        //Task B3
+        //B3SortingWords taskB3 = new B3SortingWords();
+        //taskB3.sortWordsByLetter(textB, "м");
+
+        //Task C1
+        //C1BothSidesFormat taskC1 = new C1BothSidesFormat();
+        //taskC1.formatText(textB);
+
+        //Task C2
+
+
+        //Task C3
+
 
 
     }

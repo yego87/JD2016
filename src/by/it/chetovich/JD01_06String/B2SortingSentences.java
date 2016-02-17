@@ -22,9 +22,6 @@ public class B2SortingSentences {
         }
         System.out.println(count);
 
-        /*for (String s1 : array) {
-            s1 = s1.trim();
-        }*/
         for (int j = 0; j < array.length; j++) {
             array[j] = array[j].trim();
         }
