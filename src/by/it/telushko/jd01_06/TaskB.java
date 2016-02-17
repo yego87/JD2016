@@ -34,30 +34,28 @@ public class TaskB {
         //найдем количество предложений в тексте, заодно удалим переносы
         int sentenceCounter=0;
         for (int i = 0; i <sbText.length() ; i++) {
-            if('.'==sbText.charAt(i))sentenceCounter++;
             if('\n'==sbText.charAt(i))sbText.deleteCharAt(i);
         }
         int sentenseStart=0;
         int sentenseEnd=0;
         int sentenseLength=0;
         int wordCounter;
-
-        Pattern word= Pattern.compile("[а-яА-я0-9]+");
-        for (int i = 0; i <sentenceCounter ; i++) {
-            wordCounter=0;
-            Matcher okWord=word.matcher(sbText);
-            while(okWord.find()) {
-                wordCounter++;
-                if('.'==sbText.charAt(okWord.end())){
-                    if (wordCounter>sentenseLength){
-                        sentenseLength=wordCounter;
-                        sentenseStart=sentenseEnd;
-                        sentenseEnd=okWord.end();
-                    }
-                    wordCounter=0;
-                }
-
-            }
+        Pattern sentence= Pattern.compile("(\\.{3})|[\\.?!]");
+        wordCounter=0;
+        Matcher okSentence=sentence.matcher(sbText);
+        while(okSentence.find()) sentenceCounter++;//Считаем количество предложений
+        StringBuilder[] sentenceStore =new StringBuilder[sentenceCounter];//создаем массив для хранения предложений
+        sentenceCounter=0;
+        okSentence=sentence.matcher(sbText); //разбиваем массив на предложения
+        while(okSentence.find()){
+            sentenseStart=sentenseEnd;//получаем начало и конец предложения
+            sentenseEnd=okSentence.end();
+            System.out.println(sentenseStart+" "+sentenseEnd);
+            System.out.println(sbText.charAt(okSentence.end()));
+            sentenceStore[sentenceCounter]=new StringBuilder(sbText.substring(sentenseStart,sentenseEnd));
+            System.out.println(sentenceStore[sentenceCounter]);
+            sentenceCounter++;
         }
+
     }
 }
