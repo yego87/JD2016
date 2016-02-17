@@ -5,9 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Admin on 13.02.2016.
+ * Вывести предложения в порядке возрастания количества слов
  */
-public class Sentences {
+public class SortSentences {
     public static void sentences(String str) {
 
         String[] sa = str.trim().split("[.!?]\\s*");

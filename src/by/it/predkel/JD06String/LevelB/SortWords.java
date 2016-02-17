@@ -17,10 +17,10 @@ public class SortWords {
         Matcher mat = pat.matcher(str);
         int max=0;
         while (mat.find()){
-            dimension++;
+            dimension++;//kolichestvo slov
             list.add(mat.group());
             if (max<mat.group().length()){
-                max=mat.group().length();
+                max=mat.group().length();//maksimalnaya dlina slova
             }
         }
        // String[] s=new String[dimension];
@@ -34,10 +34,10 @@ public class SortWords {
           //  k++;
      //   }
 
-        int[] couns=new int[dimension];
+        int[] couns=new int[dimension];//kolichestvo vhojdeniy v i-oe slovo
         for (int i=0;i<list.size();i++){
-            char[] syms=list.get(i).toCharArray();
-            int counter=0;
+            char[] syms=list.get(i).toCharArray();//vse simvoly i-ogo slova
+            int counter=0;//kolichestvo vhojdeniy
             for (int j=0;j<syms.length;j++){
                 if (syms[j]==symbol){
                     counter++;
