@@ -3,14 +3,17 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Package Files
 *.jar
 *.war
 *.ear
 
-//удаление критичных файлов IDEA
-workspace.xml
+#Конфигурация собрана, отключаем общие настройки IDEA (с сохранением в репо)
+
 out/
+.idea export-ignore
+*.iml export-ignore
+workspace.xml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
