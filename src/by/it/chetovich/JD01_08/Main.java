@@ -11,7 +11,7 @@ public class Main {
 
         ManagerProduction manProd = new ManagerProduction("Ivanov",1500,true,6,"Assemblage",1);
         System.out.println(manProd);
-        if (manProd.getFired(false)) manProd.paySalaryAndBonus(200);
+        if (manProd.getFired(false)) manProd.paySalary(200);
         else manProd.payCompensation(1000);
         LearnDuties.learnDuties(manProd);
         manProd.goToVacation();
@@ -22,7 +22,7 @@ public class Main {
         System.out.println(manLog);
         System.out.println("Work place of "+manProd.name+": "+manProd.workPlace());
         manLog.goToVacation();
-        if (manProd.getFired(true)) manProd.paySalaryAndBonus(200);
+        if (manProd.getFired(true)) manProd.paySalary(200);
         else manProd.payCompensation(1000);
         System.out.println();
 

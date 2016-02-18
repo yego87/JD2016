@@ -42,7 +42,7 @@ public abstract class Engineer implements Iemployee{
     }
 
     @Override
-    public void paySalaryAndBonus(int bonus){
+    public void paySalary(int bonus){
         System.out.println("Pay "+this.salary+" and bonus "+bonus+" to "+this.name+".");
     }
 

@@ -14,7 +14,7 @@ public interface Iemployee {
     void function();
     void isItr ();
     void paySalary ();
-    void paySalaryAndBonus (int bonus);
+    void paySalary (int bonus);
     void goToVacation ();
     boolean getFired (boolean fired);
     void payCompensation(int compensation);
