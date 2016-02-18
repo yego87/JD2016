@@ -55,7 +55,7 @@ public abstract class Administration implements Iemployee {
 
     @Override
     public void goToVacation() {
-        if (this.salary>1000) System.out.println(this.name+" can afford going to Italy to vacation. ");
+        if (this.salary>1000) System.out.println(this.name+" can afford going to Italy to vac ");
         else System.out.println(this.name+" goes to Turkey. ");
     }
 
