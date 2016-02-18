@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 /**
  * Created by yegorveselov on 16.02.16.
  */
-public class Task_2_A {
+public class Task_A_2 {
     public static void main(String[] args) throws IOException {
         InputStreamReader inputStreamReader=new InputStreamReader (System.in);
         BufferedReader bufferedReader=new BufferedReader (inputStreamReader);
