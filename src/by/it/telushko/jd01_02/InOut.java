@@ -19,6 +19,12 @@ public class InOut {
         String a = inLine.nextLine();//строку(букву), соответствующую заданию
         return a;
     }
+    public static char consoleCharInput(){
+        Scanner inLine = new Scanner(System.in);
+        String a = inLine.nextLine();//строку(букву), соответствующую заданию
+       char leter=a.charAt(0);
+        return leter;
+    }
     public static int consoleIntInput() {
         Scanner inStr = new Scanner(System.in);
         int b = inStr.nextInt();//считываем число, соответствующее заданию
@@ -61,7 +67,6 @@ public class InOut {
             System.out.printf(name+"[%2d]=% 7.2f\n",i,matrix[i]);
         }
     }
-
     public static void printArrayPseudo(double array[],String name,int row) {
         //вычислим количество солбцов при заданном количестве строк
         double t = (double) array.length / row;
@@ -97,7 +102,6 @@ public class InOut {
             System.out.print("║");
             }
         }
-
         //рассчитаем и напечатаем заглушку
         // (для случая если последняя строка таблицы не заполняется до конца)
         if((array.length%col)!=0) {

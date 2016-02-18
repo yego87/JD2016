@@ -27,25 +27,37 @@ public class Main {
                 "Кузен космонавта уверяет: сейчас Абаче в хорошем настроении, но хочет домой!\n" +
                 " Для этого родственник космонавта просит выслать три миллиона долларов, необходимые на возвращение?\n" +
                 " После он обещает вернуть деньги из 25 миллионов долларов, которые накапали в качестве жалованья Абаче.\n ";
-        System.out.println("Выберите тип задач(а, b, c)");
-        // String taskNum=InOut.consoleLineInput(); //выбор типа задания
-        String taskNum="b";
+
+        System.out.println("Выберите тип задач(а, b, c)\n(можно раскомментировать нужную букву)");
+        String taskNum=InOut.consoleLineInput(); //выбор типа задания
+        //String taskNum="a";
+        //String taskNum="b";
+        //String taskNum="c";
         switch (taskNum){
             case "a":{
+                System.out.println("Задача А-1");
                 TaskA.taskA1(text);
+                System.out.println("Задача А-2");
                 TaskA.taskA2(text);
+                System.out.println("Задача А-3");
                 TaskA.taskA3(text);
                 break;
             }
             case "b": {
+                TaskB.taskB1(text);
+                System.out.println("Задача В-2\nИсходный текст: \n"+text2);
                 TaskB.taskB2(text2);
+                System.out.println("Введите букву для задания В-3");
+                char letter =InOut.consoleCharInput();
+                    TaskB.TaskB3(text,letter);
                 break;
             }
-           /* }
-            case "c":{
-                }
-                break;
-            */
+
+            case "c": {
+                TaskC.taskC1(text);
+                //TaskC.taskC2(text); не сделано
+            break;
+            }
             default :{
                 System.out.println("Ошибка!");
                 break;
