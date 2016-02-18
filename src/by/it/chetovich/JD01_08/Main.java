@@ -1,16 +1,32 @@
 package by.it.chetovich.JD01_08;
 
+import java.io.IOException;
+
 /**
- * Created by user_2 on 17.02.2016.
+ * @author Yultos_
+ * JD01_08
  */
 public class Main {
-    public static void main (String [] args){
-        DirectorFinance dirFin = new DirectorFinance("Ivan", 500, true);
-        //dirFin.printName("Ivan"); rabotaet esli nasledovatsa ot interfeysa
-        dirFin.isItr(true);
+    public static void main (String [] args) throws IOException {
+
+        //Engineer engineer = new Engineer("Production");
+        ManagerProduction dirProd = new ManagerProduction("Ivanov", 500, true, 6, "Production");
+        dirProd.printName();
+        LearnDuties.learnDuties(dirProd);
+        dirProd.isItr();
+        System.out.println(dirProd);
+        dirProd.paySalaryAndBonus(100);
+        ShowRank.showRank(dirProd);
+
+        if (dirProd.getFired(false)) dirProd.paySalary();
+        else dirProd.paySalaryAndBonus(100);
+
+        ManagerFinance dirFin = new ManagerFinance("Pavlov", 1000, false, "Administration" );
         System.out.println(dirFin);
-        dirFin.paySalary(500, 100);
         LearnDuties.learnDuties(dirFin);
+
+        dirFin.printName();
+
 
     }
 }
