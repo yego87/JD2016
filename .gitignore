@@ -11,8 +11,8 @@
 #Конфигурация собрана, отключаем общие настройки IDEA (с сохранением в репо)
 
 out/
-.idea export-ignore
-*.iml export-ignore
+.idea
+JD2016.iml
 workspace.xml
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
