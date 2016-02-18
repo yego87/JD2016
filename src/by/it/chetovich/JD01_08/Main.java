@@ -9,23 +9,29 @@ import java.io.IOException;
 public class Main {
     public static void main (String [] args) throws IOException {
 
-        //Engineer engineer = new Engineer("Production");
-        ManagerProduction dirProd = new ManagerProduction("Ivanov", 500, true, 6, "Production");
-        dirProd.printName();
-        LearnDuties.learnDuties(dirProd);
-        dirProd.isItr();
-        System.out.println(dirProd);
-        dirProd.paySalaryAndBonus(100);
-        ShowRank.showRank(dirProd);
+        ManagerProduction manProd = new ManagerProduction("Ivanov",1500,true,6,"Assemblage",1);
+        System.out.println(manProd);
+        if (manProd.getFired(false)) manProd.paySalaryAndBonus(200);
+        else manProd.payCompensation(1000);
+        LearnDuties.learnDuties(manProd);
+        manProd.goToVacation();
+        System.out.println("Work place of "+manProd.name+": "+manProd.workPlace());
+        System.out.println();
 
-        if (dirProd.getFired(false)) dirProd.paySalary();
-        else dirProd.paySalaryAndBonus(100);
+        ManagerLogistics manLog = new ManagerLogistics("Petrov",600,true, "Warehouse");
+        System.out.println(manLog);
+        System.out.println("Work place of "+manProd.name+": "+manProd.workPlace());
+        manLog.goToVacation();
+        if (manProd.getFired(true)) manProd.paySalaryAndBonus(200);
+        else manProd.payCompensation(1000);
+        System.out.println();
 
-        ManagerFinance dirFin = new ManagerFinance("Pavlov", 1000, false, "Administration" );
-        System.out.println(dirFin);
-        LearnDuties.learnDuties(dirFin);
-
-        dirFin.printName();
+        ManagerFinance manFin = new ManagerFinance("Sidorova",1200,false, "Accounting",false, "High" );
+        System.out.println(manFin);
+        System.out.println("Work place of " + manFin.name + ": " + manFin.workPlace());
+        LearnDuties.learnDuties(manFin);
+        System.out.println(manFin.name+manFin.businessTrips(false)+" go to business trips.");
+        manFin.paySalary();
 
 
     }

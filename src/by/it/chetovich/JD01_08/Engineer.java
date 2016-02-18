@@ -9,33 +9,21 @@ public abstract class Engineer implements Iemployee{
     int salary;
     boolean itr;
     String department;
-    int rank;
 
-    public Engineer(String name, int salary, boolean itr,String department, int rank){
+    public Engineer(String name, int salary, boolean itr,String department){
         this.department = department;
         this.name = name;
         this.salary = salary;
         this.itr = itr;
-        this.rank = rank;
     }
 
-    public void showRank (){  //sobstvenniy metod
-
+    public String workPlace(){ //sobstvenniy metod klassa
+        return "Engineer employees work at the fabric outside the city. ";
     }
 
     @Override
     public void printName() {
         System.out.println("Name: "+this.name);
-    }
-
-    @Override
-    public void paySalary(){
-
-    }
-
-    @Override
-    public void paySalaryAndBonus(int bonus){
-
     }
 
     @Override
@@ -49,21 +37,35 @@ public abstract class Engineer implements Iemployee{
     }
 
     @Override
+    public void paySalary(){
+        System.out.println("Pay "+this.salary+" to "+this.name+".");
+    }
+
+    @Override
+    public void paySalaryAndBonus(int bonus){
+        System.out.println("Pay "+this.salary+" and bonus "+bonus+" to "+this.name+".");
+    }
+
+    @Override
     public void goToVacation() {
-        System.out.println("Engineers go to Turkey. ");
+        if (this.salary>1000) System.out.println(this.name+" can afford going to Italy to vacation. ");
+        else System.out.println(this.name+" goes to Turkey to vacation. ");
     }
 
     @Override
     public boolean getFired(boolean fired) {
-        if (fired) {
-            System.out.println("Bad employee, should be fired! ");
+        if (!fired) {
+            System.out.println(this.name+" is a good employee, should get bonus. ");
             return true;
         }
         else {
-            System.out.println("Good employee, should get bonus. ");
+            System.out.println(this.name+" is a bad employee, should be fired! ");
             return false;
         }
     }
 
-
+    @Override
+    public void payCompensation(int compensation) {
+        System.out.println("Pay to "+this.name+" a compensation "+compensation+". ");
+    }
 }

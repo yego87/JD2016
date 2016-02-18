@@ -5,18 +5,18 @@ package by.it.chetovich.JD01_08;
  */
 public class ManagerFinance extends Administration {
 
-    public ManagerFinance(String name, int salary, boolean itr, String department){
-        super(name,salary,itr,department);
-
+    String education;
+    public ManagerFinance(String name, int salary, boolean itr, String department, boolean businessTrip, String education){
+        super(name,salary,itr,department,businessTrip);
+        this.education = education;
     }
-
 
     @Override
     public  void function() {
-        System.out.println("Duties: finance reports, budget control, tax regulation. ");
         super.function();
+        System.out.println("Finance reports, budget control, tax regulation. ");
     }
-
+/*
     @Override
     public void paySalary() {
         System.out.println("Pay "+this.salary+" to "+this.name);
@@ -26,16 +26,12 @@ public class ManagerFinance extends Administration {
     public void paySalaryAndBonus(int bonus) {
         System.out.println("Pay "+this.salary+" and bonus "+bonus+" to "+this.name);
     }
-
+*/
     @Override public String toString (){
-        return "Finance director "+this.name+(this.itr?" is itr ":" is not itr ")+ ", works at "+department+" department and gets salary " + this.salary+" dollars";
+        return "Finance manager "+this.name+(this.itr?" is itr ":" is not itr ")+ ", works at "+department+
+                " department and gets salary " + this.salary+" dollars.";
     }
 
-
-    @Override
-    public void goToVacation() {
-        System.out.println("Directors go to Italy.");
-    }
 
 
 

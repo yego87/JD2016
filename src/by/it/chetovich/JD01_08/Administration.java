@@ -9,22 +9,23 @@ public abstract class Administration implements Iemployee {
     int salary;
     boolean itr;
     String department;
+    boolean businessTrip;
 
-    public Administration(String name, int salary, boolean itr,String department){
+    public Administration(String name, int salary, boolean itr,String department, boolean businessTrip){
         this.department = department;
         this.name = name;
         this.salary = salary;
         this.itr = itr;
+        this.businessTrip = businessTrip;
     }
 
-    @Override
-    public void paySalary(){
-
+    public String workPlace(){ //sobstvenniy metod klassa
+        return "Administration employees work in the office in the city center. ";
     }
 
-    @Override
-    public void paySalaryAndBonus(int bonus){
-
+    public String businessTrips(boolean trip){
+        if (trip) return " has to ";
+        else return " doesn't have to";
     }
 
     @Override
@@ -34,7 +35,7 @@ public abstract class Administration implements Iemployee {
 
     @Override
     public void function(){
-        System.out.println("Duties: administration. ");
+        System.out.print("Duties: administration. ");
     }
 
     @Override
@@ -43,8 +44,19 @@ public abstract class Administration implements Iemployee {
     }
 
     @Override
+    public void paySalary(){
+        System.out.println("Pay "+this.salary+" to "+this.name);
+    }
+
+    @Override
+    public void paySalaryAndBonus(int bonus){
+        System.out.println("Pay "+this.salary+" and bonus "+bonus+" to "+this.name);
+    }
+
+    @Override
     public void goToVacation() {
-        System.out.println("Administration go to Italy. ");
+        if (this.salary>1000) System.out.println(this.name+" can afford going to Italy to vacation. ");
+        else System.out.println(this.name+" goes to Turkey. ");
     }
 
     @Override
@@ -57,6 +69,11 @@ public abstract class Administration implements Iemployee {
             System.out.println("Good director, should get bonus. ");
             return false;
         }
+    }
+
+    @Override
+    public void payCompensation(int compensation) {
+        System.out.println("Pay to "+this.name+" a compensation "+compensation+". ");
     }
 
 

@@ -17,6 +17,7 @@ public interface Iemployee {
     void paySalaryAndBonus (int bonus);
     void goToVacation ();
     boolean getFired (boolean fired);
+    void payCompensation(int compensation);
 
 
 
