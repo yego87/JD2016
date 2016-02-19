@@ -5,32 +5,17 @@ package by.it.chetovich.JD01_08;
  */
 public class ManagerLogistics extends Engineer {
 
-    public ManagerLogistics(String name, int salary, boolean itr, String department){
-        super(name,salary,itr,department);
+    public ManagerLogistics(String name, int salary, boolean itr, String department) {
+        super(name, salary, itr, department); //вызываем конструктор предка, других полей не добавлено
     }
 
     @Override
-    public  void function() {
+    public void function() {
         System.out.println("Duties: operating supplies orders, transport organisation, transactional support, warehouse.");
     }
 
-    /*
     @Override
-    public void paySalary() {
-        System.out.println("Pay "+this.salary+" to "+this.name);
+    public String toString() {
+        return "Logistics manager " + this.name + (this.itr ? " is itr " : " is not itr ") + "and gets salary " + this.salary + " dollars.";
     }
-
-    @Override
-    public void paySalaryAndBonus(int bonus) {
-        System.out.println("Pay "+this.salary+" and bonus "+bonus+" to "+this.name);
-    }*/
-
-    @Override public String toString (){
-        return "Logistics manager "+this.name+(this.itr?" is itr ":" is not itr ")+ "and gets salary " + this.salary+" dollars.";
-    }
-/*
-    @Override
-    public void showRank() {
-        System.out.println("The rank is " + this.rank);
-    }*/
 }

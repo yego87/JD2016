@@ -10,6 +10,9 @@ public class Main {
     public static void main (String [] args) throws IOException {
 
         ManagerProduction manProd = new ManagerProduction("Ivanov",1500,true,6,"Assemblage",1);
+        manProd.printName();
+        manProd.isItr();
+        manProd.showRank();
         System.out.println(manProd);
         if (manProd.getFired(false)) manProd.paySalary(200);
         else manProd.payCompensation(1000);

@@ -5,16 +5,16 @@ package by.it.chetovich.JD01_08;
  */
 public class ManagerProduction extends Engineer {
 
-    int shift; //rabo4aya smena
+    int shift; //rabo4aya smena       собственные поля для объектов ManagerProduction, остальные наследуются от Engineer
     int rank; //rabo4iy razrad
 
     public ManagerProduction( String name, int salary, boolean itr, int rank, String department, int shift){
-        super(name,salary,itr,department);
+        super(name,salary,itr,department); //обращаемся к конструктору предка
         this.shift = shift;
         this.rank = rank;
     }
 
-    public void showRank (){  //sobstvenniy metod
+    public void showRank (){ //собственный метод, разряд rank есть только у менеджеров на производстве
         System.out.println("The rank is "+this.rank);
     }
 
@@ -22,21 +22,6 @@ public class ManagerProduction extends Engineer {
     public void function() {
         System.out.println("Duties: production reports, technical documantation, production control. ");
     }
-
-   /* @Override
-    public void showRank() {
-        System.out.println("The rank is "+this.rank);
-    }*/
-
-    /*@Override
-    public void paySalary() {
-        System.out.println("Pay "+this.salary+" to "+this.name);
-    }*/
-
-    /*@Override
-    public void paySalaryAndBonus(int bonus) {
-
-    }*/
 
     @Override
     public void goToVacation() {
