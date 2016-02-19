@@ -11,10 +11,10 @@ public class Task_B_4 {
     public static void main(String[] args) throws IOException {
     InputStreamReader inputStreamReader = new InputStreamReader(System.in);
     BufferedReader bufferedReader=new BufferedReader(inputStreamReader);
-    String sa = bufferedReader.readLine();// тут строку переводим в стринг
-    String [] d=sa.split(" ");//тут создаем массив стринг
-    int month=Integer.valueOf(d[0]);// тут переводим массив стринг в массив инт(а нельзя сразу что бы инт был??)
-    bufferedReader.close();//это за чем??
+    String sa = bufferedReader.readLine();
+    String [] d=sa.split(" ");
+    int month=Integer.valueOf(d[0]);
+    bufferedReader.close();
 
     switch (month) {
         case 1:{System.out.println("январь");break; }
