@@ -5,7 +5,7 @@ package by.it.chetovich.JD01_08;
  */
 public abstract class Engineer implements Iemployee{
 
-    String name;
+    String name; //общие поля для всех классов, отнаследованных от Engineer
     int salary;
     boolean itr;
     String department;

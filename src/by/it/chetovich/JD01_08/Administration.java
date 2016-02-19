@@ -5,7 +5,7 @@ package by.it.chetovich.JD01_08;
  */
 public abstract class Administration implements Iemployee {
 
-    String name;
+    String name; //общие поля для всех классов, отнаследованных от Administration
     int salary;
     boolean itr;
     String department;
@@ -23,7 +23,7 @@ public abstract class Administration implements Iemployee {
         return "Administration employees work in the office in the city center. ";
     }
 
-    public String businessTrips(boolean trip){
+    public String businessTrips(boolean trip){ //собственный метод
         if (trip) return " has to ";
         else return " doesn't have to";
     }
