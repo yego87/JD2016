@@ -33,13 +33,14 @@ public class Main {
         int k = 0;
         for (int i = 0; i < massiv.length; i++) {
             k = k + Integer.parseInt(massiv[i]);
+            System.out.println(k);
         }
-        k = k/massiv.length+1;
-        System.out.println("Average: "+k);
+        k = k/massiv.length;
+        System.out.println(k);
         for (int i = 0; i < massiv.length; i++) {
             if (Integer.parseInt(massiv[i])<=k){
-                System.out.print("{"+massiv[i]+"}");
-                System.out.println(" Length-" + massiv[i].length());
+                System.out.print(massiv[i]);
+                System.out.println(" length-" + massiv[i].length());
             }
 
         }
