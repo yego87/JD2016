@@ -1,4 +1,4 @@
-package by.it.veselov.JD01_02.Task_1_A;
+package by.it.veselov.JD01_02;
 
 import java.io.IOException;
 
