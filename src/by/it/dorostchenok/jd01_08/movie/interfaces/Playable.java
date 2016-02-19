@@ -1,4 +1,4 @@
-package by.it.dorostchenok.jd01_08.iface;
+package by.it.dorostchenok.jd01_08.movie.interfaces;
 
 public interface Playable {
     void play();
