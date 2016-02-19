@@ -18,7 +18,7 @@ public abstract class Engineer implements Iemployee{
     }
 
     public String workPlace(){ //sobstvenniy metod klassa
-        return "Engineer employees work at the fabric outside the city. ";
+        return "Engineer employees work at the fabric outside the city.";
     }
 
     @Override
