@@ -1,9 +1,12 @@
-package by.it.dorostchenok.jd01_08.movie;
+package by.it.dorostchenok.jd01_08.movie.impl;
 
 import by.it.dorostchenok.jd01_08.movie.interfaces.Movie;
-import by.it.dorostchenok.jd01_08.movie.interfaces.Playable;
 
-public abstract class AbstractMovie implements Movie, Playable {
+/**
+ * Класс реализует Movie интерфейс и является базовым классом
+ * для всех фильмов
+ */
+public abstract class AbstractMovie implements Movie {
 
     public AbstractMovie(String title, Genre genre){
         this.title = title;
@@ -71,10 +74,9 @@ public abstract class AbstractMovie implements Movie, Playable {
         return isPaused;
     }
 
-    @Override
-    public void seek(int second) {
-
-    }
-
+    /**
+     * Возвращает строковое представление класса.
+     * @return
+     */
     public abstract String toString();
 }
