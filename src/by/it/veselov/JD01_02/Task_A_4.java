@@ -1,4 +1,4 @@
-package by.it.veselov.JD01_02.Task_1_A;
+package by.it.veselov.JD01_02;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 /**
  * Created by yegorveselov on 16.02.16.
  */
-public class Task_4_A {
+public class Task_A_4 {
     public static void main(String[] args) throws IOException {
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
