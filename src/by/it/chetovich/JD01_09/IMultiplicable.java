@@ -5,7 +5,6 @@ package by.it.chetovich.JD01_09;
  */
 public interface IMultiplicable {
 
-    Var multiFloat (FloatVar value);
-    Var multiVector (VectorVar value);
-    Var multiMatrix (MatrixVar value);
+    void multi(Var value);
 }
+

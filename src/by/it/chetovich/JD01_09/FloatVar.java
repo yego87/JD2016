@@ -8,7 +8,7 @@ public class FloatVar extends Var {
 
     private float val;
 
-     public FloatVar(float value){
+    public FloatVar(float value){
         this.val = value;
     }
 
@@ -22,57 +22,41 @@ public class FloatVar extends Var {
 
     @Override
     public String toString (){
-        return "Result: "+val;
+        return Float.toString(val);
     }
 
     @Override
-    public Var addFloat(FloatVar value) {
-        return new FloatVar(Calculations.addFloats(this.val, value.val));
-    }
-
-    @Override
-    public Var addVector(VectorVar value) {
-        System.out.println("Невозможно сложить число и вектор.");
+    public Var add(Var value) {
+        if (value instanceof FloatVar) return new FloatVar(Calculations.add(this.val, ((FloatVar) value).val));
+        if (value instanceof VectorVar) {
+            System.out.println("Невозможно сложить число и вектор.");
+            return null;
+        }
+        if (value instanceof MatrixVar) {
+            System.out.println("Невозможно сложить число и матрицу.");
+            return null;
+        }
         return null;
     }
 
     @Override
-    public Var addMatrix(MatrixVar value) {
-        System.out.println("Невозможно сложить число и матрицу.");
-        return null;
+    public void sub(Var value) {
+        if (value instanceof FloatVar) System.out.println(Calculations.sub(this.val, ((FloatVar) value).getVal()));
+        if (value instanceof VectorVar) System.out.println("Невозможно вычесть из числа вектор.");
+        if (value instanceof MatrixVar) System.out.println("Невозможно вычесть из числа матрицу.");
     }
 
     @Override
-    public Var subFloat(FloatVar value) {
-        return new FloatVar(Calculations.subFloats(this.val, value.val));
-        //this.val = this.val - value.val;
-        //return this;
+    public void multi(Var value) {
+        if (value instanceof FloatVar) System.out.println(Calculations.multi(this.val, ((FloatVar) value).getVal()));
+        if (value instanceof VectorVar) System.out.println(new VectorVar(Calculations.multi(this.val, ((VectorVar) value).getVector())));
+        if (value instanceof MatrixVar) Calculations.multi(this.val, ((MatrixVar) value).getArray());
     }
 
     @Override
-    public Var subVector(VectorVar value) {
-        System.out.println("Невозможно вычесть из числа вектор.");
-        return null;
-    }
-
-    @Override
-    public Var subMatrix(MatrixVar value) {
-        System.out.println("Невозможно вычесть из числа матрицу.");
-        return null;
-    }
-
-    @Override
-    public Var multiFloat(FloatVar value) {
-        return new FloatVar(Calculations.multiFloats(this.val, value.val));
-    }
-
-    @Override
-    public Var multiVector(VectorVar value) {
-        return new VectorVar(Calculations.multiFloatAndVector(this.val, value.getVector()));
-    }
-
-    @Override
-    public Var multiMatrix(MatrixVar value) {
-        return new MatrixVar(Calculations.multiFloatAndMatrix(this.val, value.getArray()));
+    public void divide(Var value) {
+        if (value instanceof FloatVar) Calculations.divide(this.val, ((FloatVar) value).getVal());
+        if (value instanceof VectorVar) System.out.println("Деление на вектор невозможно.");
+        if (value instanceof MatrixVar) System.out.println("Деление на матрицу невозможно.");;
     }
 }
