@@ -5,7 +5,6 @@ package by.it.chetovich.JD01_09;
  */
 public interface ISubtractable {
 
-    Var subFloat (FloatVar value);
-    Var subVector (VectorVar value);
-    Var subMatrix (MatrixVar value);
+    void sub (Var value);
+
 }

@@ -7,8 +7,7 @@ import by.it.akhmelev.JD01_07.matrixOk.Matrix;
  */
 public interface IAddable {
 
-    Var addFloat (FloatVar value);
-    Var addVector (VectorVar value);
-    Var addMatrix (MatrixVar value);
+    Var add (Var value);
+
 
 }
