@@ -1,8 +1,5 @@
 package by.it.akhmelev.JD01_09.enu;
 
-/**
- * Created by Alex on 18.02.2016.
- */
 public class PageRunner {
     public static void main(String[] args) {
         PageStyle styleText = PageStyle.Roman; // инициализация

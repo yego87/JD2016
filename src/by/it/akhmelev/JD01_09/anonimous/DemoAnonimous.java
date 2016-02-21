@@ -1,8 +1,5 @@
 package by.it.akhmelev.JD01_09.anonimous;
 
-/**
- * Created by Alex on 18.02.2016.
- */
 public class DemoAnonimous {
     static class People {
         private String name;

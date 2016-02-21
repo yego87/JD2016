@@ -1,0 +1,39 @@
+package by.it.akhmelev.JD01_10.Demo.draft;
+
+
+import by.it.akhmelev.JD01_10.Demo.Error;
+import by.it.akhmelev.JD01_10.Demo.vars.Var;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Calc {
+
+    public static Var calcOneExpression(String expression) throws by.it.akhmelev.JD01_10.Demo.Error {
+        String reg= VarCreator.exFull;       //ищем корректное выражение
+        Pattern pOper=Pattern.compile(reg);
+        Matcher oper=pOper.matcher(expression);
+        if (oper.find()) {                          //если нашли
+            System.out.println("group0:" + oper.group(0)); //(!)паттерны должны быть без вложенности групп
+//            Var v1=VarCreator.run(oper.group(1));   //ищем первый операнд
+//            String soper=oper.group(2);             //операцию
+//            Var v2=VarCreator.run(oper.group(3));   //второй операнд
+//            return calc(v1,soper,v2);               //считаем
+        }
+        throw new Error("Операция не распознана");
+    }
+
+    private static Var calc(Var one, String operation, Var two) throws Error {
+        System.out.println("calc1:"+one.toString());
+        System.out.println("calc2:"+operation);
+        System.out.println("calc3:"+two.toString());
+
+//        switch (operation.charAt(0)) {
+//            case '+': return one.add(two);
+//            case '-': return one.sub(two);
+//            case '*': return one.mul(two);
+//            case '/': return one.div(two);
+//        }
+        return null;
+    }
+}

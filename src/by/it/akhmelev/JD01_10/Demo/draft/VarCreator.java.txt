@@ -1,0 +1,40 @@
+package by.it.akhmelev.JD01_10.Demo.draft;
+
+import by.it.akhmelev.JD01_10.Demo.vars.Var;
+import by.it.akhmelev.JD01_10.Demo.vars.VarF;
+import by.it.akhmelev.JD01_10.Demo.vars.VarV;
+
+import java.util.regex.Pattern;
+
+public abstract class VarCreator {
+    static public String exVal="((-?)([0-9.])+)";                    //регулярное выражение для числа
+    static public String exVec="\\{((-?([0-9.])+),?)+}";            //регулярное выражение для вектора
+    static public String exMat="\\{((\\{((-?([0-9.])+),?)+}),?)+}"; //регулярное выражение для матрицы
+    //static public String exAny="("+exMat+")|("+exVec+")|("+exVal+")";  //регулярное выражение для числа, вектора или матрицы
+    static public String exOper="[-+*/]";                       //регулярное выражение для операции
+    static public String exFull= "("+VarCreator.exVal+")"+
+            "(" +VarCreator.exOper+")"+
+            "(" +VarCreator.exVal +")"; //выражение целиком
+
+    static public Var run(String str) {
+        Var res=null;
+        //if (isMatrix(str)) {res=new VarM(str);}
+        if (isVector(str)) {res=new VarV(str);}
+        else if (isDouble(str)) {res=new VarF(0);}
+        return res;
+    }
+    /** выясним, есть ли в строке число */
+    static public boolean isDouble(String str) {
+        return Pattern.compile(exVal).matcher(str).matches();
+    }
+
+    /** выясним, есть ли в строке вектор */
+    static public boolean isVector(String str) {
+        return Pattern.compile(exVec).matcher(str).matches();
+    }
+
+    /** выясним, есть ли в строке матрица */
+    static public boolean isMatrix(String str) {
+        return Pattern.compile(exMat).matcher(str).matches();
+    }
+}
