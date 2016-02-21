@@ -39,7 +39,7 @@ public class MillionRandSymbols {
         while (mil < (1000000000 - max)) {
             String buf=s[(int) (Math.random() * (s.length))]+" ";
             mil += buf.length()+1;
-            System.out.print(buf);
+            //System.out.print(buf);
         }
         //System.out.println(mil);
         boolean checker = false;
@@ -47,7 +47,7 @@ public class MillionRandSymbols {
             if (word.length() == 1000000000 - mil) {
                 checker = true;
                 mil +=word.length();
-                System.out.print(word);
+               // System.out.print(word);
                 break;
             }
         }
@@ -56,7 +56,7 @@ public class MillionRandSymbols {
                 for (int j = i + 1; j < s.length; j++) {
                     if (s[i].length() + s[j].length() + 1 == 1000000000 - mil) {
                         mil = mil + s[i].length()+ s[j].length()+1;
-                        System.out.print(s[i]+" "+s[j]);
+                        //System.out.print(s[i]+" "+s[j]);
                         checker = true;
                     }
                 }
@@ -104,7 +104,7 @@ public class MillionRandSymbols {
                 }
             }
         }
-        System.out.print(buf);
+       // System.out.print(buf);
         long time2=System.currentTimeMillis();
         System.out.println(time2);
         return time2;
