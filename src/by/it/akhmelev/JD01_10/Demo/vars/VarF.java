@@ -36,9 +36,9 @@ public class VarF extends Var implements IVar, IAdd,ISub,IMul,IDiv{
     public Var sub(Var var) {
         if (var instanceof VarF) //проверим, является ли аргумент скаляром
             return new VarF(this.value - ((VarF)var).value); //выводим итог
-        //если аргумент не скаляр, то меняем местами операнды (-1)*f2-f1
+        //если аргумент не скаляр, то меняем местами операнды (-1)*(f2-f1)
         VarF minus=new VarF(-1); //готовим -1
-        return minus.mul(var.sub(this)); //выводим итог = (-1)*(V-f)
+        return minus.mul(var.sub(this)); //выводим итог = (-1)*(f2-f1)
     };
 
     @Override //умножение f1*f2
