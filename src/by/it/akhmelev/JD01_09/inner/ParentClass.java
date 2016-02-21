@@ -1,8 +1,6 @@
 package by.it.akhmelev.JD01_09.inner;
 
-/**
- * Created by Alex on 18.02.2016.
- */
+
 public class ParentClass {
     // поля и конструкторы
     private SubClass eng;

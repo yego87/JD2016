@@ -1,7 +1,7 @@
 package by.it.zhuravlyov.JD01_05Math;
 
 import java.util.Scanner;
-import static java.lang.Math.
+import static java.lang.Math.*;
 
 public class math {
         public void ProblemOne() {

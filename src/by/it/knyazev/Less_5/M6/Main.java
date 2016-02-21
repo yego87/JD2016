@@ -1,7 +1,5 @@
 package by.it.knyazev.Less_5.M6;
 
-import org.jetbrains.annotations.Contract;
-
 /**
  * Created by Artsem Kniazeu on 15.02.2016.
  */
