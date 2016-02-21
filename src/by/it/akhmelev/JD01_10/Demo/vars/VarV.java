@@ -36,7 +36,7 @@ public class VarV extends Var implements IVar{
     public Var add(Var var) {
         // --------------------------------------------------------------------
         if (var instanceof VarV) //проверим, является ли аргумент вектором
-        // todo тут еще нужна проверка на одинаковый размер операндов this и v2
+        // to do тут еще нужна проверка на одинаковый размер операндов this и v2
         {
             VarV v1 = new VarV(this);             //первый операнд
             VarV v2 = (VarV)var;                  //второй
@@ -69,7 +69,7 @@ public class VarV extends Var implements IVar{
     public Var sub(Var var) {
         // --------------------------------------------------------------------
         if (var instanceof VarV) //проверим, является ли аргумент вектором
-        // todo тут еще нужна проверка на одинаковый размер операндов this и v2
+        // to do тут еще нужна проверка на одинаковый размер операндов this и v2
         {
             VarV v1 = new VarV(this);             //первый операнд
             VarV v2 = (VarV)var;                  //второй
@@ -102,7 +102,7 @@ public class VarV extends Var implements IVar{
     public Var mul(Var var) {
         // --------------------------------------------------------------------
         if (var instanceof VarV) //проверим, является ли аргумент вектором
-        // todo тут еще нужна проверка на одинаковый размер операндов this и var
+        // to do тут еще нужна проверка на одинаковый размер операндов this и var
         {
             double f=0;
             VarV v1 = new VarV(this);             //первый операнд
