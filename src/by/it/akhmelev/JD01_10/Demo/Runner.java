@@ -21,7 +21,7 @@ public class Runner {
         one(new VarF("-4").div(new VarF("-1")));
 
         String vec="{1,2,3}";
-        System.out.println("\nпроверка операций с справа векторами и скалярами слева");
+        System.out.println("\nпроверка операций с векторами справа и скалярами слева");
         one(new VarV(vec).add(new VarF("2")));
         one(new VarV(vec).sub(new VarF("1")));
         one(new VarV(vec).mul(new VarF("2")));
