@@ -1,7 +1,5 @@
 package by.it.predkel.MatLab;
 
-import by.it.akhmelev.JD01_07.matrixOk.Matrix;
-
 /**
  * Created by Admin on 19.02.2016.
  */
@@ -15,4 +13,9 @@ public interface IOperation {
     Var robMatrix (MatrixVar value);
     Var divFloat (FloatVar value);
     Var divMatrix (MatrixVar value);
+
+    Var add (Var value);
+    Var mul (Var value);
+    Var sub (Var value);
+    Var div (Var value);
 }

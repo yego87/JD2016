@@ -5,6 +5,7 @@ package by.it.predkel.MatLab;
  */
 public abstract class Var extends Number implements IOperation {
 
+
     @Override
     public Var addFloat(FloatVar value) {
         return null;
@@ -42,6 +43,26 @@ public abstract class Var extends Number implements IOperation {
 
     @Override
     public Var divMatrix(MatrixVar value) {
+        return null;
+    }
+
+    @Override
+    public Var add (Var value){
+        return null;
+    }
+
+    @Override
+    public Var mul (Var value){
+        return null;
+    }
+
+    @Override
+    public Var sub (Var value){
+        return null;
+    }
+
+    @Override
+    public Var div (Var value){
         return null;
     }
 
