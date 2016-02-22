@@ -1,7 +1,7 @@
 package by.it.chetovich.JD01_09;
 
 /**
- * Created by user_2 on 19.02.2016.
+ * abstract class for all types of variable
  */
 public abstract class Var implements IAddable, ISubtractable, IMultiplicable, IDividable {
 

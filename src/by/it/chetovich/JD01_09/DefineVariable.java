@@ -4,9 +4,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Yultos_ on 20.02.2016.
+ * class for definition of variable type
  */
 public class DefineVariable {
+    /**
+     *
+     * @param s variable in String, which type should be defined
+     * @return FloatVar, VectorVar or MatrixVar instance
+     */
     public static Var defineVar (String s){
 
         Pattern pat = Pattern.compile("[\\{\\[][0-9., ]+[\\}\\]]"); //ищем числа, заключённые в круглые или квадратные скобки
