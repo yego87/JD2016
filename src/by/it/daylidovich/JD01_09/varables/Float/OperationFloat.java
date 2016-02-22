@@ -7,33 +7,27 @@ import by.it.daylidovich.JD01_09.interfaces.ISubtraction;
 import by.it.daylidovich.JD01_09.varables.Varable;
 
 public class OperationFloat extends Varable implements IAddation, ISubtraction, IMultiplication, IDivision {
+    private double value = 0;
 
     @Override
     public Varable add(Varable varable) {
         if (varable instanceof VarableFloat)
-            return new VarableFloat(((VarableFloat)this).getValue() + ((VarableFloat) varable).getValue());
+            return new VarableFloat(this.value + ((VarableFloat) varable).getValue());
         return varable.add(this);
     }
 
     @Override
     public Varable sub(Varable varable) {
-        if (varable instanceof Varable)
-            return new VarableFloat(((VarableFloat)this).getValue() - ((VarableFloat)varable).getValue());
-        VarableFloat minus = new VarableFloat(-1);
-        return minus.mult(varable.sub(this));
+        return super.sub(varable);
     }
 
     @Override
     public Varable mult(Varable varable) {
-        if (varable instanceof VarableFloat)
-            return new VarableFloat(((VarableFloat)this).getValue() * ((VarableFloat)varable).getValue());
-        return varable.mult(this);
+        return super.mult(varable);
     }
 
     @Override
     public Varable div(Varable varable) {
-        if (varable instanceof VarableFloat)
-            return new VarableFloat(((VarableFloat)this).getValue() / ((VarableFloat)varable).getValue());
         return super.div(varable);
     }
 }
