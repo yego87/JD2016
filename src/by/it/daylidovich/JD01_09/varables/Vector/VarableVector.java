@@ -2,9 +2,6 @@ package by.it.daylidovich.JD01_09.varables.Vector;
 
 import by.it.daylidovich.JD01_09.interfaces.IVarable;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class VarableVector extends OperationVector implements IVarable {
     private double[] vector;
 
@@ -19,18 +16,16 @@ public class VarableVector extends OperationVector implements IVarable {
 
     /*
     public VarableVector(VarableVector varableVector){
-        this.vector = new double[varableVector.getVector().length];
-        System.arraycopy(this.vector, 0, varableVector.getVector(), 0, varableVector.getVector().length);
+        this.vector = new double[varableVector.vector.length];
+        System.arraycopy(this.vector, 0, varableVector.vector, 0, varableVector.vector.length);
     }
     */
 
     public VarableVector(String string){
-        Matcher matcher = Pattern.compile("[0-9]+[.]?[0-9]*").matcher(string);
-        vector = new double[string.split(",").length];
-        int i = 0;
-        while (matcher.find()){
-            vector[i] = Double.parseDouble(matcher.group());
-            i++;
+        String[] stringArray = string.split(",");
+        vector = new double[stringArray.length];
+        for (int i = 0; i < stringArray.length; i++) {
+            vector[i] = Double.parseDouble(stringArray[i].trim());
         }
     }
 
