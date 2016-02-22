@@ -5,6 +5,6 @@ package by.it.chetovich.JD01_09;
  */
 public interface IDividable {
 
-    void divide (Var value);
+    Var divide (Var value);
 
 }

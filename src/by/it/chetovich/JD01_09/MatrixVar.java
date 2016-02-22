@@ -29,62 +29,54 @@ public class MatrixVar extends Var{
 
     @Override
     public Var add(Var value) {
-        //Calculations calc = new Calculations();
-        //System.out.println(Calculations.add(value.getVal(), value1.getVal()));
-        if (value instanceof FloatVar) {
-            System.out.println("Невозможно сложить число и матрицу.");
-            return null;
-        }
-        if (value instanceof VectorVar) {
-            System.out.println("Невозможно сложить вектор и матрицу.");
-            return null;
-        }
+
+        if (value instanceof FloatVar) return super.add(value);
+        if (value instanceof VectorVar) return super.add(value);
         if (value instanceof MatrixVar) {
             if (this.array.length==((MatrixVar) value).array.length&&this.array[0].length==((MatrixVar) value).array[0].length) {
-                new MatrixVar(Calculations.add(this.array, ((MatrixVar) value).getArray()));
+                return new MatrixVar(Calculations.add(this.array, ((MatrixVar) value).getArray()));
             }
-            else {
-                System.out.println("Матрицы разных размеров, их нельзя сложить.");
-                return null;
-            }
+            else return super.add(value);
         }
-        return null;
+        return super.add(value);
 
     }
     @Override
-    public void sub(Var value) {
-        if (value instanceof FloatVar) System.out.println("Невозможно вычесть число из матрицы.");
-        if (value instanceof VectorVar) System.out.println("Невозможно вычесть вектор из матрицы.");
+    public Var sub(Var value) {
+        if (value instanceof FloatVar) super.sub(value);
+        if (value instanceof VectorVar) super.sub(value);
         if (value instanceof MatrixVar) {
             if (this.array.length==((MatrixVar) value).array.length&&this.array[0].length==((MatrixVar) value).array[0].length)
-                Calculations.sub(this.array, ((MatrixVar) value).getArray());
-            else System.out.println("Матрицы разных размеров, их нельзя вычитать.");
+                return new MatrixVar(Calculations.sub(this.array, ((MatrixVar) value).getArray()));
+            else super.sub(value);
         }
+        return super.sub(value);
     }
 
     @Override
-    public void multi(Var value) {
-        if (value instanceof FloatVar) Calculations.multi(((FloatVar) value).getVal(), this.array);
-        if (value instanceof MatrixVar) {
-            if (this.array[0].length==((MatrixVar) value).array.length)
-                Calculations.multi(((VectorVar) value).getVector(), this.array);
-            else System.out.println("Умножение выполнить невозможно, т.к. длина вектора не совпадает с количеством столбцов матрицы.");
+    public Var multi(Var value) {
+        if (value instanceof FloatVar) return new MatrixVar(Calculations.multi(((FloatVar) value).getVal(), this.array));
+        if (value instanceof VectorVar) {
+            if (this.array[0].length==((VectorVar) value).getVector().length)
+                return new VectorVar(Calculations.multi(((VectorVar) value).getVector(), this.array));
+            else super.sub(value);
         }
         if (value instanceof MatrixVar) {
             if (this.array.length==((MatrixVar) value).array[0].length)
-            Calculations.multi(this.array, ((MatrixVar) value).getArray());
-            else System.out.println("Размеры матриц не соответствуют условию для их перемножения " +
-                    "(количество строк одной матрицы должно совпадать с количеством столбцов другой матрицы).");
+            return new MatrixVar(Calculations.multi(this.array, ((MatrixVar) value).getArray()));
+            else super.multi(value);
         }
+        return super.multi(value);
     }
 
     @Override
-    public void divide(Var value) {
+    public Var divide(Var value) {
         if (value instanceof FloatVar) {
             System.out.println("Деление матрицы на число заменяем умножением матрицы на величину, обратную числу.");
-            Calculations.multi(1/((FloatVar) value).getVal(), this.array);
+            return new MatrixVar(Calculations.multi(1/((FloatVar) value).getVal(), this.array));
         }
-        if (value instanceof VectorVar) System.out.println("Деление на вектор невозможно.");
-        if (value instanceof MatrixVar) System.out.println("Деление на матрицу невозможно.");;
+        if (value instanceof VectorVar) return super.divide(value);
+        if (value instanceof MatrixVar) return super.divide(value);
+        return super.divide(value);
     }
 }

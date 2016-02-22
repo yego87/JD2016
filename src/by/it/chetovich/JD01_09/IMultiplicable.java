@@ -5,6 +5,6 @@ package by.it.chetovich.JD01_09;
  */
 public interface IMultiplicable {
 
-    void multi(Var value);
+    Var multi(Var value);
 }
 

@@ -28,35 +28,32 @@ public class FloatVar extends Var {
     @Override
     public Var add(Var value) {
         if (value instanceof FloatVar) return new FloatVar(Calculations.add(this.val, ((FloatVar) value).val));
-        if (value instanceof VectorVar) {
-            System.out.println("Невозможно сложить число и вектор.");
-            return null;
-        }
-        if (value instanceof MatrixVar) {
-            System.out.println("Невозможно сложить число и матрицу.");
-            return null;
-        }
+        if (value instanceof VectorVar) return super.add(value); //переделать, сложить можно
+        if (value instanceof MatrixVar) return super.add(value);
         return null;
     }
 
     @Override
-    public void sub(Var value) {
-        if (value instanceof FloatVar) System.out.println(Calculations.sub(this.val, ((FloatVar) value).getVal()));
-        if (value instanceof VectorVar) System.out.println("Невозможно вычесть из числа вектор.");
-        if (value instanceof MatrixVar) System.out.println("Невозможно вычесть из числа матрицу.");
+    public Var sub(Var value) {
+        if (value instanceof FloatVar) return new FloatVar(Calculations.sub(this.val, ((FloatVar) value).val));
+        if (value instanceof VectorVar) return super.sub(value);
+        if (value instanceof MatrixVar) return super.sub(value);
+        return super.sub(value);
     }
 
     @Override
-    public void multi(Var value) {
-        if (value instanceof FloatVar) System.out.println(Calculations.multi(this.val, ((FloatVar) value).getVal()));
-        if (value instanceof VectorVar) System.out.println(new VectorVar(Calculations.multi(this.val, ((VectorVar) value).getVector())));
-        if (value instanceof MatrixVar) Calculations.multi(this.val, ((MatrixVar) value).getArray());
+    public Var multi(Var value) {
+        if (value instanceof FloatVar) return new FloatVar(Calculations.multi(this.val, ((FloatVar) value).getVal()));
+        if (value instanceof VectorVar) return new VectorVar(Calculations.multi(this.val, ((VectorVar) value).getVector()));
+        if (value instanceof MatrixVar) return new MatrixVar(Calculations.multi(this.val, ((MatrixVar) value).getArray()));
+        return super.multi(value);
     }
 
     @Override
-    public void divide(Var value) {
-        if (value instanceof FloatVar) Calculations.divide(this.val, ((FloatVar) value).getVal());
-        if (value instanceof VectorVar) System.out.println("Деление на вектор невозможно.");
-        if (value instanceof MatrixVar) System.out.println("Деление на матрицу невозможно.");;
+    public Var divide(Var value) {
+        if (value instanceof FloatVar) return new FloatVar(Calculations.divide(this.val, ((FloatVar) value).getVal()));
+        if (value instanceof VectorVar) return super.divide(value);
+        if (value instanceof MatrixVar) return super.divide(value);
+        return super.divide(value);
     }
 }
