@@ -10,7 +10,7 @@ public class FloatVar extends Var {
     public FloatVar(float value){
         this.val = value;
     }
-
+/*
     @Override
     public FloatVar addFloat(FloatVar value) {//число+матрица
         this.val += value.val;
@@ -49,7 +49,7 @@ public class FloatVar extends Var {
         System.out.println("Нельзя делить число на матрицу!");
         return null;
     }
-
+*/
     @Override
     public int intValue() {
         return (int)this.val;
@@ -68,5 +68,38 @@ public class FloatVar extends Var {
     @Override
     public double doubleValue() {
         return (double)this.val;
+    }
+
+    @Override
+    public Var add (Var value){
+        if (value instanceof FloatVar){
+            return new FloatVar(val+=((FloatVar) value).val);
+        }
+        return value.add(this);
+    }
+
+    @Override
+    public Var mul (Var value){
+         if (value instanceof FloatVar){
+            return new FloatVar(val*=((FloatVar)value).val);
+        }
+        return value.mul(this);
+    }
+
+    @Override
+    public Var sub (Var value){
+        if (value instanceof FloatVar){
+            return new FloatVar(val-=((FloatVar)value).val);
+        }
+        FloatVar minus=new FloatVar(-1);
+        return minus.mul(value.sub(this));
+    }
+
+    @Override
+    public Var div (Var value){
+        if (value instanceof FloatVar){
+            return new FloatVar(val/=((FloatVar)value).val);
+        }
+        return value.div(this);
     }
 }
