@@ -1,7 +1,7 @@
 package by.it.chetovich.JD01_09;
 
 /**
- * Created by Yultos_ on 20.02.2016.
+ * interface dor division operation
  */
 public interface IDividable {
 

@@ -3,9 +3,14 @@ package by.it.chetovich.JD01_09;
 import java.util.regex.Pattern;
 
 /**
- * Created by Yultos_ on 21.02.2016.
+ * divide line into 2 elements and put them in the array
  */
 public class LineToArray {
+    /**
+     *
+     * @param s line to convert to array
+     * @return array of 2 elements
+     */
 
     public static String[] convertLineToArray(String s){
 

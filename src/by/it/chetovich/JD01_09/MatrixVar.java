@@ -4,7 +4,7 @@ package by.it.chetovich.JD01_09;
 import java.util.Arrays;
 
 /**
- * Created by user_2 on 19.02.2016.
+ * class for MatrixVar instance with float[][] array field
  */
 public class MatrixVar extends Var{
 
