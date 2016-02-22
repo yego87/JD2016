@@ -30,7 +30,7 @@ public class MatrixVar extends Var{
     @Override
     public Var add(Var value) {
 
-        if (value instanceof FloatVar) return super.add(value);
+        if (value instanceof FloatVar) return new MatrixVar(Calculations.add(this.array,((FloatVar) value).getVal()));
         if (value instanceof VectorVar) return super.add(value);
         if (value instanceof MatrixVar) {
             if (this.array.length==((MatrixVar) value).array.length&&this.array[0].length==((MatrixVar) value).array[0].length) {
@@ -43,7 +43,7 @@ public class MatrixVar extends Var{
     }
     @Override
     public Var sub(Var value) {
-        if (value instanceof FloatVar) super.sub(value);
+        if (value instanceof FloatVar) return new MatrixVar(Calculations.sub(this.array,((FloatVar) value).getVal()));
         if (value instanceof VectorVar) super.sub(value);
         if (value instanceof MatrixVar) {
             if (this.array.length==((MatrixVar) value).array.length&&this.array[0].length==((MatrixVar) value).array[0].length)
@@ -71,10 +71,8 @@ public class MatrixVar extends Var{
 
     @Override
     public Var divide(Var value) {
-        if (value instanceof FloatVar) {
-            System.out.println("Деление матрицы на число заменяем умножением матрицы на величину, обратную числу.");
+        if (value instanceof FloatVar)
             return new MatrixVar(Calculations.multi(1/((FloatVar) value).getVal(), this.array));
-        }
         if (value instanceof VectorVar) return super.divide(value);
         if (value instanceof MatrixVar) return super.divide(value);
         return super.divide(value);

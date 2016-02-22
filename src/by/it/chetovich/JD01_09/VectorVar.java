@@ -30,18 +30,18 @@ public class VectorVar extends Var {
     @Override
     public Var add(Var value) {
 
-        if (value instanceof FloatVar) return super.add(value); //переделать, можно сложить
+        if (value instanceof FloatVar) return new VectorVar(Calculations.add(this.vector,((FloatVar) value).getVal()));
         if (value instanceof VectorVar) return new VectorVar(Calculations.add(this.vector, ((VectorVar) value).getVector()));
-        if (value instanceof MatrixVar) return super.add(value); // переделать, можно сложить
+        if (value instanceof MatrixVar) return super.add(value);
         return super.add(value);
 
     }
 
     @Override
     public Var sub(Var value) {
-        if (value instanceof FloatVar) return super.add(value); //переделать, можно вычесть
+        if (value instanceof FloatVar) return new VectorVar(Calculations.sub(this.vector,((FloatVar) value).getVal()));
         if (value instanceof VectorVar) return new VectorVar(Calculations.sub(this.vector, ((VectorVar) value).getVector()));
-        if (value instanceof MatrixVar) return super.add(value); //переделать, можно вычесть
+        if (value instanceof MatrixVar) return super.sub(value);
         return super.add(value);
     }
 
@@ -59,10 +59,7 @@ public class VectorVar extends Var {
 
     @Override
     public Var divide(Var value) {
-        if (value instanceof FloatVar) {
-            System.out.println("Деление на число мы заменяем умножением на величину, обратную числу.");
-            return new VectorVar(Calculations.multi(1/((FloatVar) value).getVal(), this.vector));
-        }
+        if (value instanceof FloatVar) return new VectorVar(Calculations.multi(1/((FloatVar) value).getVal(), this.vector));
         if (value instanceof VectorVar) return super.divide(value);
         if (value instanceof MatrixVar) return super.divide(value);
         return super.divide(value);

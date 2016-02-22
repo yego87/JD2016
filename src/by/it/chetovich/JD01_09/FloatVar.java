@@ -28,8 +28,8 @@ public class FloatVar extends Var {
     @Override
     public Var add(Var value) {
         if (value instanceof FloatVar) return new FloatVar(Calculations.add(this.val, ((FloatVar) value).val));
-        if (value instanceof VectorVar) return super.add(value); //переделать, сложить можно
-        if (value instanceof MatrixVar) return super.add(value);
+        if (value instanceof VectorVar) return new VectorVar(Calculations.add(((VectorVar) value).getVector(),this.val));
+        if (value instanceof MatrixVar) return new MatrixVar(Calculations.add(((MatrixVar) value).getArray(),this.val));
         return null;
     }
 

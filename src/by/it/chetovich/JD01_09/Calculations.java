@@ -17,12 +17,32 @@ public class Calculations {
 
     /**
      *
-     * @param a float number, Class FloatVar field
+     * @param a float [] array, Class VectorVar field
      * @param b float number, Class FloatVar field
-     * @return the subtraction of a and b
+     * @return the sum of vector a and number b
      */
-    public static float sub (float a, float b){
-        return a-b;
+    public static float[] add (float []a, float b){
+        float[] result = new float[a.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = a[i] + b;
+        }
+        return result;
+    }
+
+    /**
+     *
+     * @param a float [][] array, Class MatrixVar field
+     * @param b float number, Class FloatVar field
+     * @return the sum of array a and number b
+     */
+    public static float[][] add (float [][]a, float b){
+        float[][] result = new float[a.length][a[0].length];
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[0].length ; j++) {
+                result[i][j] = a[i][j] + b;
+            }
+        }
+        return result;
     }
 
     /**
@@ -35,20 +55,6 @@ public class Calculations {
         float [] result = new float[a.length];
         for (int i = 0; i < result.length; i++) {
             result [i] = a[i] + b[i];
-        }
-        return result;
-    }
-
-    /**
-     *
-     * @param a float [] array, Class VectorVar field
-     * @param b float [] array, Class VectorVar field
-     * @return the subtraction of a and b
-     */
-    public static float [] sub (float [] a, float [] b){
-        float [] result = new float[a.length];
-        for (int i = 0; i < result.length; i++) {
-            result [i] = a[i] - b[i];
         }
         return result;
     }
@@ -68,6 +74,63 @@ public class Calculations {
         }
         return result;
     }
+
+    /**
+     *
+     * @param a float number, Class FloatVar field
+     * @param b float number, Class FloatVar field
+     * @return the subtraction of a and b
+     */
+    public static float sub (float a, float b){
+        return a-b;
+    }
+
+
+
+    /**
+     *
+     * @param a float [] array, Class VectorVar field
+     * @param b float [] array, Class VectorVar field
+     * @return the subtraction of a and b
+     */
+    public static float [] sub (float [] a, float [] b){
+        float [] result = new float[a.length];
+        for (int i = 0; i < result.length; i++) {
+            result [i] = a[i] - b[i];
+        }
+        return result;
+    }
+
+    /**
+     *
+     * @param a float [] array, Class VectorVar field
+     * @param b float number, Class FloatVar field
+     * @return the subtraction of vector a and number b
+     */
+    public static float[] sub (float []a, float b){
+        float[] result = new float[a.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = a[i] - b;
+        }
+        return result;
+    }
+
+    /**
+     *
+     * @param a float [][] array, Class MatrixVar field
+     * @param b float number, Class FloatVar field
+     * @return the subtraction of array a and number b
+     */
+    public static float[][] sub (float [][]a, float b){
+        float[][] result = new float[a.length][a[0].length];
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[0].length ; j++) {
+                result[i][j] = a[i][j] - b;
+            }
+        }
+        return result;
+    }
+
 
     /**
      *

@@ -7,6 +7,10 @@ import java.util.Arrays;
  * prints the variable
  */
 public class Print {
+    /**
+     *
+     * @param var instance which field should be printed
+     */
 
     public static void print (Var var) {
 

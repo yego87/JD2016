@@ -1,5 +1,6 @@
 package by.it.chetovich.JD01_09;
 
+import java.awt.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,7 +15,7 @@ public class DefineVariable {
      */
     public static Var defineVar (String s){
 
-        Pattern pat = Pattern.compile("[\\{\\[][0-9., ]+[\\}\\]]"); //ищем числа, заключённые в круглые или квадратные скобки
+        Pattern pat = Pattern.compile(Patterns.vector); //ищем числа, заключённые в круглые или квадратные скобки
         Matcher mat = pat.matcher(s);
         int lineQuantity = 0;
         while (mat.find()) {
@@ -23,7 +24,7 @@ public class DefineVariable {
         }
         //System.out.println(lineQuantity);
 
-        Pattern pat1 = Pattern.compile("[0-9.]+"); //ищем цифры в строке
+        Pattern pat1 = Pattern.compile(Patterns.number); //ищем цифры в строке
         Matcher mat1 = pat1.matcher(s);
         int numQuantity = 0;
         while (mat1.find()){
