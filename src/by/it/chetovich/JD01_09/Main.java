@@ -16,20 +16,30 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); //вводим строку
         String line = reader.readLine();
 
-        String [] array = LineToArray.convertLineToArray(line); //разбиваем строку на массив из 2 операндов
+        String[] array = LineToArray.convertLineToArray(line); //разбиваем строку на массив из 2 операндов
 
         Var a = DefineVariable.defineVar(array[0]);  //первый операнд
         Var b = DefineVariable.defineVar(array[1]);  //второй операнд
 
-        System.out.print(a+" + "+b+" ");
-        Print.print(a.add(b));
+        if (line.contains("+")) {
+            System.out.print(a + " + " + b + " ");
+            Print.print(a.add(b));
+        }
 
-        //System.out.print(DefineVariable.defineVar(array[0]) + " + " + DefineVariable.defineVar(array[1])+" "); //печатаем выражение,
-                                                                                                               //которое хотим посчитать
+        if (line.contains("-")) {
+            System.out.print(a + " - " + b + " ");
+            Print.print(a.sub(b));
+        }
 
-        //Print.print(DefineVariable.defineVar(array[0]).add(DefineVariable.defineVar(array[1]))); //печатаем результат
+        if (line.contains("*")) {
+            System.out.print(a + " * " + b + " ");
+            Print.print(a.multi(b));
+        }
 
-
+        if (line.contains("/")) {
+            System.out.print(a + " / " + b + " ");
+            Print.print(a.divide(b));
+        }
 
     }
 }

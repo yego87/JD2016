@@ -6,19 +6,31 @@ package by.it.chetovich.JD01_09;
 public abstract class Var implements IAddable, ISubtractable, IMultiplicable, IDividable {
 
     @Override
-    public abstract Var add(Var value);
+    public  Var add(Var value){
+        new Error ("Сложение невозможно.");
+        return null;
+    }
 
     @Override
-    public abstract void sub(Var value);
+    public  Var sub(Var value){
+        new Error ("Вычитание невозможно.");
+        return null;
+    }
 
 
 
     @Override
-    public abstract void multi(Var value);
+    public  Var multi(Var value){
+        new Error ("Умножение невозможно.");
+        return null;
+    }
 
 
 
     @Override
-    public abstract void divide(Var value);
+    public  Var divide(Var value){
+        new Error ("Деление невозможно.");
+        return null;
+    }
 
 }

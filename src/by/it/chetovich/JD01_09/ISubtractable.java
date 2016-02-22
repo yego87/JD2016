@@ -5,6 +5,6 @@ package by.it.chetovich.JD01_09;
  */
 public interface ISubtractable {
 
-    void sub (Var value);
+    Var sub (Var value);
 
 }
