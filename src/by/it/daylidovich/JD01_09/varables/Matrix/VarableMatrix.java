@@ -43,7 +43,9 @@ public class VarableMatrix extends OperationMatrix implements IVarable {
                 stringBuilder.append(matrix[i][j]).append(",");
             }
             stringBuilder.deleteCharAt(stringBuilder.length()-1);
-            stringBuilder.append("}\n ");
+            stringBuilder.append("}");
+            if (i!=matrix.length-1)
+                stringBuilder.append("\n ");
         }
         stringBuilder.append("}");
         return stringBuilder.toString();
