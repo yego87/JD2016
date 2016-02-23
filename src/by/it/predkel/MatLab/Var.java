@@ -5,65 +5,82 @@ package by.it.predkel.MatLab;
  */
 public abstract class Var extends Number implements IOperation {
 
+    /*
+        @Override
+        public Var addFloat(FloatVar value) {
+            return null;
+        }
 
+        @Override
+        public Var addMatrix(MatrixVar value) {
+            return null;
+        }
+
+        @Override
+        public Var mulFloat(FloatVar value) {
+            return null;
+        }
+
+        @Override
+        public Var mulMatrix(MatrixVar value) {
+            return null;
+        }
+
+        @Override
+        public Var robFloat(FloatVar value) {
+            return null;
+        }
+
+        @Override
+        public Var robMatrix(MatrixVar value) {
+            return null;
+        }
+
+        @Override
+        public Var divFloat(FloatVar value) {
+            return null;
+        }
+
+        @Override
+        public Var divMatrix(MatrixVar value) {
+            return null;
+        }
+    */
     @Override
-    public Var addFloat(FloatVar value) {
+    public Var add(Var value) {
+        if (value instanceof FloatVar) this.add((FloatVar) value);
+        if (value instanceof MatrixVar) this.add((MatrixVar) value);
         return null;
     }
 
     @Override
-    public Var addMatrix(MatrixVar value) {
+    public Var mul(Var value) {
+        if (value instanceof FloatVar) this.mul((FloatVar) value);
+        if (value instanceof MatrixVar) this.mul((MatrixVar) value);
         return null;
     }
 
     @Override
-    public Var mulFloat(FloatVar value) {
+    public Var sub(Var value) {
+        if (value instanceof FloatVar) this.sub((FloatVar) value);
+        if (value instanceof MatrixVar) this.sub((MatrixVar) value);
         return null;
     }
 
     @Override
-    public Var mulMatrix(MatrixVar value) {
+    public Var div(Var value) {
+        if (value instanceof FloatVar) this.div((FloatVar) value);
+        if (value instanceof MatrixVar) this.div((MatrixVar) value);
         return null;
     }
 
     @Override
-    public Var robFloat(FloatVar value) {
-        return null;
+    public boolean checkMatrixToSum(MatrixVar mat1, MatrixVar mat2) {//проверка матриц перед сложением
+        return ((mat1.matrix.length == mat2.matrix.length)&&(mat1.matrix[0].length == mat2.matrix[0].length));
     }
 
     @Override
-    public Var robMatrix(MatrixVar value) {
-        return null;
+    public boolean checkMatrixToMul(MatrixVar mat1, MatrixVar mat2) {
+        return (mat1.matrix[0].length == mat2.matrix.length);
     }
-
-    @Override
-    public Var divFloat(FloatVar value) {
-        return null;
-    }
-
-    @Override
-    public Var divMatrix(MatrixVar value) {
-        return null;
-    }
-
-    @Override
-    public Var add (Var value){
-        return null;
-    }
-
-    @Override
-    public Var mul (Var value){
-        return null;
-    }
-
-    @Override
-    public Var sub (Var value){
-        return null;
-    }
-
-    @Override
-    public Var div (Var value){
-        return null;
-    }
-
 }

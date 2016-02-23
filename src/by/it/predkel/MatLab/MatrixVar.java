@@ -111,24 +111,39 @@ public class MatrixVar extends Var {
     }
 
     @Override
-    public Var mul (Var value){
+    public Var mul (Var value) {
         if (value instanceof FloatVar) {//матрица*число
             for (int i = 0; i < this.matrix.length; i++) {
                 for (int j = 0; j < this.matrix[i].length; j++) {
-                    this.matrix[i][j]*=((FloatVar)value).val;
+                    this.matrix[i][j] *= ((FloatVar) value).val;
                 }
             }
             return this;
-        }
-        float[][] temp=new float[this.matrix.length][((MatrixVar)value).matrix[0].length];//матрица*матрица
-        for (int i=0;i<this.matrix.length;i++) {
-            for (int j=0;j<((MatrixVar)value).matrix[0].length;j++) {
-                for (int k = 0; k < ((MatrixVar)value).matrix.length; k++) {
-                    temp[i][j]=temp[i][j]+this.matrix[i][k]*((MatrixVar)value).matrix[k][j];
+        }else if (checkMatrixToMul(this, (MatrixVar) value)) {
+            float[][] temp = new float[this.matrix.length][((MatrixVar) value).matrix[0].length];//матрица*матрица
+            for (int i = 0; i < this.matrix.length; i++) {
+                for (int j = 0; j < ((MatrixVar) value).matrix[0].length; j++) {
+                    for (int k = 0; k < ((MatrixVar) value).matrix.length; k++) {
+                        temp[i][j] = temp[i][j] + this.matrix[i][k] * ((MatrixVar) value).matrix[k][j];
+                    }
                 }
             }
+            return new MatrixVar(temp);
+
+        }else if (checkMatrixToMul((MatrixVar) value, this)){
+            float[][] temp = new float[((MatrixVar) value).matrix.length][this.matrix[0].length];//матрица*матрица
+            for (int i = 0; i < ((MatrixVar) value).matrix.length; i++) {
+                for (int j = 0; j < this.matrix[0].length; j++) {
+                    for (int k = 0; k < this.matrix.length; k++) {
+                        temp[i][j] = temp[i][j] + ((MatrixVar) value).matrix[i][k] * this.matrix[k][j];
+                    }
+                }
+            }
+            return new MatrixVar(temp);
+        }else{
+            System.out.print("Эти матрицы перемножить нельзя");
         }
-        return new MatrixVar(temp);
+        return null;
     }
 
     @Override
@@ -150,25 +165,41 @@ public class MatrixVar extends Var {
     }
 
     @Override
-    public Var div (Var value){
+    public Var div (Var value) {
         if (value instanceof FloatVar) {//матрица/число
             for (int i = 0; i < this.matrix.length; i++) {
                 for (int j = 0; j < this.matrix[i].length; j++) {
-                    this.matrix[i][j]/=((FloatVar)value).val;
+                    this.matrix[i][j] /= ((FloatVar) value).val;
                 }
             }
             return this;
-        }
-        float[][] value1=Inverse_matrix_jordan_gauss(((MatrixVar)value).matrix);//создание обратной матрицы
-        float[][] temp=new float[this.matrix.length][value1[0].length];//матрица/матрица
-        for (int i=0;i<this.matrix.length;i++) {
-            for (int j=0;j<value1[0].length;j++) {
-                for (int k = 0; k < value1.length; k++) {
-                    temp[i][j]=temp[i][j]+this.matrix[i][k]*value1[k][j];
+        } else if (checkMatrixToMul(this, (MatrixVar) value)) {
+            float[][] value1 = Inverse_matrix_jordan_gauss(((MatrixVar) value).matrix);//создание обратной матрицы
+            float[][] temp = new float[this.matrix.length][value1[0].length];//матрица/матрица
+            for (int i = 0; i < this.matrix.length; i++) {
+                for (int j = 0; j < value1[0].length; j++) {
+                    for (int k = 0; k < value1.length; k++) {
+                        temp[i][j] = temp[i][j] + this.matrix[i][k] * value1[k][j];
+                    }
                 }
             }
+            return new MatrixVar(temp);
+
+        } else if (checkMatrixToMul((MatrixVar) value, this)) {
+            float[][] value1 = Inverse_matrix_jordan_gauss(this.matrix);//создание обратной матрицы
+            float[][] temp = new float[value1.length][((MatrixVar) value).matrix[0].length];//матрица/матрица
+            for (int i = 0; i < value1.length; i++) {
+                for (int j = 0; j < ((MatrixVar) value).matrix[0].length; j++) {
+                    for (int k = 0; k < ((MatrixVar) value).matrix.length; k++) {
+                        temp[i][j] = temp[i][j] + value1[i][k] * ((MatrixVar) value).matrix[k][j];
+                    }
+                }
+            }
+            return new MatrixVar(temp);
+        } else {
+            System.out.print("Эти матрицы делить нельзя");
         }
-        return new MatrixVar(temp);
+        return null;
     }
 
     @Override
