@@ -5,7 +5,7 @@ package by.it.chetovich.JD01_09;
  */
 public class Patterns {
 
-    public static String operationType = "[\\+\\-\\/\\*]"; //вид операции
-    public static String number = "[0-9.]+"; //число
-    public static String vector = "[\\{\\[][0-9., ]+[\\}\\]]"; //числа в круглых или квадратных скобках
+    public static String operationType = "[\\+\\-\\/\\*]"; //РѕРїРµСЂР°С†РёСЏ
+    public static String number = "[\\-]?[0-9.]+"; //С‡РёСЃР»Рѕ
+    public static String vector = "[\\{\\[][\\-0-9., ]+[\\}\\]]"; //С‡РёСЃР»Р° РІ РєСЂСѓРіР»С‹С… РёР»Рё РєРІР°РґСЂР°С‚РЅС‹С… СЃРєРѕР±РєР°С…
 }
