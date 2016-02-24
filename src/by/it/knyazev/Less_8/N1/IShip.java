@@ -5,5 +5,7 @@ package by.it.knyazev.Less_8.N1;
  */
 public interface IShip {
     String printName();
+    String swim();
+    boolean count();
     void move();
 }
