@@ -6,8 +6,8 @@ import java.lang.ref.SoftReference;
  * Created by Artsem Kniazeu on 22.02.2016.
  */
 public class AircraftCarrier extends WarShip{
-    public AircraftCarrier(String name){
-        super(name);
+    public AircraftCarrier(String name, int ai){
+        super(name,ai);
     }
 
     @Override
