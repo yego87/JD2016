@@ -11,7 +11,6 @@ public class Runner {
         if (v!=null) System.out.println(v);
     }
     public static void main(String[ ] args) {
-
         //вместо парсера ввода в DEMO использовано создание готовых объектов из строк
         //в реальном решении еще нужно программно определить тип объекта
         System.out.println("\nпроверка операций со скалярами");
