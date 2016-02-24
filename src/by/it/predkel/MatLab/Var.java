@@ -83,5 +83,4 @@ public abstract class Var extends Number implements IOperation {
     public boolean checkMatrixToMul(MatrixVar mat1, MatrixVar mat2) {
         return (mat1.matrix[0].length == mat2.matrix.length);
     }
-
 }
