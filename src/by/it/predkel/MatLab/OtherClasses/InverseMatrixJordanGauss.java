@@ -5,10 +5,10 @@ package by.it.predkel.MatLab.OtherClasses;
  */
 public class InverseMatrixJordanGauss {
 
-    public static float[][] Inverse_matrix_jordan_gauss(float[][] A){
+    public static double[][] Inverse_matrix_jordan_gauss(double[][] A){
         int i,j,k;
         int size=A.length;
-        float[][] E = new float[size][size];//единичная матрица
+        double[][] E = new double[size][size];//единичная матрица
 //заполнение единичной матрицы
         for (i=0;i<size;i++){
             for (j=0;j<size;j++){

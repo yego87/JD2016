@@ -1,14 +1,19 @@
 package by.it.predkel.MatLab;
 
+import java.io.IOException;
+
 /**
  * Created by Admin on 19.02.2016.
  */
 public class FloatVar extends Var {
 
-    float val;
+    double val;
 
-    public FloatVar(float value){
+    public FloatVar(double value){
         this.val = value;
+    }
+    public FloatVar(String str) throws IOException {
+        setForm(str);
     }
 /*
     @Override
@@ -62,12 +67,12 @@ public class FloatVar extends Var {
 
     @Override
     public float floatValue() {
-        return this.val;
+        return (float)this.val;
     }
 
     @Override
     public double doubleValue() {
-        return (double)this.val;
+        return this.val;
     }
 
     @Override
@@ -101,5 +106,10 @@ public class FloatVar extends Var {
             return new FloatVar(val/=((FloatVar)value).val);
         }
         return value.div(this);
+    }
+
+    @Override
+    public void setForm(String str) throws IOException {
+        val=Double.parseDouble(str);
     }
 }
