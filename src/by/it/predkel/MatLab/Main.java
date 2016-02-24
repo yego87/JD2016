@@ -14,9 +14,13 @@ public class Main{
         //FloatVar var1 = new FloatVar(10);
 
        // System.out.println(var.addFloat(var1));
-
+/*
         float[][] mass=input();
         MatrixVar matrix=new MatrixVar(mass);
-        matrix.outPut();
+        matrix.outPut();*/
+        FloatVar a=new FloatVar(5);
+        FloatVar b=new FloatVar(6);
+        a.add(b);
+        System.out.print(a);
     }
 }
