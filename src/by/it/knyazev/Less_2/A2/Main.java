@@ -11,8 +11,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        Scanner scan = new Scanner(System.in);
-        String text = scan.nextLine();
+        //Scanner scan = new Scanner(System.in);
+        //String text = scan.nextLine();
+        String text = "1 22 333 4444 55555";
         String[] massiv = new String[text.length()];
         massiv = text.split(" ");
 
@@ -29,13 +30,16 @@ public class Main {
             }
         }
 
+        int k = 0;
         for (int i = 0; i < massiv.length; i++) {
-            int k;
-            k = (min + max)/2;
-
-            if (massiv[i].length()<=k){
-                System.out.print(massiv[i]);
-                System.out.println(" length-" + massiv[i].length());
+            k = k + Integer.parseInt(massiv[i]);
+        }
+        k = k/massiv.length+1;
+        System.out.println("Average: "+k);
+        for (int i = 0; i < massiv.length; i++) {
+            if (Integer.parseInt(massiv[i])<=k){
+                System.out.print("{"+massiv[i]+"}");
+                System.out.println(" Length-" + massiv[i].length());
             }
 
         }
