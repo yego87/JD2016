@@ -21,6 +21,11 @@ public abstract class WarShip implements IShip {
         return null;
     }
     @Override
+    public String lazy(){
+        System.out.println("AAA....");
+        return null;
+    }
+    @Override
     public boolean count() {
         if (i<3){
             System.out.print("");
