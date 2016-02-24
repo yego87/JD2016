@@ -23,8 +23,7 @@ public class Reader {
         if (matcher.find())
             return matcher.group(1);
         else
-            System.out.println("Некоректный ввод.");
-        return null;
+            return null;
     }
 
     public static String readSecondTerm(String string){
@@ -32,16 +31,15 @@ public class Reader {
         if (matcher.find())
             return matcher.group(2);
         else
-            System.out.println("Некоректный ввод.");
-        return null;
+            return null;
     }
 
     public static String readOperation(String string){
         Matcher matcher = Pattern.compile("[+\\-*/]").matcher(string);
         if (matcher.find())
             return matcher.group();
-        else System.out.println("Некоректный ввод.");
-        return null;
+        else
+            return null;
     }
 
     public static Varable getVarable(String string) throws IOException {

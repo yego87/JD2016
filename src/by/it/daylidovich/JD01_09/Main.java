@@ -27,7 +27,7 @@ public class Main {
         System.out.println("Деление");
         System.out.println(new VarableVector(vec1).div(new VarableFloat(2)));
 
-        System.out.println("Проверка матриц");
+        System.out.println("Проверка работы с матриц.");
         double[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
         String string = "{{1,2,3},{4,5,6},{7,8,9}}";
         System.out.println("Сложение");
@@ -42,26 +42,29 @@ public class Main {
         */
         System.out.println("Введите выражение для рассчета или нажмите Enter для выхода.");
         String string = readInput();
-        while (string != null){
+        while (string.trim().length() != 0){
             String operation = readOperation(string);
             String firstTerm = readFirstTerm(string);
             String secondTerm = readSecondTerm(string);
-            switch (operation){
-                case "+":
-                    System.out.println(getVarable(firstTerm).add(getVarable(secondTerm)));
-                    break;
-                case "-":
-                    System.out.println(getVarable(firstTerm).sub(getVarable(secondTerm)));
-                    break;
-                case "*":
-                    System.out.println(getVarable(firstTerm).mult(getVarable(secondTerm)));
-                    break;
-                case "/":
-                    System.out.println(getVarable(firstTerm).div(getVarable(secondTerm)));
-                    break;
-                default:
-                    System.out.println("Некоректный ввод.");
+            if (operation != null && firstTerm != null && secondTerm != null){
+                switch (operation){
+                    case "+":
+                        System.out.println(getVarable(firstTerm).add(getVarable(secondTerm)));
+                        break;
+                    case "-":
+                        System.out.println(getVarable(firstTerm).sub(getVarable(secondTerm)));
+                        break;
+                    case "*":
+                        System.out.println(getVarable(firstTerm).mult(getVarable(secondTerm)));
+                        break;
+                    case "/":
+                        System.out.println(getVarable(firstTerm).div(getVarable(secondTerm)));
+                        break;
+                    default:
+                        System.out.println("Некоректный ввод.");
+                }
             }
+            else System.out.println("Некоректный ввод.");
             System.out.println("Введите выражение для рассчета или нажмите Enter для выхода.");
             string = readInput();
         }
