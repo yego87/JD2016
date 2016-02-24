@@ -22,7 +22,7 @@ public class FloatVar extends Var {
 
     @Override
     public String toString (){
-        return Float.toString(val);
+        return "(float) "+Float.toString(val);
     }
 
     @Override
