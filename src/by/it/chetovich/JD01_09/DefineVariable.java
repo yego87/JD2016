@@ -13,7 +13,7 @@ public class DefineVariable {
      * @param s variable in String, which type should be defined
      * @return FloatVar, VectorVar or MatrixVar instance
      */
-    public static Var defineVar (String s){ 
+    public static Var defineVar (String s) throws NumberFormatException{
 
         Pattern pat = Pattern.compile(Patterns.vector); //ищем числа, заключённые в круглые или квадратные скобки
         Matcher mat = pat.matcher(s);
