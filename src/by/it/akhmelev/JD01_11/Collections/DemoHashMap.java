@@ -17,7 +17,7 @@ public class DemoHashMap {
         System.out.println(hm + "после замены элемента");
         Integer a = hm.get("Хлеб");
         System.out.println(a + " - найден по ключу 'Хлеб'");
-// вывод хэш-таблицы с помощью методов интерфейса Map.Entry<K,V>
+        // вывод хэш-таблицы с помощью методов интерфейса Map.Entry<K,V>
         Set<Map.Entry<String, Integer>> setv = hm.entrySet();
         System.out.println(setv);
         Iterator<Map.Entry<String, Integer>> i = setv.iterator();
