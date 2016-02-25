@@ -2,14 +2,17 @@ package by.it.dorostchenok.jd01_09;
 
 import by.it.dorostchenok.jd01_09.interfaces.Calc;
 import by.it.dorostchenok.jd01_09.services.Calculator;
+import by.it.dorostchenok.jd01_09.services.Parser;
 import by.it.dorostchenok.jd01_09.values.FloatValue;
 import by.it.dorostchenok.jd01_09.values.MatrixValue;
 import by.it.dorostchenok.jd01_09.values.Value;
 import by.it.dorostchenok.jd01_09.values.VectorValue;
 
+import java.io.IOException;
+
 
 public class Main {
-    public static void main(String[] arg){
+    public static void main(String[] arg) throws IOException {
 
         Value val1 = new FloatValue(0.2);
         Value val2 = new FloatValue(5.3);
@@ -29,5 +32,10 @@ public class Main {
         Value matrix = new MatrixValue(m);
         System.out.println(matrix);
         System.out.println(val1);
+        ConsoleRunner runner = new ConsoleRunner();
+        runner.execute();
+
+
+
     }
 }
