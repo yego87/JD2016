@@ -45,9 +45,8 @@ public class Main {
 
         System.out.println("Если вы хотите увидеть список созданных во время присваивания переменных, введите printvar. ");
         System.out.println("Если вы хотите отсортированный список переменных со значениями, введите sortvar.");
+        System.out.println("Если всё это вам не интересно, нажмите enter, и всё закончится. ");
 
-        String out = reader.readLine();
-
-        PrintAssignment.printSortVar(out,map,list); //печатаем список новых переменных в зависимости от того, что ввел пользователь
+        PrintAssignment.printSortVar(map,list); //печатаем список новых переменных в зависимости от того, что ввел пользователь
     }
 }
