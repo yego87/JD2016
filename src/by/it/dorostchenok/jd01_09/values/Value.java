@@ -27,7 +27,7 @@ public abstract class Value implements IValue{
 
     @Override
     public String toString(){
-        return "Type: " + this.getClass().getSimpleName() + " Value: " + value;
+        return "Type: " + this.getClass().getSimpleName() + "; Value: " + value;
     }
 
     @Override
