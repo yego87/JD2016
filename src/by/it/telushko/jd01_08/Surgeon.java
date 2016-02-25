@@ -1,6 +1,8 @@
 package by.it.telushko.jd01_08;
 
 public abstract class Surgeon implements IDoctor {
+    private String treatment="\"Назначенное лечение\" ";
+
     //выполняем методы по требованию интерфейса
     @Override
     public int getPayment(boolean economicSituation) {
@@ -13,14 +15,10 @@ public abstract class Surgeon implements IDoctor {
         return money;
     }
     @Override
-    public String setTreatment(String Desease) {
-        String treatment="\"Назначенное лечение\"";
+    public String getTreatment(String desease) {
+        treatment=this.treatment+" Против"+desease;
         return treatment;
     }
-
-    @Override
-    public void fillForms() {
-        System.out.println("...Все докуметы заполнены");
-    }
-    public abstract  void useKnife(); //декларируем абстрактный метод для дальнейшей реализации
+    //декларируем абстрактный метод для дальнейшей реализации
+    public abstract  void useKnife();
 }
