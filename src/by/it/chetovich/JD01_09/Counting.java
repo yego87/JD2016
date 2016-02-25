@@ -5,6 +5,13 @@ package by.it.chetovich.JD01_09;
  */
 public class Counting {
 
+    /**
+     *
+     * @param a первый операнд
+     * @param b второй операнд
+     * @param line первоначально введенная строка, нужна для определения типа операции (+ / * -)
+     */
+
     public static void count (Var a, Var b, String line){
 
             if (line.contains("+")) {

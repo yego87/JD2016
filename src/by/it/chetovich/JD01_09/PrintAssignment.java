@@ -7,6 +7,12 @@ import java.util.*;
  */
 public class PrintAssignment {
 
+    /**
+     *
+     * @param line строка, введенная пользователем, printvar или sortvar
+     * @param map список новых переменных и их значений
+     * @param list список имен переменных, нужен для сортировки
+     */
     public static void printSortVar(String line, Map<String, Var> map, List<String> list){
         if (line.equals("printvar")){
             if (!map.isEmpty()) {

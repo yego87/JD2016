@@ -3,7 +3,7 @@ package by.it.chetovich.JD01_09;
 import java.util.regex.Pattern;
 
 /**
- * divide line into 2 elements and put them in the array
+ * divides line into 2 elements and put them in the array
  */
 public class LineToArray {
     /**
