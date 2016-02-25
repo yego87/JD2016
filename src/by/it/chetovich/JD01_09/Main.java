@@ -24,7 +24,7 @@ public class Main {
 
             System.out.println("Введите выражение для вычисления: ");
             String line = reader.readLine();
-            if (line.equals("")) break;
+            if (line.isEmpty()) break;
 
             String[] array = LineToArray.convertLineToArray(line); //разбиваем строку на массив из 2 операндов
 
