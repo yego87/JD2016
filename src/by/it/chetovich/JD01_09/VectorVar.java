@@ -24,7 +24,7 @@ public class VectorVar extends Var {
 
     @Override
     public String toString (){
-        return Arrays.toString(vector);
+        return "(vector) "+Arrays.toString(vector);
     }
 
     @Override

@@ -24,7 +24,7 @@ public class MatrixVar extends Var{
 
     @Override
     public String toString (){
-        return Arrays.deepToString(array);
+        return "(array) "+Arrays.deepToString(array);
     }
 
     @Override
