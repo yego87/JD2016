@@ -6,6 +6,11 @@ import by.it.dorostchenok.jd01_09.values.Value;
 
 
 public class Calculator implements Calc {
+
+    public Value calculate(Expression expression){
+        return add(expression.getFirstValue(), expression.getSecondValue());
+    }
+
     @Override
     public Value add(Value val1, Value val2) {
         if (val1 instanceof FloatValue && val2 instanceof FloatValue){

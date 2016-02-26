@@ -1,6 +1,8 @@
 package by.it.dorostchenok.jd01_09;
 
-import by.it.dorostchenok.jd01_09.exception.OperationNotFoundException;
+import by.it.dorostchenok.jd01_09.exception.BadOperationException;
+import by.it.dorostchenok.jd01_09.services.Calculator;
+import by.it.dorostchenok.jd01_09.services.Expression;
 import by.it.dorostchenok.jd01_09.services.Parser;
 
 import java.io.BufferedReader;
@@ -22,8 +24,12 @@ public class ConsoleRunner {
                 break;
             }
             try {
-                parser.parse(line);
-            } catch (OperationNotFoundException e) {
+                Expression expr = parser.parse(line);
+                System.out.println(expr.getFirstValue());
+                System.out.println(expr.getSecondValue());
+                System.out.println(expr.getOperation());
+                System.out.println(new Calculator().calculate(expr));
+            } catch (BadOperationException e) {
                 System.out.println(e.getMessage());
             }
         }
