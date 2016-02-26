@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD01_09.varables;
+package by.it.daylidovich.JD01_09.variables;
 
 import by.it.daylidovich.JD01_09.interfaces.IOperation;
 

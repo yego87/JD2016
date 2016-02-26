@@ -1,8 +1,8 @@
-package by.it.daylidovich.JD01_09.varables.Matrix;
+package by.it.daylidovich.JD01_09.variables.Matrix;
 
 import by.it.daylidovich.JD01_09.interfaces.*;
-import by.it.daylidovich.JD01_09.varables.Float.VariableFloat;
-import by.it.daylidovich.JD01_09.varables.Variable;
+import by.it.daylidovich.JD01_09.variables.Float.VariableFloat;
+import by.it.daylidovich.JD01_09.variables.Variable;
 
 public class OperationMatrix extends Variable implements IOperation {
     private double[][] copyMatrix(double[][] matrix){

@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD01_09.varables.Vector;
+package by.it.daylidovich.JD01_09.variables.Vector;
 
 import by.it.daylidovich.JD01_09.interfaces.IVarable;
 

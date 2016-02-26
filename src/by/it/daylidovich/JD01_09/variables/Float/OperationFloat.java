@@ -1,7 +1,7 @@
-package by.it.daylidovich.JD01_09.varables.Float;
+package by.it.daylidovich.JD01_09.variables.Float;
 
 import by.it.daylidovich.JD01_09.interfaces.*;
-import by.it.daylidovich.JD01_09.varables.Variable;
+import by.it.daylidovich.JD01_09.variables.Variable;
 
 public class OperationFloat extends Variable implements IOperation {
 

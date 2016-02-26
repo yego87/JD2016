@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD01_09.varables.Float;
+package by.it.daylidovich.JD01_09.variables.Float;
 
 import by.it.daylidovich.JD01_09.interfaces.IVarable;
 

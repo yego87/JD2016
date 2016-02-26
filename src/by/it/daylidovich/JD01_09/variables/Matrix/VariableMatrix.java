@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD01_09.varables.Matrix;
+package by.it.daylidovich.JD01_09.variables.Matrix;
 
 import by.it.daylidovich.JD01_09.interfaces.IVarable;
 
