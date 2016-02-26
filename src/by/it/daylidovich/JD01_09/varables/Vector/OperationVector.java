@@ -1,23 +1,24 @@
 package by.it.daylidovich.JD01_09.varables.Vector;
 
-import by.it.daylidovich.JD01_09.varables.Float.VarableFloat;
-import by.it.daylidovich.JD01_09.varables.Varable;
+import by.it.daylidovich.JD01_09.interfaces.IOperation;
+import by.it.daylidovich.JD01_09.varables.Float.VariableFloat;
+import by.it.daylidovich.JD01_09.varables.Variable;
 
-public class OperationVector extends Varable {
+public class OperationVector extends Variable implements IOperation {
     @Override
-    public Varable add(Varable varable) {
-        if (varable instanceof VarableFloat){
-            VarableVector firstTerm = new VarableVector(((VarableVector)this).getVector());
-            double secondTerm = ((VarableFloat)varable).getValue();
+    public Variable add(Variable variable) {
+        if (variable instanceof VariableFloat){
+            VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
+            double secondTerm = ((VariableFloat) variable).getValue();
             for (int i = 0; i < firstTerm.getVector().length; i++) {
                 firstTerm.getVector()[i] += secondTerm;
             }
             return firstTerm;
         }
 
-        if (varable instanceof VarableVector){
-            VarableVector firstTerm = new VarableVector(((VarableVector)this).getVector());
-            VarableVector secondTerm = (VarableVector)varable;
+        if (variable instanceof VariableVector){
+            VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
+            VariableVector secondTerm = (VariableVector) variable;
             if (firstTerm.getVector().length == secondTerm.getVector().length){
                 for (int i = 0; i < firstTerm.getVector().length; i++) {
                     firstTerm.getVector()[i] += secondTerm.getVector()[i];
@@ -25,23 +26,23 @@ public class OperationVector extends Varable {
                 return firstTerm;
             }
         }
-        return super.add(varable);
+        return super.add(variable);
     }
 
     @Override
-    public Varable sub(Varable varable) {
-        if (varable instanceof VarableFloat){
-            VarableVector firstTerm = new VarableVector(((VarableVector)this).getVector());
-            double secondTerm = ((VarableFloat)varable).getValue();
+    public Variable sub(Variable variable) {
+        if (variable instanceof VariableFloat){
+            VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
+            double secondTerm = ((VariableFloat) variable).getValue();
             for (int i = 0; i < firstTerm.getVector().length; i++) {
                 firstTerm.getVector()[i] -= secondTerm;
             }
             return firstTerm;
         }
 
-        if (varable instanceof VarableVector){
-            VarableVector firstTerm = new VarableVector(((VarableVector)this).getVector());
-            VarableVector secondTerm = (VarableVector)varable;
+        if (variable instanceof VariableVector){
+            VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
+            VariableVector secondTerm = (VariableVector) variable;
             if (firstTerm.getVector().length == secondTerm.getVector().length){
                 for (int i = 0; i < firstTerm.getVector().length; i++) {
                     firstTerm.getVector()[i] -= secondTerm.getVector()[i];
@@ -49,45 +50,45 @@ public class OperationVector extends Varable {
                 return firstTerm;
             }
         }
-        return super.sub(varable);
+        return super.sub(variable);
     }
 
     @Override
-    public Varable mult(Varable varable) {
-        if (varable instanceof VarableFloat){
-            VarableVector firstTerm = new VarableVector(((VarableVector)this).getVector());
-            double secondTerm = ((VarableFloat)varable).getValue();
+    public Variable mult(Variable variable) {
+        if (variable instanceof VariableFloat){
+            VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
+            double secondTerm = ((VariableFloat) variable).getValue();
             for (int i = 0; i < firstTerm.getVector().length; i++) {
                 firstTerm.getVector()[i] *= secondTerm;
             }
             return firstTerm;
         }
 
-        if (varable instanceof VarableVector){
+        if (variable instanceof VariableVector){
             double sum = 0;
-            VarableVector firstTerm = new VarableVector(((VarableVector)this).getVector());
-            VarableVector secondTerm = (VarableVector)varable;
+            VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
+            VariableVector secondTerm = (VariableVector) variable;
             if (firstTerm.getVector().length == secondTerm.getVector().length){
                 for (int i = 0; i < firstTerm.getVector().length; i++) {
                     sum += firstTerm.getVector()[i] * secondTerm.getVector()[i];
                 }
-                return new VarableFloat(sum);
+                return new VariableFloat(sum);
             }
         }
-        return super.mult(varable);
+        return super.mult(variable);
     }
 
     @Override
-    public Varable div(Varable varable) {
-        if (varable instanceof VarableFloat){
-            VarableVector firstTerm = new VarableVector(((VarableVector)this).getVector());
-            double secondTerm = ((VarableFloat)varable).getValue();
+    public Variable div(Variable variable) {
+        if (variable instanceof VariableFloat){
+            VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
+            double secondTerm = ((VariableFloat) variable).getValue();
             for (int i = 0; i < firstTerm.getVector().length; i++) {
                 firstTerm.getVector()[i] /= secondTerm;
             }
             return firstTerm;
         }
 
-        return super.div(varable);
+        return super.div(variable);
     }
 }
