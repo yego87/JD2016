@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD01_09.varables.Matrix;
+package by.it.daylidovich.JD01_09.variables.Matrix;
 
 import by.it.daylidovich.JD01_09.interfaces.IVarable;
 
@@ -6,19 +6,19 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class VarableMatrix extends OperationMatrix implements IVarable {
+public class VariableMatrix extends OperationMatrix implements IVarable {
     private double[][] matrix;
 
     public double[][] getMatrix() {
         return matrix;
     }
 
-    public VarableMatrix(double[][] matrix){
+    public VariableMatrix(double[][] matrix){
         this.matrix = new double[matrix.length][matrix[0].length];
         System.arraycopy(matrix, 0, this.matrix, 0, matrix.length);
     }
 
-    public VarableMatrix(String string){
+    public VariableMatrix(String string){
         Matcher matcher = Pattern.compile("[\\[\\{][0-9.,]+[\\}\\]]").matcher(string);
         ArrayList<String> arrayList = new ArrayList<>();
         while (matcher.find())
@@ -44,8 +44,6 @@ public class VarableMatrix extends OperationMatrix implements IVarable {
             }
             stringBuilder.deleteCharAt(stringBuilder.length()-1);
             stringBuilder.append("}");
-            if (i!=matrix.length-1)
-                stringBuilder.append("\n ");
         }
         stringBuilder.append("}");
         return stringBuilder.toString();
