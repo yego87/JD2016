@@ -4,7 +4,6 @@ import by.it.dorostchenok.jd01_09.exception.BadOperationException;
 import by.it.dorostchenok.jd01_09.values.FloatValue;
 import by.it.dorostchenok.jd01_09.values.Operation;
 import by.it.dorostchenok.jd01_09.values.Value;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -78,6 +77,6 @@ public class Parser {
         } else {
             throw new BadOperationException();
         }
-        return Operation.ADD;
+        return operation;
     }
 }

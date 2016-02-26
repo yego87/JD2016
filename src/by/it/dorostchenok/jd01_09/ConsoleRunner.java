@@ -8,10 +8,11 @@ import by.it.dorostchenok.jd01_09.services.Parser;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.InvocationTargetException;
 
 public class ConsoleRunner {
 
-    public void execute() throws IOException {
+    public void execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         Parser parser = new Parser();

@@ -3,12 +3,18 @@ package by.it.dorostchenok.jd01_09.services;
 import by.it.dorostchenok.jd01_09.interfaces.Calc;
 import by.it.dorostchenok.jd01_09.values.FloatValue;
 import by.it.dorostchenok.jd01_09.values.Value;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 
 public class Calculator implements Calc {
 
-    public Value calculate(Expression expression){
-        return add(expression.getFirstValue(), expression.getSecondValue());
+    public Value calculate(Expression expression) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method method;
+        method = this.getClass().getMethod(expression.getOperation().name().toLowerCase(), Value.class, Value.class);
+        Value result = (Value) method.invoke(this, expression.getFirstValue(), expression.getSecondValue());
+        //return add(expression.getFirstValue(), expression.getSecondValue());
+        return result;
     }
 
     @Override

@@ -9,10 +9,11 @@ import by.it.dorostchenok.jd01_09.values.Value;
 import by.it.dorostchenok.jd01_09.values.VectorValue;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 
 public class Main {
-    public static void main(String[] arg) throws IOException {
+    public static void main(String[] arg) throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 
         Value val1 = new FloatValue(0.2);
         Value val2 = new FloatValue(5.3);
