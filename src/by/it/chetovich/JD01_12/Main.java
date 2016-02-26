@@ -1,21 +1,17 @@
 package by.it.chetovich.JD01_12;
 
-import by.it.chetovich.JD01_09.Counting;
-
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
- * Created by user_2 on 26.02.2016.
+ * JD01_12
  */
 public class Main {
 
     public static void main(String[] args) {
 
         boolean isPositiveElements = true;
-        List<Integer> votes = CreatingArrayList.createArrayList(isPositiveElements); //создаём список оценок от 1 до 10
-        List<Integer> goodVotes = CreatingArrayList.createGoodVotesList(votes); //создаём список положительных оценок больше 4
+        List<Integer> votes = CreatingRandomArrayList.createArrayList(isPositiveElements, 20); //создаём список оценок от 1 до 10
+        List<Integer> goodVotes = CreatingRandomArrayList.createGoodVotesList(votes); //создаём список положительных оценок больше 4
 
         System.out.print("Votes list: ");
         PrintingList.printList(votes);
@@ -35,7 +31,7 @@ public class Main {
         System.out.println("Cross of two sets: ");
         PrintingList.printList(MyCollect.getCross(setA, setB));
 
-        List<Integer> listik = CreatingArrayList.createArrayList(!isPositiveElements);
+        List<Integer> listik = CreatingRandomArrayList.createArrayList(!isPositiveElements, 20);
         //PrintingList.printList(listik);
         Collections.sort(listik, new Comparator<Integer>() {
             @Override
@@ -47,6 +43,9 @@ public class Main {
         System.out.println("List sorted, negative elements in the end: ");
         PrintingList.printList(listik);
 
+
+        //Задание B1
+
         String text = "According to both Landnámabók and Íslendingabók, Celtic monks known as the Papar lived in Iceland before " +
                 "Scandinavian settlers arrived, possibly members of a Hiberno-Scottish mission. Recent archaeological excavations " +
                 "have revealed the ruins of a cabin in Hafnir on the Reykjanes peninsula. Carbon dating indicates that it was abandoned " +
@@ -57,6 +56,40 @@ public class Main {
                 " Náttfaravík and became the first permanent resident of Iceland.";
 
         PrintingMap.printMap(CountingWords.countWords(text));
+
+
+
+        //Задание B2
+
+        //создаём два списка Array и Linked с одинаковым содержанием и длиной
+        ArrayList<Integer> peopleInArrayCircle = CreatingList.createArrayList(10000);
+        LinkedList<Integer> peopleInLinkedCircle = CreatingList.createLinkedList(10000);
+
+        System.out.println("Delete using indexes:");
+        //считаем, сколько времени занимает метод удаления элементов из ArrayList с использованием индексов
+        long arrayProcess = ProcessArrayOrLinked.processA(peopleInArrayCircle);
+        //считаем, сколько времени занимает метод удаления элементов из LinkedList с использованием индексов
+        long linkedProcess = ProcessArrayOrLinked.processL(peopleInLinkedCircle);
+        System.out.println("Deleting time for ArrayList: "+arrayProcess+", same operation for LinkedList: "+linkedProcess);
+
+        System.out.println("Delete using Iterator:");
+        //считаем, сколько времени занимает метод удаления элементов из ArrayList с использованием итератора
+        long arrayProcessI = ProcessArrayOrLinked.processArrayIterator(peopleInArrayCircle);
+        //считаем, сколько времени занимает метод удаления элементов из LinkedList с использованием итератора
+        long linkedProcessI = ProcessArrayOrLinked.processLinkedIterator(peopleInLinkedCircle);
+        System.out.println("Deleting time for ArrayList: "+arrayProcessI+", same operation for LinkedList: "+linkedProcessI);
+
+
+        //Задание C1
+
+        String s = " дом машина яблоко компьютер ручка молоко бумага шкаф телефон ручка карта молоко гвоздь";
+        Map<String,String> map = CreatingMapWithCodes.createMap(s);
+        System.out.println(map);
+        Map<String,String> mapSorted = CreatingMapWithCodes.sortMap(map);
+        System.out.println(mapSorted);
+        Map<String,String> mapSharpened = CreatingMapWithCodes.sharpenMap(map);
+        System.out.println(mapSharpened);
+
 
 
 

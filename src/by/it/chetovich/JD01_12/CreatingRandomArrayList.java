@@ -7,19 +7,19 @@ import java.util.Random;
 /**
  * Created by user_2 on 26.02.2016.
  */
-public class CreatingArrayList {
+public class CreatingRandomArrayList {
 
-    public static ArrayList<Integer> createArrayList (boolean isPositiveElements){
+    public static ArrayList<Integer> createArrayList (boolean isPositiveElements, int elemQuantity){
 
         ArrayList<Integer> list = new ArrayList<>();
         Random rand = new Random();
         if (isPositiveElements) {
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < elemQuantity; i++) {
                 list.add(rand.nextInt(10) + 1);
             }
         }
         else{
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < elemQuantity; i++) {
                 list.add(rand.nextInt(10) -5);
             }
 
