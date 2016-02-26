@@ -1,9 +1,9 @@
 package by.it.daylidovich.JD01_09;
 
-import by.it.daylidovich.JD01_09.varables.Float.VarableFloat;
-import by.it.daylidovich.JD01_09.varables.Matrix.VarableMatrix;
-import by.it.daylidovich.JD01_09.varables.Varable;
-import by.it.daylidovich.JD01_09.varables.Vector.VarableVector;
+import by.it.daylidovich.JD01_09.varables.Float.VariableFloat;
+import by.it.daylidovich.JD01_09.varables.Matrix.VariableMatrix;
+import by.it.daylidovich.JD01_09.varables.Variable;
+import by.it.daylidovich.JD01_09.varables.Vector.VariableVector;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +27,7 @@ public class Reader {
     }
 
     public static String readSecondTerm(String string){
-        Matcher matcher = Pattern.compile("([+\\-*/])([0-9\\[\\]\\{\\}.,]+)").matcher(string);
+        Matcher matcher = Pattern.compile("([+\\-*/= ])([0-9\\[\\]\\{\\}.,]+)").matcher(string);
         if (matcher.find())
             return matcher.group(2);
         else
@@ -35,25 +35,33 @@ public class Reader {
     }
 
     public static String readOperation(String string){
-        Matcher matcher = Pattern.compile("[+\\-*/]").matcher(string);
+        Matcher matcher = Pattern.compile("[+\\-*/=]").matcher(string);
         if (matcher.find())
             return matcher.group();
         else
             return null;
     }
 
-    public static Varable getVarable(String string) throws IOException {
+    public static String readNameVarable(String string){
+        Matcher matcher = Pattern.compile("([A-z]+)([ =])").matcher(string);
+        if (matcher.find())
+            return matcher.group(1);
+        else
+            return null;
+    }
+
+    public static Variable getVarable(String string) throws IOException {
         Matcher matcher = Pattern.compile("[\\[\\{]").matcher(string);
         int count = 0;
         while (matcher.find())
             count++;
         switch (count){
             case 0:
-                return new VarableFloat(string);
+                return new VariableFloat(string);
             case 1:
-                return  new VarableVector(string);
+                return  new VariableVector(string);
             default:
-                return new VarableMatrix(string);
+                return new VariableMatrix(string);
         }
     }
 }
