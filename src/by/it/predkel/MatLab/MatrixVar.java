@@ -1,5 +1,7 @@
 package by.it.predkel.MatLab;
 
+import by.it.akhmelev.JD01_07.matrixOk.Matrix;
+
 import java.io.IOException;
 
 
@@ -32,6 +34,11 @@ public class MatrixVar extends Var {
                 }
             }
             return this;
+        }
+        MatrixVar v1 = (MatrixVar)value;
+        if ((this.matrix.length!=v1.matrix.length)||(this.matrix[0].length!=v1.matrix[0].length)){
+            System.out.println("Эти массивы складывать нельзя");
+            return null;
         }
         for (int i=0;i<this.matrix.length;i++){//матрица+матрица
             for (int j=0;j<this.matrix[i].length;j++){
@@ -72,7 +79,7 @@ public class MatrixVar extends Var {
             }
             return new MatrixVar(temp);
         }else{
-            System.out.print("Эти матрицы перемножить нельзя");
+            System.out.println("Эти матрицы перемножить нельзя");
         }
         return null;
     }
@@ -86,6 +93,11 @@ public class MatrixVar extends Var {
                 }
             }
             return this;
+        }
+        MatrixVar v1 = (MatrixVar)value;
+        if ((this.matrix.length!=v1.matrix.length)||(this.matrix[0].length!=v1.matrix[0].length)){
+            System.out.println("Эти массивы складывать нельзя");
+            return null;
         }
         for (int i=0;i<this.matrix.length;i++){//матрица-матрица
             for (int j=0;j<this.matrix[i].length;j++){
@@ -128,7 +140,7 @@ public class MatrixVar extends Var {
             }
             return new MatrixVar(temp);
         } else {
-            System.out.print("Эти матрицы делить нельзя");
+            System.out.println("Эти матрицы делить нельзя");
         }
         return null;
     }
