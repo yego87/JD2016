@@ -1,10 +1,7 @@
 package by.it.predkel.MatLab;
 
-import by.it.akhmelev.JD01_07.matrixOk.Matrix;
-
+import by.it.predkel.MatLab.OtherClasses.InputExpression;
 import java.io.IOException;
-
-
 import static by.it.predkel.MatLab.OtherClasses.InverseMatrixJordanGauss.Inverse_matrix_jordan_gauss;
 
 /**
@@ -21,7 +18,6 @@ public class MatrixVar extends Var {
     public MatrixVar(String str) throws IOException {
         setForm(str);
     }
-
 
     ////////операции\\\\\\\\\
 

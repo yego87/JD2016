@@ -10,6 +10,8 @@ public class Main {
         //MyCollection.getCross();
         //MyCollection.getUnion();
         //LikeASort.miniSort();
-        DeleteWords.delete();
+        //DeleteWords.delete();
+        DeleteCircle.runDelete();
+
     }
 }
