@@ -1,9 +1,12 @@
 package by.it.dorostchenok.jd01_09.services;
 
 import by.it.dorostchenok.jd01_09.exception.BadOperationException;
+import by.it.dorostchenok.jd01_09.interfaces.Calc;
 import by.it.dorostchenok.jd01_09.values.FloatValue;
 import by.it.dorostchenok.jd01_09.values.Operation;
 import by.it.dorostchenok.jd01_09.values.Value;
+
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -15,33 +18,29 @@ public class Parser {
     public static final String REGEX_VECTOR = "(?<!\\{)\\{(-?((\\d)|(\\d.\\d)),?)+\\}(?!\\})";
     public static final String REGEX_MATRIX = "\\{((\\{(-?\\d(.\\d)?,?)+\\}),?){2,}\\}";
     public static final String REGEX_OPERATION = "(?<=\\}|\\d)([+\\-*/])(?=\\{|\\d|-)";
-
-    private String inputString = "";
-    private Pattern pattern = Pattern.compile(REGEX_OPERATION);
-    private Pattern realPattern = Pattern.compile(REGEX_REAL_NUMBER);
-
-//    public Parser(String inputString){
-//        this.inputString = inputString;
-//    }
+    public static final String REGEX_FIRST_PRIORITY_OP = "(?<=\\}|\\d)([*/])(?=\\{|\\d|-)";
+    public static final String REGEX_SECOND_PRIORITY_OP = "(?<=\\}|\\d)([+\\-])(?=\\{|\\d|-)";
 
 
-    public Expression parse(String inputString) throws BadOperationException {
-        Value firstValue;
-        Value secondValue;
-        Operation operation;
-        String trimedInput = inputString.trim().replace(" ", "");
+    public String parse(String inputString) throws BadOperationException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
 
-        operation = parseOperation(trimedInput);
-        System.out.println(operation.toString());
-        List<Value> valuesList = new ArrayList<>(2);
-        String[] valuesArray = inputString.split("\\" + operation.toString());
-        for (String val : valuesArray){
-            valuesList.add(parseValue(val));
+        inputString = inputString.replace(" ", "");
+        Pattern pattern = Pattern.compile(REGEX_FIRST_PRIORITY_OP);
+        Matcher matcher = pattern.matcher(inputString);
+        Pattern pattern1 = Pattern.compile(REGEX_SECOND_PRIORITY_OP);
+        Matcher matcher1 = pattern1.matcher(inputString);
+
+        Matcher[] matchers = {matcher, matcher1};
+        if (matcher.find()){
+            matcher.reset();
+
+            parse(doParse(matcher, inputString));
+        } else if (matcher1.find()){
+            matcher1.reset();
+            parse(doParse(matcher1, inputString));
         }
 
-        //System.out.println(Arrays.toString(valuesArray));
-
-        return new Expression(valuesList.get(0), valuesList.get(1), operation);
+        return "";
     }
 
     private Value parseValue(String value){
@@ -60,23 +59,60 @@ public class Parser {
     }
 
     private Operation parseOperation(String stringToParse) throws BadOperationException {
-        Matcher matcher = pattern.matcher(stringToParse);
-        String parsedOperation;
+
         Operation operation;
-        if (matcher.find()){
-            parsedOperation = stringToParse.substring(matcher.start(), matcher.end());
-            if ("+".equals(parsedOperation)){
-                operation = Operation.ADD;
-            } else if ("-".equals(parsedOperation)){
-                operation = Operation.SUB;
-            } else if ("*".equals(parsedOperation)){
-                operation = Operation.MUL;
-            } else {
-                operation = Operation.DIV;
-            }
+
+        if ("+".equals(stringToParse)){
+            operation = Operation.ADD;
+        } else if ("-".equals(stringToParse)){
+            operation = Operation.SUB;
+        } else if ("*".equals(stringToParse)){
+            operation = Operation.MUL;
+        } else if ("/".equals(stringToParse)){
+            operation = Operation.DIV;
         } else {
-            throw new BadOperationException();
+        throw new BadOperationException();
         }
+
         return operation;
+    }
+
+    private String doParse(Matcher matcher, String input) throws BadOperationException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+
+        String trimedInput = input.trim().replace(" ", "");
+
+        if (matcher.find()){
+
+            int start = matcher.start();
+            int end = matcher.end();
+            String leftPart = trimedInput.substring(0, start);
+            String rightPart = trimedInput.substring(end);
+            System.out.println(leftPart);
+
+            String[] tmpArr = leftPart.split(REGEX_OPERATION);
+            String firstOperand = tmpArr[tmpArr.length - 1];
+            tmpArr = rightPart.split(REGEX_OPERATION);
+            String secondOperand = tmpArr[0];
+
+            Value firstVale = parseValue(firstOperand);
+            Value secondValue = parseValue(secondOperand);
+            Operation operation = parseOperation(matcher.group());
+            System.out.println(firstOperand + operation + secondOperand);
+
+            Expression expression = new Expression(firstVale, secondValue, operation);
+            Calculator calc = new Calculator();
+            Value result = calc.calculate(expression);
+
+            StringBuilder restOfLeftPart = new StringBuilder(leftPart);
+            restOfLeftPart.replace(leftPart.lastIndexOf(firstOperand), leftPart.length() + 1, "");
+            String restOfRightPart = rightPart.replaceFirst(secondOperand, "");
+            String newInputString = restOfLeftPart + result.getValue() + restOfRightPart;
+            System.out.println(restOfLeftPart + result.getValue() + restOfRightPart);
+
+            return newInputString;
+
+        } else{
+            return input;
+        }
     }
 }

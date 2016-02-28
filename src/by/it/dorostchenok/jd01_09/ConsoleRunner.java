@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class ConsoleRunner {
 
-    public void execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    public void execute() throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, BadOperationException {
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         Parser parser = new Parser();
@@ -24,15 +24,9 @@ public class ConsoleRunner {
                 bufferedReader.close();
                 break;
             }
-            try {
-                Expression expr = parser.parse(line);
-                System.out.println(expr.getFirstValue());
-                System.out.println(expr.getSecondValue());
-                System.out.println(expr.getOperation());
-                System.out.println(new Calculator().calculate(expr));
-            } catch (BadOperationException e) {
-                System.out.println(e.getMessage());
-            }
+
+            parser.parse(line);
+
         }
 
     }
