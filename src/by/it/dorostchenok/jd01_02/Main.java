@@ -15,7 +15,7 @@ public class Main {
 
         // read line from console
         String rString = Utils.readLine();
-        // try parse string to integer array and return it
+        // try parseString string to integer array and return it
         int intArray[] = Utils.parseStringToIntArray(rString);
         // instance of Group A
         TaskA taskA = new TaskA();

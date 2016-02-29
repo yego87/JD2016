@@ -25,6 +25,10 @@ public abstract class Value implements IValue{
         this.value = stringBuilder.toString();
     }
 
+    public Value(String variableName){
+        this.value = variableName;
+    }
+
     @Override
     public String toString(){
         return "Type: " + this.getClass().getSimpleName() + "; Value: " + value;

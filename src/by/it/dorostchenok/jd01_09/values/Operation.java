@@ -4,7 +4,8 @@ public enum Operation {
     ADD("+"),
     SUB("-"),
     MUL("*"),
-    DIV("/");
+    DIV("/"),
+    ASG("=");
 
     private String operation;
     Operation(String operation) {
