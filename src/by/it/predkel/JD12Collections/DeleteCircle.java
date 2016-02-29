@@ -14,11 +14,11 @@ public class DeleteCircle {
         for (int i=0;i<n;i++){
             circle.add(i);
         }
-        System.out.println(circle);
+        //System.out.println(circle);
         for (int i=1;i<circle.size();i++){
             circle.remove(i);
         }
-        System.out.println(circle);
+       // System.out.println(circle);
     }
     public static void delCircleLink() {
         int n=10000;
@@ -27,18 +27,18 @@ public class DeleteCircle {
         for (int i=0;i<n;i++){
             circle.add(i);
         }
-        System.out.println(circle);
+       // System.out.println(circle);
         for (int i=1;i<circle.size();i++){
             circle.remove(i);
         }
-        System.out.println(circle);
+      //  System.out.println(circle);
     }
     public static void runDelete(){
 
         long timeout= System.currentTimeMillis();
         DeleteCircle.delCircleArr();
         Double time =(double) System.currentTimeMillis() - timeout;
-        System.out.println("Прошло "+time.toString()+" милисекунд.");
+        System.out.println("Прошло "+time.toString()+" милисекунд.");;
 
         long timeout1= System.currentTimeMillis();
         DeleteCircle.delCircleLink();
