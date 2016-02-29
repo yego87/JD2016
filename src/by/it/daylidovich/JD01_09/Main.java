@@ -1,6 +1,6 @@
 package by.it.daylidovich.JD01_09;
 
-import by.it.daylidovich.JD01_09.varables.Variable;
+import by.it.daylidovich.JD01_09.variables.Variable;
 
 import java.io.IOException;
 
