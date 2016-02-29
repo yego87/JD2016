@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 
 
 public class DataReader {
+<<<<<<< de547866f24e8c11c15e4cfa51494a7595255a94
 
     public static double sum = 0;
 
@@ -43,6 +44,19 @@ public class DataReader {
 
 
 
+=======
+    public static void main(String[] args) throws IOException {
+
+
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                 String rLine = bufferedReader.readLine();
+                 bufferedReader.close();
+
+        String[] str = rLine.split(" ");
+    }
+
+>>>>>>> JD01_13
 }
 
 
