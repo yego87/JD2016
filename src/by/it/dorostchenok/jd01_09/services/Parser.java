@@ -1,6 +1,8 @@
 package by.it.dorostchenok.jd01_09.services;
 
 import by.it.dorostchenok.jd01_09.exception.BadOperationException;
+import by.it.dorostchenok.jd01_09.exception.BadValueException;
+import by.it.dorostchenok.jd01_09.exception.VariableNotDefinedException;
 import by.it.dorostchenok.jd01_09.interfaces.VariableStorageDAO;
 import by.it.dorostchenok.jd01_09.values.FloatValue;
 import by.it.dorostchenok.jd01_09.values.Operation;
@@ -16,7 +18,7 @@ public class Parser {
     public static final String REGEX_REAL_NUMBER = "[-+]?[0-9]*\\.?[0-9]*";
     public static final String REGEX_VECTOR = "(?<!\\{)\\{(-?((\\d)|(\\d.\\d)),?)+\\}(?!\\})";
     public static final String REGEX_MATRIX = "\\{((\\{(-?\\d(.\\d)?,?)+\\}),?){2,}\\}";
-    public static final String REGEX_OPERATION = "(?<=\\}|\\d)([+\\-*/])(?=\\{|\\d|-)|(=)";
+    public static final String REGEX_OPERATION = "(?<=\\}|\\d|[a-z])([+\\-*/])(?=\\{|\\d|-|[a-z])|(=)";
     public static final String REGEX_FIRST_PRIORITY_OP = "(?<=\\}|\\d|[a-z])([*/])(?=\\{|\\d|-|[a-z])";
     public static final String REGEX_SECOND_PRIORITY_OP = "(?<=\\}|\\d|[a-z])([+\\-])(?=\\{|\\d|-|[a-z])";
     public static final String REGEX_THIRD_PRIORITY_OP = "=";
@@ -25,18 +27,24 @@ public class Parser {
     private Value result;
     private VariableStorageDAO storage;
     private Operation operation;
+    private Value firstVale;
+    private Value secondValue;
+
 
 //    public Parser(VariableStorageDAO storage){
 //        this.storage = storage;
 //    }
 
-    public Value parse(String str, VariableStorageDAO varsStorage) throws BadOperationException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public Value parse(String str, VariableStorageDAO varsStorage) throws BadOperationException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, BadValueException, VariableNotDefinedException {
+        operation = null;
+        firstVale = null;
+        secondValue = null;
         this.storage = varsStorage;
         parseString(str);
         return result;
     }
 
-    public String parseString(String inputString) throws BadOperationException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    public String parseString(String inputString) throws BadOperationException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, BadValueException, VariableNotDefinedException {
 
         inputString = inputString.replace(" ", "");
         Pattern pattern = Pattern.compile(REGEX_FIRST_PRIORITY_OP);
@@ -60,18 +68,32 @@ public class Parser {
         return inputString;
     }
 
-    private Value parseValue(String value){
+    private Value parseValue(String value) throws BadValueException, VariableNotDefinedException {
 
+        if ("=".equals(operation.toString())){
+            if (firstVale == null){
+                if (!value.matches(REGEX_VARIABLE_NAME)){
+                    throw new BadValueException();
+                }
+            }
+
+        }
         if (value.matches(REGEX_REAL_NUMBER)){
             return new FloatValue(Double.parseDouble(value));
         } else if (value.matches(REGEX_VARIABLE_NAME)){
             if (!"=".equals(operation.toString())){
                 Value v = storage.getVariable(value);
-                return ((Variable)v).getVariableValue();
+                if (v == null){
+                    throw new VariableNotDefinedException();
+                } else {
+                    return ((Variable)v).getVariableValue();
+                }
             }
             return new Variable(value);
+        } else {
+            System.out.println("!!!!!!!!!!!");
+            throw new BadValueException();
         }
-        return new FloatValue(0);
     }
 
     private Operation parseOperation(String stringToParse) throws BadOperationException {
@@ -95,7 +117,7 @@ public class Parser {
         return operation;
     }
 
-    private String doParse(Matcher matcher, String input) throws BadOperationException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+    private String doParse(Matcher matcher, String input) throws BadOperationException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, BadValueException, VariableNotDefinedException {
 
         String trimedInput = input.trim().replace(" ", "");
 
@@ -115,8 +137,8 @@ public class Parser {
             System.out.println("OPERAND: " + firstOperand + " " + secondOperand);
 
             operation = parseOperation(matcher.group());
-            Value firstVale = parseValue(firstOperand);
-            Value secondValue = parseValue(secondOperand);
+            firstVale = parseValue(firstOperand);
+            secondValue = parseValue(secondOperand);
             System.out.println(firstOperand + operation + secondOperand);
 
             Expression expression = new Expression(firstVale, secondValue, operation);

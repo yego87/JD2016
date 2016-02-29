@@ -1,6 +1,7 @@
 package by.it.dorostchenok.jd01_09;
 
 import by.it.dorostchenok.jd01_09.exception.BadOperationException;
+import by.it.dorostchenok.jd01_09.exception.BadValueException;
 import by.it.dorostchenok.jd01_09.interfaces.Calc;
 import by.it.dorostchenok.jd01_09.services.Calculator;
 import by.it.dorostchenok.jd01_09.services.Parser;
@@ -14,7 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 
 
 public class Main {
-    public static void main(String[] arg) throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, BadOperationException {
+    public static void main(String[] arg) throws IOException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, BadOperationException, BadValueException {
 
         Value val1 = new FloatValue(0.2);
         Value val2 = new FloatValue(5.3);
