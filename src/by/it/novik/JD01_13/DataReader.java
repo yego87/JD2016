@@ -43,6 +43,16 @@ public class DataReader {
 
 
 
+
+
+        InputStreamReader inputStreamReader = new InputStreamReader(System.in);
+                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                 String rLine = bufferedReader.readLine();
+                 bufferedReader.close();
+
+        String[] str = rLine.split(" ");
+    }
+
 }
 
 
