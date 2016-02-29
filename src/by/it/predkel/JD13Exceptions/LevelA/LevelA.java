@@ -14,12 +14,9 @@ public class LevelA {
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         String rLine = " ";
         ArrayList<Double> number = new ArrayList<>();
-      //  String entry;
-//        number.add(Math.sqrt(Double.valueOf(rLine)));
         while (!rLine.equals("END")) {
             try {
                 rLine = bufferedReader.readLine();
-                // entry = rLine;
                 number.add(Math.sqrt(Double.valueOf(rLine)));
                 Double k = 0.0;
                 for (int i = 0; i < number.size(); i++) {

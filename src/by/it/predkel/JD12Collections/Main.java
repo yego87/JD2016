@@ -5,12 +5,12 @@ package by.it.predkel.JD12Collections;
  */
 public class Main {
     public static void main(String[] args) {
-        //StudentsMarks.mark();
-        //MyCollection.input();
-        //MyCollection.getCross();
-        //MyCollection.getUnion();
-        //LikeASort.miniSort();
-        //DeleteWords.delete();
+        StudentsMarks.mark();
+        MyCollection.input();
+        MyCollection.getCross();
+        MyCollection.getUnion();
+        LikeASort.miniSort();
+        DeleteWords.delete();
         DeleteCircle.runDelete();
 
     }
