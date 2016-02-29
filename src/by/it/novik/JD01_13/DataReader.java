@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 public class DataReader {
     public static void main(String[] args) throws IOException {
 
-<<<<<<< a12530e82cd5ecbc05651552fb7519ca06d3a503
     public static double sum = 0;
 
     public static void main(String[] args) throws IOException {
