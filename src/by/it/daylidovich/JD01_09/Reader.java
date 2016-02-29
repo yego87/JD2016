@@ -1,9 +1,9 @@
 package by.it.daylidovich.JD01_09;
 
-import by.it.daylidovich.JD01_09.varables.Float.VariableFloat;
-import by.it.daylidovich.JD01_09.varables.Matrix.VariableMatrix;
-import by.it.daylidovich.JD01_09.varables.Variable;
-import by.it.daylidovich.JD01_09.varables.Vector.VariableVector;
+import by.it.daylidovich.JD01_09.variables.Float.VariableFloat;
+import by.it.daylidovich.JD01_09.variables.Matrix.VariableMatrix;
+import by.it.daylidovich.JD01_09.variables.Variable;
+import by.it.daylidovich.JD01_09.variables.Vector.VariableVector;
 
 import java.io.BufferedReader;
 import java.io.IOException;
