@@ -1,13 +1,13 @@
-package by.it.dorostchenok.jd01_09.services;
+package by.it.dorostchenok.matlab.services;
 
-import by.it.dorostchenok.jd01_09.exception.BadOperationException;
-import by.it.dorostchenok.jd01_09.exception.BadValueException;
-import by.it.dorostchenok.jd01_09.exception.VariableNotDefinedException;
-import by.it.dorostchenok.jd01_09.interfaces.VariableStorageDAO;
-import by.it.dorostchenok.jd01_09.values.FloatValue;
-import by.it.dorostchenok.jd01_09.values.Operation;
-import by.it.dorostchenok.jd01_09.values.Value;
-import by.it.dorostchenok.jd01_09.values.Variable;
+import by.it.dorostchenok.matlab.exception.BadOperationException;
+import by.it.dorostchenok.matlab.exception.BadValueException;
+import by.it.dorostchenok.matlab.exception.VariableNotDefinedException;
+import by.it.dorostchenok.matlab.interfaces.VariableStorageDAO;
+import by.it.dorostchenok.matlab.values.FloatValue;
+import by.it.dorostchenok.matlab.values.Operation;
+import by.it.dorostchenok.matlab.values.Value;
+import by.it.dorostchenok.matlab.values.Variable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

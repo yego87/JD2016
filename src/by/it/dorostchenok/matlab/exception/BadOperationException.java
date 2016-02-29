@@ -1,4 +1,4 @@
-package by.it.dorostchenok.jd01_09.exception;
+package by.it.dorostchenok.matlab.exception;
 
 public class BadOperationException extends Exception{
 

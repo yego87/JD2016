@@ -1,14 +1,13 @@
-package by.it.dorostchenok.jd01_09;
+package by.it.dorostchenok.matlab;
 
-import by.it.dorostchenok.jd01_09.exception.BadOperationException;
-import by.it.dorostchenok.jd01_09.exception.BadValueException;
-import by.it.dorostchenok.jd01_09.interfaces.Calc;
-import by.it.dorostchenok.jd01_09.services.Calculator;
-import by.it.dorostchenok.jd01_09.services.Parser;
-import by.it.dorostchenok.jd01_09.values.FloatValue;
-import by.it.dorostchenok.jd01_09.values.MatrixValue;
-import by.it.dorostchenok.jd01_09.values.Value;
-import by.it.dorostchenok.jd01_09.values.VectorValue;
+import by.it.dorostchenok.matlab.exception.BadOperationException;
+import by.it.dorostchenok.matlab.exception.BadValueException;
+import by.it.dorostchenok.matlab.interfaces.Calc;
+import by.it.dorostchenok.matlab.services.Calculator;
+import by.it.dorostchenok.matlab.values.FloatValue;
+import by.it.dorostchenok.matlab.values.MatrixValue;
+import by.it.dorostchenok.matlab.values.Value;
+import by.it.dorostchenok.matlab.values.VectorValue;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

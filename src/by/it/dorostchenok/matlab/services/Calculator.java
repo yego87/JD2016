@@ -1,10 +1,9 @@
-package by.it.dorostchenok.jd01_09.services;
+package by.it.dorostchenok.matlab.services;
 
-import by.it.dorostchenok.jd01_09.interfaces.Calc;
-import by.it.dorostchenok.jd01_09.values.FloatValue;
-import by.it.dorostchenok.jd01_09.values.Operation;
-import by.it.dorostchenok.jd01_09.values.Value;
-import by.it.dorostchenok.jd01_09.values.Variable;
+import by.it.dorostchenok.matlab.interfaces.Calc;
+import by.it.dorostchenok.matlab.values.FloatValue;
+import by.it.dorostchenok.matlab.values.Value;
+import by.it.dorostchenok.matlab.values.Variable;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package by.it.dorostchenok.jd01_09.values;
+package by.it.dorostchenok.matlab.values;
 
 public enum Operation {
     ADD("+"),

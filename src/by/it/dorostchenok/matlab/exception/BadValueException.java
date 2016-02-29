@@ -1,6 +1,4 @@
-package by.it.dorostchenok.jd01_09.exception;
-
-import by.it.dorostchenok.jd01_09.services.Expression;
+package by.it.dorostchenok.matlab.exception;
 
 public class BadValueException extends Exception{
     public BadValueException(){

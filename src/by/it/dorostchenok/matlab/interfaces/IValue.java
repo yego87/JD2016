@@ -1,4 +1,4 @@
-package by.it.dorostchenok.jd01_09.interfaces;
+package by.it.dorostchenok.matlab.interfaces;
 
 public interface IValue {
     String getValue();

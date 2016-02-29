@@ -1,7 +1,7 @@
-package by.it.dorostchenok.jd01_09.services;
+package by.it.dorostchenok.matlab.services;
 
-import by.it.dorostchenok.jd01_09.interfaces.VariableStorageDAO;
-import by.it.dorostchenok.jd01_09.values.Value;
+import by.it.dorostchenok.matlab.interfaces.VariableStorageDAO;
+import by.it.dorostchenok.matlab.values.Value;
 
 import java.util.ArrayList;
 import java.util.HashMap;

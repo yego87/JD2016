@@ -1,6 +1,6 @@
-package by.it.dorostchenok.jd01_09.values;
+package by.it.dorostchenok.matlab.values;
 
-import by.it.dorostchenok.jd01_09.interfaces.IValue;
+import by.it.dorostchenok.matlab.interfaces.IValue;
 
 import java.util.Arrays;
 
