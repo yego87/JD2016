@@ -12,6 +12,7 @@ public class A3 {
         oae=oae+oae.toUpperCase();
         char first=word.charAt(0);
         char last=word.charAt(word.length()-1);
+        //вернем true если гласная в начале и в конце
         return (oae.indexOf(first)>=0 && oae.indexOf(last)>=0);
     }
 
