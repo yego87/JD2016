@@ -1,9 +1,8 @@
-package by.it.dorostchenok.jd01_12.variant_a;
+package by.it.dorostchenok.jd01_12.variant_a.tasks;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+
 
 public class MyCollect {
 

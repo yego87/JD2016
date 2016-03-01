@@ -1,9 +1,6 @@
-package by.it.dorostchenok.jd01_12.variant_a;
+package by.it.dorostchenok.jd01_12.variant_a.tasks;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class VariantA1 {
 
@@ -37,8 +34,7 @@ public class VariantA1 {
     }
 
     public void printList(List<Integer> list){
-        for (int i : list){
-            System.out.println(i);
-        }
+        System.out.println(Arrays.toString(list.toArray()));
+
     }
 }

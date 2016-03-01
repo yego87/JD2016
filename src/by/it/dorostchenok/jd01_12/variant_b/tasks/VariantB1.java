@@ -1,4 +1,4 @@
-package by.it.dorostchenok.jd01_12.variant_b;
+package by.it.dorostchenok.jd01_12.variant_b.tasks;
 
 import java.util.*;
 

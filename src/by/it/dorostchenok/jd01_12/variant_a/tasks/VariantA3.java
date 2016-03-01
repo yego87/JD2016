@@ -1,4 +1,4 @@
-package by.it.dorostchenok.jd01_12.variant_a;
+package by.it.dorostchenok.jd01_12.variant_a.tasks;
 
 import java.util.ArrayList;
 import java.util.List;

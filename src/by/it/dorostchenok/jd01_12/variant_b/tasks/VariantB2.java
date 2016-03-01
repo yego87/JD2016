@@ -1,4 +1,4 @@
-package by.it.dorostchenok.jd01_12.variant_b;
+package by.it.dorostchenok.jd01_12.variant_b.tasks;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,21 +7,21 @@ import java.util.List;
 
 public class VariantB2 {
 
-    public List<Integer> genArrayList(int size, boolean linkedList){
-        List<Integer> list;
+    public List<String> genArrayList(int size, boolean linkedList){
+        List<String> list;
         if (linkedList){
             list = new LinkedList<>();
         } else {
             list = new ArrayList<>();
         }
         for (int j = 1; j < size; j++){
-            list.add(j);
+            list.add("Test" + j);
         }
 
         return list;
     }
 
-    public List<Integer> processList(List<Integer> list){
+    public List<String> processList(List<String> list){
 
         for (int j = 0; j < list.size(); j++){
             if (j % 2 == 0){
