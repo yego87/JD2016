@@ -8,7 +8,7 @@ public class A2 {
         //Паттерн для таких слов [а-яА-ЯёЁ]{1,}
         //Следовательно разделитель для таких слов - это все остальное.
         //Поэтому достаточно добавить в паттерн разделителя знак ^ - НЕ.
-        String[] mastext=text.toString().split("[^а-яА-ЯёЁ]+");
+        String[] mastext= text.split("[^а-яА-ЯёЁ]+");
 
         for (int i = 0; i < mastext.length; i++) {
             if (mastext[i].length()>0)

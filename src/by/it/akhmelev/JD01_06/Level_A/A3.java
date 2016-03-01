@@ -19,17 +19,17 @@ public class A3 {
         //Получим строку в которой можно проводить замену символов.
         StringBuilder text=new StringBuilder(Data.lukomor);
         //сначала переберем все слова.
-        //Нас интересуют слова с длиной 5 и выше
-        //Паттерн для таких слов [а-яА-ЯёЁ]{5,}
+        //Нас интересуют слова из 1 и более русских букв
+        //Паттерн для таких слов [а-яА-ЯёЁ]+
         Pattern p=Pattern.compile("[а-яА-ЯёЁ]+");
         //Теперь получим matcher - эта структура умеет находит слова по паттерну
         Matcher m=p.matcher(text);
         int counter=0;
         while (m.find()) //пока находятся слова, мы подсчитываем число подходящих под проверку
-            if (Glasnaya(m.group()))
+            if (Glasnaya(m.group())) //если проверка показали гласные в начале и конце
             {
-                counter++;
-                System.out.println(m.group());
+                counter++;                     //то увеличим общий счетчик
+                System.out.println(m.group()); //и напечатаем слово
             }
 
         System.out.print(counter);
