@@ -1,4 +1,4 @@
-package by.it.chetovich.JD01_09;
+package by.it.chetovich.Matlab;
 
 
 import java.util.Arrays;
@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * class for MatrixVar instance with float[][] array field
  */
-public class MatrixVar extends Var{
+public class MatrixVar extends Var {
 
     float [][] array;
 
@@ -30,7 +30,7 @@ public class MatrixVar extends Var{
     @Override
     public Var add(Var value) throws ErrorException {
 
-        if (value instanceof FloatVar) return new MatrixVar(Calculations.add(this.array,((FloatVar) value).getVal()));
+        if (value instanceof FloatVar) return new MatrixVar(Calculations.add(this.array, ((FloatVar) value).getVal()));
         if (value instanceof VectorVar) return super.add(value);
         if (value instanceof MatrixVar) {
             if (this.array.length==((MatrixVar) value).array.length&&this.array[0].length==((MatrixVar) value).array[0].length) {
@@ -43,7 +43,7 @@ public class MatrixVar extends Var{
     }
     @Override
     public Var sub(Var value) throws ErrorException {
-        if (value instanceof FloatVar) return new MatrixVar(Calculations.sub(this.array,((FloatVar) value).getVal()));
+        if (value instanceof FloatVar) return new MatrixVar(Calculations.sub(this.array, ((FloatVar) value).getVal()));
         if (value instanceof VectorVar) super.sub(value);
         if (value instanceof MatrixVar) {
             if (this.array.length==((MatrixVar) value).array.length&&this.array[0].length==((MatrixVar) value).array[0].length)
