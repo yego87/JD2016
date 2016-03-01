@@ -31,9 +31,8 @@ public class Class02_IO_Int {
         {
             double sum=0;
             double count=0;
-            int i=0;
             while (inp.available()>0) {
-                i=inp.readInt();
+                int i=inp.readInt();
                 sum=sum+i;
                 count++;
             }

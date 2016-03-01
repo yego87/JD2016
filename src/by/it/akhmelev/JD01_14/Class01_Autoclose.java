@@ -6,13 +6,12 @@ public class Class01_Autoclose {
     public static void main(String[] args) {
         String src = System.getProperty("user.dir") + "/src/by/it/akhmelev/";
         String fin = src + "JD01_14/text.txt";
-        String fos = src + "JD01_14/out.txt";
 
         //указание ресурса в try автоматически закроет его при выходе (Java 7)
         //возможный способ автоматического закрытия потоков  (Java 7 и выше)
         try (FileInputStream is = new FileInputStream(new File(fin))) {
 
-            int b = 0;
+            int b;
             while ((b = is.read()) != -1) { /* чтение */
                 System.out.print((char) b);
             }
