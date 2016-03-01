@@ -12,6 +12,11 @@ public class Main {
         LikeASort.miniSort();
         DeleteWords.delete();
         DeleteCircle.runDelete();
-
+        MyTreeMap.treeMap();
+        LevelA2Update.input();
+        LevelA2Update.getCross();
+        LevelA2Update.getUnion();
+        //ParseString.run("()())(((");
+        System.out.print(ParseString.run("({}[])[hey]i{am[your]friend}"));
     }
 }
