@@ -5,6 +5,6 @@ package by.it.chetovich.JD01_09;
  */
 public interface ISubtractable {
 
-    Var sub (Var value);
+    Var sub (Var value) throws ErrorException;
 
 }

@@ -5,6 +5,6 @@ package by.it.chetovich.JD01_09;
  */
 public interface IDividable {
 
-    Var divide (Var value);
+    Var divide (Var value) throws ArithmeticException, ErrorException;
 
 }
