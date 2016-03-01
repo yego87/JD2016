@@ -34,12 +34,16 @@ public abstract class Var extends Number implements IOperation {
     }
 
     @Override
+    public void outPut(){
+    }
+
+    @Override
     public boolean checkMatrixToSum(MatrixVar mat1, MatrixVar mat2) {//проверка матриц перед сложением
-        return ((mat1.matrix.length == mat2.matrix.length)&&(mat1.matrix[0].length == mat2.matrix[0].length));
+        return ((mat1.val.length == mat2.val.length)&&(mat1.val[0].length == mat2.val[0].length));
     }
 
     @Override
     public boolean checkMatrixToMul(MatrixVar mat1, MatrixVar mat2) {
-        return (mat1.matrix[0].length == mat2.matrix.length);
+        return (mat1.val[0].length == mat2.val.length);
     }
 }

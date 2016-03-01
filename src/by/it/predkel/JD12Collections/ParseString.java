@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Admin on 01.03.2016.
+ * Валидация расстановки скобок в строке
  */
 public class ParseString {
     /*public static void run(String s){

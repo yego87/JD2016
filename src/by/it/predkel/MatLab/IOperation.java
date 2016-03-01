@@ -14,4 +14,5 @@ public interface IOperation {
     boolean checkMatrixToSum(MatrixVar mat1,MatrixVar mat2);
     boolean checkMatrixToMul(MatrixVar mat1,MatrixVar mat2);
     void setForm(String str) throws IOException;
+    void outPut();
 }

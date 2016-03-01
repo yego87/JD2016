@@ -1,5 +1,7 @@
 package by.it.predkel.MatLab;
 
+import by.it.predkel.MatLab.OtherClasses.InputExpression;
+
 import java.io.IOException;
 
 /**
@@ -8,7 +10,8 @@ import java.io.IOException;
 public class Main{
 
     private static void one(Var v){
-        if (v!=null) System.out.println(v);
+        if (v!=null)
+            v.outPut();
     }
 
     public static void main (String [] args) throws IOException {
@@ -45,18 +48,6 @@ public class Main{
         one(new MatrixVar(mat).mul(new MatrixVar(vec)));
         one(new MatrixVar(mat).div(new MatrixVar(vec)));
 
-        //FloatVar var = new FloatVar(5);
-        //FloatVar var1 = new FloatVar(10);
-
-       // System.out.println(var.addFloat(var1));
-/*
-
-        MatrixVar matrix=new MatrixVar(mass);
-        matrix.outPut();
-        double[][] mass={{5.0,5.0},{5.0,6.0}};
-        MatrixVar a=new MatrixVar(mass);
-        FloatVar b=new FloatVar("6");
-        a.add(b);
-        a.outPut();*/
+        //InputExpression.input();
     }
 }
