@@ -4,6 +4,7 @@ import by.it.dorostchenok.jd01_12.variant_a.MyCollect;
 import by.it.dorostchenok.jd01_12.variant_a.VariantA1;
 import by.it.dorostchenok.jd01_12.variant_a.VariantA3;
 import by.it.dorostchenok.jd01_12.variant_b.VariantB1;
+import by.it.dorostchenok.jd01_12.variant_b.VariantB2;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +37,16 @@ public class Main {
         //variantA1.printList(list);
 
         VariantB1 variantB1 = new VariantB1();
-        variantB1.printWordCount();
+        //variantB1.printWordCount();
+        //variantB1.printUniqueWords();
+
+        VariantB2 variantB2 = new VariantB2();
+        List<Integer> arrayList = variantB2.genArrayList(100000, true);
+        List<Integer> l = variantB2.processList(arrayList);
+        System.out.println(Arrays.toString(l.toArray()));
+        System.out.println(l.getClass().getSimpleName());
+
+
 
     }
 }

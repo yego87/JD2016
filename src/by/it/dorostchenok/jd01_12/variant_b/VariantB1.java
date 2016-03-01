@@ -17,15 +17,33 @@ public class VariantB1 {
         return words;
     }
 
-    public void printWordCount(){
+    private Map<String, Integer> countWords(){
         Map<String, Integer> wordMap = new HashMap<>();
-        for (String s : getWords()){
-            Integer count = wordMap.get(s);
+        List<String> words = getWords();
+        for (String word : words){
+            Integer count = wordMap.get(word);
             if (count == null){
-                wordMap.put(s, 0);
+                wordMap.put(word, 1);
+            } else {
+                wordMap.put(word, ++count);
             }
         }
 
+        return wordMap;
+    }
 
+    public void printWordCount(){
+
+        for (Map.Entry<String, Integer> entry : countWords().entrySet()){
+            System.out.println(entry.getKey() + " - " + entry.getValue());
+        }
+    }
+
+    public void printUniqueWords(){
+        Map<String, Integer> map = countWords();
+        Set<String> words = map.keySet();
+        for (String s : words){
+            System.out.println(s);
+        }
     }
 }
