@@ -7,35 +7,22 @@ import java.util.List;
 
 public class main {
     public static void main(String[] args){
-        // A-1
-        int studentsNumber=15;
+        //A
+        Task_A.taskA();
 
-        ArrayList<Integer> marksList = new ArrayList<Integer>();
-        myCollect.randomFill(marksList, studentsNumber);
-        System.out.println("Задание А-1");
-        System.out.println("Исходная коллекция оценок: "+marksList);
+        //В-1;
+        String text= "The summer holiday is over. It is time to think of the new school year. " +
+                "And while some are eager to know their new teacher and meet their friends to tell " +
+                "them about all their summer adventures, others are more worried about the new year. Here " +
+                "are some tips for a smooth school year start that will help you beat the stress and organize your study environment.\n" +
+                "Reconnecting with a healthy lifestyle\n" +
+                "\n" +
+                "During holidays, children have often been allowed to sleep late and eat a little of what they" +
+                " wanted at any time. The first thing to do is to help yourself make a smooth start and not to wait" +
+                " until the last day to find a healthy lifestyle. You should get used to have regular and reasonable hours " +
+                "of sleep and to eat healthy food. This of course needs several days of \"rehabilitation\". The ideal thing is" +
+                " to start reconnecting with a healthy lifestyle one week to ten days before school starts.\n";
 
-        int i=0;
-        while(i<marksList.size()){
-            if (marksList.get(i)>4)i++;
-            else marksList.remove(i);
-        }
-        System.out.println("Обработанная коллекция оценок: "+marksList);
-
-        //A-2
-        ArrayList<Integer> A = new ArrayList<Integer>();
-        ArrayList<Integer> B = new ArrayList<Integer>();
-        myCollect.randomFill(A, 5);
-        myCollect.randomFill(B, 5);
-        myCollect.getCross(A, B);
-        myCollect.getUnion(A, B);
-        System.out.println("Задание А-2\nА: "+A+"\nВ: "+B+"\nОбъединение: "+ myCollect.getUnion(A, B)+"\nПересечение: "+ myCollect.getCross(A, B));
-
-        //А-3
-        List<Integer> myList = new LinkedList<Integer>();
-        myCollect.randomFill(myList,30,-10,10);
-        System.out.println("Задание А-3: \n"+myList);
-       // myCollect.sort(myList);
-        System.out.println(myList);
+        Task_B.task_B(text);
     }
 }

@@ -46,13 +46,15 @@ public  class myCollect {
         }
         return cross;
     }
+
     public static List<Integer> sort (LinkedList<Integer> myLList){
         int i=0;
         while(i<myLList.size()){
             if (myLList.get(i)<0){
-             //   myLList.add
-                // myLList.remove(i);
+                myLList.addFirst(myLList.get(i));
+                myLList.remove(i+1);
             }
+            else i++;
         }
         return myLList;
     }
