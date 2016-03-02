@@ -1,4 +1,4 @@
-package by.it.dorostchenok.jd01_13;
+package by.it.dorostchenok.jd01_13.a;
 
 import java.io.BufferedReader;
 import java.io.IOException;

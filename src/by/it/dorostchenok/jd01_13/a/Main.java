@@ -1,6 +1,6 @@
-package by.it.dorostchenok.jd01_13;
+package by.it.dorostchenok.jd01_13.a;
 
-import by.it.dorostchenok.jd01_13.variants.VariantA;
+import by.it.dorostchenok.jd01_13.a.VariantA;
 
 import java.io.IOException;
 
