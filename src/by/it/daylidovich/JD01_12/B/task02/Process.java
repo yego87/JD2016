@@ -21,6 +21,7 @@ public class Process {
     }
     
     public static void processArray(ArrayList<Integer> list){
+        Timer timer = new Timer();
         int n = 1;
         while (1 < list.size()){
             if (n  < list.size()){
@@ -31,9 +32,11 @@ public class Process {
                 n = n - list.size();
         }
         System.out.println("Остался №" + list.get(0));
+        System.out.println("Решение задачи с помощью ArrayList заняло " + timer);
     }
 
     public static void processLinked(LinkedList<Integer> list){
+        Timer timer = new Timer();
         int n = 1;
         while (1 < list.size()){
             if (n < list.size()){
@@ -44,5 +47,6 @@ public class Process {
                 n = n - list.size();
         }
         System.out.println("Остался №" + list.get(0));
+        System.out.println("Решение задачи с помощью LinkedList заняло " + timer);
     }
 }
