@@ -1,16 +1,14 @@
 package by.it.veselov.JD01_06;
-
-import java.util.concurrent.atomic.LongAdder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.util.ArrayList;
 /**
- * Created by yegorveselov on 21.02.16.
+ * Created by yegorveselov on 01.03.16.
  */
-public class String_A_1 {
-        public static void main(String [] args){
-            StringBuilder sb=new StringBuilder (
-                    "У лукоморья дуб зеленый;\n"+
+public class String_B_2 {
+    public static void main(String[] args) {
+    StringBuilder sb=new StringBuilder (
+            "У лукоморья дуб зеленый;\n"+
                     "Златая цепь на дубе том:\n"+
                     "И днем и ночью кот ученый\n"+
                     "Все ходит по цепи кругом;\n"+
@@ -43,16 +41,16 @@ public class String_A_1 {
                     "У моря видел дуб зеленый;\n"+
                     "Под ним сидел, и кот ученый\n"+
                     "Свои мне сказки говорил.");
-                String reg = "[а-яА-я]{5,}";
-                Pattern p = Pattern.compile(reg);
-                Matcher m=p.matcher(sb);
-                while (m.find())
-                {
-                        sb.setCharAt(m.start()+4,'#');
-                if(m.group().length()>6)sb.setCharAt(m.start()+6,'#');
-                }
-                System.out.println(sb);
+        Matcher m = Pattern.compile("[^!?;.]*[!?;.]+").matcher(sb);
+        ArrayList<String> aList = new ArrayList<>();
+        while (m.find()){aList.add(m.group());}
+
+        String[] arrayString=new String[aList.size()];
+        for (int i = 0; i < arrayString.length; i++)
+            arrayString[i] = aList.get(i).trim();
 
 
         }
+
+
 }
