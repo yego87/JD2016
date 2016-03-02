@@ -8,11 +8,11 @@ public interface Iemployee {
     void printName ();
     void function();
     void isItr ();
-    void paySalary ();
-    void paySalary (int bonus);
+    void paySalary () throws NegativeSalaryException;
+    void paySalary (int bonus) throws NegativeSalaryException;
     void goToVacation ();
     boolean getFired (boolean fired);
-    void payCompensation(int compensation);
+    void payCompensation (int compensation) throws NegativeSalaryException;
 
 
 

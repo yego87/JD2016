@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  */
 public class Main {
 
-    public static void main (String [] args) throws IOException {
+    public static void main (String [] args) throws IOException, ErrorException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); //вводим строку
         Map<String,Var> map = new HashMap<>(); //сюда будем записывать новые переменные с присвоенными им значениями

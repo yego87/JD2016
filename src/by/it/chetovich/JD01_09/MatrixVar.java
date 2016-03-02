@@ -28,7 +28,7 @@ public class MatrixVar extends Var{
     }
 
     @Override
-    public Var add(Var value) {
+    public Var add(Var value) throws ErrorException {
 
         if (value instanceof FloatVar) return new MatrixVar(Calculations.add(this.array,((FloatVar) value).getVal()));
         if (value instanceof VectorVar) return super.add(value);
@@ -42,7 +42,7 @@ public class MatrixVar extends Var{
 
     }
     @Override
-    public Var sub(Var value) {
+    public Var sub(Var value) throws ErrorException {
         if (value instanceof FloatVar) return new MatrixVar(Calculations.sub(this.array,((FloatVar) value).getVal()));
         if (value instanceof VectorVar) super.sub(value);
         if (value instanceof MatrixVar) {
@@ -54,25 +54,38 @@ public class MatrixVar extends Var{
     }
 
     @Override
-    public Var multi(Var value) {
+    public Var multi(Var value) throws ErrorException {
         if (value instanceof FloatVar) return new MatrixVar(Calculations.multi(((FloatVar) value).getVal(), this.array));
         if (value instanceof VectorVar) {
-            if (this.array[0].length==((VectorVar) value).getVector().length)
+            try {
                 return new VectorVar(Calculations.multi(((VectorVar) value).getVector(), this.array));
-            else super.sub(value);
+            } catch (DifferentSizesException e) {
+                System.out.println(e.getMessage());
+            }
         }
         if (value instanceof MatrixVar) {
-            if (this.array.length==((MatrixVar) value).array[0].length)
-            return new MatrixVar(Calculations.multi(this.array, ((MatrixVar) value).getArray()));
-            else super.multi(value);
+            try {
+                return new MatrixVar(Calculations.multi(this.array, ((MatrixVar) value).getArray()));
+            } catch (DifferentSizesException e) {
+                System.out.println(e.getMessage());
+            }
         }
         return super.multi(value);
     }
 
     @Override
-    public Var divide(Var value) {
-        if (value instanceof FloatVar)
-            return new MatrixVar(Calculations.multi(1/((FloatVar) value).getVal(), this.array));
+    public Var divide(Var value) throws ErrorException {
+        if (value instanceof FloatVar) {
+
+            float divider;
+            try {
+                divider = Calculations.divide(1, ((FloatVar) value).getVal());
+                return new MatrixVar(Calculations.multi(divider, this.array));
+
+            } catch (ArithmeticException e) {
+                System.err.println("Division by zero");
+            }
+        }
         if (value instanceof VectorVar) return super.divide(value);
         if (value instanceof MatrixVar) return super.divide(value);
         return super.divide(value);
