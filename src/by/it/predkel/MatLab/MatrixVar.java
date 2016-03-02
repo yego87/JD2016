@@ -92,7 +92,7 @@ public class MatrixVar extends Var {
         }
         MatrixVar v1 = (MatrixVar)value;
         if ((this.val.length!=v1.val.length)||(this.val[0].length!=v1.val[0].length)){
-            System.out.println("Эти массивы складывать нельзя");
+            System.out.println("Эти массивы отнимать нельзя");
             return null;
         }
         for (int i=0;i<this.val.length;i++){//матрица-матрица
@@ -113,29 +113,39 @@ public class MatrixVar extends Var {
             }
             return this;
         } else if (checkMatrixToMul(this, (MatrixVar) value)) {
-            double[][] value1 = Inverse_matrix_jordan_gauss(((MatrixVar) value).val);//создание обратной матрицы
-            double[][] temp = new double[this.val.length][value1[0].length];//матрица/матрица
-            for (int i = 0; i < this.val.length; i++) {
-                for (int j = 0; j < value1[0].length; j++) {
-                    for (int k = 0; k < value1.length; k++) {
-                        temp[i][j] = temp[i][j] + this.val[i][k] * value1[k][j];
-                    }
-                }
+            if (((MatrixVar) value).val.length==1){
+                System.out.println("Эти матрицы делить нельзя");
+                return null;
             }
-            return new MatrixVar(temp);
+                double[][] value1 = Inverse_matrix_jordan_gauss(((MatrixVar) value).val);//создание обратной матрицы
+                double[][] temp = new double[this.val.length][value1[0].length];//матрица/матрица
 
-        } else if (checkMatrixToMul((MatrixVar) value, this)) {
-            double[][] value1 = Inverse_matrix_jordan_gauss(this.val);//создание обратной матрицы
-            double[][] temp = new double[value1.length][((MatrixVar) value).val[0].length];//матрица/матрица
-            for (int i = 0; i < value1.length; i++) {
-                for (int j = 0; j < ((MatrixVar) value).val[0].length; j++) {
-                    for (int k = 0; k < ((MatrixVar) value).val.length; k++) {
-                        temp[i][j] = temp[i][j] + value1[i][k] * ((MatrixVar) value).val[k][j];
+                for (int i = 0; i < this.val.length; i++) {
+                    for (int j = 0; j < value1[0].length; j++) {
+                        for (int k = 0; k < value1.length; k++) {
+                            temp[i][j] = temp[i][j] + this.val[i][k] * value1[k][j];
+                        }
                     }
                 }
+                return new MatrixVar(temp);
+        } else if (checkMatrixToMul((MatrixVar) value, this)) {
+            if (this.val.length==1){
+                System.out.println("Эти матрицы делить нельзя");
+                return null;
+
             }
-            return new MatrixVar(temp);
-        } else {
+                double[][] value1 = Inverse_matrix_jordan_gauss(this.val);//создание обратной матрицы
+                double[][] temp = new double[value1.length][((MatrixVar) value).val[0].length];//матрица/матрица
+                for (int i = 0; i < value1.length; i++) {
+                    for (int j = 0; j < ((MatrixVar) value).val[0].length; j++) {
+                        for (int k = 0; k < ((MatrixVar) value).val.length; k++) {
+                            temp[i][j] = temp[i][j] + value1[i][k] * ((MatrixVar) value).val[k][j];
+                        }
+                    }
+                }
+                return new MatrixVar(temp);
+
+        }else {
             System.out.println("Эти матрицы делить нельзя");
         }
         return null;

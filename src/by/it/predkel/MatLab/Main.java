@@ -23,7 +23,7 @@ public class Main{
         one(new FloatVar("-4").div(new FloatVar("-1")));
 
         String vec="{{1,2,3}}";
-        String mat="{{1,2,3}{1,2,3}}";
+        String mat="{{1,2,3}{1,2,3}{1,2,3}}";
         System.out.println("\nпроверка операций с векторами справа и скалярами слева");
         one(new MatrixVar(vec).add(new FloatVar("2")));
         one(new MatrixVar(vec).sub(new FloatVar("1")));
