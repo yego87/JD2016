@@ -17,8 +17,8 @@ public class B2 {
 
         //list.addAll(Arrays.asList(arr));
 
-        System.out.println((processArray(arr)) + ". Time passed: " + t);
-        System.out.println((prоcessLinked(arr)) + ". Time passed: " + t);
+        System.out.println("Operation with ArrayList. " + (processArray(arr)) + ". Time passed: " + t);
+        System.out.println("Operation with LinkedList. " + (prоcessLinked(arr)) + ". Time passed: " + t);
     }
 
     public static ArrayList<Integer> processArray(Integer[] arr) {
@@ -52,18 +52,18 @@ public class B2 {
         return linkedList;
     }
 
-    public static class Timer {
+    public static class Time {
         private long iniTime;
         private Double Delta;
 
-        public Timer() {
+        public Time() {
             iniTime = System.nanoTime();
         }
 
         public String toString() {
             Delta = (double) (System.nanoTime() - iniTime) / 1000;
             iniTime = System.nanoTime();
-            return "Прошло " + Delta.toString() + " микросекунд.";
+            return Delta.toString() + " microseconds";
         }
     }
 }
