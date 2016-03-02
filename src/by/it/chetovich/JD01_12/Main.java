@@ -9,8 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        boolean isPositiveElements = true;
-        List<Integer> votes = CreatingRandomArrayList.createArrayList(isPositiveElements, 20); //создаём список оценок от 1 до 10
+        List<Integer> votes = CreatingRandomArrayList.createArrayList(true, 20); //создаём список оценок от 1 до 10
         List<Integer> goodVotes = CreatingRandomArrayList.createGoodVotesList(votes); //создаём список положительных оценок больше 4
 
         System.out.print("Votes list: ");
@@ -31,7 +30,7 @@ public class Main {
         System.out.println("Cross of two sets: ");
         PrintingList.printList(MyCollect.getCross(setA, setB));
 
-        List<Integer> listik = CreatingRandomArrayList.createArrayList(!isPositiveElements, 20);
+        List<Integer> listik = CreatingRandomArrayList.createArrayList(false, 20);
         //PrintingList.printList(listik);
         Collections.sort(listik, new Comparator<Integer>() {
             @Override
@@ -85,10 +84,11 @@ public class Main {
         String s = " дом машина яблоко компьютер ручка молоко бумага шкаф телефон ручка карта молоко гвоздь";
         Map<String,String> map = CreatingMapWithCodes.createMap(s);
         System.out.println(map);
-        Map<String,String> mapSorted = CreatingMapWithCodes.sortMap(map);
-        System.out.println(mapSorted);
         Map<String,String> mapSharpened = CreatingMapWithCodes.sharpenMap(map);
         System.out.println(mapSharpened);
+
+
+
 
 
 

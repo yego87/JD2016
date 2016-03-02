@@ -15,7 +15,8 @@ public class CreatingMapWithCodes {
      */
     public static Map<String , String> createMap (String s){
 
-        Map<String, String> map= new HashMap<>();
+        //используем TreeMap, т.к. он автоматически сортирует ключи
+        Map<String, String> map= new TreeMap<>();
         Pattern pat = Pattern.compile("[а-яА-ЯёЁ]+");
         Matcher mat = pat.matcher(s);
         int i= 1;
@@ -31,29 +32,12 @@ public class CreatingMapWithCodes {
     /**
      *
      * @param map map with objects and their codes
-     * @return sorted map where codes of the objects are sorted in ascending order
-     */
-    public static Map<String , String> sortMap (Map<String , String> map){
-
-        List<String> list = new ArrayList<>(map.keySet());
-        Collections.sort(list);
-        Map<String, String> mapSorted= new LinkedHashMap<>();
-        for (String s : list) {
-            mapSorted.put(s, map.get(s));
-        }
-        return mapSorted;
-
-    }
-
-    /**
-     *
-     * @param map map with objects and their codes
      * @return map with unique objects and their codes in ascending order
      */
     public static Map<String , String> sharpenMap (Map<String , String> map){
 
         Set <String> set = new LinkedHashSet<>(map.values());
-        Map<String, String> mapSharpened= new LinkedHashMap<>();
+        Map<String, String> mapSharpened= new TreeMap<>();
         for (String s : set) {
             for (Map.Entry<String, String> entry : map.entrySet()) {
                 if (s.equals(entry.getValue())){ mapSharpened.put(entry.getKey(),s);
@@ -61,7 +45,7 @@ public class CreatingMapWithCodes {
 
             }
         }
-        mapSharpened = sortMap(mapSharpened);
+        //mapSharpened = sortMap(mapSharpened);
         return mapSharpened;
     }
 }
