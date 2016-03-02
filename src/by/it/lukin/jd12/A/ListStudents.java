@@ -3,9 +3,6 @@ package by.it.lukin.jd12.A;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/**
- * Created by алексей on 29.02.2016.
- */
 public class ListStudents {
     public static void main(String[] args){
         ArrayList<Integer> mark = new ArrayList<Integer>();

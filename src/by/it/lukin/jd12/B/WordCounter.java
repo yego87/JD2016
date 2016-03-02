@@ -5,9 +5,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by алексей on 01.03.2016.
- */
+
 public class WordCounter {
     public static void main(String[] args){
         Map<String,Integer> wordMap = new HashMap<>();

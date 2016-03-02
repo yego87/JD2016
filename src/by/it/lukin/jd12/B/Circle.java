@@ -2,9 +2,6 @@ package by.it.lukin.jd12.B;
 
 import java.util.*;
 
-/**
- * Created by алексей on 01.03.2016.
- */
 public class Circle {
     public static void main(String[] args){
         Timer t = new Timer();

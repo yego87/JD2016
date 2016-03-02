@@ -3,9 +3,7 @@ package by.it.lukin.jd12.C;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by алексей on 01.03.2016.
- */
+
 public class MyCollect {
     public static <T> Set<T> getCross(Set<T> a, Set<T> b) throws NullPointerException{
         if (a == null)
