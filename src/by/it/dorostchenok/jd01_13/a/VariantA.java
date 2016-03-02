@@ -16,6 +16,7 @@ public class VariantA {
             line = reader.readLine();
             Double d = 0.0;
             if ("end".equals(line.toLowerCase())){
+                reader.close();
                 break;
             }
             try{
