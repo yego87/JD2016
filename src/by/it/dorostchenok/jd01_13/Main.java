@@ -1,7 +1,12 @@
 package by.it.dorostchenok.jd01_13;
 
-/**
- * Created by misha on 3/2/16.
- */
+import by.it.dorostchenok.jd01_13.variants.VariantA;
+
+import java.io.IOException;
+
 public class Main {
+    public static void main(String[] args) throws IOException {
+        VariantA a = new VariantA();
+        a.execute();
+    }
 }
