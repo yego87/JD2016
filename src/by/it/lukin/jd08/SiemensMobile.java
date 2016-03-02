@@ -1,6 +1,5 @@
 package by.it.lukin.jd08;
 
-
 public abstract class SiemensMobile implements Mobile{
     @Override
     public boolean isCallable() {
