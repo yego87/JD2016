@@ -83,7 +83,7 @@ public class MatrixVar extends Var {
                 return new MatrixVar(Calculations.multi(divider, this.array));
 
             } catch (ArithmeticException e) {
-                System.err.println("Division by zero");
+                System.out.println("Division by zero");
             }
         }
         if (value instanceof VectorVar) return super.divide(value);

@@ -56,7 +56,7 @@ public class FloatVar extends Var {
             try {
                 return new FloatVar(Calculations.divide(this.val, ((FloatVar) value).getVal()));
             } catch (ArithmeticException e) {
-                System.err.println("Division by zero");
+                System.out.println("Division by zero");
             }
         }
         if (value instanceof VectorVar) return super.divide(value);

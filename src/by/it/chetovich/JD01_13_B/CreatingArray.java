@@ -1,11 +1,13 @@
 package by.it.chetovich.JD01_13_B;
 
+import java.io.IOException;
+
 /**
- * Created by Yultos_ on 29.02.2016.
+ * creates an array
  */
 public class CreatingArray {
 
-    public static void createArray (int size, int quantity) throws IndexOutOfBoundsException{
+    public static void createArray (int size, int quantity) throws IndexOutOfBoundsException, IOException {
 
         System.out.println("Start creating an array");
         int [] array = new int[size];
@@ -13,12 +15,7 @@ public class CreatingArray {
             array[i] = i;
         }
 
-        try {
-            DividingRandom.divide(array[array.length-1]);
-        } catch (ArithmeticException e) {
-            System.err.print("Divizion by zero: "+e);
-        }
-
+        DividingRandom.divide(array[array.length - 1]);
 
         System.out.println("Finish creating an array");
 

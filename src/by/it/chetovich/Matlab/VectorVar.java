@@ -78,7 +78,7 @@ public class VectorVar extends Var {
                 divider = Calculations.divide(1, ((FloatVar) value).getVal());
                 return new VectorVar(Calculations.multi(divider, this.vector));
             } catch (ArithmeticException e) {
-                System.err.println("Division by zero");
+                System.out.println("Division by zero");
             }
         }
         if (value instanceof VectorVar) return super.divide(value);
