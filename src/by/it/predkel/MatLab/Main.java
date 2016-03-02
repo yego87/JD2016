@@ -48,6 +48,6 @@ public class Main{
         one(new MatrixVar(mat).mul(new MatrixVar(vec)));
         one(new MatrixVar(mat).div(new MatrixVar(vec)));
 
-        //InputExpression.input();
+        InputExpression.input();
     }
 }

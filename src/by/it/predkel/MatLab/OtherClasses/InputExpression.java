@@ -77,10 +77,11 @@ public class InputExpression {
                     countCol++;
                 }
             }
+            Matcher mat3=pat1.matcher(mat.group());
             double[][] mass = new double[countRow][countCol / countRow];
             int l = 0;
-            while (mat1.find()) {
-                Matcher mat2 = pat2.matcher(mat1.group());
+            while (mat3.find()) {
+                Matcher mat2 = pat2.matcher(mat3.group());
                 int m = 0;
                 while (mat2.find()) {
                     mass[l][m] = Float.parseFloat(mat2.group());
