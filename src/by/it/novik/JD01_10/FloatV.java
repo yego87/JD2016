@@ -24,7 +24,7 @@ public class FloatV extends AVar implements StrOperations {
 
     @Override
     public String toString() {
-        return ((Double)var).toString();
+        return ((Double) var).toString();
     }
 
     @Override

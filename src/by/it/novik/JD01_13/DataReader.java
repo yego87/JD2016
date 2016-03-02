@@ -18,7 +18,6 @@ public class DataReader {
                  BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
 
-
         while (true) {
             String rLine = bufferedReader.readLine();
             if (rLine.equals("END")) break;
@@ -43,6 +42,10 @@ public class DataReader {
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 }
 
 
