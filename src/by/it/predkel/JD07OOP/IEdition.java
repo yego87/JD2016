@@ -6,11 +6,11 @@ package by.it.predkel.JD07OOP;
 public interface IEdition {
     String getBookName();
     void setBookName(String newName);
-    void issueABook();
-    void findText(String neededText);
-    void burnIt();
-    void openBook();
-    void closeBook();
-    void buy();
+    void issueABook() throws MyException;
+    void findText(String neededText) throws MyException;
+    void burnIt() throws MyException;
+    void openBook() throws MyException;
+    void closeBook() throws MyException;
+    void buy() throws MyException;
 
 }
