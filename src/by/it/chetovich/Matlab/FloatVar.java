@@ -1,4 +1,4 @@
-package by.it.chetovich.JD01_09;
+package by.it.chetovich.Matlab;
 
 
 /**
@@ -28,8 +28,8 @@ public class FloatVar extends Var {
     @Override
     public Var add(Var value) {
         if (value instanceof FloatVar) return new FloatVar(Calculations.add(this.val, ((FloatVar) value).val));
-        if (value instanceof VectorVar) return new VectorVar(Calculations.add(((VectorVar) value).getVector(),this.val));
-        if (value instanceof MatrixVar) return new MatrixVar(Calculations.add(((MatrixVar) value).getArray(),this.val));
+        if (value instanceof VectorVar) return new VectorVar(Calculations.add(((VectorVar) value).getVector(), this.val));
+        if (value instanceof MatrixVar) return new MatrixVar(Calculations.add(((MatrixVar) value).getArray(), this.val));
         return null;
     }
 
@@ -56,7 +56,7 @@ public class FloatVar extends Var {
             try {
                 return new FloatVar(Calculations.divide(this.val, ((FloatVar) value).getVal()));
             } catch (ArithmeticException e) {
-                System.err.println("Division by zero");
+                System.out.println("Division by zero");
             }
         }
         if (value instanceof VectorVar) return super.divide(value);

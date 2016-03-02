@@ -1,4 +1,4 @@
-package by.it.chetovich.JD01_09;
+package by.it.chetovich.Matlab;
 
 /**
  * interface dor division operation

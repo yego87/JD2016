@@ -1,4 +1,4 @@
-package by.it.chetovich.JD01_09;
+package by.it.chetovich.Matlab;
 
 /**
  * class for different operations with different types of variables
@@ -211,7 +211,7 @@ public class Calculations {
      * @param b float [][] array, Class MatrixVar field
      * @return the multiplication of a and b - float [] result
      */
-    public static float [] multi (float [] a, float [][] b) throws DifferentSizesException{
+    public static float [] multi (float [] a, float [][] b) throws DifferentSizesException {
         if (a.length!=b[0].length) throw new DifferentSizesException("Vector and matrix have incompatibile sizes.");
             float [] result = new float[a.length];
             for (int i = 0; i < a.length; i++) {
@@ -228,8 +228,8 @@ public class Calculations {
      * @param b float [][] array, Class MatrixVar field
      * @return the multiplication of a and b - float [][] result
      */
-    public static float [][] multi (float[][] a, float[][] b) throws DifferentSizesException{
-        if (a.length!=b[0].length) throw new DifferentSizesException ("Matrices have incompatibile sizes for multiplication.");
+    public static float [][] multi (float[][] a, float[][] b) throws DifferentSizesException {
+        if (a.length!=b[0].length) throw new DifferentSizesException("Matrices have incompatibile sizes for multiplication.");
             float[][] result = new float[a.length][b[0].length];
             for (int i = 0; i < a.length; i++) {
                 for (int j = 0; j < b[0].length; j++) {

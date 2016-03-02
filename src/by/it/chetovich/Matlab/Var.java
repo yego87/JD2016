@@ -1,4 +1,4 @@
-package by.it.chetovich.JD01_09;
+package by.it.chetovich.Matlab;
 
 /**
  * abstract class for all types of variable
@@ -6,7 +6,7 @@ package by.it.chetovich.JD01_09;
 public abstract class Var implements IAddable, ISubtractable, IMultiplicable, IDividable {
 
     @Override
-    public  Var add(Var value) throws ErrorException {
+    public Var add(Var value) throws ErrorException {
         try {
             throw new ErrorException("Addition is impossible.");
         } catch (ErrorException e) {
@@ -16,7 +16,7 @@ public abstract class Var implements IAddable, ISubtractable, IMultiplicable, ID
     }
 
     @Override
-    public  Var sub(Var value) throws ErrorException {
+    public Var sub(Var value) throws ErrorException {
         try {
             throw new ErrorException("Subtraction is impossible.");
         } catch (ErrorException e) {
@@ -26,7 +26,7 @@ public abstract class Var implements IAddable, ISubtractable, IMultiplicable, ID
     }
 
     @Override
-    public  Var multi(Var value) throws ErrorException {
+    public Var multi(Var value) throws ErrorException {
         try {
             throw new ErrorException("Multiplication is impossible.");
         } catch (ErrorException e) {
@@ -36,7 +36,7 @@ public abstract class Var implements IAddable, ISubtractable, IMultiplicable, ID
     }
 
     @Override
-    public  Var divide(Var value) throws ErrorException {
+    public Var divide(Var value) throws ErrorException {
         try {
             throw new ErrorException("Division is impossible.");
         } catch (ErrorException e) {

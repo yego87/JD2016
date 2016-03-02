@@ -1,4 +1,4 @@
-package by.it.chetovich.JD01_09;
+package by.it.chetovich.Matlab;
 
 
 import java.util.Arrays;
@@ -30,7 +30,7 @@ public class VectorVar extends Var {
     @Override
     public Var add(Var value) throws ErrorException {
 
-        if (value instanceof FloatVar) return new VectorVar(Calculations.add(this.vector,((FloatVar) value).getVal()));
+        if (value instanceof FloatVar) return new VectorVar(Calculations.add(this.vector, ((FloatVar) value).getVal()));
         if (value instanceof VectorVar) return new VectorVar(Calculations.add(this.vector, ((VectorVar) value).getVector()));
         if (value instanceof MatrixVar) return super.add(value);
         return super.add(value);
@@ -39,7 +39,7 @@ public class VectorVar extends Var {
 
     @Override
     public Var sub(Var value) throws ErrorException {
-        if (value instanceof FloatVar) return new VectorVar(Calculations.sub(this.vector,((FloatVar) value).getVal()));
+        if (value instanceof FloatVar) return new VectorVar(Calculations.sub(this.vector, ((FloatVar) value).getVal()));
         if (value instanceof VectorVar) return new VectorVar(Calculations.sub(this.vector, ((VectorVar) value).getVector()));
         if (value instanceof MatrixVar) return super.sub(value);
         return super.add(value);
@@ -78,7 +78,7 @@ public class VectorVar extends Var {
                 divider = Calculations.divide(1, ((FloatVar) value).getVal());
                 return new VectorVar(Calculations.multi(divider, this.vector));
             } catch (ArithmeticException e) {
-                System.err.println("Division by zero");
+                System.out.println("Division by zero");
             }
         }
         if (value instanceof VectorVar) return super.divide(value);

@@ -1,6 +1,4 @@
-package by.it.chetovich.JD01_09;
-
-import by.it.akhmelev.JD01_07.matrixOk.Matrix;
+package by.it.chetovich.Matlab;
 
 /**
  * interface for add operation
