@@ -9,7 +9,7 @@ public  class myCollect {
     public static ArrayList<Integer> randomFill(ArrayList<Integer> myList, int myListSize){
 
         for (int i = 0; i <myListSize ; i++) {
-            int element=(int)(Math.random()*9+1);
+            int element=(int)(Math.random()*(-20)+10);
             myList.add(element);
         }
         return myList;
