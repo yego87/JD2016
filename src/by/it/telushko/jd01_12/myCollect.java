@@ -58,4 +58,22 @@ public  class myCollect {
         }
         return myLList;
     }
+
+    public static void processArray (ArrayList<Integer> round){
+        int j=0;
+        while (round.size()>0){
+            j+=3;
+            if (j>=round.size())j=0;
+            round.remove(j);
+        }
+    }
+
+    public static void processLinked (LinkedList<Integer> round){
+        int j=0;
+        while (round.size()>0){
+            j+=3;
+            if (j>=round.size())j=0;
+            round.remove(j);
+        }
+    }
 }

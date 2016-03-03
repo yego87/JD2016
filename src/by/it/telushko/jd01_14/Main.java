@@ -12,6 +12,7 @@ public class Main {
         String filename = src+"jd01_14/integer.dat";
         File f = new File(filename);
         System.out.println(filename);
+
         // записываем челые числа в файл
         DataOutputStream outSream = null;
         try {
@@ -21,16 +22,13 @@ public class Main {
                 outSream.writeInt(q);
             }
         }
-        catch (FileNotFoundException e){
-            System.out.println("Файла не существует" + filename);
-        }
-        finally {
-            if (outSream!=null){
-                outSream.close();
-            }
-        }
+        catch (FileNotFoundException e){System.out.println("Файла не существует" + filename);}
+        finally {if (outSream!=null){outSream.close();}}
+
         //Читаем данные из файла
-        try (DataInputStream inStream = new DataInputStream(new BufferedInputStream(new FileInputStream(filename)))){
+        try (DataInputStream inStream = new DataInputStream(
+                new BufferedInputStream(
+                        new FileInputStream(filename)))){
             int b=0;
             int sum=0;
             while (inStream.available()>0){
@@ -41,8 +39,6 @@ public class Main {
             }
             System.out.println("среднее арифметическое" + sum/b);
         }
-        catch (IOException e){
-            System.err.println("Ошибка файла"+ e);
-        }
+        catch (IOException e){System.err.println("Ошибка файла"+ e);}
     }
 }
