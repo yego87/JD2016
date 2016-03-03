@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 /**
  * Класс описывающий вектор
  */
-public class VarV extends Var implements IVar{
+public class  VarV extends Var implements IVar{
     private double[] vector;
     // =============== конструкторы класса ==================================
     public VarV(String str) { //конструктор из строки
