@@ -42,10 +42,7 @@ public class DataReader {
     }
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 }
 
 
