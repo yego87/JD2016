@@ -65,6 +65,10 @@ public class FloatVar extends Var {
     @Override
     public Var div (Var value){
         if (value instanceof FloatVar){
+            {
+                if (((FloatVar) value).val==0){
+                    throw new ArithmeticException();}
+            }
             return new FloatVar(val/=((FloatVar)value).val);
         }
         return value.div(this);

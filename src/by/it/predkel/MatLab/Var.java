@@ -3,7 +3,7 @@ package by.it.predkel.MatLab;
 /**
  * Created by Admin on 19.02.2016.
  */
-public abstract class Var extends Number implements IOperation {
+public abstract class Var extends Number implements IOperation{
 
     @Override
     public Var add(Var value) {
