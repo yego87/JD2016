@@ -25,7 +25,7 @@ public class TryCatch {
         } catch (NumberFormatException e) {
             System.out.println("--Возникла ошибка парсера чисел для строки: " + str);
         } catch (NegativeNumberException e){
-            System.out.println("Введено отрицательное числ");
+            System.out.println("Введено отрицательное число");
         }
         return numbers;
     }

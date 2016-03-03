@@ -5,20 +5,20 @@ package by.it.Baranova.JD01_08_OOP;
  */
 public class RegularStudent extends Student {
 
-    public RegularStudent ( String familyName, int age, String faculty, boolean documentsPackage){
+    public RegularStudent ( String familyName, int age, String faculty, boolean documentsPackage,int coursenumber){
         super.familyName= familyName;
         super.age=age;
         super.faculty=faculty;
         this.documentsPackage=documentsPackage;
+        this.coursenumber=coursenumber;
 
     }
-//Динамический полиморфизм
+    //Динамический полиморфизм
     @Override
-    public int SetCourse() {
-        super.SetCourse();
+    public int SetCourse(int n) {
+        this.coursenumber=n;
         System.out.println("Очное отделение");
-        return super.coursenumber;
-
+        return this.coursenumber;
     }
 
 }
