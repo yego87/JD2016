@@ -21,19 +21,32 @@ public class main {
                 "of sleep and to eat healthy food. This of course needs several days of \"rehabilitation\". The ideal thing is" +
                 " to start reconnecting with a healthy lifestyle one week to ten days before school starts.\n";
 
-      //  System.out.println("Выберите тип задач(а, b, c)\n(можно раскомментировать нужную букву)");
-     //   String taskNum=InOut.consoleLineInput(); //выбор типа задания
+        String names=
+                "Авдей " +
+                "Авраам " +
+                "Аврора " +
+                "Агап " + "Агап " + "Агап " + "Агап " +
+                "Алан " +
+                "Александр " +
+                "Альберт " + "Альберт " +"Альберт " +"Альберт " +
+                "Альфия " +
+                "Арсений " +"Арсений " +"Арсений " +
+                "Артем ";
+
+
+        System.out.println("Выберите тип задач(а, b, c)\n(можно раскомментировать нужную букву)");
+       String taskNum=InOut.consoleLineInput(); //выбор типа задания
         //String taskNum="a";
-        String taskNum="b";
-        //String taskNum="c";
+       // String taskNum="b";
+       // String taskNum="c";
 
         switch (taskNum){
             case "a":{Task_A.taskA();break;}
 
             case "b": {
-               // System.out.println("Введите номер задачи (1 или 2)");
-               // String bTaskNum=InOut.consoleLineInput();
-                String bTaskNum ="2";
+                System.out.println("Введите номер задачи (1 или 2)");
+                String bTaskNum=InOut.consoleLineInput();
+               // String bTaskNum ="2";
                 switch (bTaskNum){
                     case "1":{Task_B.task_B1(text);break;}
                     case "2":{Task_B.task_B2(5000);break;}
@@ -41,10 +54,7 @@ public class main {
                 break;
             }
 
-            case "c": {
-
-                break;
-            }
+            case "c": {Task_C.taskC1(names);break;}
 
             default :{System.out.println("Ошибка!");break;}
         }

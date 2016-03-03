@@ -11,7 +11,7 @@ public class Task_A {
 
         // A-1
         int studentsNumber=15;
-        ArrayList<Integer> marksList = new ArrayList<Integer>();
+        ArrayList<Integer> marksList = new ArrayList<>();
         myCollect.randomFill(marksList, studentsNumber);
         System.out.println("Задание А-1");
         System.out.println("Исходная коллекция оценок: "+marksList);
@@ -23,8 +23,8 @@ public class Task_A {
         System.out.println("Обработанная коллекция оценок: "+marksList);
 
         //A-2
-        ArrayList<Integer> A = new ArrayList<Integer>();
-        ArrayList<Integer> B = new ArrayList<Integer>();
+        ArrayList<Integer> A = new ArrayList<>();
+        ArrayList<Integer> B = new ArrayList<>();
         myCollect.randomFill(A, 5);
         myCollect.randomFill(B, 5);
         myCollect.getCross(A, B);
@@ -32,7 +32,7 @@ public class Task_A {
         System.out.println("Задание А-2\nА: "+A+"\nВ: "+B+"\nОбъединение: "+ myCollect.getUnion(A, B)+"\nПересечение: "+ myCollect.getCross(A, B));
 
         //А-3
-        LinkedList<Integer> myList = new LinkedList<Integer>();
+        LinkedList<Integer> myList = new LinkedList<>();
         myCollect.randomFill(myList,30,-10,10);
         System.out.println("Задание А-3: \n"+myList);
         myCollect.sort(myList);
