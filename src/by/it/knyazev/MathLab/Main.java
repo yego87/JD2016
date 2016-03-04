@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         //String line = new Scanner(System.in).nextLine(); //Input String
-        String line = "2.3 + 4 * 4 / 4 + 2"; //Input String
+        String line = "2 / 4 * 3 / 0.5 * 2.3"; //Input String
         System.out.println("Input line: "+line);
 
         Equally equallycheck = new Equally(); // Подключяем проверку на =
