@@ -1,6 +1,6 @@
-package by.it.daylidovich.JD01_09.variables.Vector;
+package by.it.daylidovich.FreeMathLab.variables.Vector;
 
-import by.it.daylidovich.JD01_09.interfaces.IVarable;
+import by.it.daylidovich.FreeMathLab.interfaces.IVarable;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

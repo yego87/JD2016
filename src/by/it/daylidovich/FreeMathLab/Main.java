@@ -1,10 +1,10 @@
-package by.it.daylidovich.JD01_09;
+package by.it.daylidovich.FreeMathLab;
 
-import by.it.daylidovich.JD01_09.variables.Variable;
+import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 import java.io.IOException;
 
-import static by.it.daylidovich.JD01_09.Reader.*;
+import static by.it.daylidovich.FreeMathLab.Reader.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -29,16 +29,36 @@ public class Main {
                         if (operation != null && firstTerm != null && secondTerm != null){
                             switch (operation){
                                 case "+":
-                                    System.out.println(getVarable(firstTerm).add(getVarable(secondTerm)));
+                                    try{
+                                        System.out.println(getVarable(firstTerm).add(getVarable(secondTerm)));
+                                    }
+                                    catch (ArrayIndexOutOfBoundsException e){
+                                        System.out.println(e.getMessage());
+                                    }
                                     break;
                                 case "-":
-                                    System.out.println(getVarable(firstTerm).sub(getVarable(secondTerm)));
+                                    try{
+                                        System.out.println(getVarable(firstTerm).sub(getVarable(secondTerm)));
+                                    }
+                                    catch (ArrayIndexOutOfBoundsException e){
+                                        System.out.println(e.getMessage());
+                                    }
                                     break;
                                 case "*":
-                                    System.out.println(getVarable(firstTerm).mult(getVarable(secondTerm)));
+                                    try{
+                                        System.out.println(getVarable(firstTerm).mult(getVarable(secondTerm)));
+                                    }
+                                    catch (ArrayIndexOutOfBoundsException e){
+                                        System.out.println(e.getMessage());
+                                    }
                                     break;
                                 case "/":
-                                    System.out.println(getVarable(firstTerm).div(getVarable(secondTerm)));
+                                    try{
+                                        System.out.println(getVarable(firstTerm).div(getVarable(secondTerm)));
+                                    }
+                                    catch (ArithmeticException e){
+                                        System.out.println(e.getMessage());
+                                    }
                                     break;
                                 default:
                                     System.out.println("Некоректный ввод.");
@@ -57,7 +77,7 @@ public class Main {
                     }
                 }
             }
-            System.out.println("Введите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
+            System.out.println("\nВведите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
             string = readInput();
         }
     }

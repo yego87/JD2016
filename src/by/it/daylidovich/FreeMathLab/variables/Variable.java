@@ -1,6 +1,6 @@
-package by.it.daylidovich.JD01_09.variables;
+package by.it.daylidovich.FreeMathLab.variables;
 
-import by.it.daylidovich.JD01_09.interfaces.IOperation;
+import by.it.daylidovich.FreeMathLab.interfaces.IOperation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,9 +33,8 @@ public abstract class Variable implements IOperation {
     }
 
     @Override
-    public Variable div(Variable variable) {
-        System.out.println("Деление невозможно.");
-        return null;
+    public Variable div(Variable variable) throws ArithmeticException{
+        throw new ArithmeticException("Деление невозможно.");
     }
 
     @Override

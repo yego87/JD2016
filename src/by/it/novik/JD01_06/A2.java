@@ -6,12 +6,21 @@ import java.util.Arrays;
 public class A2 {
 
 	public static void main(String[] args) {
-		String s = ("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum");
-
+		String s = ("Initially standing at a very squat 10 ounces " +
+				"when debuted by Sherri Cup in 1965, the contemporary version, " +
+				"sold by infamous red cup creator Solo (ironically now owned by Dart Container," +
+				" the company started by the same William Dart who created the styrofoam cup " +
+				"that Buck’s invention would overtake), is both taller and slimmer than the original," +
+				" reflecting the aesthetic stereotype of the City" +
+				" that the cup is most associated with. " +
+				"Today, both 8-ounce and 10-ounce versions are available.");
 		s = s.replace(":", "");
 		s = s.replace(",", "");
 		s = s.replace(".", "");
 		s = s.replace("?", "");
+		s = s.replace(")", "");
+		s = s.replace("(", "");
+
 
 		String[] s1 = s.split(" ");
 		

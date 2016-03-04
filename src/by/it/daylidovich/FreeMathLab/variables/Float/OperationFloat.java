@@ -1,7 +1,7 @@
-package by.it.daylidovich.JD01_09.variables.Float;
+package by.it.daylidovich.FreeMathLab.variables.Float;
 
-import by.it.daylidovich.JD01_09.interfaces.*;
-import by.it.daylidovich.JD01_09.variables.Variable;
+import by.it.daylidovich.FreeMathLab.interfaces.*;
+import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 public class OperationFloat extends Variable implements IOperation {
 
@@ -28,9 +28,13 @@ public class OperationFloat extends Variable implements IOperation {
     }
 
     @Override
-    public Variable div(Variable variable) {
-        if (variable instanceof VariableFloat)
-            return new VariableFloat(((VariableFloat)this).getValue() / ((VariableFloat) variable).getValue());
+    public Variable div(Variable variable){
+        if (variable instanceof VariableFloat) {
+            if (0 != ((VariableFloat) variable).getValue())
+                return new VariableFloat(((VariableFloat) this).getValue() / ((VariableFloat) variable).getValue());
+            else
+                throw new ArithmeticException("Деление невозможно.\nДеление на ноль.");
+        }
         return super.div(variable);
     }
 }
