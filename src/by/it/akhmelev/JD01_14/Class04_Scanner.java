@@ -1,12 +1,18 @@
 package by.it.akhmelev.JD01_14;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Class04_Scanner {
-    public static void main(String[ ] args) {
+    public static void main(String[ ] args) throws FileNotFoundException {
         double sum = 0.0;
-        Scanner scan = new Scanner("1,3;2,0; 8,5; 4,8;9,0; 1; 10;");
+        String src=System.getProperty("user.dir")+"/src/by/it/akhmelev/";
+        String filename = src+"JD01_14/scan.txt";
+        File f=new File(filename);
+        Scanner scan = new Scanner(f);
+
         scan.useLocale(Locale.FRANCE);  //числа через запятую
         // scan.useLocale(Locale.US);
         scan.useDelimiter(";\\s*");     //разделитель точка с запятой
