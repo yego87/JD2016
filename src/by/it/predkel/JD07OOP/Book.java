@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 public abstract class Book implements IEdition {
     String name;
     String text;
+    boolean burned=false;
+
     @Override
     public String getBookName() {
         System.out.println(this.name);
@@ -25,12 +27,16 @@ public abstract class Book implements IEdition {
     }
 
     @Override
-    public void issueABook() {
-        System.out.print("The book is issured");
+    public void issueABook() throws MyException {
+        if (burned)
+            throw new MyException("You have already burned it!");
+        System.out.println("The book is issured");
     }
 
     @Override
-    public void findText(String neededText) {
+    public void findText(String neededText) throws MyException {
+        if (burned)
+            throw new MyException("What text you what to find!? You have already burned this book!");
         Pattern pat = Pattern.compile(neededText);
         Matcher mat = pat.matcher(text);
         while (mat.find()) {
@@ -39,22 +45,31 @@ public abstract class Book implements IEdition {
     }
 
     @Override
-    public void burnIt(){
-        System.out.print("The book is opened");
+    public void burnIt() throws MyException {
+        if (burned)
+            throw new MyException("Are you joking??? You have already burned it!");
+        System.out.println("Why you did it!?");
+        this.burned=true;
     }
 
     @Override
-    public void openBook() {
-        System.out.print("The book is opened");
+    public void openBook() throws MyException {
+        if (burned)
+            throw new MyException("You have already burned it!");
+        System.out.println("The book is opened");
     }
 
     @Override
-    public void closeBook() {
-        System.out.print("The book is closed");
+    public void closeBook() throws MyException {
+        if (burned)
+            throw new MyException("You have already burned it!");
+        System.out.println("The book is closed");
     }
 
     @Override
-    public void buy() {
-        System.out.print("The book is bought");
+    public void buy() throws MyException {
+        if (burned)
+            throw new MyException("You have already burned it!");
+        System.out.println("The book is bought");
     }
 }

@@ -3,49 +3,8 @@ package by.it.predkel.MatLab;
 /**
  * Created by Admin on 19.02.2016.
  */
-public abstract class Var extends Number implements IOperation {
+public abstract class Var extends Number implements IOperation{
 
-    /*
-        @Override
-        public Var addFloat(FloatVar value) {
-            return null;
-        }
-
-        @Override
-        public Var addMatrix(MatrixVar value) {
-            return null;
-        }
-
-        @Override
-        public Var mulFloat(FloatVar value) {
-            return null;
-        }
-
-        @Override
-        public Var mulMatrix(MatrixVar value) {
-            return null;
-        }
-
-        @Override
-        public Var robFloat(FloatVar value) {
-            return null;
-        }
-
-        @Override
-        public Var robMatrix(MatrixVar value) {
-            return null;
-        }
-
-        @Override
-        public Var divFloat(FloatVar value) {
-            return null;
-        }
-
-        @Override
-        public Var divMatrix(MatrixVar value) {
-            return null;
-        }
-    */
     @Override
     public Var add(Var value) {
         if (value instanceof FloatVar) this.add((FloatVar) value);
@@ -75,12 +34,16 @@ public abstract class Var extends Number implements IOperation {
     }
 
     @Override
+    public void outPut(){
+    }
+
+    @Override
     public boolean checkMatrixToSum(MatrixVar mat1, MatrixVar mat2) {//проверка матриц перед сложением
-        return ((mat1.matrix.length == mat2.matrix.length)&&(mat1.matrix[0].length == mat2.matrix[0].length));
+        return ((mat1.val.length == mat2.val.length)&&(mat1.val[0].length == mat2.val[0].length));
     }
 
     @Override
     public boolean checkMatrixToMul(MatrixVar mat1, MatrixVar mat2) {
-        return (mat1.matrix[0].length == mat2.matrix.length);
+        return (mat1.val[0].length == mat2.val.length);
     }
 }

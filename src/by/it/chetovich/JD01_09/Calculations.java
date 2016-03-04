@@ -194,19 +194,15 @@ public class Calculations {
      * @param b float [] array, Class VectorVar field
      * @return the multiplication of a and b
      */
-    public static float multi (float [] a, float [] b) {
+    public static float multi (float [] a, float [] b) throws IndexOutOfBoundsException{
         float result = 1;
-        if (a.length==b.length) {
-            for (int i = 0; i < a.length; i++) {
+        //умножаем соответствующие элементы двух векторов по длине наибольшего вектора, если длины векторов не равны, выскочит исключение
+        int length = a.length>b.length?a.length:b.length;
+
+            for (int i = 0; i < length; i++) {
                 result += a[i] * b[i];
             }
             return result;
-        }
-        else{
-            System.out.println("Векторы разной длины нельзя перемножить.");
-            return 0;
-        }
-
     }
 
     /**
@@ -215,7 +211,8 @@ public class Calculations {
      * @param b float [][] array, Class MatrixVar field
      * @return the multiplication of a and b - float [] result
      */
-    public static float [] multi (float [] a, float [][] b){
+    public static float [] multi (float [] a, float [][] b) throws DifferentSizesException{
+        if (a.length!=b[0].length) throw new DifferentSizesException("Vector and matrix have incompatibile sizes.");
             float [] result = new float[a.length];
             for (int i = 0; i < a.length; i++) {
                 for (int j = 0; j < b.length; j++) {
@@ -231,7 +228,8 @@ public class Calculations {
      * @param b float [][] array, Class MatrixVar field
      * @return the multiplication of a and b - float [][] result
      */
-    public static float [][] multi (float[][] a, float[][] b) {
+    public static float [][] multi (float[][] a, float[][] b) throws DifferentSizesException{
+        if (a.length!=b[0].length) throw new DifferentSizesException ("Matrices have incompatibile sizes for multiplication.");
             float[][] result = new float[a.length][b[0].length];
             for (int i = 0; i < a.length; i++) {
                 for (int j = 0; j < b[0].length; j++) {
@@ -249,7 +247,8 @@ public class Calculations {
      * @param b float number, Class FloatVar field
      * @return the result of division a and b
      */
-    public static float divide (float a, float b){
+    public static float divide (float a, float b) throws ArithmeticException {
+        if (b==0.0)throw new ArithmeticException();
         return a/b;
     }
 

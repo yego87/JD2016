@@ -12,7 +12,7 @@ public class Counting {
      * @param line первоначально введенная строка, нужна для определения типа операции (+ / * -)
      */
 
-    public static void count (Var a, Var b, String line){
+    public static void count (Var a, Var b, String line) throws ErrorException {
 
             if (line.contains("+")) {
                 System.out.print(a + " + " + b + " ");
@@ -31,7 +31,7 @@ public class Counting {
 
             if (line.contains("/")) {
                 System.out.print(a + " / " + b + " ");
-                Print.print(a.divide(b));
+                    Print.print(a.divide(b));
             }
 
     }

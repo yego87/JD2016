@@ -1,7 +1,7 @@
 package by.it.predkel.MatLab.OtherClasses;
 
 /**
- * Created by Admin on 20.02.2016.
+ * создание обратной матрицы
  */
 public class InverseMatrixJordanGauss {
 
