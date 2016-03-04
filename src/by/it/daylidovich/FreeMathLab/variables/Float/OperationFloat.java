@@ -33,7 +33,7 @@ public class OperationFloat extends Variable implements IOperation {
             if (0 != ((VariableFloat) variable).getValue())
                 return new VariableFloat(((VariableFloat) this).getValue() / ((VariableFloat) variable).getValue());
             else
-                throw new ArithmeticException("Division by zero.");
+                throw new ArithmeticException("Деление невозможно.\nДеление на ноль.");
         }
         return super.div(variable);
     }

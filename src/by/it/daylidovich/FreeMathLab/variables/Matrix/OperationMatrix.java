@@ -16,7 +16,7 @@ public class OperationMatrix extends Variable implements IOperation {
     }
 
     @Override
-    public Variable add(Variable variable) {
+    public Variable add(Variable variable) throws ArrayIndexOutOfBoundsException{
         if (variable instanceof VariableFloat){
             double[][] firstTerm = copyMatrix(((VariableMatrix)this).getMatrix());
             double secondTerm = ((VariableFloat) variable).getValue();
@@ -38,12 +38,13 @@ public class OperationMatrix extends Variable implements IOperation {
                 }
                 return new VariableMatrix(firstTerm);
             }
+            else throw new ArrayIndexOutOfBoundsException("Сложение невозможно.\nМатрицы различного размера.");
         }
         return super.add(variable);
     }
 
     @Override
-    public Variable sub(Variable variable) {
+    public Variable sub(Variable variable) throws ArrayIndexOutOfBoundsException{
         if (variable instanceof VariableFloat){
             double[][] firstTerm = copyMatrix(((VariableMatrix) this).getMatrix());
             double secondTerm = ((VariableFloat) variable).getValue();
@@ -65,12 +66,13 @@ public class OperationMatrix extends Variable implements IOperation {
                 }
                 return new VariableMatrix(firstTerm);
             }
+            else throw new ArrayIndexOutOfBoundsException("Вычитание невозможно.\nМатрицы различного размера.");
         }
         return super.sub(variable);
     }
 
     @Override
-    public Variable mult(Variable variable) {
+    public Variable mult(Variable variable) throws ArrayIndexOutOfBoundsException{
         if (variable instanceof VariableFloat){
             double[][] firstTerm = copyMatrix(((VariableMatrix) this).getMatrix());
             double secondTerm = ((VariableFloat) variable).getValue();
@@ -96,6 +98,7 @@ public class OperationMatrix extends Variable implements IOperation {
                 }
                 return new VariableMatrix(result);
             }
+            else throw new ArrayIndexOutOfBoundsException("Умножение невозможно.\nМатрицы различного размера.");
         }
         return super.mult(variable);
     }
@@ -111,7 +114,7 @@ public class OperationMatrix extends Variable implements IOperation {
                         firstTerm[i][j] /= secondTerm;
                     }
                 }
-            else throw new ArithmeticException("Division by zero");
+            else throw new ArithmeticException("Деление невозможно.\nДеление на ноль");
             return new VariableMatrix(firstTerm);
         }
         return super.div(variable);

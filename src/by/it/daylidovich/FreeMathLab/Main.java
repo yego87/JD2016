@@ -29,13 +29,28 @@ public class Main {
                         if (operation != null && firstTerm != null && secondTerm != null){
                             switch (operation){
                                 case "+":
-                                    System.out.println(getVarable(firstTerm).add(getVarable(secondTerm)));
+                                    try{
+                                        System.out.println(getVarable(firstTerm).add(getVarable(secondTerm)));
+                                    }
+                                    catch (ArrayIndexOutOfBoundsException e){
+                                        System.out.println(e.getMessage());
+                                    }
                                     break;
                                 case "-":
-                                    System.out.println(getVarable(firstTerm).sub(getVarable(secondTerm)));
+                                    try{
+                                        System.out.println(getVarable(firstTerm).sub(getVarable(secondTerm)));
+                                    }
+                                    catch (ArrayIndexOutOfBoundsException e){
+                                        System.out.println(e.getMessage());
+                                    }
                                     break;
                                 case "*":
-                                    System.out.println(getVarable(firstTerm).mult(getVarable(secondTerm)));
+                                    try{
+                                        System.out.println(getVarable(firstTerm).mult(getVarable(secondTerm)));
+                                    }
+                                    catch (ArrayIndexOutOfBoundsException e){
+                                        System.out.println(e.getMessage());
+                                    }
                                     break;
                                 case "/":
                                     try{

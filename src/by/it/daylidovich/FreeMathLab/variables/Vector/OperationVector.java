@@ -6,7 +6,7 @@ import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 public class OperationVector extends Variable implements IOperation {
     @Override
-    public Variable add(Variable variable) {
+    public Variable add(Variable variable) throws ArrayIndexOutOfBoundsException{
         if (variable instanceof VariableFloat){
             VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
             double secondTerm = ((VariableFloat) variable).getValue();
@@ -25,12 +25,13 @@ public class OperationVector extends Variable implements IOperation {
                 }
                 return firstTerm;
             }
+            else throw new ArrayIndexOutOfBoundsException("Сложение невозможно.\nВекторы различной велечины.");
         }
         return super.add(variable);
     }
 
     @Override
-    public Variable sub(Variable variable) {
+    public Variable sub(Variable variable) throws ArrayIndexOutOfBoundsException{
         if (variable instanceof VariableFloat){
             VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
             double secondTerm = ((VariableFloat) variable).getValue();
@@ -40,7 +41,7 @@ public class OperationVector extends Variable implements IOperation {
             return firstTerm;
         }
 
-        if (variable instanceof VariableVector){
+        if (variable instanceof VariableVector) {
             VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
             VariableVector secondTerm = (VariableVector) variable;
             if (firstTerm.getVector().length == secondTerm.getVector().length){
@@ -49,12 +50,13 @@ public class OperationVector extends Variable implements IOperation {
                 }
                 return firstTerm;
             }
+            else throw new ArrayIndexOutOfBoundsException("Вычитание невозможно.\nВекторы различной велечины.");
         }
         return super.sub(variable);
     }
 
     @Override
-    public Variable mult(Variable variable) {
+    public Variable mult(Variable variable) throws ArrayIndexOutOfBoundsException{
         if (variable instanceof VariableFloat){
             VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
             double secondTerm = ((VariableFloat) variable).getValue();
@@ -74,6 +76,7 @@ public class OperationVector extends Variable implements IOperation {
                 }
                 return new VariableFloat(sum);
             }
+            else throw new ArrayIndexOutOfBoundsException("Умножение невозможно.\n" + "Векторы различной велечины.");
         }
         return super.mult(variable);
     }
@@ -87,7 +90,7 @@ public class OperationVector extends Variable implements IOperation {
                 for (int i = 0; i < firstTerm.getVector().length; i++) {
                     firstTerm.getVector()[i] /= secondTerm;
                 }
-            else throw new ArithmeticException("Division by zero.");
+            else throw new ArithmeticException("Деление невозможно.\n" + "Деление на ноль.");
             return firstTerm;
         }
 

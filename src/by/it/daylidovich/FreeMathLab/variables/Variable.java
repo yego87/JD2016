@@ -33,9 +33,8 @@ public abstract class Variable implements IOperation {
     }
 
     @Override
-    public Variable div(Variable variable) {
-        System.out.println("Деление невозможно.");
-        return null;
+    public Variable div(Variable variable) throws ArithmeticException{
+        throw new ArithmeticException("Деление невозможно.");
     }
 
     @Override
