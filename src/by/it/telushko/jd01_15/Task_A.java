@@ -1,6 +1,5 @@
 package by.it.telushko.jd01_15;
 
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,6 +18,7 @@ public class Task_A {
         String filename = src+"jd01_15/matrix.txt";
         System.out.println(filename);
         try(PrintWriter printer = new PrintWriter(new FileWriter(filename))){
+            //печать в файл
             for (int i = 0; i <matrix.length ; i++) {
                 for (int j = 0; j <matrix[i].length ; j++) {
                     printer.printf("%4d",matrix[i][j]);
@@ -27,6 +27,7 @@ public class Task_A {
             }
 
             printer.close();
+            //печать в консоль
             for (int i = 0; i <matrix.length ; i++) {
                 for (int j = 0; j <matrix[i].length ; j++) {
                     System.out.printf("%4d",matrix[i][j]);
@@ -35,8 +36,6 @@ public class Task_A {
             }
 
         }
-        catch (IOException e){
-            throw new IOException("Ошибка файла"+filename,e);
-        }
+        catch (IOException e){throw new IOException("Ошибка файла"+filename,e);}
     }
 }
