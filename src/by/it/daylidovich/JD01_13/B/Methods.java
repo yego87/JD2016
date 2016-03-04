@@ -11,23 +11,20 @@ public class Methods {
             System.out.println("Конец второй процедуры.");
         }
         finally {
-            int x = Integer.parseInt("string");
-            System.out.println("Конец первой процедуры.");
+            throw new NumberFormatException();
         }
     }
 
     public static void secondMethod() throws ArrayIndexOutOfBoundsException{
         System.out.println("Начало второй процедуры.");
         thirdMethod();
-        int[] array = new int[3];
-        array[3] = 5;
-        System.out.println("Конец второй процедуры.");
+        throw new ArrayIndexOutOfBoundsException();
     }
 
     public static void thirdMethod() {
         System.out.println("Начало третьей процедуры.");
         try {
-            int k = 1 / 0;
+            throw new  ArithmeticException();
         } catch (ArithmeticException e) {
             System.out.println("Деление на ноль.");
         }
