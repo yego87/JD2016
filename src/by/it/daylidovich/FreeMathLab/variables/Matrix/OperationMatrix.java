@@ -101,15 +101,17 @@ public class OperationMatrix extends Variable implements IOperation {
     }
 
     @Override
-    public Variable div(Variable variable) {
+    public Variable div(Variable variable) throws ArithmeticException{
         if (variable instanceof VariableFloat){
             double[][] firstTerm = copyMatrix(((VariableMatrix) this).getMatrix());
             double secondTerm = ((VariableFloat) variable).getValue();
-            for (int i = 0; i < firstTerm.length; i++) {
-                for (int j = 0; j < firstTerm[i].length; j++) {
-                    firstTerm[i][j] /= secondTerm;
+            if (0 != secondTerm)
+                for (int i = 0; i < firstTerm.length; i++) {
+                    for (int j = 0; j < firstTerm[i].length; j++) {
+                        firstTerm[i][j] /= secondTerm;
+                    }
                 }
-            }
+            else throw new ArithmeticException("Division by zero");
             return new VariableMatrix(firstTerm);
         }
         return super.div(variable);

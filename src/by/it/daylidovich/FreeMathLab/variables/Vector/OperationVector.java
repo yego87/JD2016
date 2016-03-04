@@ -79,13 +79,15 @@ public class OperationVector extends Variable implements IOperation {
     }
 
     @Override
-    public Variable div(Variable variable) {
+    public Variable div(Variable variable) throws ArithmeticException{
         if (variable instanceof VariableFloat){
             VariableVector firstTerm = new VariableVector(((VariableVector)this).getVector());
             double secondTerm = ((VariableFloat) variable).getValue();
-            for (int i = 0; i < firstTerm.getVector().length; i++) {
-                firstTerm.getVector()[i] /= secondTerm;
-            }
+            if (0 != secondTerm)
+                for (int i = 0; i < firstTerm.getVector().length; i++) {
+                    firstTerm.getVector()[i] /= secondTerm;
+                }
+            else throw new ArithmeticException("Division by zero.");
             return firstTerm;
         }
 

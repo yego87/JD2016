@@ -38,7 +38,12 @@ public class Main {
                                     System.out.println(getVarable(firstTerm).mult(getVarable(secondTerm)));
                                     break;
                                 case "/":
-                                    System.out.println(getVarable(firstTerm).div(getVarable(secondTerm)));
+                                    try{
+                                        System.out.println(getVarable(firstTerm).div(getVarable(secondTerm)));
+                                    }
+                                    catch (ArithmeticException e){
+                                        System.out.println(e.getMessage());
+                                    }
                                     break;
                                 default:
                                     System.out.println("Некоректный ввод.");

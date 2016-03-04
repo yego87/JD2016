@@ -28,9 +28,13 @@ public class OperationFloat extends Variable implements IOperation {
     }
 
     @Override
-    public Variable div(Variable variable) {
-        if (variable instanceof VariableFloat)
-            return new VariableFloat(((VariableFloat)this).getValue() / ((VariableFloat) variable).getValue());
+    public Variable div(Variable variable){
+        if (variable instanceof VariableFloat) {
+            if (0 != ((VariableFloat) variable).getValue())
+                return new VariableFloat(((VariableFloat) this).getValue() / ((VariableFloat) variable).getValue());
+            else
+                throw new ArithmeticException("Division by zero.");
+        }
         return super.div(variable);
     }
 }
