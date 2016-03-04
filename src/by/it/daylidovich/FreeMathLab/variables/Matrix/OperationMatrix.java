@@ -1,8 +1,8 @@
-package by.it.daylidovich.JD01_09.variables.Matrix;
+package by.it.daylidovich.FreeMathLab.variables.Matrix;
 
-import by.it.daylidovich.JD01_09.interfaces.*;
-import by.it.daylidovich.JD01_09.variables.Float.VariableFloat;
-import by.it.daylidovich.JD01_09.variables.Variable;
+import by.it.daylidovich.FreeMathLab.interfaces.*;
+import by.it.daylidovich.FreeMathLab.variables.Float.VariableFloat;
+import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 public class OperationMatrix extends Variable implements IOperation {
     private double[][] copyMatrix(double[][] matrix){
@@ -16,7 +16,7 @@ public class OperationMatrix extends Variable implements IOperation {
     }
 
     @Override
-    public Variable add(Variable variable) {
+    public Variable add(Variable variable) throws ArrayIndexOutOfBoundsException{
         if (variable instanceof VariableFloat){
             double[][] firstTerm = copyMatrix(((VariableMatrix)this).getMatrix());
             double secondTerm = ((VariableFloat) variable).getValue();
@@ -38,12 +38,13 @@ public class OperationMatrix extends Variable implements IOperation {
                 }
                 return new VariableMatrix(firstTerm);
             }
+            else throw new ArrayIndexOutOfBoundsException("Сложение невозможно.\nМатрицы различного размера.");
         }
         return super.add(variable);
     }
 
     @Override
-    public Variable sub(Variable variable) {
+    public Variable sub(Variable variable) throws ArrayIndexOutOfBoundsException{
         if (variable instanceof VariableFloat){
             double[][] firstTerm = copyMatrix(((VariableMatrix) this).getMatrix());
             double secondTerm = ((VariableFloat) variable).getValue();
@@ -65,12 +66,13 @@ public class OperationMatrix extends Variable implements IOperation {
                 }
                 return new VariableMatrix(firstTerm);
             }
+            else throw new ArrayIndexOutOfBoundsException("Вычитание невозможно.\nМатрицы различного размера.");
         }
         return super.sub(variable);
     }
 
     @Override
-    public Variable mult(Variable variable) {
+    public Variable mult(Variable variable) throws ArrayIndexOutOfBoundsException{
         if (variable instanceof VariableFloat){
             double[][] firstTerm = copyMatrix(((VariableMatrix) this).getMatrix());
             double secondTerm = ((VariableFloat) variable).getValue();
@@ -96,20 +98,23 @@ public class OperationMatrix extends Variable implements IOperation {
                 }
                 return new VariableMatrix(result);
             }
+            else throw new ArrayIndexOutOfBoundsException("Умножение невозможно.\nМатрицы различного размера.");
         }
         return super.mult(variable);
     }
 
     @Override
-    public Variable div(Variable variable) {
+    public Variable div(Variable variable) throws ArithmeticException{
         if (variable instanceof VariableFloat){
             double[][] firstTerm = copyMatrix(((VariableMatrix) this).getMatrix());
             double secondTerm = ((VariableFloat) variable).getValue();
-            for (int i = 0; i < firstTerm.length; i++) {
-                for (int j = 0; j < firstTerm[i].length; j++) {
-                    firstTerm[i][j] /= secondTerm;
+            if (0 != secondTerm)
+                for (int i = 0; i < firstTerm.length; i++) {
+                    for (int j = 0; j < firstTerm[i].length; j++) {
+                        firstTerm[i][j] /= secondTerm;
+                    }
                 }
-            }
+            else throw new ArithmeticException("Деление невозможно.\nДеление на ноль");
             return new VariableMatrix(firstTerm);
         }
         return super.div(variable);

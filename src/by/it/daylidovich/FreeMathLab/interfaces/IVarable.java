@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD01_09.interfaces;
+package by.it.daylidovich.FreeMathLab.interfaces;
 
 public interface IVarable {
     String toString();
