@@ -54,12 +54,12 @@ public class Main {
         }
         fileReader.close();                            //вопрос про повторное создание потока
 
-        FileReader fileReader1= new FileReader(textfilename);
+        fileReader= new FileReader(textfilename);
         int currentFlag=0;                             //слово считается найденным, если текущий символ
         int pastFlag=0;                                 //знак препинания или пробел, а предыдуший символ- НЕТ.
         int wordCount=0;
         String wordMark=",.!?:; ";
-        while ((res=fileReader1.read())!=-1){
+        while ((res=fileReader.read())!=-1){
             for (int i = 0; i <wordMark.length() ; i++) if ((wordMark.charAt(i)==(char)res) ) currentFlag=1;
             if ((currentFlag==1)&&(pastFlag==0)) wordCount++;
            pastFlag=currentFlag;
@@ -75,6 +75,7 @@ public class Main {
 
         File file = new File(System.getProperty("user.dir"));
         File[] list = file.listFiles();
+
         System.out.println("Каталоги:");
         for (int i = 0; i <list.length ; i++) {
             if (list[i].isDirectory()) System.out.println(list[i]);
