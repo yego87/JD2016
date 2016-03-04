@@ -1,7 +1,5 @@
 package by.it.novik.JD01_13;
 
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,14 +8,14 @@ import java.io.InputStreamReader;
 public class DataReader {
     public static void main(String[] args) throws IOException {
 
-    public static double sum = 0;
+
         
         System.out.println("Enter positive integers, please. When done type 'END'");
-
+      
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
                  BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                
-                 bufferedReader.close();
+
 
 
         while (true) {
@@ -33,6 +31,7 @@ public class DataReader {
         }
 
     }
+    public static double sum = 0;
     public static double stringConverter(String str) throws ArithmeticException{
 
         double i = Double.parseDouble(str);
