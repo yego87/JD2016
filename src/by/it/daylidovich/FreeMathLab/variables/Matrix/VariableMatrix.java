@@ -1,6 +1,6 @@
-package by.it.daylidovich.JD01_09.variables.Matrix;
+package by.it.daylidovich.FreeMathLab.variables.Matrix;
 
-import by.it.daylidovich.JD01_09.interfaces.IVarable;
+import by.it.daylidovich.FreeMathLab.interfaces.IVarable;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;

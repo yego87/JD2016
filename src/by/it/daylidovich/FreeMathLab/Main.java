@@ -1,10 +1,10 @@
-package by.it.daylidovich.JD01_09;
+package by.it.daylidovich.FreeMathLab;
 
-import by.it.daylidovich.JD01_09.variables.Variable;
+import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 import java.io.IOException;
 
-import static by.it.daylidovich.JD01_09.Reader.*;
+import static by.it.daylidovich.FreeMathLab.Reader.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {

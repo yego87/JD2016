@@ -1,7 +1,7 @@
-package by.it.daylidovich.JD01_09.variables.Float;
+package by.it.daylidovich.FreeMathLab.variables.Float;
 
-import by.it.daylidovich.JD01_09.interfaces.*;
-import by.it.daylidovich.JD01_09.variables.Variable;
+import by.it.daylidovich.FreeMathLab.interfaces.*;
+import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 public class OperationFloat extends Variable implements IOperation {
 

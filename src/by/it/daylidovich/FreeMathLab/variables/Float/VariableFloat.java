@@ -1,6 +1,6 @@
-package by.it.daylidovich.JD01_09.variables.Float;
+package by.it.daylidovich.FreeMathLab.variables.Float;
 
-import by.it.daylidovich.JD01_09.interfaces.IVarable;
+import by.it.daylidovich.FreeMathLab.interfaces.IVarable;
 
 public class VariableFloat extends OperationFloat implements IVarable{
     private double value = 0;
