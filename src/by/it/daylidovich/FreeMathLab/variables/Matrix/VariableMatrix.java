@@ -18,11 +18,15 @@ public class VariableMatrix extends OperationMatrix implements IVarable {
         System.arraycopy(matrix, 0, this.matrix, 0, matrix.length);
     }
 
-    public VariableMatrix(String string){
+    public VariableMatrix(String string) throws ArrayIndexOutOfBoundsException{
         Matcher matcher = Pattern.compile("[\\[\\{][0-9.,]+[\\}\\]]").matcher(string);
         ArrayList<String> arrayList = new ArrayList<>();
         while (matcher.find())
            arrayList.add(matcher.group());
+
+        if (!isMatrixSquare(arrayList))
+            throw new ArrayIndexOutOfBoundsException("Матрица не прямоугольная.");
+
         this.matrix = new double[arrayList.size()][arrayList.get(0).split(",").length];
         for (int i = 0; i < arrayList.size(); i++) {
             matcher = Pattern.compile("[0-9]+[.]?[0-9]*").matcher(arrayList.get(i));
@@ -47,5 +51,15 @@ public class VariableMatrix extends OperationMatrix implements IVarable {
         }
         stringBuilder.append("}");
         return stringBuilder.toString();
+    }
+
+    //Метод проверяет одинаковой ли длинны строки в матрице.
+    private boolean isMatrixSquare(ArrayList<String> arrayList){
+        boolean out = true;
+        for (int i = 1; i < arrayList.size(); i++) {
+            if (arrayList.get(i-1).split(",").length != arrayList.get(i).split(",").length)
+                out = false;
+        }
+        return out;
     }
 }
