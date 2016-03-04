@@ -7,7 +7,7 @@ import by.it.akhmelev.JD01_07.matrixOk.Matrix;
  */
 public interface IAddable {
 
-    Var add (Var value);
+    Var add (Var value) throws ErrorException;
 
 
 }

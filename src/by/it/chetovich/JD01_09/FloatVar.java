@@ -34,7 +34,7 @@ public class FloatVar extends Var {
     }
 
     @Override
-    public Var sub(Var value) {
+    public Var sub(Var value) throws ErrorException {
         if (value instanceof FloatVar) return new FloatVar(Calculations.sub(this.val, ((FloatVar) value).val));
         if (value instanceof VectorVar) return super.sub(value);
         if (value instanceof MatrixVar) return super.sub(value);
@@ -42,7 +42,7 @@ public class FloatVar extends Var {
     }
 
     @Override
-    public Var multi(Var value) {
+    public Var multi(Var value) throws ErrorException {
         if (value instanceof FloatVar) return new FloatVar(Calculations.multi(this.val, ((FloatVar) value).getVal()));
         if (value instanceof VectorVar) return new VectorVar(Calculations.multi(this.val, ((VectorVar) value).getVector()));
         if (value instanceof MatrixVar) return new MatrixVar(Calculations.multi(this.val, ((MatrixVar) value).getArray()));
@@ -50,8 +50,15 @@ public class FloatVar extends Var {
     }
 
     @Override
-    public Var divide(Var value) {
-        if (value instanceof FloatVar) return new FloatVar(Calculations.divide(this.val, ((FloatVar) value).getVal()));
+    public Var divide(Var value) throws ErrorException {
+        if (value instanceof FloatVar) {
+
+            try {
+                return new FloatVar(Calculations.divide(this.val, ((FloatVar) value).getVal()));
+            } catch (ArithmeticException e) {
+                System.err.println("Division by zero");
+            }
+        }
         if (value instanceof VectorVar) return super.divide(value);
         if (value instanceof MatrixVar) return super.divide(value);
         return super.divide(value);

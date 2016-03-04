@@ -3,7 +3,7 @@ package by.it.predkel.MatLab.OtherClasses;
 import java.util.LinkedList;
 
 /**
- * Created by Admin on 21.02.2016.
+ * обратная польская запись для работы с выражением
  */
 public class InsertPolandRecord {
     static boolean isDelim(char c) { // тру если пробел

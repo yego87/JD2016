@@ -5,6 +5,6 @@ package by.it.chetovich.JD01_09;
  */
 public interface IMultiplicable {
 
-    Var multi(Var value);
+    Var multi(Var value) throws ErrorException;
 }
 

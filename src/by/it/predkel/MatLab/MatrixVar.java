@@ -32,20 +32,29 @@ public class MatrixVar extends Var {
             return this;
         }
         MatrixVar v1 = (MatrixVar)value;
-        if ((this.val.length!=v1.val.length)||(this.val[0].length!=v1.val[0].length)){
-            System.out.println("Эти массивы складывать нельзя");
-            return null;
-        }
-        for (int i=0;i<this.val.length;i++){//матрица+матрица
-            for (int j=0;j<this.val[i].length;j++){
-                this.val[i][j]+=((MatrixVar)value).val[i][j];
+        if (checkMatrixToSum(this,((MatrixVar)value))){
+            for (int i=0;i<this.val.length;i++){//матрица+матрица
+                for (int j=0;j<this.val[i].length;j++){
+                    this.val[i][j]+=((MatrixVar)value).val[i][j];
+                }
             }
+            return this;
+        }else{
+            throw new IllegalArgumentException();
+            //System.out.println("Эти массивы складывать нельзя");
+            //return null;
         }
-        return this;
+
     }
 
     @Override
     public Var mul (Var value) {
+        double[][] valTemp = new double[0][];int m=0;//если вектор надо повернуть иначе всегда будет ошибка
+        if (this.val[0].length==1) {
+            for (int i = 0; i < this.val.length; i++)
+                valTemp[0][m]=val[m][0];
+                val=valTemp;
+        }
         if (value instanceof FloatVar) {//матрица*число
             for (int i = 0; i < this.val.length; i++) {
                 for (int j = 0; j < this.val[i].length; j++) {
@@ -53,6 +62,7 @@ public class MatrixVar extends Var {
                 }
             }
             return this;
+
         }else if (checkMatrixToMul(this, (MatrixVar) value)) {
             double[][] temp = new double[this.val.length][((MatrixVar) value).val[0].length];//матрица*матрица
             for (int i = 0; i < this.val.length; i++) {
@@ -75,37 +85,51 @@ public class MatrixVar extends Var {
             }
             return new MatrixVar(temp);
         }else{
-            System.out.println("Эти матрицы перемножить нельзя");
+            throw new IllegalArgumentException();
+            //System.out.println("Эти матрицы перемножить нельзя");
+            //return null;
         }
-        return null;
+
     }
 
     @Override
-    public Var sub (Var value){
+    public Var sub (Var value) {
         if (value instanceof FloatVar) {//матрица-число
             for (int i = 0; i < this.val.length; i++) {
                 for (int j = 0; j < this.val[i].length; j++) {
-                    this.val[i][j]-=((FloatVar)value).val;
+                    this.val[i][j] -= ((FloatVar) value).val;
                 }
             }
             return this;
         }
-        MatrixVar v1 = (MatrixVar)value;
-        if ((this.val.length!=v1.val.length)||(this.val[0].length!=v1.val[0].length)){
-            System.out.println("Эти массивы складывать нельзя");
-            return null;
-        }
-        for (int i=0;i<this.val.length;i++){//матрица-матрица
-            for (int j=0;j<this.val[i].length;j++){
-                this.val[i][j]-=((MatrixVar)value).val[i][j];
+        MatrixVar v1 = (MatrixVar) value;
+        if (checkMatrixToSum(this, (MatrixVar) value)) {
+            for (int i = 0; i < this.val.length; i++) {//матрица-матрица
+                for (int j = 0; j < this.val[i].length; j++) {
+                    this.val[i][j] -= ((MatrixVar) value).val[i][j];
+                }
             }
+            return this;
+        }else{
+            throw new IllegalArgumentException();
+        //System.out.println("Эти массивы отнимать нельзя");
+        //return null;
         }
-        return this;
     }
 
     @Override
-    public Var div (Var value) {
+    public Var div (Var value) {//если вектор надо повернуть иначе всегда будет ошибка
+        double[][] valTemp = new double[0][];int m=0;
+        if (this.val[0].length==1) {
+            for (int i = 0; i < this.val.length; i++)
+                valTemp[0][m]=val[m][0];
+            val=valTemp;
+        }
         if (value instanceof FloatVar) {//матрица/число
+            {
+                if (((FloatVar) value).val==0){
+                    throw new ArithmeticException();}
+            }
             for (int i = 0; i < this.val.length; i++) {
                 for (int j = 0; j < this.val[i].length; j++) {
                     this.val[i][j] /= ((FloatVar) value).val;
@@ -113,32 +137,46 @@ public class MatrixVar extends Var {
             }
             return this;
         } else if (checkMatrixToMul(this, (MatrixVar) value)) {
-            double[][] value1 = Inverse_matrix_jordan_gauss(((MatrixVar) value).val);//создание обратной матрицы
-            double[][] temp = new double[this.val.length][value1[0].length];//матрица/матрица
-            for (int i = 0; i < this.val.length; i++) {
-                for (int j = 0; j < value1[0].length; j++) {
-                    for (int k = 0; k < value1.length; k++) {
-                        temp[i][j] = temp[i][j] + this.val[i][k] * value1[k][j];
-                    }
-                }
+            if (this.val.length==1){
+                throw new IllegalArgumentException();
+                //System.out.println("Эти матрицы делить нельзя");
+                //return null;
             }
-            return new MatrixVar(temp);
+                double[][] value1 = Inverse_matrix_jordan_gauss(((MatrixVar) value).val);//создание обратной матрицы
+                double[][] temp = new double[this.val.length][value1[0].length];//матрица/матрица
 
-        } else if (checkMatrixToMul((MatrixVar) value, this)) {
-            double[][] value1 = Inverse_matrix_jordan_gauss(this.val);//создание обратной матрицы
-            double[][] temp = new double[value1.length][((MatrixVar) value).val[0].length];//матрица/матрица
-            for (int i = 0; i < value1.length; i++) {
-                for (int j = 0; j < ((MatrixVar) value).val[0].length; j++) {
-                    for (int k = 0; k < ((MatrixVar) value).val.length; k++) {
-                        temp[i][j] = temp[i][j] + value1[i][k] * ((MatrixVar) value).val[k][j];
+                for (int i = 0; i < this.val.length; i++) {
+                    for (int j = 0; j < value1[0].length; j++) {
+                        for (int k = 0; k < value1.length; k++) {
+                            temp[i][j] = temp[i][j] + this.val[i][k] * value1[k][j];
+                        }
                     }
                 }
+                return new MatrixVar(temp);
+        } else if (checkMatrixToMul((MatrixVar) value, this)) {
+            if (((MatrixVar) value).val.length==1){
+                throw new IllegalArgumentException();
+                //System.out.println("Эти матрицы делить нельзя");
+                //return null;
+
             }
-            return new MatrixVar(temp);
-        } else {
-            System.out.println("Эти матрицы делить нельзя");
+                double[][] value1 = Inverse_matrix_jordan_gauss(this.val);//создание обратной матрицы
+                double[][] temp = new double[value1.length][((MatrixVar) value).val[0].length];//матрица/матрица
+                for (int i = 0; i < value1.length; i++) {
+                    for (int j = 0; j < ((MatrixVar) value).val[0].length; j++) {
+                        for (int k = 0; k < ((MatrixVar) value).val.length; k++) {
+                            temp[i][j] = temp[i][j] + value1[i][k] * ((MatrixVar) value).val[k][j];
+                        }
+                    }
+                }
+                return new MatrixVar(temp);
+
+        }else {
+            throw new IllegalArgumentException();
+            //System.out.println("Эти матрицы делить нельзя");
+            //return null;
         }
-        return null;
+
     }
 
     ////////////////доп. методы\\\\\\\\\\\\\\\\\
@@ -153,8 +191,7 @@ public class MatrixVar extends Var {
 
     @Override
     public void setForm(String str) throws IOException {
-        val = InputExpression.inputMatrix(str);
-    }
+        val = InputExpression.inputMatrix(str);}
 
     @Override
     public int intValue() {

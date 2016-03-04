@@ -44,12 +44,13 @@ public abstract class Administration implements Iemployee {
     }
 
     @Override
-    public void paySalary(){
+    public void paySalary()  {
         System.out.println("Pay "+this.salary+" to "+this.name);
     }
 
     @Override
-    public void paySalary(int bonus){
+    public void paySalary(int bonus) throws NegativeSalaryException{
+        if (bonus<0) throw new NegativeSalaryException (bonus);
         System.out.println("Pay "+this.salary+" and bonus "+bonus+" to "+this.name);
     }
 
@@ -72,7 +73,8 @@ public abstract class Administration implements Iemployee {
     }
 
     @Override
-    public void payCompensation(int compensation) {
+    public void payCompensation(int compensation) throws NegativeSalaryException {
+        if (compensation<0) throw new NegativeSalaryException (compensation);
         System.out.println("Pay to "+this.name+" a compensation "+compensation+". ");
     }
 
