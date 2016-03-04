@@ -5,10 +5,12 @@ package by.it.knyazev.MathLab;
  */
 public class Main {
     public static void main(String[] args) {
-        String line = "2.3 + 2 + {0,2}";
+        String line = "2.3 + 2 + {2,3,4}";
+        System.out.println("Input line: "+line);
+        Equally equallycheck = new Equally();
 
-        equally equallycheck = new equally();
-        Middle mid = new Middle(line);
+        TaskManager mid = new TaskManager(line);
+
         try {
             if (equallycheck.equally(line)){
                 mid.requiredOperations();

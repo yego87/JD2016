@@ -6,13 +6,9 @@ import java.util.regex.Pattern;
 /**
  * Created by Mac on 03.03.16.
  */
-public class Brackets extends Middle{
+public class Brackets {
 
-    public Brackets(String line) {
-        super(line);
-    }
-
-    public boolean brackets(){
+    public boolean bracketsSquare(String line){
         Pattern br = Pattern.compile("([\\[][0-9,.]+[\\]])");
         Matcher match = br.matcher(line);
         boolean nan = false;
@@ -20,7 +16,7 @@ public class Brackets extends Middle{
         return nan;
     }
 
-    public boolean bracketsRound(){
+    public boolean bracketsRound(String line){
         Pattern br = Pattern.compile("([\\{][0-9,.]+[\\}])");
         Matcher match = br.matcher(line);
         boolean nan = false;
