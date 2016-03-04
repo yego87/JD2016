@@ -15,6 +15,8 @@ public class TaskManager {
 
     public List<String> list = new ArrayList<String>();
 
+    public List<String> listTemp = new ArrayList<String>();
+
     public TaskManager(String line) {
         this.line = line;
     }
@@ -23,31 +25,35 @@ public class TaskManager {
 
     public BracketsID bracketsID = new BracketsID();
 
-    public TaskManager(){
-
-    }
+    public TaskManager(){}
 
     public Brackets brackets = new Brackets();
 
     public Count count = new Count();
 
-    public void requiredOperations(){
-        list = lta.toArray(line);
-        checkBrackets();
+    public void requiredOperations(){ // менеджер операций
+        list = lta.toArray(line); // String в List<String>
+        checkBrackets(); // Проверка на скобки
 
-        printAnswer();
+
+
+        printAnswer(); // Выводим ответ
     }
 
-    public void checkBrackets(){
-        if (brackets.bracketsRound(line)){
+    public void checkBrackets(){ // Проверка на скобки и выполнение операций взависимости от их наличия
+        if (brackets.bracketsRound(line) && !brackets.bracketsSquare(line)){ // если { } - вектор
             System.out.println("RoundBrackets");
             brRemoveByID();
         }
-        if (brackets.bracketsSquare(line)){
+        if (!brackets.bracketsRound(line) && brackets.bracketsSquare(line)){ // если [ ] - матрица
             System.out.println("SquareBrackets");
         }
-        else{
-           answer = count.count(list);
+        if (brackets.bracketsRound(line) && brackets.bracketsSquare(line)) // если {} и []
+        {
+            System.out.println("BothBrackets");
+        }
+        if (!brackets.bracketsRound(line) && !brackets.bracketsSquare(line)){ // если отсутствуют
+           answer = count.count(list); // отправляем считать
         }
     }
 
@@ -56,6 +62,8 @@ public class TaskManager {
     }
 
     public void brRemoveByID(){
-        bracketsID.bracketsRoundID(list);
+        int brR = 0;
+        brR = bracketsID.bracketsRoundID(list);
+
     }
 }

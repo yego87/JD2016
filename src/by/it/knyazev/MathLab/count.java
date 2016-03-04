@@ -12,16 +12,6 @@ public class Count{
         String f;
         for (int j = 0; j < list.size(); j++) {
             for (int i = 0; i < list.size(); i++) {
-                if (i == list.indexOf("+")) {
-                    z = Double.parseDouble(list.get(i - 1)) + Double.parseDouble(list.get(i + 1));
-                    remove(i, list);
-                    list.add(i - 1, f = String.valueOf(z));
-                }
-                if (i == list.indexOf("-")) {
-                    z = Double.parseDouble(list.get(i - 1)) - Double.parseDouble(list.get(i + 1));
-                    remove(i, list);
-                    list.add(i - 1, f = String.valueOf(z));
-                }
                 if (i == list.indexOf("/")) {
                     z = Double.parseDouble(list.get(i - 1)) / Double.parseDouble(list.get(i + 1));
                     remove(i, list);
@@ -33,6 +23,21 @@ public class Count{
                     list.add(i - 1, f = String.valueOf(z));
                 }
             }
+        }
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size(); j++) {
+                if (i == list.indexOf("+")) {
+                    z = Double.parseDouble(list.get(i - 1)) + Double.parseDouble(list.get(i + 1));
+                    remove(i, list);
+                    list.add(i - 1, f = String.valueOf(z));
+                }
+                if (i == list.indexOf("-")) {
+                    z = Double.parseDouble(list.get(i - 1)) - Double.parseDouble(list.get(i + 1));
+                    remove(i, list);
+                    list.add(i - 1, f = String.valueOf(z));
+                }
+            }
+
         }
         return z;
     }

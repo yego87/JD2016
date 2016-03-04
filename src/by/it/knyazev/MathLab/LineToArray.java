@@ -12,7 +12,6 @@ public class LineToArray {
     public String[] array;
     public List<String> list = new ArrayList<String>();
     public List<String> toArray(String line){
-
         Pattern pat = Pattern.compile(" ");//[+]|[-]|[/]|[*]
         array = pat.split(line);
         for (int i = 0; i < array.length ; i++) {
