@@ -1,11 +1,6 @@
 package by.it.telushko.jd01_14;
 
-
-import by.it.akhmelev.JD01_06.Level_A.Data;
-
 import java.io.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
     public static void main (String[] args) throws IOException {
@@ -74,6 +69,20 @@ public class Main {
         System.out.println("\n\nВ тексте обнаружено:\n" +
                 "знаков препинания: "+marksCount+"\n" +
                 "слов: "+wordCount);
+
+        //Задание C-1;
+        System.out.println("\nЗадание C-1\n+");
+
+        File file = new File(System.getProperty("user.dir"));
+        File[] list = file.listFiles();
+        System.out.println("Каталоги:");
+        for (int i = 0; i <list.length ; i++) {
+            if (list[i].isDirectory()) System.out.println(list[i]);
+        }
+        System.out.println("Файлы:");
+        for (int i = 0; i <list.length ; i++) {
+            if (list[i].isFile()) System.out.println(list[i]);
+        }
 
     }
 }
