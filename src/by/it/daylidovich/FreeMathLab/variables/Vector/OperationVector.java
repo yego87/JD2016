@@ -1,8 +1,8 @@
-package by.it.daylidovich.JD01_09.variables.Vector;
+package by.it.daylidovich.FreeMathLab.variables.Vector;
 
-import by.it.daylidovich.JD01_09.interfaces.IOperation;
-import by.it.daylidovich.JD01_09.variables.Float.VariableFloat;
-import by.it.daylidovich.JD01_09.variables.Variable;
+import by.it.daylidovich.FreeMathLab.interfaces.IOperation;
+import by.it.daylidovich.FreeMathLab.variables.Float.VariableFloat;
+import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 public class OperationVector extends Variable implements IOperation {
     @Override

@@ -1,8 +1,8 @@
-package by.it.daylidovich.JD01_09.variables.Matrix;
+package by.it.daylidovich.FreeMathLab.variables.Matrix;
 
-import by.it.daylidovich.JD01_09.interfaces.*;
-import by.it.daylidovich.JD01_09.variables.Float.VariableFloat;
-import by.it.daylidovich.JD01_09.variables.Variable;
+import by.it.daylidovich.FreeMathLab.interfaces.*;
+import by.it.daylidovich.FreeMathLab.variables.Float.VariableFloat;
+import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 public class OperationMatrix extends Variable implements IOperation {
     private double[][] copyMatrix(double[][] matrix){
