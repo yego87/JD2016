@@ -18,7 +18,6 @@ public class Main {
                 System.out.println("=");
             }
         }catch (NumberFormatException e) {
-            System.out.println("Ошибка...");
         }
     }
 }

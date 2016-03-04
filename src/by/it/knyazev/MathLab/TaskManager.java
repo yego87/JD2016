@@ -2,6 +2,7 @@ package by.it.knyazev.MathLab;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by Mac on 03.03.16.
@@ -20,6 +21,8 @@ public class TaskManager {
 
     public LineToArray lta = new LineToArray();
 
+    public BracketsID bracketsID = new BracketsID();
+
     public TaskManager(){
 
     }
@@ -30,15 +33,15 @@ public class TaskManager {
 
     public void requiredOperations(){
         list = lta.toArray(line);
-        System.out.println(list);
         checkBrackets();
-        printAnwer();
+
+        printAnswer();
     }
 
     public void checkBrackets(){
         if (brackets.bracketsRound(line)){
             System.out.println("RoundBrackets");
-            bracketsRemove();
+            brRemoveByID();
         }
         if (brackets.bracketsSquare(line)){
             System.out.println("SquareBrackets");
@@ -48,12 +51,11 @@ public class TaskManager {
         }
     }
 
-    public void printAnwer(){
+    public void printAnswer(){
         System.out.println("Answer: "+answer);
     }
 
-    public void bracketsRemove(){
-
+    public void brRemoveByID(){
+        bracketsID.bracketsRoundID(list);
     }
-
 }

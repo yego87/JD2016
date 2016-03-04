@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class Brackets {
 
     public boolean bracketsSquare(String line){
-        Pattern br = Pattern.compile("([\\[][0-9,.]+[\\]])");
+        Pattern br = Pattern.compile(Patterns.brSquare);
         Matcher match = br.matcher(line);
         boolean nan = false;
         while (match.find()){nan = true;}
@@ -17,7 +17,7 @@ public class Brackets {
     }
 
     public boolean bracketsRound(String line){
-        Pattern br = Pattern.compile("([\\{][0-9,.]+[\\}])");
+        Pattern br = Pattern.compile(Patterns.brRound);
         Matcher match = br.matcher(line);
         boolean nan = false;
         while (match.find()){nan = true;}
