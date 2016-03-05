@@ -18,14 +18,19 @@ public class Main {
             reader=new BufferedReader(new FileReader(f));
             String line;
             while ((line=reader.readLine())!=null){
-                stringBuilder.append(reader.readLine());
+                stringBuilder.append(line).append("\n");
             }
         } catch (IOException e){
             System.err.println("Ошибка файла:"+e);
         }
         finally {
-
+            if  (reader!=null){
+                reader.close();
+            }
         }
+        System.out.println(stringBuilder);
+        String newstr=DeleteComments.deleteComments(stringBuilder);
+
 
     }
 }

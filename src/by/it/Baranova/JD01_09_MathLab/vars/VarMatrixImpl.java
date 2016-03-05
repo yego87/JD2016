@@ -1,5 +1,6 @@
 package by.it.Baranova.JD01_09_MathLab.vars;
 
+import by.it.Baranova.JD01_09_MathLab.Exceptions.DifferentSizesException;
 import by.it.Baranova.JD01_09_MathLab.Int.ICalculations;
 import by.it.Baranova.JD01_09_MathLab.Int.IVariable;
 import by.it.Baranova.JD01_09_MathLab.Patterns;
@@ -118,19 +119,27 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
             return v1;
         }
         //Второй операнд - матрица
-        if (var instanceof VarMatrixImpl &&((VarMatrixImpl)var).matrix.length==this.matrix[0].length){
-            VarMatrixImpl v1=new VarMatrixImpl(this);
-            VarMatrixImpl v2=(VarMatrixImpl)var;
-            double [][] z=new double[v1.matrix.length][v2.matrix[0].length];
-            for (int i=0;i<v1.matrix.length;i++){
-                for (int j=0;j<v2.matrix[0].length;j++){
-                    for (int k=0;k<v2.matrix.length;k++){
-                        z[i][j]=z[i][j]+v1.matrix[i][k]*v2.matrix[k][j];
+
+        try {
+            if (((VarMatrixImpl) var).matrix.length != this.matrix[0].length) {
+                throw new DifferentSizesException("Матрицы имеют разную длину");
+            }
+            if (var instanceof VarMatrixImpl && ((VarMatrixImpl) var).matrix.length == this.matrix[0].length) {
+                VarMatrixImpl v1 = new VarMatrixImpl(this);
+                VarMatrixImpl v2 = (VarMatrixImpl) var;
+                double[][] z = new double[v1.matrix.length][v2.matrix[0].length];
+                for (int i = 0; i < v1.matrix.length; i++) {
+                    for (int j = 0; j < v2.matrix[0].length; j++) {
+                        for (int k = 0; k < v2.matrix.length; k++) {
+                            z[i][j] = z[i][j] + v1.matrix[i][k] * v2.matrix[k][j];
+                        }
                     }
                 }
+                VarMatrixImpl result = new VarMatrixImpl(z);
+                return result;
             }
-            VarMatrixImpl result=new VarMatrixImpl(z);
-            return result;
+        } catch (DifferentSizesException e){
+
         }
         //Второй операнд - вектор
         if (var instanceof VarVectorImpl){
