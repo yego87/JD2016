@@ -11,7 +11,7 @@ public class TaskManager {
 
     public String line;
 
-    public double answer;
+    public String answer;
 
     public int brR = 0, minSign, maxSign;
 
@@ -25,58 +25,51 @@ public class TaskManager {
 
     public LineToArray lta = new LineToArray();
 
+    public BracketsType brackets = new BracketsType();
+
     public BracketsID bracketsID = new BracketsID();
 
     public TaskManager(){}
 
-    public Brackets brackets = new Brackets();
-
     public Count count = new Count();
 
-    public void requiredOperations(){ // менеджер операций
+
+
+    public void requiredOperations(){
+        // менеджер операций
         list = lta.toArray(line); // String в List<String>
-        checkBrackets(); // Проверка на скобки
-
-
-
+        checkBrackets(); // Проверка на скобки и выполняем действия в зависимости от их наличия
         printAnswer(); // Выводим ответ
     }
 
-    public void checkBrackets(){ // Проверка на скобки и выполнение операций взависимости от их наличия
-        if (brackets.bracketsRound(line) && !brackets.bracketsSquare(line)){ // если { } - вектор
-            System.out.println("Type of Brackets: RoundBrackets");
+    public void checkBrackets(){
+        // Проверка на скобки и выполнение операций взависимости от их наличия
+        switch (brackets.bracketsType(line)){
+            case 0: {
+                // Brackets undetected
+                answer = String.valueOf(count.count(list));
+            }
+            case 1:{
+                //RoundBrackets
+                brRemoveByID(); // Возвращает id вхождение скобок (Доработать для нескольких векторов)
+                signCheck(); // Проверяем на повторение знаков
+                cutOut(); // Вырезаем фрагмент уравнения со скобками (сверясь с информацией полученной выше)
+                System.out.println("List: " + list + " TempList: " + tempList);
 
-            //Получить id вектора
-            brRemoveByID();
+                double tmp = 0;
+                tmp = Double.parseDouble(list.get(0));
+                if (list.size() > 2) {
+                    tmp = count.count(list);
+                }// Результат вычисления первой части
+                tempList.add(0,String.valueOf(tmp));
+            }
+            case 2:{
+                //SquareBrackets
 
-            // Проверить знаки до скобок, если умножить или делить (учесть возможность повторения) вырезать все (Вырезать вместе с знаком впереди стоящим)
-            // В противном случае вырезать скобки "Найти способ хранить более 1 вектора ** Разделять опозновательным знаками в массиве???
-
-            signCheck();
-            cutOut();
-            double tmp = count.count(list); // Результат вычисления первой части
-            tempList.add(0,String.valueOf(tmp));
-            System.out.println(tempList);
-
-                // Прогнать часть со скобками в обе стороны на совпадения
-                // если > 1 знака * | / то выполнить действия над ними и выполнить действия над вектором
-                // Записать в TempList (В конец - был вырезаны знаки + - ...)
-
-                // TempList отправить на вычисления векторов
-                // Вернуть ответ
-
-
-            // Закончить вычисления вернуть окончательный ответ
-        }
-        if (!brackets.bracketsRound(line) && brackets.bracketsSquare(line)){ // если [ ] - матрица
-            System.out.println("Type of Brackets: SquareBrackets");
-        }
-        if (brackets.bracketsRound(line) && brackets.bracketsSquare(line)) // если {} и []
-        {
-            System.out.println("Type of Brackets: BothBrackets");
-        }
-        if (!brackets.bracketsRound(line) && !brackets.bracketsSquare(line)){ // если отсутствуют
-           answer = count.count(list); // отправляем считать
+            }
+            case 3:{
+                //Both types
+            }
         }
     }
 
@@ -88,43 +81,63 @@ public class TaskManager {
         brR = bracketsID.bracketsRoundID(list);
     }
 
-    public void signCheck(){ //Проверка на * / и их повторение подрят
-        System.out.println("List contains: " + list);
+    public void signCheck(){
+        //Проверка на * / и их повторение подрят
         for (int i = brR; i >= 1; i--) {
             while (list.get(i).contains("*") | list.get(i).contains("/") ){
                 if (!list.get(i-1).contains("*") | !list.get(i-1).contains("/")){
-                    minSign = i;
+                    minSign = i-1;
                     break;
                 }
             }
         }
-        for (int i = brR; i < list.size() - 1; i++) {
+        for (int i = brR; i <= list.size() - 1; i++) {
             while (list.get(i).contains("*") | list.get(i).contains("/") ){
                 if (!list.get(i+1).contains("*") | !list.get(i+1).contains("/")){
-                    maxSign = i;
-                    break;
+                    System.out.println(i);
+                    maxSign = i+1;
                 }
+                break;
             }
         }
+        if (minSign > maxSign){
+            maxSign = brR;
+        }
+        System.out.println("Min: " + minSign + " Max: " + maxSign);
     }
 
     public void cutOut(){
-        if (minSign!=brR | maxSign!=brR) {
-            if (minSign-2>0){ // вырезаем зо знаком до первого вхождения подрят
-                for (int i = minSign-2; i <= maxSign+1; i++) {
-                    tempList.add(list.get(i));
-                }
-                remove(minSign-2,maxSign+1);
+        if (minSign-1 > 0 && maxSign>brR){
+            // вырезаем зо знаком до первого вхождения подрят
+            for (int i = minSign-1; i <= maxSign; i++) {
+                System.out.println(i);
+                tempList.add(list.get(i));
             }
-            if (minSign-2<=0){ // не трогаем знак
-                for (int i = minSign-1; i <= maxSign+1; i++) {
-                    tempList.add(list.get(i));
-                }
+            remove(minSign-2,maxSign);
+        }
+
+        if (minSign == 0 && maxSign>brR){
+            for (int i = minSign; i <= maxSign; i++) {
+                System.out.println(i);
+                tempList.add(list.get(i));
             }
+            remove(minSign-1,maxSign);
+            list.add("0");
+        }
+
+        if (minSign == 0 && maxSign == 0){
+            maxSign = brR;
+            for (int i = minSign; i <= maxSign; i++) {
+                tempList.add(list.get(i));
+            }
+            remove(minSign-1,maxSign);
+            list.add("0");
         }
     }
+
     public void remove(int min, int max){
-        for (int i = max; i >= min ; i--) {
+        for (int i = max; i > min ; i--) {
+            System.out.println(i);
             list.remove(i);
         }
     }
