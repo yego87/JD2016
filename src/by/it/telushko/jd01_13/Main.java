@@ -7,8 +7,8 @@ public class Main {
 
        // System.out.println("Выберите тип задач(а, b, c)\n(можно раскомментировать нужную букву)");
        // String taskNum=InOut.consoleLineInput(); //выбор типа задания
-        String taskNum="a";
-        //String taskNum="b";
+       // String taskNum="a";
+        String taskNum="b";
         //String taskNum="c";
         switch (taskNum){
             case "a":{
@@ -17,7 +17,7 @@ public class Main {
                 break;
             }
             case "b": {
-             //   TaskB.taskB1(text);
+                Task_B.taskB();
 
                 break;
             }
