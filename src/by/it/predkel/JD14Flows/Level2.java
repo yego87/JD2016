@@ -19,8 +19,10 @@ public class Level2 {
 
         //ArrayList<String> txtLn= new ArrayList<>();
         try (BufferedReader data = new BufferedReader(new FileReader(fl))) {
-            String line;Pattern pat1 = Pattern.compile("[a-zA-Z]+"); Pattern pat = Pattern.compile(",");
-            int sum=0,count=0;
+            String line;
+            Pattern pat1 = Pattern.compile("[a-zA-Z]+");
+            Pattern pat = Pattern.compile(",");
+            int sum = 0, count = 0;
             while ((line = data.readLine()) != null) {
                 Matcher mat = pat.matcher(line);
                 while (mat.find()) {
@@ -32,7 +34,9 @@ public class Level2 {
                 }
             }
             System.out.println(sum + " / " + count);
-        }
+        }catch (FileNotFoundException e) {
+                System.out.println("Файла нет: " + fin);
+            }
     }
 }
 

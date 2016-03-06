@@ -7,7 +7,9 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        Level1.lev1();
-        Level2.lev2();
+            Level1.lev1();
+            Level2.lev2();
+            Level3.level3();
+
     }
 }

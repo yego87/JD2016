@@ -10,6 +10,7 @@ public class Level1 {
         String src = System.getProperty("user.dir") + "/src/by/it/predkel/";
         String fin = src + "JD14Flows/text.txt";
         File fl=new File(fin);
+
         try(DataOutputStream data=new DataOutputStream(new FileOutputStream(fl))){
             for (int i = 0; i < 20; i++) {
                 data.writeInt((int)(Math.random()*20+10));
