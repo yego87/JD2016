@@ -19,7 +19,7 @@ public class NeuroSurgeon extends Surgeon {
     }
     // метд написанный по требованию из абстрактного класса
     @Override
-    public void useKnife() {
+    public void useKnife(int knifeLength) throws KnifeLengthException {
         System.out.println(super.getTreatment("Ангина")); // получим доступ к полю treatment из родительского класса
         System.out.println("...Воспользовался скальпелем (дописанный метод из aбстрактного класса)");
     }

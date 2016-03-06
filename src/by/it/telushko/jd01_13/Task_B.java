@@ -17,11 +17,13 @@ public class Task_B {
             elements = s.split(" ");
             FindRoots.find(Integer.valueOf(elements[0]), Integer.valueOf(elements[1]), Integer.valueOf(elements[2]));
             System.out.println();
-        } catch (IndexOutOfBoundsException e) {System.out.println("Вы ввели не все коэффициенты");}
-        catch (MinusSqrtException e){ System.out.println("Отрицательный дискриминант");}
-        catch (NumberFormatException e){ System.out.println("Ошибка ввода");}
-        catch (DevideByZeroException e) {System.out.println("Деление на ноль");;}
-        System.out.println("окончание основной процедуры");
+        }
+
+        catch (IndexOutOfBoundsException e) {System.out.println("Вы ввели не все коэффициенты");}
+        catch (MinusSqrtException e)        {System.out.println("Отрицательный дискриминант");}
+        catch (NumberFormatException e)     {System.out.println("Ошибка ввода");}
+        catch (DevideByZeroException e)     {System.out.println("Деление на ноль");}
+        finally {scan.close();System.out.println("Oкончание основной процедуры");}
     }
 
 
