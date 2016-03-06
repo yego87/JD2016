@@ -8,9 +8,29 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        String src = System.getProperty("user.dir") + "/src/by/it/Baranova/";
-        String filename = src + "JD01_14/B/text.txt";
-        File f = new File(filename);
+        String src = System.getProperty("user.dir");
+        File f = new File(src);
+        String [] paths;
+        paths=f.list();
+        System.out.println("Каталоги");
+        for (String path:paths) {
+            String filename = src +"/"+ path;
+            File fn = new File(filename);
+
+            if (fn.isDirectory() == true) {
+                System.out.println(path);
+            }
+        }
+
+        System.out.println("Файлы");
+        for (String path:paths) {
+            String filename = src +"/"+ path;
+            File fn = new File(filename);
+
+            if (fn.isDirectory() == false) {
+                System.out.println(path);
+            }
+        }
 
     }
 }
