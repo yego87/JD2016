@@ -122,7 +122,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
 
         try {
             if (((VarMatrixImpl) var).matrix.length != this.matrix[0].length) {
-                throw new DifferentSizesException("Матрицы имеют разную длину");
+                throw new DifferentSizesException("Матрицы имеют размер, не подходящую для умножения");
             }
             if (var instanceof VarMatrixImpl && ((VarMatrixImpl) var).matrix.length == this.matrix[0].length) {
                 VarMatrixImpl v1 = new VarMatrixImpl(this);
