@@ -30,7 +30,7 @@ public class Main {
                             switch (operation){
                                 case "+":
                                     try{
-                                        System.out.println(getVarable(firstTerm).add(getVarable(secondTerm)));
+                                        System.out.println(getVariable(firstTerm).add(getVariable(secondTerm)));
                                     }
                                     catch (ArrayIndexOutOfBoundsException e){
                                         System.out.println(e.getMessage());
@@ -38,7 +38,7 @@ public class Main {
                                     break;
                                 case "-":
                                     try{
-                                        System.out.println(getVarable(firstTerm).sub(getVarable(secondTerm)));
+                                        System.out.println(getVariable(firstTerm).sub(getVariable(secondTerm)));
                                     }
                                     catch (ArrayIndexOutOfBoundsException e){
                                         System.out.println(e.getMessage());
@@ -46,7 +46,7 @@ public class Main {
                                     break;
                                 case "*":
                                     try{
-                                        System.out.println(getVarable(firstTerm).mult(getVarable(secondTerm)));
+                                        System.out.println(getVariable(firstTerm).mult(getVariable(secondTerm)));
                                     }
                                     catch (ArrayIndexOutOfBoundsException e){
                                         System.out.println(e.getMessage());
@@ -54,7 +54,7 @@ public class Main {
                                     break;
                                 case "/":
                                     try{
-                                        System.out.println(getVarable(firstTerm).div(getVarable(secondTerm)));
+                                        System.out.println(getVariable(firstTerm).div(getVariable(secondTerm)));
                                     }
                                     catch (ArithmeticException e){
                                         System.out.println(e.getMessage());
@@ -68,10 +68,10 @@ public class Main {
                     }
                     else
                     {
-                        String name = readNameVarable(string);
+                        String name = readNameVariable(string);
                         String variable = readSecondTerm(string);
                         if (name != null && variable != null)
-                            getVarable(variable).save(name);
+                            getVariable(variable).save(name);
                         else
                             System.out.println("Некоректный ввод.");
                     }

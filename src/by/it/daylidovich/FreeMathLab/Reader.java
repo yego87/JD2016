@@ -42,7 +42,7 @@ public class Reader {
             return null;
     }
 
-    public static String readNameVarable(String string){
+    public static String readNameVariable(String string){
         Matcher matcher = Pattern.compile("([A-z]+)([ =])").matcher(string);
         if (matcher.find())
             return matcher.group(1);
@@ -50,7 +50,7 @@ public class Reader {
             return null;
     }
 
-    public static Variable getVarable(String string) throws IOException {
+    public static Variable getVariable(String string) throws IOException {
         Matcher matcher = Pattern.compile("[\\[\\{]").matcher(string);
         int count = 0;
         while (matcher.find())
