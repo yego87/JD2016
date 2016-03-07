@@ -8,7 +8,7 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) throws IOException {
         String src = System.getProperty("user.dir") + "/src/by/it/Baranova/";
-        String filename = src + "JD01_15/Program.txt";
+        String filename = src + "JD01_15/C/Utils.java";
         File f = new File(filename);
         StringBuilder stringBuilder=new StringBuilder();
 
@@ -30,7 +30,6 @@ public class Main {
         }
         System.out.println(stringBuilder);
         String newstr=DeleteComments.deleteComments(stringBuilder);
-
-
+        Enumerate.enumerate(newstr);
     }
 }

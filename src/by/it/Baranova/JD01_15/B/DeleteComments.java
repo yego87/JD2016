@@ -10,20 +10,7 @@ public class DeleteComments {
 
     public static String deleteComments(StringBuilder str){
         String newstr=str.toString();
-        Pattern p1=Pattern.compile(Patterns.comments1);
-        Pattern p2=Pattern.compile(Patterns.stars);
-        Matcher m1=p1.matcher(newstr);
-        Matcher m2=p2.matcher(newstr);
-        while (m1.find()) {
-            System.out.println(m1.group());
-            newstr=newstr.replaceAll(m1.group(),"");
-        }
-        while (m2.find()) {
-            System.out.println(m2.group());
-            newstr=newstr.replaceAll(m2.group(),"");
-        }
-
-        System.out.println(newstr);
+        newstr=newstr.replaceAll("(//.*\\n)|(/*[*]{1,2}.*[*]*/*)\\n","");
         return newstr;
     }
 }
