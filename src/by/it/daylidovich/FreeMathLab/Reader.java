@@ -14,8 +14,7 @@ import java.util.regex.Pattern;
 public class Reader {
     public static String readInput() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String rLine = reader.readLine();
-        return rLine;
+        return reader.readLine();
     }
 
     public static String readFirstTerm(String string){

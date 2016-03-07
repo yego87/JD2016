@@ -8,7 +8,7 @@ import static by.it.daylidovich.FreeMathLab.Reader.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
+        SaveReadVariables.readBase();
         System.out.println("Введите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
         String string = readInput();
         while (string.trim().length() != 0){
@@ -26,7 +26,7 @@ public class Main {
                     if (operation != null && !operation.equals("=")){
                         String firstTerm = readFirstTerm(string);
                         String secondTerm = readSecondTerm(string);
-                        if (operation != null && firstTerm != null && secondTerm != null){
+                        if (firstTerm != null && secondTerm != null){
                             switch (operation){
                                 case "+":
                                     try{
@@ -80,5 +80,6 @@ public class Main {
             System.out.println("\nВведите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
             string = readInput();
         }
+        SaveReadVariables.saveBase();
     }
 }
