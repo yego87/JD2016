@@ -8,7 +8,7 @@ import static by.it.daylidovich.FreeMathLab.Reader.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
+        SaveReadVariables.readBase();
         System.out.println("Введите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
         String string = readInput();
         while (string.trim().length() != 0){
@@ -26,11 +26,11 @@ public class Main {
                     if (operation != null && !operation.equals("=")){
                         String firstTerm = readFirstTerm(string);
                         String secondTerm = readSecondTerm(string);
-                        if (operation != null && firstTerm != null && secondTerm != null){
+                        if (firstTerm != null && secondTerm != null){
                             switch (operation){
                                 case "+":
                                     try{
-                                        System.out.println(getVarable(firstTerm).add(getVarable(secondTerm)));
+                                        System.out.println(getVariable(firstTerm).add(getVariable(secondTerm)));
                                     }
                                     catch (ArrayIndexOutOfBoundsException e){
                                         System.out.println(e.getMessage());
@@ -38,7 +38,7 @@ public class Main {
                                     break;
                                 case "-":
                                     try{
-                                        System.out.println(getVarable(firstTerm).sub(getVarable(secondTerm)));
+                                        System.out.println(getVariable(firstTerm).sub(getVariable(secondTerm)));
                                     }
                                     catch (ArrayIndexOutOfBoundsException e){
                                         System.out.println(e.getMessage());
@@ -46,7 +46,7 @@ public class Main {
                                     break;
                                 case "*":
                                     try{
-                                        System.out.println(getVarable(firstTerm).mult(getVarable(secondTerm)));
+                                        System.out.println(getVariable(firstTerm).mult(getVariable(secondTerm)));
                                     }
                                     catch (ArrayIndexOutOfBoundsException e){
                                         System.out.println(e.getMessage());
@@ -54,7 +54,7 @@ public class Main {
                                     break;
                                 case "/":
                                     try{
-                                        System.out.println(getVarable(firstTerm).div(getVarable(secondTerm)));
+                                        System.out.println(getVariable(firstTerm).div(getVariable(secondTerm)));
                                     }
                                     catch (ArithmeticException e){
                                         System.out.println(e.getMessage());
@@ -68,10 +68,10 @@ public class Main {
                     }
                     else
                     {
-                        String name = readNameVarable(string);
+                        String name = readNameVariable(string);
                         String variable = readSecondTerm(string);
                         if (name != null && variable != null)
-                            getVarable(variable).save(name);
+                            getVariable(variable).save(name);
                         else
                             System.out.println("Некоректный ввод.");
                     }
@@ -80,5 +80,6 @@ public class Main {
             System.out.println("\nВведите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
             string = readInput();
         }
+        SaveReadVariables.saveBase();
     }
 }
