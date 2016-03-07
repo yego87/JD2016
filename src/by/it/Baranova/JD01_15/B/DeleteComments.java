@@ -11,7 +11,7 @@ public class DeleteComments {
     public static String deleteComments(StringBuilder str){
         String newstr=str.toString();
         Pattern p1=Pattern.compile(Patterns.comments1);
-        Pattern p2=Pattern.compile(Patterns.comments2);
+        Pattern p2=Pattern.compile(Patterns.stars);
         Matcher m1=p1.matcher(newstr);
         Matcher m2=p2.matcher(newstr);
         while (m1.find()) {
