@@ -1,9 +1,8 @@
 package by.it.knyazev.MathLab;
 
-/**
- * Created by Mac on 03.03.16.
- */
-public class Equally extends Main{
+import by.it.knyazev.MathLab.Interfaces.IEqually;
+
+public class Equally extends Main implements IEqually{
     public boolean equally(String line){
         boolean nan;
         if(line.contains("=")){

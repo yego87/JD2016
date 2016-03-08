@@ -2,10 +2,7 @@ package by.it.knyazev.MathLab;
 
 import java.util.Scanner;
 
-/**
- * Created by Mac on 03.03.16.
- */
-public class Main {
+public abstract class Main {
     public static void main(String[] args) {
 
         //String line = new Scanner(System.in).nextLine(); //Input String

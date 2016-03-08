@@ -3,9 +3,9 @@ package by.it.knyazev.MathLab;
 import java.util.List;
 
 /**
- * Created by Mac on 04.03.16.
+ * Created by Mac on 08.03.16.
  */
-public class Count{
+public class Count {
 
     public double count(List<String> list){
         double z = 0;

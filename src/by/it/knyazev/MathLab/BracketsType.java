@@ -1,9 +1,8 @@
 package by.it.knyazev.MathLab;
 
-/**
- * Created by Mac on 04.03.16.
- */
-public class BracketsType {
+import by.it.knyazev.MathLab.Interfaces.IBracketsType;
+
+public class BracketsType implements IBracketsType {
 
     public Brackets brackets = new Brackets();
 

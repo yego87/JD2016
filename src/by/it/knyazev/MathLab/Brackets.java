@@ -1,12 +1,12 @@
 package by.it.knyazev.MathLab;
 
+import by.it.knyazev.MathLab.Interfaces.IBrackets;
+
+import java.lang.annotation.Target;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Mac on 03.03.16.
- */
-public class Brackets {
+public class Brackets implements IBrackets{
 
     public boolean bracketsSquare(String line){
         Pattern br = Pattern.compile(Patterns.brSquare);

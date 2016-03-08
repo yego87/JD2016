@@ -1,13 +1,14 @@
 package by.it.knyazev.MathLab;
 
+import by.it.knyazev.MathLab.Interfaces.ITaskManager;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-/**
- * Created by Mac on 03.03.16.
- */
-public class TaskManager {
+public class TaskManager implements ITaskManager{
 
     public String line;
 
@@ -76,11 +77,12 @@ public class TaskManager {
     public void printAnswer(){
         System.out.println("Answer: " + answer);
     }
-
     public void brRemoveByID(){
         brR = bracketsID.bracketsRoundID(list);
     }
 
+
+    @Deprecated
     public void signCheck(){
         //Проверка на * / и их повторение подрят
         for (int i = brR; i >= 1; i--) {
@@ -94,7 +96,6 @@ public class TaskManager {
         for (int i = brR; i <= list.size() - 1; i++) {
             while (list.get(i).contains("*") | list.get(i).contains("/") ){
                 if (!list.get(i+1).contains("*") | !list.get(i+1).contains("/")){
-                    System.out.println(i);
                     maxSign = i+1;
                 }
                 break;
@@ -106,11 +107,12 @@ public class TaskManager {
         System.out.println("Min: " + minSign + " Max: " + maxSign);
     }
 
+
+    @Deprecated
     public void cutOut(){
         if (minSign-1 > 0 && maxSign>brR){
             // вырезаем зо знаком до первого вхождения подрят
             for (int i = minSign-1; i <= maxSign; i++) {
-                System.out.println(i);
                 tempList.add(list.get(i));
             }
             remove(minSign-2,maxSign);
@@ -118,7 +120,6 @@ public class TaskManager {
 
         if (minSign == 0 && maxSign>brR){
             for (int i = minSign; i <= maxSign; i++) {
-                System.out.println(i);
                 tempList.add(list.get(i));
             }
             remove(minSign-1,maxSign);
@@ -135,9 +136,9 @@ public class TaskManager {
         }
     }
 
+    @Deprecated
     public void remove(int min, int max){
         for (int i = max; i > min ; i--) {
-            System.out.println(i);
             list.remove(i);
         }
     }
