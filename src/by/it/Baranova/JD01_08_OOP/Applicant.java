@@ -10,6 +10,6 @@ public interface Applicant {
     boolean DocumentsPackage();
     double AverageAssessments();
     int SetScholarship();
-    int SetCourse();
+    int SetCourse(int n);
 
 }

@@ -53,7 +53,7 @@ public abstract class Student implements Applicant {
 
 
     @Override
-    public int SetCourse() {
+    public int SetCourse(int n) {
         System.out.println("Метод устанавливает курс, на котором учится студент");
         return coursenumber;
     }

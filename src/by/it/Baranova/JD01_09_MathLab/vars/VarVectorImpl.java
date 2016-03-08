@@ -1,5 +1,6 @@
 package by.it.Baranova.JD01_09_MathLab.vars;
 
+import by.it.Baranova.JD01_09_MathLab.Exceptions.DifferentSizesException;
 import by.it.Baranova.JD01_09_MathLab.Int.ICalculations;
 import by.it.Baranova.JD01_09_MathLab.Int.IVariable;
 import by.it.Baranova.JD01_09_MathLab.Patterns;
@@ -43,13 +44,21 @@ public class VarVectorImpl extends VarImpl implements ICalculations, IVariable {
     @Override
     public VarImpl add(VarImpl var) {
         //Второй аргумент - Вектор
-        if (var instanceof VarVectorImpl && ((VarVectorImpl) var).vector.length==this.vector.length){
-            VarVectorImpl v1=new VarVectorImpl(this);
-            VarVectorImpl v2=(VarVectorImpl)var;
-            for (int i=0;i<v1.vector.length;i++){
-                v1.vector[i]=v1.vector[i]+v2.vector[i];
+
+        try {
+            if (((VarVectorImpl) var).vector.length != this.vector.length) {
+                throw new DifferentSizesException("Вектора имеют разную длину");
             }
-        return v1;
+            if (var instanceof VarVectorImpl && ((VarVectorImpl) var).vector.length == this.vector.length) {
+                VarVectorImpl v1 = new VarVectorImpl(this);
+                VarVectorImpl v2 = (VarVectorImpl) var;
+                for (int i = 0; i < v1.vector.length; i++) {
+                    v1.vector[i] = v1.vector[i] + v2.vector[i];
+                }
+                return v1;
+            }
+        } catch (DifferentSizesException e){
+
         }
         //Второй аргумент - скалярная величина
         if (var instanceof VarFloatImpl){
@@ -71,13 +80,20 @@ public class VarVectorImpl extends VarImpl implements ICalculations, IVariable {
     @Override
     public VarImpl sub(VarImpl var) {
         //Второй аргумент - Вектор
-        if (var instanceof VarVectorImpl && ((VarVectorImpl) var).vector.length==this.vector.length){
-            VarVectorImpl v1=new VarVectorImpl(this);
-            VarVectorImpl v2=(VarVectorImpl)var;
-            for (int i=0;i<v1.vector.length;i++){
-                v1.vector[i]=v1.vector[i]-v2.vector[i];
+        try {
+            if (((VarVectorImpl) var).vector.length != this.vector.length) {
+                throw new DifferentSizesException("Вектора имеют разную длину");
             }
-            return v1;
+            if (var instanceof VarVectorImpl && ((VarVectorImpl) var).vector.length == this.vector.length) {
+                VarVectorImpl v1 = new VarVectorImpl(this);
+                VarVectorImpl v2 = (VarVectorImpl) var;
+                for (int i = 0; i < v1.vector.length; i++) {
+                    v1.vector[i] = v1.vector[i] - v2.vector[i];
+                }
+                return v1;
+            }
+        }catch (DifferentSizesException e){
+
         }
         //Второй аргумент - скалярная величина
         if (var instanceof VarFloatImpl){
@@ -100,15 +116,25 @@ public class VarVectorImpl extends VarImpl implements ICalculations, IVariable {
     @Override
     public VarImpl mul(VarImpl var) {
         //Второй аргумент - Вектор
-        if (var instanceof VarVectorImpl && ((VarVectorImpl) var).vector.length==this.vector.length){
-            VarVectorImpl v1=new VarVectorImpl(this);
-            VarVectorImpl v2=(VarVectorImpl)var;
-            double mulV=0;
-            for (int i=0;i<v1.vector.length;i++){
-                mulV=mulV+v1.vector[i]*v2.vector[i];
+        try {
+            if (((VarVectorImpl) var).vector.length != this.vector.length) {
+                throw new DifferentSizesException("Вектора имеют разную длину");
             }
-            return new VarFloatImpl(mulV);
+
+            if (var instanceof VarVectorImpl && ((VarVectorImpl) var).vector.length == this.vector.length) {
+                VarVectorImpl v1 = new VarVectorImpl(this);
+                VarVectorImpl v2 = (VarVectorImpl) var;
+                double mulV = 0;
+                for (int i = 0; i < v1.vector.length; i++) {
+                    mulV = mulV + v1.vector[i] * v2.vector[i];
+                }
+                return new VarFloatImpl(mulV);
+            }
+
+        } catch (DifferentSizesException e) {
+
         }
+
         //Второй аргумент - скалярная величина
         if (var instanceof VarFloatImpl){
             VarVectorImpl v1=new VarVectorImpl(this);
@@ -144,7 +170,7 @@ public class VarVectorImpl extends VarImpl implements ICalculations, IVariable {
     @Override
     public String toString() {
         StringBuilder result=new StringBuilder("");
-        System.out.print("Type-Vector ");
+        //System.out.print("Type Vector ");
         result.append('{');
         for (int i=0;i<vector.length;i++){
             result.append(vector[i]);
