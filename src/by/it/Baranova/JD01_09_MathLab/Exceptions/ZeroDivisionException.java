@@ -9,7 +9,7 @@ public class ZeroDivisionException extends Exception {
         super(message, exception);
     }
     public ZeroDivisionException (String message) {
-        System.out.println("Ошибка:"+message);
+        System.out.println("ERR:"+message);
     }
     public ZeroDivisionException (Throwable exception) {
         super(exception);

@@ -15,21 +15,26 @@ public class DirClass {
             if (rLine.equals("dir")) {
                 paths = f.list();
             }
-
+            int countfiles=0;
+            int countdir=0;
             for (String path : paths) {
                 String filename = src + "/" + path;
                 File fn = new File(filename);
                 Date d=new Date(fn.lastModified());
+
                 long size=fn.length();
                 if (fn.isDirectory()) {
                     System.out.printf("%25s   <DIR>   %4s   %30s",path,size, d);
+                    countdir++;
                     System.out.println();
                 }
                 else {
                         System.out.printf("%25s   %12s   %30s",path,size,d);
                         System.out.println();
+                        countfiles++;
                 }
             }
+            System.out.println("Папок: "+countdir+"  Файлов: "+countfiles);
         } catch (Exception e) {
             e.printStackTrace();
         }

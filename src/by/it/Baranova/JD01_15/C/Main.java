@@ -7,6 +7,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         String src = System.getProperty("user.dir");
+        System.out.println("Вы сейчас находитесь в каталоге "+src);
         System.out.println("Введите команду");
         String rLine = Utils.ReadLine();
 
@@ -17,7 +18,7 @@ public class Main {
                 if (rLine.contains("dir")){key="dir";System.out.println(key);}
                 switch (key) {
                     case "cd": {
-
+                        src=CDClass.cdCommand(src,rLine);
                         break;
                     }
 
@@ -25,7 +26,6 @@ public class Main {
                         DirClass.Dir(rLine,src);
                         break;
                     }
-
                     default: {
                         //Преобразование переменных в переменные типа VarImpl
                         System.out.println("Введена некорректная команда");

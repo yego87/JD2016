@@ -10,25 +10,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String src = System.getProperty("user.dir");
         File f = new File(src);
-        String [] paths;
+        File [] paths;
         try {
-            paths = f.list();
+            paths = f.listFiles();
             System.out.println("Каталоги");
-            for (String path : paths) {
-                String filename = src + "/" + path;
-                File fn = new File(filename);
-
-                if (fn.isDirectory()) {
+            for (File path : paths) {
+                if (path.isDirectory()) {
                     System.out.println(path);
                 }
             }
 
             System.out.println("Файлы");
-            for (String path : paths) {
-                String filename = src + "/" + path;
-                File fn = new File(filename);
-
-                if (!fn.isDirectory()) {
+            for (File path : paths) {
+                if (path.isFile()) {
                     System.out.println(path);
                 }
             }

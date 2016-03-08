@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Ekaterina on 2/22/16.
@@ -20,13 +21,13 @@ public class Runner {
 
     public static void main(String[] args) throws IOException {
 
-        Map<String, VarImpl> hashMap = new HashMap<String, VarImpl>();
-        ArrayList<String> sortedlist=new ArrayList<>();
+        Map<String, VarImpl> hashMap = BaseUse.restoreBase();
+        TreeMap<String,VarImpl> treeMap=new TreeMap<>(hashMap);
         System.out.println("Введите выражение, которое хотите вычислить");
         String rLine = ReadingFromConsole.ReadLine();
 
-        try {
-            while (rLine.trim().length() != 0) {
+        while (rLine.trim().length() != 0) {
+            try {
                 switch (rLine) {
                     case "printvar": {
                         Print.printvar(hashMap);
@@ -34,7 +35,7 @@ public class Runner {
                     }
 
                     case "sortvar": {
-                        Print.sortvar(sortedlist, hashMap);
+                        Print.sortvar(treeMap);
                         break;
                     }
 
@@ -70,18 +71,21 @@ public class Runner {
                             case "=": {
                                 VarImpl b = DefineType.Define(operands[1]);
                                 hashMap.put(operands[0], b);
-                                sortedlist.add(operands[0]);
+                                treeMap.put(operands[0],b);
                                 break;
                             }
                         }
                     }
                 }
-                System.out.println("Введите выражение, которое хотите вычислить");
-                rLine = ReadingFromConsole.ReadLine();
+
             }
+            catch (Exception e) {
+                System.err.println("Введено некорректное выражение");
+            }
+            System.out.println("Введите выражение, которое хотите вычислить");
+            rLine = ReadingFromConsole.ReadLine();
         }
-        catch (StringIndexOutOfBoundsException e){
-            System.err.print("Введено некорректное выражение");
-        }
+
+        BaseUse.saveVariable(hashMap);
     }
 }

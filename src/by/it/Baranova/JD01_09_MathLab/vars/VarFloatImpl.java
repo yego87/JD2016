@@ -45,7 +45,7 @@ public class VarFloatImpl extends VarImpl implements ICalculations,IVariable {
     @Override //Деление
     public VarImpl div(VarImpl var) {
         try {
-            if (((VarFloatImpl) var).value==0){throw new ZeroDivisionException();}
+            if (((VarFloatImpl) var).value==0){throw new ZeroDivisionException("Деление на 0 невозможно");}
             if (var instanceof VarFloatImpl)
                 return new VarFloatImpl(this.value / ((VarFloatImpl) var).value);
         } catch (ZeroDivisionException e) {
@@ -57,7 +57,7 @@ public class VarFloatImpl extends VarImpl implements ICalculations,IVariable {
     //Вспомогательные операции
     @Override
     public String toString () {
-        System.out.print("Type float ");
+        //System.out.print("Type float ");
         return ((Double)value).toString();}
     @Override
     public void setFrom(String str) {value=Double.valueOf(str);}
