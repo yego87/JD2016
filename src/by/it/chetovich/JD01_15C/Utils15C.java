@@ -1,10 +1,9 @@
-package by.it.chetovich.JD01_15_C;
+package by.it.chetovich.JD01_15C;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 /**
  * Utils for 15_C
@@ -72,10 +71,10 @@ public class Utils15C {
 
         String line;
         while (!(line=enterLine()).isEmpty()) {
-            if ("dir".equals(line)) DIRCommand.runDIR(file);
+            if ("dir".equals(line)) DirCommand.runDIR(file);
             else {
                 if ("cd".equals(line)){
-                    if((file = CDCommand.runCD(src))!=null) System.out.println("You are at directory: "+file.getPath());
+                    if((file = CdCommand.runCD(src))!=null) System.out.println("You are at directory: "+file.getPath());
                     else System.out.println("The path you've entered doesn't exist, try again.");
 
                 }

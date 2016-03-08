@@ -1,4 +1,4 @@
-package by.it.chetovich.JD01_15_C;
+package by.it.chetovich.JD01_15C;
 
 import java.io.File;
 import java.io.IOException;
