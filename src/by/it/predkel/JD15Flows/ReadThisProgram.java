@@ -24,11 +24,12 @@ public class ReadThisProgram {
 
         Pattern pat=Pattern.compile("//.*");
         Matcher mat=pat.matcher(str);
-        Pattern pat1=Pattern.compile("(/\\*([^(/\\*)]|\\n)+\\*/)");//проблема с многострочным паттерном
+        Pattern pat1=Pattern.compile("/\\*.+?((\n.+)+)?[*]/|[/]{2}.+]");//многострочный паттерн
         Matcher mat1=pat1.matcher(str);
        // str.toString().replaceAll("\\/\\*([^(\\/\\*)]|\\n)+\\*\\/"," ");
         while (mat.find()){
             System.out.println(mat.group());
+
         }
         while (mat1.find()){
             System.out.println(mat1.group());
