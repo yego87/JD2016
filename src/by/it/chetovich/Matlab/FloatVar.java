@@ -22,7 +22,12 @@ public class FloatVar extends Var {
 
     @Override
     public String toString (){
-        return "(float) "+Float.toString(val);
+        return Float.toString(val);
+    }
+
+    @Override
+    public String getType() {
+        return " (float) ";
     }
 
     @Override

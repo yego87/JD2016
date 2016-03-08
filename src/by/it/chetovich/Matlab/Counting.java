@@ -15,23 +15,23 @@ public class Counting {
     public static void count (Var a, Var b, String line) throws ErrorException {
 
             if (line.contains("+")) {
-                System.out.print(a + " + " + b + " ");
-                Print.print(a.add(b));
+                System.out.print(a +a.getType()+ " + " + b+b.getType() + " ");
+                UtilsMatlab.print(a.add(b));
             }
 
             if (line.contains("-")) {
                 System.out.print(a + " - " + b + " ");
-                Print.print(a.sub(b));
+                UtilsMatlab.print(a.sub(b));
             }
 
             if (line.contains("*")) {
                 System.out.print(a + " * " + b + " ");
-                Print.print(a.multi(b));
+                UtilsMatlab.print(a.multi(b));
             }
 
             if (line.contains("/")) {
                 System.out.print(a + " / " + b + " ");
-                    Print.print(a.divide(b));
+                    UtilsMatlab.print(a.divide(b));
             }
 
     }

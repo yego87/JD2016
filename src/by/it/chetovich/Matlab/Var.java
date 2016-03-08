@@ -45,4 +45,9 @@ public abstract class Var implements IAddable, ISubtractable, IMultiplicable, ID
         return null;
     }
 
+
+    public String getType (){
+        return null;
+    }
+
 }
