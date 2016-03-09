@@ -1,58 +1,24 @@
 package by.it.novik.JD02_01;
 
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 public class Runner {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
-        ExecutorService executor= Executors.newFixedThreadPool(5);
-        executor.execute(new Cashier());
-        executor.execute(new Cashier());
+        Customer a = new Customer("Sam");
+        Customer b = new Customer("Jack");
+        Customer c = new Customer("Bob");
+        Customer d = new Customer("Kate");
 
+        Thread thread1 = new Thread(a);
+        Thread thread2 = new Thread(b);
+        Thread thread3 = new Thread(c);
+        Thread thread4 = new Thread(d);
 
-
-
-        while (!(Customer.customersNum>=Cashier.planNumOfCustomers)) {
-            Customer.think();
-            for(int i = 0; i <= 2; i++) {
-                new Customer(getRandomName());
-                if(Customer.customersNum>=Cashier.planNumOfCustomers){
-                    break;
-                }
-            }
-        }
-        executor.shutdown();
-
-//        int people = 0;
-//
-//        Random random = new Random();
-//
-//        Queue<Customer> queue=new ArrayDeque<>();
-//        while (people++ < 6) {
-//            Thread.sleep(random.nextInt(500));
-//
-//            Customer customer = new Customer(getRandomName());
-//            queue.add(customer);
-//        }
-    }
-
-    public static String getRandomName() {
-        String name = "";
-
-        String[] names = {"Sam", "Jack", "Bob", "Kate", "Andrew","Dominique",};
-        String[] surnames = {"Peterson", "Jackson", "Cox", "Lincoln", "Shepperd", "Bowie"};
-
-        Random random = new Random();
-
-        name += names[random.nextInt(names.length - 1)];
-        name += " ";
-        name += surnames[random.nextInt(surnames.length - 1)];
-
-        return name;
+        thread1.start();
+        thread2.start();
+        thread3.start();
+        thread4.start();
     }
 }
