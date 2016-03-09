@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Yultos_ on 26.02.2016.
+ * creates list
  */
 public class CreatingList {
 

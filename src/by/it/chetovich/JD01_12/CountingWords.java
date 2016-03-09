@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by user_2 on 26.02.2016.
+ * words count
  */
 public class CountingWords {
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Yultos_ on 29.02.2016.
+ * JD01_13
  */
 public class Main {
 
