@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD02_01;
+package by.it.daylidovich.JD02_01.Utils;
 
 import java.util.Random;
 
