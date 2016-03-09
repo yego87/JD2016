@@ -13,18 +13,26 @@ public class Buyer extends Thread implements Runnable, IBuyer {
     start();
     }
 
+    @Override // для вывода имени покупателя
+public String toString() {return this.getName();}
 
     @Override
     public void enterToMarket() {
     }
 
-    @Override
-    public void goToOut() {
-
-    }
 
     @Override
     public void chooseGoods() {
+try{
+        int pause=Rnd.fromTo(500,2000);
+        Thread.sleep(pause);}
+        catch(InterruptedException e){  //вопрос в этой строке что она делает
+         System.out.println(this+"//некоректное завершение ожидания");
+        }
+        System.out.println(this+"выбрал товар");
+    }
+    @Override
+    public void goToOut() {System.out.println(this + "вышел из магазина");
 
     }
 }
