@@ -1,4 +1,4 @@
-package by.it.predkel.jd01.SimplyUsefulClasses.matrixOk;
+package by.it.predkel.SimplyUsefulClasses.matrixOk;
 
 public class MatrixCreator {
         public static void fillRandomized(Matrix t, int start, int end) {

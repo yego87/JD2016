@@ -18,7 +18,6 @@ public class MyTreeMap {
         treemap.put("Key4", "Item2");
         // использую класс set для обращения к ключу и значению как к одному целому
         Set set = treemap.entrySet();
-
         // и итератор для простого прохода по всем элементам дерева
         Iterator it = set.iterator();
 
