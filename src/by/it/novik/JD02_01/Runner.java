@@ -1,37 +1,24 @@
 package by.it.novik.JD02_01;
 
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Random;
+
 
 public class Runner {
-    public static void main(String[] args) throws InterruptedException {
-        int people = 0;
+    public static void main(String[] args) {
 
-        Random random = new Random();
+        Customer a = new Customer("Sam");
+        Customer b = new Customer("Jack");
+        Customer c = new Customer("Bob");
+        Customer d = new Customer("Kate");
 
-        Queue<Customer> queue=new ArrayDeque<>();
-        while (people++ < 6) {
-            Thread.sleep(random.nextInt(500));
+        Thread thread1 = new Thread(a);
+        Thread thread2 = new Thread(b);
+        Thread thread3 = new Thread(c);
+        Thread thread4 = new Thread(d);
 
-            Customer customer = new Customer(getRandomName());
-            queue.add(customer);
-        }
-    }
-
-    public static String getRandomName() {
-        String name = "";
-
-        String[] names = {"Sam", "Jack", "Bob", "Kate", "Andrew","Dominique",};
-        String[] surnames = {"Peterson", "Jackson", "Cox", "Lincoln", "Shepperd", "Bowie"};
-
-        Random random = new Random();
-
-        name += names[random.nextInt(names.length - 1)];
-        name += " ";
-        name += surnames[random.nextInt(surnames.length - 1)];
-
-        return name;
+        thread1.start();
+        thread2.start();
+        thread3.start();
+        thread4.start();
     }
 }
