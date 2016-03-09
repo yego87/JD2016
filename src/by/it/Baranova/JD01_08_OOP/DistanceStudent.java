@@ -22,8 +22,8 @@ public class DistanceStudent extends Student {
 
     //Динамический полиморфизм
     @Override
-    public int SetCourse() {
-        super.SetCourse();
+    public int SetCourse(int n) {
+        super.SetCourse(n);
         System.out.println("Заочное отделение");
         return super.coursenumber;
 

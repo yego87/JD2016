@@ -1,5 +1,6 @@
 package by.it.Baranova.JD01_09_MathLab.vars;
 
+import by.it.Baranova.JD01_09_MathLab.Exceptions.ZeroDivisionException;
 import by.it.Baranova.JD01_09_MathLab.Int.ICalculations;
 import by.it.Baranova.JD01_09_MathLab.Int.IVariable;
 
@@ -42,16 +43,21 @@ public class VarFloatImpl extends VarImpl implements ICalculations,IVariable {
     }
 
     @Override //Деление
-    public VarImpl div(VarImpl var){
-        if (var instanceof VarFloatImpl)
-            return new VarFloatImpl(this.value/((VarFloatImpl)var).value);
+    public VarImpl div(VarImpl var) {
+        try {
+            if (((VarFloatImpl) var).value==0){throw new ZeroDivisionException("Деление на 0 невозможно");}
+            if (var instanceof VarFloatImpl)
+                return new VarFloatImpl(this.value / ((VarFloatImpl) var).value);
+        } catch (ZeroDivisionException e) {
+            //System.err.print("Ошибка: деление на ноль");
+        }
         return super.div(var);
     }
 
     //Вспомогательные операции
     @Override
     public String toString () {
-        System.out.print("Type float ");
+        //System.out.print("Type float ");
         return ((Double)value).toString();}
     @Override
     public void setFrom(String str) {value=Double.valueOf(str);}

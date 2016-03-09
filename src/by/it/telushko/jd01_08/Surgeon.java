@@ -16,9 +16,11 @@ public abstract class Surgeon implements IDoctor {
     }
     @Override
     public String getTreatment(String desease) {
+
         treatment=this.treatment+" Против"+desease;
+
         return treatment;
     }
     //декларируем абстрактный метод для дальнейшей реализации
-    public abstract  void useKnife();
+    public abstract  void useKnife(int height) throws KnifeLengthException;
 }
