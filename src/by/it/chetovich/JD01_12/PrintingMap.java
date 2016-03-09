@@ -3,7 +3,7 @@ package by.it.chetovich.JD01_12;
 import java.util.Map;
 
 /**
- * Created by user_2 on 26.02.2016.
+ * prints map
  */
 public class PrintingMap {
 

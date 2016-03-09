@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by user_2 on 26.02.2016.
+ * creates list with random numbers
  */
 public class CreatingRandomArrayList {
 

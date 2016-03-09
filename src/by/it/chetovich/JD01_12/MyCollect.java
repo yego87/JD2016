@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by user_2 on 26.02.2016.
+ * cross and union of 2 sets
  */
 public class MyCollect {
 

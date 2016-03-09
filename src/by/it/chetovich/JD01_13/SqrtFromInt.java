@@ -3,7 +3,7 @@ package by.it.chetovich.JD01_13;
 import java.io.IOException;
 
 /**
- * Created by Yultos_ on 29.02.2016.
+ * sqrt from int
  */
 public class SqrtFromInt {
 

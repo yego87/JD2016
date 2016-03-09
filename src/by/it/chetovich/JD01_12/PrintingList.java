@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by user_2 on 26.02.2016.
+ * print list
  */
 public class PrintingList {
 

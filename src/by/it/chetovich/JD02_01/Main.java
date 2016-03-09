@@ -10,14 +10,14 @@ import java.util.Map;
 import java.util.Queue;
 
 /**
- * Created by user_2 on 09.03.2016.
+ * JD02_01
  */
 public class Main {
 
     public static void main (String [] args) throws InterruptedException {
 
         int countByers = 0;
-        Queue<Buyer> queue = new ArrayDeque<Buyer>();
+        Queue<Buyer> queue = new ArrayDeque<>();
 
         Map<String,Integer> map = Utils02_01.putGoodsFromFileIntoMap();
         Map<String,Integer> clientsBacket = null;
@@ -25,9 +25,7 @@ public class Main {
         while (countByers<10){
             Thread.sleep(1000);
             int goodsQuantity = Rnd.fromTo(1,5);
-            for (int i = 0; i < goodsQuantity; i++){
-                //clientsBacket.put()
-            }
+            
             int count = Rnd.fromTo(0,2);
             for (int i = 0; i < count; i++) {
                 countByers++;

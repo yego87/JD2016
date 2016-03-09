@@ -1,7 +1,7 @@
 package by.it.chetovich.JD01_13;
 
 /**
- * Created by Yultos_ on 29.02.2016.
+ * string to int
  */
 public class StringToInt {
 

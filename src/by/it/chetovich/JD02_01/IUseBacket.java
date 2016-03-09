@@ -1,7 +1,7 @@
 package by.it.chetovich.JD02_01;
 
 /**
- * Created by user_2 on 09.03.2016.
+ * interface for using backets
  */
 public interface IUseBacket {
 
