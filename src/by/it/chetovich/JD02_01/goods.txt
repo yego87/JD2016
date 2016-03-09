@@ -1,0 +1,2 @@
+Apples : 40000
+Chicken:60000
