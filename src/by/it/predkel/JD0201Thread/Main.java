@@ -8,6 +8,7 @@ import by.it.predkel.JD12Collections.*;
 public class Main {
     public static void main(String[] args) {
        Basket k= new Basket();
-        k.chooseGoods();
+       // k.getList();
+      //  k.chooseGoods();
     }
 }
