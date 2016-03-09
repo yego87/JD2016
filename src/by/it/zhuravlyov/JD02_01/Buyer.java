@@ -7,6 +7,11 @@ public class Buyer extends Thread implements Runnable, IBuyer {
 
 
     int num ; //коль-во  покупателей
+    public Buyer (int num){
+        this.num=num;
+        this.setName("покупатель №"+num+"");
+    start();
+    }
 
 
     @Override
