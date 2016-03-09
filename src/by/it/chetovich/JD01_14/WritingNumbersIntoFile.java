@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Random;
 
 /**
- * Created by user_2 on 02.03.2016.
+ * writes to file
  */
 public class WritingNumbersIntoFile {
 
@@ -13,7 +13,7 @@ public class WritingNumbersIntoFile {
         Random rand = new Random();
 
         File f = new File(src);
-        DataOutputStream data = null;
+        DataOutputStream data;
 
         try {
             data = new DataOutputStream(new FileOutputStream(f));
