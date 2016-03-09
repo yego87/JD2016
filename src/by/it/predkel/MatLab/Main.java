@@ -1,6 +1,5 @@
 package by.it.predkel.MatLab;
 
-import by.it.predkel.MatLab.OtherClasses.InputExpression;
 import by.it.predkel.MatLab.OtherClasses.RunnerObj;
 
 import java.io.BufferedReader;

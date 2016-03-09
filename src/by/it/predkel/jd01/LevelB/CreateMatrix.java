@@ -1,6 +1,6 @@
 package by.it.predkel.jd01.LevelB;
 
-import by.it.predkel.jd01.SimplyUsefulClasses.InputString;
+import by.it.predkel.SimplyUsefulClasses.InputString;
 
 import java.io.IOException;
 import java.util.Scanner;
