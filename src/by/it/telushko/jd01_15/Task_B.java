@@ -24,43 +24,35 @@ public class Task_B {
             reader.close();
 
         //  паттерны для коментариев и построчного вывода.
-
             Pattern comment = Pattern.compile("(/\\*\\n(.*\\n)*\\*/)|(//.*)|(/\\*.*\\n(.*\\n)*.*\\*/)");
             Pattern codeLine = Pattern.compile("(.*\\n)");
 
 
               //ищем вхождения и пишем их в линкед
-            LinkedList<Integer[]> comments=new LinkedList<Integer[]>();
+            LinkedList<Comment> comments=new LinkedList<Comment>();
             Matcher okComment = comment.matcher(javatext);
 
-            Integer[] find = new Integer[2]; //временный массивсчик для переборов
-
             while (okComment.find()){
-
-                find[0]=okComment.start();
-                find[1]=okComment.end()-1;
-                comments.add(find);
-                System.out.println(javatext.substring(okComment.start(),okComment.end()));
-
+               comments.add(new Comment(okComment.start(), okComment.end()));
             }
 
-            //посчитали
             //удаляем
-
             while(!(comments.isEmpty())){
-
-                find=comments.pollLast();
-                System.out.println(find [0]);
-                System.out.println(find [1]);
+                Comment c = comments.pollLast();
+                javatext.delete(c.getStart(),c.getEnd()+1);
             }
-
-System.out.println(javatext);
 
             // пишем в файл
             PrintWriter writer = new PrintWriter(new FileWriter(outputFilename));
+            PrintWriter consoleWriter = new PrintWriter(System.out);
             Matcher okCodeLine = codeLine.matcher(javatext);
+            int count=0;
             while (okCodeLine.find()){
-                writer.println(javatext.substring(okCodeLine.start(),okCodeLine.end()));
+                count++;
+                writer.printf("%2d ", count);
+                writer.print(javatext.substring(okCodeLine.start(),okCodeLine.end()));
+                System.out.printf("%2d ", count);
+                System.out.print(javatext.substring(okCodeLine.start(),okCodeLine.end()));
             }
             writer.close();
         }
