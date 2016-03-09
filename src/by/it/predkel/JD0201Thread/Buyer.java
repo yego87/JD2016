@@ -2,9 +2,10 @@ package by.it.predkel.JD0201Thread;
 
 import by.it.predkel.SimplyUsefulClasses.Rnd;
 
-class Buyer extends Thread implements Runnable, IBuyer {
+class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
 
     int num; //номер покупателя
+    Basket basket;
 
     //конструктор покупателя с его номером
     public Buyer(int num) {
@@ -41,12 +42,32 @@ class Buyer extends Thread implements Runnable, IBuyer {
             } catch (InterruptedException e) {
                 System.out.println(this+" //некорректное завершение ожидания");
             }
+        basket.chooseGoods();
         //ожидание окончено
         System.out.println(this + "выбрал товар");
+        putGoodsToBacket();
     }
 
     @Override
     public void goToOut() {
+        returnBasket();
+        this.basket=null;
         System.out.println(this + "вышел из магазина");
+    }
+
+    @Override
+    public void takeBacket() {
+        this.basket=new Basket();
+        System.out.println(this + "Взял корзину");
+    }
+
+    @Override
+    public void putGoodsToBacket() {
+        System.out.println(this+" положил товары в корзину");
+    }
+
+    @Override
+    public void returnBasket() {
+        System.out.println(this+" вернул корзину");
     }
 }

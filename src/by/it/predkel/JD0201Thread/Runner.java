@@ -7,6 +7,7 @@ import java.util.Queue;
 
 class Runner {
     static int countBuyers=0; //общий счетчик покупателей
+
     public static void main(String[ ] args) throws InterruptedException {
         //создаем очередь для покупателей. Пока обычную.
         Queue<Buyer> queue=new ArrayDeque<>();
