@@ -1,4 +1,4 @@
-package by.it.predkel.jd01.SimplyUsefulClasses.matrixOk;
+package by.it.predkel.SimplyUsefulClasses.matrixOk;
 
 /**
  * Класс для хранения матрицы

@@ -1,4 +1,4 @@
-package by.it.predkel.jd01.SimplyUsefulClasses;
+package by.it.predkel.SimplyUsefulClasses;
 
 /**
  * Вывод одномерного массива
