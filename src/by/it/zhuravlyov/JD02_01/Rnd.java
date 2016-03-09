@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class Rnd {
     static final long init =System.currentTimeMillis();
-    static  final random = new Random(init);
+    static final Random random = new Random(init);
     static int fromTo(int from, int to){
         //вычисляем время
         int delta=to-from+1;
