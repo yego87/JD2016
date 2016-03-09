@@ -1,30 +1,34 @@
 package by.it.novik.JD02_01;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
 public class Prices {
 
-    public HashMap<String, Integer> priceList = new HashMap<>();
+    public HashMap<String, Integer> getPriceList() {
 
-    private static String[] nameV = {"apple", "juice", "jam", "pie", "water", "cookie", "cake", "tea", "coffee", "bread"};
+        int priceK;
+        String[] nameV = {"apple", "juice", "jam", "pie", "water", "cookie","cake", "tea", "coffee", "bread"};
 
-    public Prices() {
-        for (int i = 0; i < nameV.length; i++) {
-            int priceK = (i + 1) * 10;
+        HashMap<String, Integer> priceList = new HashMap<>();
 
-            priceList.put(nameV[i], priceK);
+        for (int i = 0; i < nameV.length; i ++) {
+            priceK = (i+1)*10;
+            priceList.put(nameV[i],priceK);
         }
+        return priceList;
     }
 
-    public String getProduct() {
-        return nameV[new Random().nextInt(nameV.length - 1)];
-    }
+    public String getProduct(HashMap<String, Integer> priceList) {
+        int productNum = 0;
+        String product = null;
 
-    public Integer getPrice(String product) {
-        return priceList.get(product);
+        for (String key : getPriceList().keySet()) {
+//            productNum = getPriceList().get(key);
+            product = key;
+        }
+//        System.out.println(product + " за " + productNum + " у.е.");
+        return product;
+
     }
 }
