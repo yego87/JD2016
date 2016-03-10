@@ -1,9 +1,7 @@
 package by.it.novik.JD01_14;
 
 
-import jdk.jfr.events.FileReadEvent;
 
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,7 +26,7 @@ public class B {
                 while (m.find()) {
                     count++;
                 }
-                Pattern p1 = Pattern.compile("[a-zA-Z'-;]+");
+                Pattern p1 = Pattern.compile("[a-zA-Z0-9'-;:./ ]+");
                 Matcher m1 = p1.matcher(line);
                 while (m1.find()) {
                     wCount++;
