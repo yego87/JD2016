@@ -1,8 +1,5 @@
 package by.it.chetovich.JD02_01;
 
-import by.it.chetovich.Matlab.DefineVariable;
-import by.it.chetovich.Matlab.Patterns;
-import by.it.chetovich.Matlab.Var;
 
 import java.io.BufferedReader;
 import java.io.File;
