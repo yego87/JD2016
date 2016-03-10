@@ -1,0 +1,21 @@
+ 1 package by.it.telushko.jd01_15;
+ 2 
+ 3 
+ 4 
+ 5 import by.it.telushko.jd01_02.InOut;
+ 6 import java.io.IOException;
+ 7 
+ 8 public class Main {
+ 9     public static void main(String[] args) throws IOException {
+10         System.out.println("Выберите тип задач(а, b, c)\n(можно раскомментировать нужную букву)");
+11         String taskNum= InOut.consoleLineInput();
+12                                 switch (taskNum){
+13             case "a":{Task_A.taskA1(4,-15,15);break;}
+14             case "b": {Task_B.taskB1();break;}
+15             case "c": {
+16                                break;
+17             }
+18             default :{System.out.println("Ошибка!");break;}
+19         }
+20     }
+21 }
