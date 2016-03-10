@@ -6,6 +6,7 @@ class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
 
     int num; //номер покупателя
     Basket basket;
+    boolean pensioneer=false;
 
     //конструктор покупателя с его номером
     public Buyer(int num) {
@@ -17,6 +18,7 @@ class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
     @Override //покупатель приходит в зал и выбирает товары.
     public void run() {
         enterToMarket();
+        takeBacket();
         chooseGoods();
         goToOut();
     }

@@ -56,7 +56,8 @@ public class Basket {
                 if (mat1.find()) {
                     cost=Double.valueOf(mat1.group());
                 }
-                listOfGoods.put(name,cost);System.out.println(name + " / " + cost);
+                listOfGoods.put(name,cost);
+                //System.out.println(name + " / " + cost);
             }
 
 
