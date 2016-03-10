@@ -10,10 +10,13 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
 
     int numberBuyer;
     ArrayList<String> backet = new ArrayList<>();
+    boolean pensioneer = false;
 
     public Buyer(int numberBuyer){
         this.numberBuyer = numberBuyer;
         this.setName("Покупатель №" + numberBuyer);
+        if (3 == randomInterval(1,4))
+            pensioneer = true;
         start();
     }
 
@@ -51,6 +54,8 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     @Override
     public void takeBacket() {
         int timing = randomInterval(100,200);
+        if (pensioneer)
+            timing = (int)(timing *1.5);
         try{
             Thread.sleep(timing);
         }
@@ -62,6 +67,8 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     @Override
     public void putGoodsToBacket() {
         int timing = randomInterval(100,200);
+        if (pensioneer)
+            timing = (int)(timing *1.5);
         try{
             Thread.sleep(timing);
         }
