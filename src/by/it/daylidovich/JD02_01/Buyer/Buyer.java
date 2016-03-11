@@ -1,6 +1,7 @@
 package by.it.daylidovich.JD02_01.Buyer;
 
 import by.it.daylidovich.JD02_01.Goods.Goods;
+import by.it.daylidovich.JD02_01.Queue.QueueBuyer;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,15 @@ import static by.it.daylidovich.JD02_01.Utils.RandomFromInterval.randomInterval;
 public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
 
     int numberBuyer;
+
+    public ArrayList<String> getBacket() {
+        return backet;
+    }
+
+    public void setBacket(ArrayList<String> backet) {
+        this.backet = backet;
+    }
+
     ArrayList<String> backet = new ArrayList<>();
     boolean pensioneer = false;
 
@@ -18,6 +28,19 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
         if (3 == randomInterval(1,4))
             pensioneer = true;
         start();
+    }
+
+    @Override
+    public void run() {
+        enterToMarket();
+        chooseGoods();
+        QueueBuyer.goToQueue(this);
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            System.out.println("Ошибка ожидания в очереди.");
+        }
+        goToExit();
     }
 
     @Override
@@ -38,13 +61,6 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     @Override
     public void goToExit() {
         System.out.println(this + " вышел из магазина.");
-    }
-
-    @Override
-    public void run() {
-        enterToMarket();
-        chooseGoods();
-        goToExit();
     }
 
     public String toString(){
@@ -76,4 +92,5 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
             System.out.println("Ошибка ожидания.");
         }
     }
+
 }
