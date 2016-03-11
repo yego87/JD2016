@@ -36,6 +36,8 @@ public class VariantB {
         parseDouble(line);
         try {
             System.out.println("Результат: " + x / y);
+        } finally {
+            // TODO: 3/11/16  
         }
 
         System.out.println("Stop execution");
