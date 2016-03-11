@@ -20,7 +20,7 @@ public class Main {
             int currentSecond = c.get(Calendar.SECOND);
 
             if (currentSecond>30) Thread.sleep(1000);
-            else Thread.sleep(8000);
+            else Thread.sleep(3000);
             //(currentSecond>30)?Thread.sleep(1000):Thread.sleep(3000);
 
             int count = Rnd.fromTo(0,2);
@@ -37,6 +37,11 @@ public class Main {
                     }
 
                 }
+            }
+            for (int i = 0; i < 5; i++) {
+                Cashier cashier = new Cashier();
+                Thread thread = new Thread(cashier);
+                thread.start();
             }
 
         }

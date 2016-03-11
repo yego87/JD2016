@@ -1,8 +1,7 @@
 package by.it.chetovich.JD02_01;
 
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * class for buyers
@@ -12,6 +11,7 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
     private int num;
     private Backet backet;
     private boolean retired;
+
 
     public Buyer(int num, boolean retired) {
         this.num = num;
@@ -33,6 +33,12 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         enterMarket();
         takeBacket();
         chooseGoods();
+        try {
+            goToQueue();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         exitMarket();
 
     }
@@ -92,6 +98,16 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
             System.out.println(this+" некорректное завершение ожидания.");
         }
         System.out.println(this+" put "+good+" into backet.");
+
+    }
+
+
+    @Override
+    public void goToQueue() throws InterruptedException {
+        synchronized (QueueToPay.queueToPay){
+            QueueToPay.queueToPay.add(this);
+            //this.wait();
+        }
 
     }
 }
