@@ -12,13 +12,9 @@ public class Basket {
         this.listOfChosenGoods=listOfChosenGoods;
     }
 
-    public Basket(){
-
-    }
     public HashMap<String, Double> getBasket(){
         return listOfChosenGoods;
     }
-
 
     @Override
     public String toString() {
@@ -29,7 +25,7 @@ public class Basket {
         }
         return s.toString();
     }
-
-
-
+    public void deleteGoods() {
+        listOfChosenGoods.clear();
+    }
 }

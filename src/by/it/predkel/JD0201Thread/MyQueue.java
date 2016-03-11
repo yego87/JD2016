@@ -16,14 +16,20 @@ public class MyQueue extends PriorityQueue {
     @Override
     public  Buyer remove(){
         synchronized(fakeBalance) {
-            return (Buyer) super.remove();
+            return ochered.remove();
         }
     }
 
-    public void addSunhr(Buyer cl){
+    public void addBuyer(Buyer cl){
         synchronized(fakeBalance) {
-            super.add(cl);
+            ochered.add(cl);
         }
     }
+    public boolean checkQueue() {
+        return (!this.isEmpty());
+    }
 
+    public MyQueue getMyQueue(){
+        return this;
+    }
 }

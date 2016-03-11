@@ -6,15 +6,17 @@ import by.it.predkel.SimplyUsefulClasses.Rnd;
 
 class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
 
-    int num; //номер покупателя
+    final Integer num; //номер покупателя
     Basket basket;
     boolean pensioneer=false;
-
+    MyQueue myq;
     //конструктор покупателя с его номером
-    public Buyer(int num) {
+
+    public Buyer(int num, MyQueue cl) {
         this.num = num;
         if (Rnd.fromTo(0,3)==0)
         pensioneer=true;
+        myq=cl;
         this.setName("Покупатель № "+ num+" ");
         start();
     }
@@ -24,6 +26,7 @@ class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
         enterToMarket();
         takeBacket();
         chooseGoods();
+        goToCashier();
         goToOut();
     }
 
@@ -57,7 +60,16 @@ class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
     @Override
     public void goToCashier() {
 
-    }
+            myq.addBuyer(this);
+            /*while (!basket.getBasket().isEmpty()) {
+                try {
+                    this.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }*/
+        }
+
 
     @Override
     public void goToOut() {
