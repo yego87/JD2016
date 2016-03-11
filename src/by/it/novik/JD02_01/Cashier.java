@@ -1,35 +1,41 @@
 package by.it.novik.JD02_01;
 
-
 import java.util.ArrayList;
 
-public class Cashier extends Thread implements ICashier {
-    Prices priceList;
+public class Cashier implements ICashier {
+    private static Cashier ourInstance = new Cashier();
 
-
-    public Cashier() {
-
+    public static Cashier getInstance() {
+        return ourInstance;
     }
 
-
-public void run() {
-    getCustomer();
-    getProducts();
-    receivePayment();
-
-}
-    @Override
-    public void getCustomer() {
-        new Customer("Sam", priceList);
+    private Cashier() {
     }
 
     @Override
-    public void getProducts() {
-        new Basket();
+    public ArrayList<String> getProducts(Basket basket) {
+        return basket.space;
     }
 
     @Override
-    public void receivePayment() {
+    public long receivePayment(ArrayList<String> products) {
+        long bill = 0;
+        Prices priceList = Prices.getInstance();
 
+        for (String product : products) {
+            bill += priceList.getPrice(product);
+        }
+
+        return bill;
+    }
+
+    @Override
+    public void serve(Customer customer) {
+        long payment = receivePayment(customer.basket.space);
+
+        customer.think();
+
+        System.out.printf("%s заплатил %d USD.\n", customer, payment);
+        //System.out.println("");
     }
 }
