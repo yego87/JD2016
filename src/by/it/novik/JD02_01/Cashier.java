@@ -7,8 +7,14 @@ public class Cashier extends Thread implements ICashier {
     Prices priceList;
 
 
-    public Cashier() {
+    public Cashier(Basket basket) {
+        int totalCount = 0;
 
+        for (String product : basket) {
+            totalCount += priceList.getPrice(product);
+        }
+
+        System.out.println(this.getName() + " потратил " + totalCount + " USD");
     }
 
 
