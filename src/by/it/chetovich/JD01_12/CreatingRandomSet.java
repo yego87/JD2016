@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Set;
 
 /**
- * Created by user_2 on 26.02.2016.
+ * Creates random set
  */
 public class CreatingRandomSet {
 

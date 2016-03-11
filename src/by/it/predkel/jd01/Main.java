@@ -5,7 +5,7 @@ import by.it.predkel.jd01.GaussJordan.*;
 import by.it.predkel.jd01.LevelA.*;
 import by.it.predkel.jd01.LevelB.*;
 import by.it.predkel.jd01.LevelC.*;
-import by.it.predkel.jd01.SimplyUsefulClasses.*;
+import by.it.predkel.SimplyUsefulClasses.*;
 
 
 import java.io.IOException;

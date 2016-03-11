@@ -3,7 +3,7 @@ package by.it.chetovich.JD01_14;
 import java.io.*;
 
 /**
- * Created by user_2 on 02.03.2016.
+ * reads from file
  */
 public class ReadingFromFile {
 
@@ -12,7 +12,7 @@ public class ReadingFromFile {
         try (DataInputStream inp = new DataInputStream(new BufferedInputStream(new FileInputStream(f)))) {
             double sum = 0;
             double count = 0;
-            int i = 0;
+            int i;
             while (inp.available()>0){
                 i=inp.readInt();
                 sum+=i;

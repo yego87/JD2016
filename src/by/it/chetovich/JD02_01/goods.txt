@@ -1,0 +1,7 @@
+Apples : 40000
+Chicken : 60000
+Tea : 50000
+Shrimps : 200000
+Porridge : 8000
+Bread : 10000
+Milk : 12000
