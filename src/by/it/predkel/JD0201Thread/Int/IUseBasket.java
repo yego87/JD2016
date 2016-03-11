@@ -1,6 +1,5 @@
-package by.it.predkel.JD0201Thread;
+package by.it.predkel.JD0201Thread.Int;
 
-import java.util.HashMap;
 
 public interface IUseBasket {
     void takeBacket();      //взял корзину
