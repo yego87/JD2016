@@ -1,5 +1,7 @@
 package by.it.predkel.JD0201Thread;
 
+import by.it.predkel.JD0201Thread.Int.IBuyer;
+import by.it.predkel.JD0201Thread.Int.IUseBasket;
 import by.it.predkel.SimplyUsefulClasses.Rnd;
 
 class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
@@ -50,6 +52,11 @@ class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
         //ожидание окончено
         System.out.println(this + "выбрал товар");
         putGoodsToBacket();
+    }
+
+    @Override
+    public void goToCashier() {
+
     }
 
     @Override

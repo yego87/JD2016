@@ -1,4 +1,4 @@
-package by.it.predkel.JD0201Thread;
+package by.it.predkel.JD0201Thread.Int;
 
 
 public interface IUseBasket {
