@@ -10,7 +10,7 @@ public class Prices {
 
     public HashMap<String, Integer> priceList = new HashMap<>();
 
-    private static String[] nameV = {"apple", "juice", "jam", "pie", "water", "cookie", "cake", "tea", "coffee", "zumba", "bread"};
+    private static String[] nameV = {"apple", "juice", "jam", "pie", "water", "cookie", "cake", "tea", "coffee", "bread"};
 
     public Prices() {
         for (int i = 0; i < nameV.length; i++) {
