@@ -1,16 +1,19 @@
 package by.it.novik.JD02_01;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 public class Prices {
 
-    public HashMap<String, Integer> priceList = new HashMap<>();
+    private static Prices ourInstance = new Prices();
 
-    private static String[] nameV = {"apple", "juice", "jam", "pie", "water", "cookie", "cake", "tea", "coffee", "bread"};
+    public static Prices getInstance() {
+        return ourInstance;
+    }
+
+    public String[] nameV = {"apple", "juice", "jam", "pie", "water", "cookie", "cake", "tea", "coffee", "zumba", "bread"};
+
+    public HashMap<String, Integer> priceList = new HashMap<>();
 
     public Prices() {
         for (int i = 0; i < nameV.length; i++) {
