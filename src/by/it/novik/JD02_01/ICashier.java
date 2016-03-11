@@ -1,10 +1,10 @@
 package by.it.novik.JD02_01;
 
+import java.util.ArrayList;
 
 public interface ICashier {
+    void serve(Customer customer);
 
-    void getCustomer();
-    void getProducts();
-    void receivePayment();
-
+    ArrayList<String> getProducts(Basket basket);
+    long receivePayment(ArrayList<String> products);
 }
