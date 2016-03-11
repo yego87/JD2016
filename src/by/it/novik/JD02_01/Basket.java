@@ -13,4 +13,9 @@ public class Basket {
     public void putProduct(String product) {
         this.space.add(product);
     }
+
+    public void countPrice(ArrayList<String> space) {
+
+    }
+
 }
