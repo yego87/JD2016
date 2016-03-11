@@ -3,7 +3,7 @@ package by.it.novik.JD02_01;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.Properties;
 import java.util.Random;
 
 public class Customer extends Thread implements ICustomer, IUseBasket {
@@ -11,24 +11,39 @@ public class Customer extends Thread implements ICustomer, IUseBasket {
     String name;
     Prices priceList;
     Basket basket;
-    Cashier cashier;
 
     ArrayList<String> chosenProducts = new ArrayList<>();
 
+//    public String getProduct() {
+//        return product;
+//    }
+//
+//    public void setProduct(String product) {
+//        this.product = product;
+//    }
 
-    public Customer(String name, Prices priceList) {
+    public Customer(String name) {
         this.name = name;
-        this.priceList = priceList;
+        this.priceList = Prices.getInstance();
 
         this.setName("Покупатель " + name);
+
+        start();
     }
+
 
     public void run() {
         enterMarket();
         takeBasket();
         chooseProduct();
         putGoodsIntoBasket();
+        goToCashier();
         goOut();
+    }
+
+    public void goToCashier() {
+        Cashier cashier = Cashier.getInstance();
+        cashier.serve(this);
     }
 
     @Override
@@ -42,61 +57,49 @@ public class Customer extends Thread implements ICustomer, IUseBasket {
     }
 
     @Override
-    public void takeBasket() {
-        try {
-            sleep((int)(0.1 + (Math.random()*0.1)));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        basket = new Basket();
-        System.out.println(this.getName() + " взял корзину." );
-    }
-
-    @Override
     public void chooseProduct() {
-        try {
-            sleep((int)(0.5 + (Math.random()*1.5)));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        int productsCount = new Random().nextInt(4)+1;
+        int productsCount = new Random().nextInt(3) + 1;
 
         for (int i = 0; i < productsCount; i++) {
-            String product = priceList.getProduct();
-            basket.putProduct(product);
+            think();
 
+            String product = priceList.getProduct();
+            chosenProducts.add(product);
 
             System.out.println(this.getName() + " взял " + product + ".");
         }
     }
 
     @Override
-    public void putGoodsIntoBasket() {
+    public void goOut() {
+        System.out.println(this.getName() + " вышел.");
+    }
 
-        try {
-            sleep((int)(0.1 + (Math.random()*0.1)));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void takeBasket() {
+        think();
+
+        basket = new Basket();
+        System.out.println(this.getName() + " взял корзину." );
+    }
+
+    @Override
+    public void putGoodsIntoBasket() {
+        think();
 
         for (String product : chosenProducts) {
             basket.putProduct(product);
             System.out.println(this.getName() + " положил " + product + " в корзину");
         }
+
+        System.out.println(this.getName() + " имеет в корзине " + basket.space);
     }
 
-
-    @Override
-    public void goOut() {
-        int totalCount = 0;
-
-        for (String product : chosenProducts) {
-            totalCount += priceList.getPrice(product);
+    public void think() {
+        try {
+            sleep(Rndm.fromTo(500, 2000));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-
-        System.out.println(this.getName() + " потратил " + totalCount + " USD");
-        System.out.println(this.getName() + " вышел.");
     }
-
 }
