@@ -14,8 +14,7 @@ public class A_3 {
             @SuppressWarnings("resource")
             Scanner sc = new Scanner(System.in);
 
-            System.out
-                    .println("Введите комбинацию ЧИСЕЛ от -бесконечности до +бесконечности:");
+            System.out.println("Введите комбинацию ЧИСЕЛ от -бесконечности до +бесконечности:");
             String[] line = sc.nextLine().split(" ");
             int i = 0;
             try {
