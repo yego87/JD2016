@@ -4,15 +4,18 @@ import by.it.daylidovich.JD02_01.Buyer.Buyer;
 import by.it.daylidovich.JD02_01.Queue.QueueBuyer;
 import by.it.daylidovich.JD02_01.Utils.RandomFromInterval;
 
-public class Cashier extends Thread implements Runnable{
+public class Cashier extends Thread{
     int numberCashier;
+    private static final Integer face = 0;
 
     public Cashier(int numberCashier){
         this.numberCashier = numberCashier;
+        this.setName("касса №" + numberCashier);
+        setDaemon(true);
         start();
     }
 
-    public static void serveBuyer(){
+    public void serveBuyer(){
         int timing = RandomFromInterval.randomInterval(2000, 5000);
         try {
             Thread.sleep(timing);
@@ -22,19 +25,21 @@ public class Cashier extends Thread implements Runnable{
     }
 
     //метод забирает покупателя из очереди
-    public static Buyer freeCashier(){
-        Buyer buyer;
-        if (null != (buyer = QueueBuyer.exitQueue()))
+    public Buyer freeCashier(){
+        synchronized (face){
+            Buyer buyer = QueueBuyer.exitQueue();
+            while (null == buyer)
+                buyer = QueueBuyer.exitQueue();
             return buyer;
-        else return null;
+        }
     }
 
-    public static void releaseBuyer(Buyer buyer){
+    public void releaseBuyer(Buyer buyer){
+        System.out.println(buyer.getName() + " обслужен на " + this.getName());
         buyer.setBacket(null);
-        buyer.notify();
     }
 
-    //дописать идентификатор для завершения потока вместе с мейном
+
     @Override
     public void run() {
         if (QueueBuyer.isEmptyQueue()){
@@ -44,7 +49,7 @@ public class Cashier extends Thread implements Runnable{
         }
         else
             try {
-                wait();
+                sleep(10);
             } catch (InterruptedException e) {
                 System.out.println("Ошибка ожидания кассы.");
             }

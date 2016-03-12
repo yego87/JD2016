@@ -11,10 +11,6 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
 
     int numberBuyer;
 
-    public ArrayList<String> getBacket() {
-        return backet;
-    }
-
     public void setBacket(ArrayList<String> backet) {
         this.backet = backet;
     }
@@ -35,11 +31,7 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
         enterToMarket();
         chooseGoods();
         QueueBuyer.goToQueue(this);
-        try {
-            wait();
-        } catch (InterruptedException e) {
-            System.out.println("Ошибка ожидания в очереди.");
-        }
+        while (null != backet){yield();}
         goToExit();
     }
 
