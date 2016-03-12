@@ -20,6 +20,10 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         start();
     }
 
+    public boolean isRetired() {
+        return retired;
+    }
+
     public int getNum() {
         return num;
     }
@@ -128,14 +132,6 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         synchronized (QueueToPay.queueToPay){
             QueueToPay.putBuyer(this);
             System.out.println("Buyer " + num + " is in the queue");
-            //this.notify();
-            /*while (QueueToPay.queueToPay.size()>5) this.wait();
-            this.notifyAll();*/
-           /* while (Cashier.freeCashier==0) {
-                this.wait();
-            }
-            Cashier.takeBuyerFromQueue();
-            this.notifyAll();*/
         }
 
     }

@@ -14,7 +14,7 @@ public class Cashier implements Runnable {
     public void run() {
 
             try {
-                Thread.sleep(5000);
+                Thread.sleep(15000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -38,7 +38,7 @@ public class Cashier implements Runnable {
     public synchronized void takeBuyerFromQueue() {
         synchronized (Cashier.class){
             if (!QueueToPay.queueToPay.isEmpty()) {
-                buyer = QueueToPay.getBuyer();
+                this.buyer = QueueToPay.getBuyer();
                 freeCashier--;
                 System.out.println(buyer + " went to Cashier.");
 
@@ -51,16 +51,18 @@ public class Cashier implements Runnable {
 
     public synchronized void accountCashier(){
         try {
-            Thread.sleep(2000);
+            Thread.sleep(Rnd.fromTo(2000,5000));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         synchronized (Cashier.class) {
             int bill = 0;
             StringBuilder sb = new StringBuilder();
-            String s = buyer + " is buying: ";
+            String s = this.buyer + " is buying: ";
             sb.append(s);
-            for (Map.Entry<String, Integer> entry : buyer.getBacket().entrySet()) {
+            Map <String, Integer> map = this.buyer.getBacket();
+            System.out.println(map);
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
                 String good = entry.getKey();
                 Integer price = entry.getValue();
                 String item = good + " : " + price + ", ";
@@ -69,7 +71,7 @@ public class Cashier implements Runnable {
             }
 
             String billToPay = "Bill to pay: " + bill+". ";
-            String paid = buyer + " paid.";
+            String paid = this.buyer + " paid.";
             sb.append(billToPay);
             sb.append(paid);
             System.out.println(sb);
@@ -79,9 +81,9 @@ public class Cashier implements Runnable {
 
 
     public synchronized void feelFree(){
-        buyer.clearBacket();
-        synchronized (buyer) {
-            buyer.notify();
+        this.buyer.clearBacket();
+        synchronized (this.buyer) {
+            this.buyer.notify();
         }
     }
 }
