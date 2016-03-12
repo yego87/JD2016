@@ -15,6 +15,10 @@ public class Main {
         int countByers = 0;
         Queue<Buyer> queue = new ArrayDeque<>();
 
+        for (int i = 0; i < 5; i++) {
+            new Thread(new Cashier()).start();
+        }
+
         while (countByers<10){
             Calendar c = Calendar.getInstance();
             int currentSecond = c.get(Calendar.SECOND);
@@ -38,13 +42,14 @@ public class Main {
 
                 }
             }
-            for (int i = 0; i < 5; i++) {
-                Cashier cashier = new Cashier();
-                Thread thread = new Thread(cashier);
-                thread.start();
-            }
 
         }
+
+
+
+
+
+
 
 
     }

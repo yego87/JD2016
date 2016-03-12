@@ -11,4 +11,13 @@ public class QueueToPay {
 
 
     public static final Queue<Buyer> queueToPay = new ConcurrentLinkedDeque<>();
+
+
+    public static void putBuyer (Buyer buyer){
+        queueToPay.offer(buyer);
+    }
+
+    public static Buyer getBuyer (){
+        return queueToPay.remove();
+    }
 }

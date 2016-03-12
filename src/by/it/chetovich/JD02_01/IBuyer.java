@@ -9,4 +9,5 @@ public interface IBuyer {
     void chooseGoods();
     void exitMarket();
     void goToQueue() throws InterruptedException;
+    void waiting() throws InterruptedException;
 }

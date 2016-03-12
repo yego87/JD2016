@@ -24,8 +24,12 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         return num;
     }
 
-    public Backet getBacket() {
-        return backet;
+    public Map<String, Integer> getBacket() {
+        return backet.getGoods();
+    }
+
+    public void clearBacket(){
+        backet.getGoods().clear();
     }
 
     @Override
@@ -38,6 +42,23 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        try {
+            waiting();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        /*synchronized (this){
+                while (!backet.getGoods().isEmpty()){
+                    try {
+                        this.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            //this.notifyAll();
+        }*/
+
+        //Cashier.takeBuyerFromQueue();
 
         exitMarket();
 
@@ -105,10 +126,25 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
     @Override
     public void goToQueue() throws InterruptedException {
         synchronized (QueueToPay.queueToPay){
-            QueueToPay.queueToPay.add(this);
-            //this.wait();
+            QueueToPay.putBuyer(this);
+            System.out.println("Buyer " + num + " is in the queue");
+            //this.notify();
+            /*while (QueueToPay.queueToPay.size()>5) this.wait();
+            this.notifyAll();*/
+           /* while (Cashier.freeCashier==0) {
+                this.wait();
+            }
+            Cashier.takeBuyerFromQueue();
+            this.notifyAll();*/
         }
 
+    }
+
+
+    @Override
+    public synchronized void waiting() throws InterruptedException {
+        while (!backet.getGoods().isEmpty())
+            this.wait();
     }
 }
 
