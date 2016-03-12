@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Start main");
         VariantB b = new VariantB();
-
+        // пророшенные исключения обрабатываются в main
         try {
             b.start();
         } catch (ParseException e){

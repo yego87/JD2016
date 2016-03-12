@@ -7,8 +7,8 @@ import java.io.IOException;
 public class VariantB {
 
     private ConsoleReader reader = new ConsoleReader();
-    private Double x;
-    private Double y;
+    private Integer x;
+    private Integer y;
     private String line;
 
     public void start() throws IOException, ParseException {
@@ -34,10 +34,12 @@ public class VariantB {
         System.out.println("Введите делитель");
         line = reader.readLine();
         parseDouble(line);
+        //орабатываем деление на 0 непосредственно на месте.
         try {
-            System.out.println("Результат: " + x / y);
-        } finally {
-            // TODO: 3/11/16  
+            double result = x / y;
+            System.out.println("Результат: " + result);
+        } catch (ArithmeticException e){
+            System.out.println("Деление на 0 невозможно!");
         }
 
         System.out.println("Stop execution");
@@ -49,11 +51,13 @@ public class VariantB {
 
         try{
             if (x == null){
-                x = Double.parseDouble(line);
+                x = Integer.parseInt(line);
             } else {
-                y = Double.parseDouble(line);
+                y = Integer.parseInt(line);
             }
         } catch (NumberFormatException e) {
+            // выбрасываю "самодельное" проверяемое исключение для примера,
+            // чтобы компилятор заставил добавить его в сигнатуру метода
             throw new ParseException();
         }
 
