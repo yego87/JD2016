@@ -11,7 +11,7 @@ public class Prices {
         return ourInstance;
     }
 
-    public String[] nameV = {"apple", "juice", "jam", "pie", "water", "cookie", "cake", "tea", "coffee", "zumba", "bread"};
+    public String[] nameV = {"apple", "juice", "jam", "pie", "water", "cookie", "cake", "tea", "coffee", "bread"};
 
     public HashMap<String, Integer> priceList = new HashMap<>();
 

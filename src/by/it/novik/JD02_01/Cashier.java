@@ -2,7 +2,8 @@ package by.it.novik.JD02_01;
 
 import java.util.ArrayList;
 
-public class Cashier implements ICashier {
+public class Cashier extends Thread implements ICashier {
+    Customer customer;
     private static Cashier ourInstance = new Cashier();
 
     public static Cashier getInstance() {
@@ -10,6 +11,10 @@ public class Cashier implements ICashier {
     }
 
     private Cashier() {
+    }
+
+    public void run() {
+        serve(customer);
     }
 
     @Override
@@ -36,6 +41,6 @@ public class Cashier implements ICashier {
         customer.think();
 
         System.out.printf("%s заплатил %d USD.\n", customer, payment);
-        //System.out.println("");
+
     }
 }
