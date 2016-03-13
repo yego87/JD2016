@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD02_01.Buyer;
+package by.it.daylidovich.JD02_01_and_02.Buyer;
 
 public interface IUseBacket {
     //взять корзину
