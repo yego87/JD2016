@@ -14,13 +14,6 @@ public class Customer extends Thread implements ICustomer, IUseBasket {
 
     ArrayList<String> chosenProducts = new ArrayList<>();
 
-//    public String getProduct() {
-//        return product;
-//    }
-//
-//    public void setProduct(String product) {
-//        this.product = product;
-//    }
 
     public Customer(String name) {
         this.name = name;
