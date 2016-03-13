@@ -11,12 +11,14 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
     private int num;
     private Backet backet;
     private boolean retired;
+    private static Queue<Buyer> queue = new ArrayDeque<>();
 
 
     public Buyer(int num, boolean retired) {
         this.num = num;
         this.retired = retired;
         this.setName("Buyer " + num + " ");
+        queue.add(this);
         start();
     }
 
@@ -30,6 +32,11 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
 
     public Map<String, Integer> getBacket() {
         return backet.getGoods();
+    }
+
+
+    public static Queue<Buyer> getQueue() {
+        return queue;
     }
 
     public void clearBacket(){
@@ -47,7 +54,7 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
             e.printStackTrace();
         }
         try {
-            waiting();
+            waitingInTheQueue();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -132,13 +139,14 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         synchronized (QueueToPay.queueToPay){
             QueueToPay.putBuyer(this);
             System.out.println("Buyer " + num + " is in the queue");
+
         }
 
     }
 
 
     @Override
-    public synchronized void waiting() throws InterruptedException {
+    public synchronized void waitingInTheQueue() throws InterruptedException {
         while (!backet.getGoods().isEmpty())
             this.wait();
     }

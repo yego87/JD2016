@@ -8,25 +8,35 @@ import java.util.Map;
 public class Cashier implements Runnable {
 
     private   Buyer buyer;
-    static int freeCashier = 5;
+    private int num;
+    private int income;
+    private static int totalIncome;
+
+    public Cashier(int num){
+        this.num = num;
+    }
 
     @Override
     public void run() {
 
             try {
-                Thread.sleep(15000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            //buyer.notify();
 
-        while (!QueueToPay.queueToPay.isEmpty()) {
+        while (!Buyer.getQueue().isEmpty()) {
+            /*try {
+                waitingForCostumers();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }*/
             takeBuyerFromQueue();
-            synchronized (this){
+            //synchronized (this){
                 accountCashier();
-            }
-            feelFree();
+            //}
+            clientMayExit();
             //System.out.println(buyer.getBacket());
         }
 
@@ -39,11 +49,8 @@ public class Cashier implements Runnable {
         synchronized (Cashier.class){
             if (!QueueToPay.queueToPay.isEmpty()) {
                 this.buyer = QueueToPay.getBuyer();
-                freeCashier--;
+                Buyer.getQueue().remove(this.buyer);
                 System.out.println(buyer + " went to Cashier.");
-
-                freeCashier++;
-                //buyer.notifyAll();
             }
         }
     }
@@ -55,7 +62,7 @@ public class Cashier implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        synchronized (Cashier.class) {
+        //synchronized (Cashier.class) {
             int bill = 0;
             StringBuilder sb = new StringBuilder();
             String s = this.buyer + " is buying: ";
@@ -76,14 +83,20 @@ public class Cashier implements Runnable {
             sb.append(paid);
             System.out.println(sb);
             //buyer.notifyAll();
-        }
+       // }
     }
 
 
-    public synchronized void feelFree(){
+    public synchronized void clientMayExit(){
         this.buyer.clearBacket();
         synchronized (this.buyer) {
             this.buyer.notify();
         }
+    }
+
+    public synchronized void waitingForCostumers() throws InterruptedException {
+
+        while (QueueToPay.queueToPay.size()<5)
+            this.wait();
     }
 }

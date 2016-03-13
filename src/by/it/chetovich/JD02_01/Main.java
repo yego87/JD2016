@@ -15,8 +15,8 @@ public class Main {
         int countByers = 0;
         Queue<Buyer> queue = new ArrayDeque<>();
 
-        for (int i = 0; i < 5; i++) {
-            new Thread(new Cashier()).start();
+        for (int i = 1; i < 6; i++) {
+            new Thread(new Cashier(i)).start();
         }
 
         while (countByers<10){
