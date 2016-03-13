@@ -1,8 +1,7 @@
 package by.it.chetovich.JD02_01;
 
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * class for buyers
@@ -12,20 +11,36 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
     private int num;
     private Backet backet;
     private boolean retired;
+    private static Queue<Buyer> queue = new ArrayDeque<>();
+
 
     public Buyer(int num, boolean retired) {
         this.num = num;
         this.retired = retired;
         this.setName("Buyer " + num + " ");
+        queue.add(this);
         start();
+    }
+
+    public boolean isRetired() {
+        return retired;
     }
 
     public int getNum() {
         return num;
     }
 
-    public Backet getBacket() {
-        return backet;
+    public Map<String, Integer> getBacket() {
+        return backet.getGoods();
+    }
+
+
+    public static Queue<Buyer> getQueue() {
+        return queue;
+    }
+
+    public void clearBacket(){
+        backet.getGoods().clear();
     }
 
     @Override
@@ -33,6 +48,29 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         enterMarket();
         takeBacket();
         chooseGoods();
+        try {
+            goToQueue();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            waitingInTheQueue();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        /*synchronized (this){
+                while (!backet.getGoods().isEmpty()){
+                    try {
+                        this.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            //this.notifyAll();
+        }*/
+
+        //Cashier.takeBuyerFromQueue();
+
         exitMarket();
 
     }
@@ -93,6 +131,24 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         }
         System.out.println(this+" put "+good+" into backet.");
 
+    }
+
+
+    @Override
+    public void goToQueue() throws InterruptedException {
+        synchronized (QueueToPay.queueToPay){
+            QueueToPay.putBuyer(this);
+            System.out.println("Buyer " + num + " is in the queue");
+
+        }
+
+    }
+
+
+    @Override
+    public synchronized void waitingInTheQueue() throws InterruptedException {
+        while (!backet.getGoods().isEmpty())
+            this.wait();
     }
 }
 

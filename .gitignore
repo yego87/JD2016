@@ -10,6 +10,7 @@
 
 #все равно под контролем ( RestoreJD2016.cmd )
 out/
+out-test/
 .idea
 *.iml
 workspace.xml
