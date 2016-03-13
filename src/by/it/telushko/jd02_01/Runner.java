@@ -8,10 +8,6 @@ public class Runner {
     static int countBuyers=0;
 
     public static void main(String[] args) throws InterruptedException{
-        HashMap<String,Integer> goodsList = new HashMap<>();
-        goodsList.put("Фильтр",10);goodsList.put("Лампочка",3);
-        goodsList.put("Колодки",40);goodsList.put("Антифриз",10);
-        goodsList.put("Масло",75);goodsList.put("Дворники",100);
 
         Queue<Buyer> queue=new ArrayDeque<>();
         while (countBuyers<10){
