@@ -20,7 +20,11 @@ public class Buyer extends Thread implements Runnable,IBuyer,IUseBacket {
     @Override
     public void run(){
         enterToMarket();
-        putGoodsToBacket();
+        try {
+            putGoodsToBacket();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         chooseGoods();
         goToOut();
     }
