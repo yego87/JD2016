@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class Runner {
     public static void main(String[] args) throws InterruptedException {
-        int peoples = 0;
+        int people = 0;
 
         Random random = new Random();
 
         Queue<Customer> queue=new ArrayDeque<>();
-        while (peoples++ < 10) {
+        while (people++ < 6) {
             Thread.sleep(random.nextInt(500));
 
             Customer customer = new Customer(getRandomName());
@@ -23,8 +23,8 @@ public class Runner {
     public static String getRandomName() {
         String name = "";
 
-        String[] names = {"Sam", "Jack", "Bob", "Kate", "Andre", "Joao", "Dominique", "Julien", "Michiele"};
-        String[] surnames = {"Peterson", "Jackson", "Cox", "Novik", "Stephenson", "Lincoln", "Shepperd", "Bowie"};
+        String[] names = {"Sam", "Jack", "Bob", "Kate", "Andrew","Dominique",};
+        String[] surnames = {"Peterson", "Jackson", "Cox", "Lincoln", "Shepperd", "Bowie"};
 
         Random random = new Random();
 
