@@ -1,8 +1,11 @@
-package by.it.daylidovich.JD02_01.Cashier;
+package by.it.daylidovich.JD02_01_and_02.Cashier;
 
-import by.it.daylidovich.JD02_01.Buyer.Buyer;
-import by.it.daylidovich.JD02_01.Queue.QueueBuyer;
-import by.it.daylidovich.JD02_01.Utils.RandomFromInterval;
+import by.it.daylidovich.JD02_01_and_02.Buyer.Buyer;
+import by.it.daylidovich.JD02_01_and_02.Goods.Goods;
+import by.it.daylidovich.JD02_01_and_02.Queue.QueueBuyer;
+import by.it.daylidovich.JD02_01_and_02.Utils.RandomFromInterval;
+
+import java.util.ArrayList;
 
 public class Cashier extends Thread{
     int numberCashier;
@@ -26,16 +29,21 @@ public class Cashier extends Thread{
 
     //метод забирает покупателя из очереди
     public Buyer freeCashier(){
-        synchronized (face){
             Buyer buyer = QueueBuyer.exitQueue();
             while (null == buyer)
                 buyer = QueueBuyer.exitQueue();
             return buyer;
-        }
     }
 
     public void releaseBuyer(Buyer buyer){
         System.out.println(buyer.getName() + " обслужен на " + this.getName());
+        int sum = 0;
+        ArrayList<String> backet = buyer.getBacket();
+        for (String goods: backet){
+            System.out.printf("%-20s %7d\n", goods, Goods.getGoods().get(goods));
+            sum += Goods.getGoods().get(goods);
+        }
+        System.out.printf("Сумма к оплате:      %7d\n", sum);
         buyer.setBacket(null);
     }
 
@@ -43,7 +51,10 @@ public class Cashier extends Thread{
     @Override
     public void run() {
         if (QueueBuyer.isEmptyQueue()){
-            Buyer buyer = freeCashier();
+            Buyer buyer;
+            synchronized (face){
+                buyer = freeCashier();
+            }
             serveBuyer();
             releaseBuyer(buyer);
         }

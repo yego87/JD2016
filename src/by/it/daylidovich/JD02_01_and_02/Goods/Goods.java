@@ -1,6 +1,6 @@
-package by.it.daylidovich.JD02_01.Goods;
+package by.it.daylidovich.JD02_01_and_02.Goods;
 
-import by.it.daylidovich.JD02_01.Utils.RandomFromInterval;
+import by.it.daylidovich.JD02_01_and_02.Utils.RandomFromInterval;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -14,6 +14,10 @@ import java.util.regex.Pattern;
 
 public class Goods {
 
+    public static HashMap<String, Integer> getGoods() {
+        return goods;
+    }
+
     static HashMap<String, Integer> goods = new HashMap<>();
 
     public Goods(String name, int prise){
@@ -22,7 +26,7 @@ public class Goods {
 
     public static void readGoods(){
         try{
-            BufferedReader reader = new BufferedReader(new FileReader("src\\by\\it\\daylidovich\\JD02_01\\Goods\\Goods.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("src\\by\\it\\daylidovich\\JD02_01_and_02\\Goods\\Goods.txt"));
             String line;
             while (null != (line = reader.readLine())){
                 new Goods(readNameGoods(line), readPriseGoods(line));
@@ -37,7 +41,7 @@ public class Goods {
     private static String readNameGoods(String line){
         Matcher matcher = Pattern.compile("[А-яёЁ ]+").matcher(line);
         if (matcher.find())
-            return matcher.group();
+            return matcher.group().trim();
         else
             return "Ошибка чтения.";
     }
@@ -55,11 +59,11 @@ public class Goods {
         int number = RandomFromInterval.randomInterval(0, set.size() - 1);
         String goods = "";
         Iterator<String> iterator = set.iterator();
-        while(iterator.hasNext() && 0 < number){
+        while(iterator.hasNext() && 0 <= number){
             goods = iterator.next();
             number--;
         }
-        return goods.trim();
+        return goods;
     }
 
 }

@@ -1,11 +1,11 @@
-package by.it.daylidovich.JD02_01.Queue;
+package by.it.daylidovich.JD02_01_and_02.Queue;
 
-import by.it.daylidovich.JD02_01.Buyer.Buyer;
+import by.it.daylidovich.JD02_01_and_02.Buyer.Buyer;
 
 import java.util.ArrayDeque;
 
 public class QueueBuyer {
-    private static volatile ArrayDeque<Buyer> queueBuyers = new ArrayDeque<>();
+    private static ArrayDeque<Buyer> queueBuyers = new ArrayDeque<>();
 
     public static void goToQueue(Buyer buyer){
         queueBuyers.addLast(buyer);

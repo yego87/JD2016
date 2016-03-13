@@ -1,11 +1,11 @@
-package by.it.daylidovich.JD02_01.Buyer;
+package by.it.daylidovich.JD02_01_and_02.Buyer;
 
-import by.it.daylidovich.JD02_01.Goods.Goods;
-import by.it.daylidovich.JD02_01.Queue.QueueBuyer;
+import by.it.daylidovich.JD02_01_and_02.Goods.Goods;
+import by.it.daylidovich.JD02_01_and_02.Queue.QueueBuyer;
 
 import java.util.ArrayList;
 
-import static by.it.daylidovich.JD02_01.Utils.RandomFromInterval.randomInterval;
+import static by.it.daylidovich.JD02_01_and_02.Utils.RandomFromInterval.randomInterval;
 
 public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
 
@@ -13,6 +13,10 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
 
     public void setBacket(ArrayList<String> backet) {
         this.backet = backet;
+    }
+
+    public ArrayList<String> getBacket() {
+        return backet;
     }
 
     ArrayList<String> backet = new ArrayList<>();
@@ -44,7 +48,8 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     public void chooseGoods() {
         int countGoods = randomInterval(1,4);
         for (int i = 0; i < countGoods; i++) {
-            backet.add(Goods.randomGoods());
+            String goods = Goods.randomGoods();
+            backet.add(goods);
             putGoodsToBacket();
         }
         System.out.println(this + " совершил покупки.");
