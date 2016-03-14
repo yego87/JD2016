@@ -9,7 +9,6 @@ public class VariantA {
 
     private Random rand = new Random(System.currentTimeMillis());
     private File file = new File(System.getProperty("user.dir") + "/src/by/it/dorostchenok/jd01_15/a/output.txt");
-    private PrintWriter writer;
 
     public void run(){
         try (PrintWriter writer = new PrintWriter(file)) {
