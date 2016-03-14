@@ -10,20 +10,20 @@ public class Manager extends Thread{
     private ExecutorService executorService = Executors.newFixedThreadPool(5);
     private LinkedBlockingDeque<Cashier> cashierLinkedList = new LinkedBlockingDeque<>();
     public boolean isManagerWork = true;
-    private int i = 1;
 
     //метод запускает нить "касса"
     public void openCashier(){
-        Cashier cashier = new Cashier(i);
-        i++;
+        Cashier cashier = new Cashier(cashierLinkedList.size()+1);
         executorService.execute(cashier);
         cashier.start();
         cashierLinkedList.addLast(cashier);
+        System.out.println(cashier.getName() + " открыта.");
     }
 
     //метод закрывает нить "касса"
     public void closeCashier(){
         Cashier cashier = cashierLinkedList.pollLast();
+        System.out.println(cashier.getName() + " закрыта.");
         cashier.iWork = false;
     }
 
