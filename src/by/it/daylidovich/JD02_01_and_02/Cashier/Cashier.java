@@ -6,25 +6,37 @@ import by.it.daylidovich.JD02_01_and_02.Queue.QueueBuyer;
 import by.it.daylidovich.JD02_01_and_02.Utils.RandomFromInterval;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 
 public class Cashier extends Thread{
-    int numberCashier;
-    private static final Integer face = 0;
+    private static int numberCashier = 1;
 
-    public Cashier(int numberCashier){
-        this.numberCashier = numberCashier;
+    public Cashier(){
         this.setName("касса №" + numberCashier);
+        numberCashier++;
         setDaemon(true);
         start();
     }
 
-    public void serveBuyer(){
+    public void serveBuyer(Buyer buyer){
+        System.out.println(buyer.getName() + " обслуживается на " + this.getName());
         int timing = RandomFromInterval.randomInterval(2000, 5000);
         try {
             Thread.sleep(timing);
         } catch (InterruptedException e) {
             System.out.println("Ошибка ожидания.");
         }
+        int sum = 0;
+        ArrayList<String> backet = buyer.getBacket();
+        StringBuilder invoice = new StringBuilder("\nЧек " + buyer.getName() + "\n");
+        for (String goods: backet){
+            Formatter f = new Formatter();
+            invoice.append(f.format("%-20s %7d\n", goods, Goods.getGoods().get(goods)));
+            sum += Goods.getGoods().get(goods);
+        }
+        Formatter f = new Formatter();
+        invoice.append(f.format("Сумма к оплате:      %7d\n", sum));
+        System.out.println(invoice);
     }
 
     //метод забирает покупателя из очереди
@@ -37,30 +49,23 @@ public class Cashier extends Thread{
 
     public void releaseBuyer(Buyer buyer){
         System.out.println(buyer.getName() + " обслужен на " + this.getName());
-        int sum = 0;
-        ArrayList<String> backet = buyer.getBacket();
-        for (String goods: backet){
-            System.out.printf("%-20s %7d\n", goods, Goods.getGoods().get(goods));
-            sum += Goods.getGoods().get(goods);
-        }
-        System.out.printf("Сумма к оплате:      %7d\n", sum);
-        buyer.setBacket(null);
+        Buyer.iWait = false;
+        buyer.notify();
     }
 
 
     @Override
     public void run() {
         if (QueueBuyer.isEmptyQueue()){
-            Buyer buyer;
-            synchronized (face){
-                buyer = freeCashier();
+            Buyer buyer = freeCashier();
+            synchronized (buyer){
+                serveBuyer(buyer);
+                releaseBuyer(buyer);
             }
-            serveBuyer();
-            releaseBuyer(buyer);
         }
         else
             try {
-                sleep(10);
+                sleep(100);
             } catch (InterruptedException e) {
                 System.out.println("Ошибка ожидания кассы.");
             }

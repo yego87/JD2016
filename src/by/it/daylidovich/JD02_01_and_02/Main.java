@@ -11,10 +11,10 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         Goods.readGoods();
-        for (int i = 0; i < 5; i++) {
-            new Cashier(i+1);
+        for (int i = 0; i < 2; i++) {
+            new Cashier();
         }
-        while (20 > countBuyers){
+        while (10 > countBuyers){
             Thread.sleep(1000);
             int countBuyersInOneMoment = randomInterval(0, 2);
             for (int i = 0; i < countBuyersInOneMoment; i++) {

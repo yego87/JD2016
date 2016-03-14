@@ -10,6 +10,9 @@ import static by.it.daylidovich.JD02_01_and_02.Utils.RandomFromInterval.randomIn
 public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
 
     int numberBuyer;
+    ArrayList<String> backet = new ArrayList<>();
+    boolean pensioneer = false;
+    public static boolean iWait = false;
 
     public void setBacket(ArrayList<String> backet) {
         this.backet = backet;
@@ -18,9 +21,6 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     public ArrayList<String> getBacket() {
         return backet;
     }
-
-    ArrayList<String> backet = new ArrayList<>();
-    boolean pensioneer = false;
 
     public Buyer(int numberBuyer){
         this.numberBuyer = numberBuyer;
@@ -34,8 +34,7 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     public void run() {
         enterToMarket();
         chooseGoods();
-        QueueBuyer.goToQueue(this);
-        while (null != backet){yield();}
+        goToQueue();
         goToExit();
     }
 
@@ -53,15 +52,6 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
             putGoodsToBacket();
         }
         System.out.println(this + " совершил покупки.");
-    }
-
-    @Override
-    public void goToExit() {
-        System.out.println(this + " вышел из магазина.");
-    }
-
-    public String toString(){
-        return this.getName();
     }
 
     @Override
@@ -90,4 +80,23 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
         }
     }
 
+    public synchronized void goToQueue(){
+        QueueBuyer.addBuyer(this);
+        iWait = true;
+        while (iWait)
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+    }
+
+    @Override
+    public void goToExit() {
+        System.out.println(this + " вышел из магазина.");
+    }
+
+    public String toString(){
+        return this.getName();
+    }
 }

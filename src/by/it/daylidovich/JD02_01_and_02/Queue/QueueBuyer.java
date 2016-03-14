@@ -5,14 +5,16 @@ import by.it.daylidovich.JD02_01_and_02.Buyer.Buyer;
 import java.util.ArrayDeque;
 
 public class QueueBuyer {
-    private static ArrayDeque<Buyer> queueBuyers = new ArrayDeque<>();
+    private final static ArrayDeque<Buyer> queueBuyers = new ArrayDeque<>();
 
-    public static void goToQueue(Buyer buyer){
+    public static void addBuyer(Buyer buyer){
         queueBuyers.addLast(buyer);
     }
 
     public static Buyer exitQueue(){
-        return queueBuyers.pollFirst();
+        synchronized (queueBuyers){
+            return queueBuyers.pollFirst();
+        }
     }
 
     public static boolean isEmptyQueue(){
