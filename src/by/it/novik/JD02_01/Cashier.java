@@ -3,6 +3,7 @@ package by.it.novik.JD02_01;
 import java.util.ArrayList;
 
 public class Cashier extends Thread implements ICashier {
+    private int num;
     Customer customer;
     private static Cashier ourInstance = new Cashier();
 
@@ -10,11 +11,36 @@ public class Cashier extends Thread implements ICashier {
         return ourInstance;
     }
 
+    static int numOfCashiers = 0;
+    static int completeCustomers = 0;
+
     private Cashier() {
+        this.num = ++numOfCashiers;//volatile or atomic??
+        this.setName("Кассир N " + num);
+    }
+    public String toString() {
+        return this.getName();
     }
 
+    static final int planNumOfCustomers = 5;
+
     public void run() {
-        serve(customer);
+        System.out.println(this.getName() + " открылась");//open cash
+        while(!(completeCustomers>=planNumOfCustomers)) {//пока не выполнен план, т.е. должно быть покупателей больше либо равно как по плану (5)
+            customer = Queue.poll();
+            if (customer != null)
+                synchronized (customer) {
+                    serve(customer);
+                    completeCustomers++;
+
+                    customer.shouldWait = false;//пора отпустить его дальше, т.е. отменить условие + notify
+                    customer.notify();
+                }
+            else {
+                customer.think();
+            }
+        }
+        System.out.println(this.getName() + " закрылась.");
     }
 
     @Override
