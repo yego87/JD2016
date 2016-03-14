@@ -2,6 +2,7 @@ package by.it.daylidovich.JD02_01_and_02.Buyer;
 
 import by.it.daylidovich.JD02_01_and_02.Goods.Goods;
 import by.it.daylidovich.JD02_01_and_02.Queue.QueueBuyer;
+import by.it.daylidovich.JD02_01_and_02.Utils.SleepTime;
 
 import java.util.ArrayList;
 
@@ -13,10 +14,6 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     ArrayList<String> backet = new ArrayList<>();
     boolean pensioneer = false;
     public static boolean iWait = false;
-
-    public void setBacket(ArrayList<String> backet) {
-        this.backet = backet;
-    }
 
     public ArrayList<String> getBacket() {
         return backet;
@@ -59,12 +56,7 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
         int timing = randomInterval(100,200);
         if (pensioneer)
             timing = (int)(timing *1.5);
-        try{
-            Thread.sleep(timing);
-        }
-        catch (InterruptedException e){
-            System.out.println("Ошибка ожидания.");
-        }
+        SleepTime.sleepTime(timing);
     }
 
     @Override
@@ -72,12 +64,7 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
         int timing = randomInterval(100,200);
         if (pensioneer)
             timing = (int)(timing *1.5);
-        try{
-            Thread.sleep(timing);
-        }
-        catch (InterruptedException e){
-            System.out.println("Ошибка ожидания.");
-        }
+        SleepTime.sleepTime(timing);
     }
 
     public synchronized void goToQueue(){
