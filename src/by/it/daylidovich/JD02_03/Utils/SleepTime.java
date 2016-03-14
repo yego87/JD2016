@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD02_01_and_02.Utils;
+package by.it.daylidovich.JD02_03.Utils;
 
 public class SleepTime {
     public static void sleepTime(int time){

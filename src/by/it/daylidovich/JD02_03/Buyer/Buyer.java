@@ -1,12 +1,12 @@
-package by.it.daylidovich.JD02_01_and_02.Buyer;
+package by.it.daylidovich.JD02_03.Buyer;
 
-import by.it.daylidovich.JD02_01_and_02.Goods.Goods;
-import by.it.daylidovich.JD02_01_and_02.Queue.QueueBuyer;
-import by.it.daylidovich.JD02_01_and_02.Utils.SleepTime;
+import by.it.daylidovich.JD02_03.Goods.Goods;
+import by.it.daylidovich.JD02_03.Queue.QueueBuyer;
+import by.it.daylidovich.JD02_03.Utils.SleepTime;
 
 import java.util.ArrayList;
 
-import static by.it.daylidovich.JD02_01_and_02.Utils.RandomFromInterval.randomInterval;
+import static by.it.daylidovich.JD02_03.Utils.RandomFromInterval.randomInterval;
 
 public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
 

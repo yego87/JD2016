@@ -1,6 +1,6 @@
-package by.it.daylidovich.JD02_01_and_02.Queue;
+package by.it.daylidovich.JD02_03.Queue;
 
-import by.it.daylidovich.JD02_01_and_02.Buyer.Buyer;
+import by.it.daylidovich.JD02_03.Buyer.Buyer;
 
 import java.util.ArrayDeque;
 
@@ -19,6 +19,10 @@ public class QueueBuyer {
 
     public static boolean isEmptyQueue(){
         return !queueBuyers.isEmpty();
+    }
+
+    public static int lengthQueue(){
+        return queueBuyers.size();
     }
 
     /*public static void PrintQueue(){

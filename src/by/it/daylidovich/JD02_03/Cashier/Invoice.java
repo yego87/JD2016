@@ -1,7 +1,7 @@
-package by.it.daylidovich.JD02_01_and_02.Cashier;
+package by.it.daylidovich.JD02_03.Cashier;
 
-import by.it.daylidovich.JD02_01_and_02.Buyer.Buyer;
-import by.it.daylidovich.JD02_01_and_02.Goods.Goods;
+import by.it.daylidovich.JD02_03.Buyer.Buyer;
+import by.it.daylidovich.JD02_03.Goods.Goods;
 
 import java.util.ArrayList;
 import java.util.Formatter;

@@ -1,18 +1,16 @@
-package by.it.daylidovich.JD02_01_and_02.Cashier;
+package by.it.daylidovich.JD02_03.Cashier;
 
-import by.it.daylidovich.JD02_01_and_02.Buyer.Buyer;
-import by.it.daylidovich.JD02_01_and_02.Queue.QueueBuyer;
-import by.it.daylidovich.JD02_01_and_02.Utils.RandomFromInterval;
-import by.it.daylidovich.JD02_01_and_02.Utils.SleepTime;
+import by.it.daylidovich.JD02_03.Buyer.Buyer;
+import by.it.daylidovich.JD02_03.Queue.QueueBuyer;
+import by.it.daylidovich.JD02_03.Utils.RandomFromInterval;
+import by.it.daylidovich.JD02_03.Utils.SleepTime;
 
 public class Cashier extends Thread{
-    private static int numberCashier = 1;
 
-    public Cashier(){
+    public boolean iWork = true;
+
+    public Cashier(int numberCashier){
         this.setName("касса №" + numberCashier);
-        numberCashier++;
-        setDaemon(true);
-        start();
     }
 
     public void serveBuyer(Buyer buyer){
@@ -38,16 +36,17 @@ public class Cashier extends Thread{
 
 
     @Override
-    public void run() {
-        if (QueueBuyer.isEmptyQueue()){
-            Buyer buyer = freeCashier();
-            synchronized (buyer){
-                serveBuyer(buyer);
-                releaseBuyer(buyer);
+    public synchronized void run() {
+        while (iWork){
+            if (QueueBuyer.isEmptyQueue()){
+                Buyer buyer = freeCashier();
+                synchronized (buyer){
+                    serveBuyer(buyer);
+                    releaseBuyer(buyer);
+                }
             }
+            else
+                SleepTime.sleepTime(100);
         }
-        else
-            SleepTime.sleepTime(100);
-        run();
     }
 }
