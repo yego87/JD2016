@@ -1,35 +1,38 @@
 package by.it.predkel.JD0201Thread;
 
-import java.util.PriorityQueue;
+import java.util.ArrayDeque;
 
 /**
  * Created by user_2 on 11.03.2016.
  */
-public class MyQueue extends PriorityQueue {
-    public static PriorityQueue<Buyer> ochered=new PriorityQueue<>();
+public class MyQueue<T extends Object> extends ArrayDeque<T> {
+    public ArrayDeque<T> ochered=new ArrayDeque<>();
     private final static Integer fakeBalance=0;
 
-   /* @Override
-    public synchronized Buyer element(){
-        return (Buyer)super.element();
-    }*/
     @Override
-    public  Buyer remove(){
+    public void addFirst(T cl){
         synchronized(fakeBalance) {
-            return ochered.remove();
+            ochered.addFirst(cl);
+        }
+    }
+    @Override
+    public void addLast(T cl){
+        synchronized(fakeBalance) {
+            ochered.addLast(cl);
+        }
+    }
+    @Override
+    public T pollFirst(){
+        synchronized(fakeBalance) {
+            return ochered.pollFirst();
         }
     }
 
-    public void addBuyer(Buyer cl){
-        synchronized(fakeBalance) {
-            ochered.add(cl);
-        }
-    }
     public boolean checkQueue() {
-        return (!this.isEmpty());
+        return (!this.ochered.isEmpty());
     }
 
-    public MyQueue getMyQueue(){
-        return this;
+    public ArrayDeque<T> getMyQueue(){
+        return ochered;
     }
 }

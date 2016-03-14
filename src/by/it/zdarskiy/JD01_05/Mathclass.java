@@ -1,7 +1,4 @@
 package by.it.zdarskiy.JD01_05;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 import static java.lang.Math.*;
 /**
@@ -70,8 +67,12 @@ public class Mathclass {
         System.out.println(hh);
     }
     public static void ex3(){
-
-    }
+        double f1 = 2;
+        double f2 = 3;
+        double f3 = 0.1;
+        for (double i = f1; i < f2+f3; i+=f3) {
+            System.out.printf("%5.2f   %5.2f\n",i,(Math.log(1.3+i)-Math.pow(Math.E,i)));
+    }}
     public static void ex4(){
         double result=0;
         for (int i=6; i<12;i++){
