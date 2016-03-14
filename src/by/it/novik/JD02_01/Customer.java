@@ -34,9 +34,26 @@ public class Customer extends Thread implements ICustomer, IUseBasket {
         goOut();
     }
 
+    public boolean shouldWait;
+
+
     public void goToCashier() {
-        Cashier cashier = Cashier.getInstance();
-        cashier.serve(this);
+        synchronized (this) {
+            System.out.println(this.getName() + " в очереди в кассу.");
+            Queue.add(this);//добавляемся add
+            shouldWait = true;
+            while (shouldWait) {
+                try {
+                    wait();
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            //ожидаем, пока кассир отпустит
+        }
+//        Cashier cashier = Cashier.getInstance();
+//        cashier.serve(this); //? move where???
     }
 
     @Override
@@ -88,7 +105,7 @@ public class Customer extends Thread implements ICustomer, IUseBasket {
         System.out.println(this.getName() + " имеет в корзине " + basket.space);
     }
 
-    public void think() {
+    public static void think() {
         try {
             sleep(Rndm.fromTo(500, 2000));
         } catch (InterruptedException e) {
