@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by user_2 on 11.03.2016.
  */
-public class Cashier extends Thread {
+public class Cashier extends Thread implements Runnable {
     int num; //номер кассира
     boolean haveTheBuyer=false;
     Buyer buy;
@@ -20,15 +20,23 @@ public class Cashier extends Thread {
         start();
     }
 
-    @Override //покупатель приходит в зал и выбирает товары.
+    @Override
     public void run() {
-        while(myq.checkQueue()) {
+        while (true) {
+            while (!myq.checkQueue()) {
+                try {
+                    sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             getBuyerFromQueue();
             printCheck();
         }
     }
 
     public void getBuyerFromQueue() {
+
         if (!haveTheBuyer) {
             try {
                 while (myq.checkQueue()) {
@@ -37,12 +45,15 @@ public class Cashier extends Thread {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            buy=myq.remove();
+            synchronized (fakeBalance) {
+                buy = (Buyer) myq.pollFirst();
+            }
             haveTheBuyer=true;
         }else{
             System.out.print("Ошибка у "+this);
         }
     }
+
     public void printCheck() {
         Double sum=0.0;
         for (Double temp:buy.basket.getBasket().values()){
@@ -62,5 +73,8 @@ public class Cashier extends Thread {
         notify();
         System.out.println("Итог за чек:"+sum.toString());
         System.out.println("Общий итог:"+fullSum.toString());
+    }
+    public String toString() {
+        return this.getName();
     }
 }
