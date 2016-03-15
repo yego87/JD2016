@@ -1,6 +1,6 @@
-package by.it.daylidovich.JD02_01_and_02.Goods;
+package by.it.daylidovich.JD02_03.Goods;
 
-import by.it.daylidovich.JD02_01_and_02.Utils.RandomFromInterval;
+import by.it.daylidovich.JD02_03.Utils.RandomFromInterval;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -26,7 +26,7 @@ public class Goods {
 
     public static void readGoods(){
         try{
-            BufferedReader reader = new BufferedReader(new FileReader("src\\by\\it\\daylidovich\\JD02_01_and_02\\Goods\\Goods.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("src\\by\\it\\daylidovich\\JD02_03\\Goods\\Goods.txt"));
             String line;
             while (null != (line = reader.readLine())){
                 new Goods(readNameGoods(line), readPriseGoods(line));

@@ -1,4 +1,4 @@
-package by.it.daylidovich.JD02_01_and_02.Buyer;
+package by.it.daylidovich.JD02_03.Buyer;
 
 public interface IBuyer {
     //метод реализует вход покупателя в магазин
