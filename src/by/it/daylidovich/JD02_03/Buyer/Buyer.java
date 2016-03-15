@@ -14,6 +14,12 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     ArrayList<String> backet = new ArrayList<>();
     boolean pensioneer = false;
     public static boolean iWait = false;
+    private static volatile Integer countBuyers = 0;
+    private static final Integer faceCountBuyers = 0;
+
+    public static Integer getCountBuyers() {
+        return countBuyers;
+    }
 
     public ArrayList<String> getBacket() {
         return backet;
@@ -38,6 +44,9 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     @Override
     public void enterToMarket() {
         System.out.println(this + " вошел в магазин.");
+        synchronized (faceCountBuyers){
+            countBuyers ++;
+        }
     }
 
     @Override
@@ -81,6 +90,9 @@ public class Buyer extends Thread implements IBuyer, Runnable, IUseBacket {
     @Override
     public void goToExit() {
         System.out.println(this + " вышел из магазина.");
+        synchronized (faceCountBuyers){
+            countBuyers --;
+        }
     }
 
     public String toString(){

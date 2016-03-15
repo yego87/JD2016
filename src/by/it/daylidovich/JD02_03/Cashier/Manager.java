@@ -1,5 +1,6 @@
 package by.it.daylidovich.JD02_03.Cashier;
 
+import by.it.daylidovich.JD02_03.Buyer.Buyer;
 import by.it.daylidovich.JD02_03.Queue.QueueBuyer;
 
 import java.util.concurrent.ExecutorService;
@@ -41,10 +42,11 @@ public class Manager extends Thread{
     }
 
     //метод проверяет нужно ли закрывать кассу
-    public boolean isCloseCashier(){
+    public boolean isCloseCashier() {
         int countBuyersInQueue = QueueBuyer.lengthQueue();
         int countActiveCashier = cashierLinkedList.size();
-        return -4 > (countBuyersInQueue - 5 * countActiveCashier);
+        int countBuyersInCashier = Buyer.getCountBuyers();
+        return -4 > (countBuyersInQueue - 5 * countActiveCashier) && (1 < countActiveCashier || 0 == countBuyersInCashier);
     }
 
     @Override

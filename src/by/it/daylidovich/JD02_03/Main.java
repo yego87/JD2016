@@ -3,7 +3,6 @@ package by.it.daylidovich.JD02_03;
 import by.it.daylidovich.JD02_03.Buyer.Buyer;
 import by.it.daylidovich.JD02_03.Cashier.Manager;
 import by.it.daylidovich.JD02_03.Goods.Goods;
-import by.it.daylidovich.JD02_03.Queue.QueueBuyer;
 
 import static by.it.daylidovich.JD02_03.Utils.RandomFromInterval.randomInterval;
 
@@ -23,7 +22,7 @@ public class Main {
                 new Buyer(countBuyers);
             }
         }
-        while (0 < QueueBuyer.lengthQueue() || planBuyers > countBuyers){
+        while (0 != Buyer.getCountBuyers()){
             Thread.yield();
         }
         manager.isManagerWork = false;
