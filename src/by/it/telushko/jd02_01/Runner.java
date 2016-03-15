@@ -6,9 +6,12 @@ import java.util.Queue;
 
 public class Runner {
     static int countBuyers=0;
+    static HashMap<String,Integer> goodsList = new HashMap<>();
 
     public static void main(String[] args) throws InterruptedException{
-
+        goodsList.put("Фильтр",10);goodsList.put("Лампочка",3);
+        goodsList.put("Колодки",40);goodsList.put("Антифриз",10);
+        goodsList.put("Масло",75);goodsList.put("Дворники",100);
         Queue<Buyer> queue=new ArrayDeque<>();
         while (countBuyers<10){
             Thread.sleep(1000);
