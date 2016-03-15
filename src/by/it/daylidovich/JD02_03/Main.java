@@ -9,7 +9,7 @@ public class Main {
     static int countBuyers = 0;
     public static void main(String[] args) throws InterruptedException {
 
-        int planBuyers = 10;
+        int planBuyers = 100;
         Goods.readGoods();
         System.out.printf("%-30s%-30s%-30s%-30s%-30s%-15s%-15s\n","Касса №1", "Касса №2", "Касса №3", "Касса №4", "Касса №5", "Длинна очереди", "Выручка магазина");
         Manager manager = new Manager();
