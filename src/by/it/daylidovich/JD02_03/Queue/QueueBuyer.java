@@ -8,7 +8,10 @@ public class QueueBuyer {
     private final static ArrayDeque<Buyer> queueBuyers = new ArrayDeque<>();
 
     public static void addBuyer(Buyer buyer){
-        queueBuyers.addLast(buyer);
+        if (buyer.isPensioneer())
+            queueBuyers.addFirst(buyer);
+        else
+            queueBuyers.addLast(buyer);
     }
 
     public static Buyer exitQueue(){

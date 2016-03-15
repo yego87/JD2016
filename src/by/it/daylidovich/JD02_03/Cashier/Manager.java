@@ -18,13 +18,13 @@ public class Manager extends Thread{
         executorService.execute(cashier);
         cashier.start();
         cashierLinkedList.addLast(cashier);
-        System.out.println(cashier.getName() + " открыта.");
+        //System.out.println(cashier.getName() + " открыта.");
     }
 
     //метод закрывает нить "касса"
     public void closeCashier(){
         Cashier cashier = cashierLinkedList.pollLast();
-        System.out.println(cashier.getName() + " закрыта.");
+        //System.out.println(cashier.getName() + " закрыта.");
         cashier.iWork = false;
     }
 
@@ -38,7 +38,7 @@ public class Manager extends Thread{
     public boolean isOpenCashier(){
         int countBuyersInQueue = QueueBuyer.lengthQueue();
         int countActiveCashier = cashierLinkedList.size();
-        return 4 < (countBuyersInQueue - 5 * countActiveCashier);
+        return 4 < (countBuyersInQueue - 5 * countActiveCashier) && (5 > countActiveCashier);
     }
 
     //метод проверяет нужно ли закрывать кассу

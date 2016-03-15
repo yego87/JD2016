@@ -9,15 +9,18 @@ public class Cashier extends Thread{
 
     public boolean iWork = true;
 
+    private int idCashier;
+
     public Cashier(int numberCashier){
         this.setName("касса №" + numberCashier);
+        idCashier = numberCashier;
     }
 
     public void serveBuyer(Buyer buyer){
-        System.out.println(buyer.getName() + " обслуживается на " + this.getName());
+        //System.out.println(buyer.getName() + " обслуживается на " + this.getName());
         int timing = RandomFromInterval.randomInterval(2000, 5000);
         SleepTime.sleepTime(timing);
-        System.out.println(Invoice.createInvoice(buyer));
+        System.out.println(Invoice.createInvoice(buyer, idCashier));
     }
 
     //метод забирает покупателя из очереди
@@ -29,7 +32,7 @@ public class Cashier extends Thread{
     }
 
     public void releaseBuyer(Buyer buyer){
-        System.out.println(buyer.getName() + " обслужен на " + this.getName());
+        //System.out.println(buyer.getName() + " обслужен на " + this.getName());
         Buyer.iWait = false;
         buyer.notify();
     }
