@@ -8,7 +8,7 @@ class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
 
     final Integer num; //номер покупателя
     Basket basket;
-    boolean pensioneer=false;
+    public boolean pensioneer=false;
     MyQueue myq;
     //конструктор покупателя с его номером
 
@@ -58,16 +58,19 @@ class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
     }
 
     @Override
-    public void goToCashier() {
-
-            myq.addBuyer(this);
-            /*while (!basket.getBasket().isEmpty()) {
+    public synchronized void goToCashier() {
+        if (pensioneer) {
+            myq.addFirst(this);
+        }else {
+            myq.addLast(this);
+        }
+            while (!basket.getBasket().isEmpty()) {
                 try {
-                    this.wait();
+                    wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }*/
+            }
         }
 
 

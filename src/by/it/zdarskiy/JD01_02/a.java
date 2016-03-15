@@ -16,7 +16,7 @@ public class a  {
         rfc.LongAndShort();
         rfc.SR();
         rfc.DifferentNum();
-        rfc.Polindrom();
+        rfc.Polindrom();//fgfdg
     }
         public static class RFC {
             int[] chArray={};
