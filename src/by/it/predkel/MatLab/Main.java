@@ -55,7 +55,6 @@ public class Main{
             String rLine = bufferedReader.readLine();
             bufferedReader.close();
 
-
             RunnerObj myMiniObj=new RunnerObj();
             myMiniObj.input(rLine);
             myMiniObj.sortvar();
