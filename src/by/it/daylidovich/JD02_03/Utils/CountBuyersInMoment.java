@@ -13,3 +13,6 @@ public class CountBuyersInMoment {
         return countBuyersInOneMoment;
     }
 }
+/* доработать формулу изменения количества входящих покупателей.
+для доработки ввести счетчик количества секунд
+ */
