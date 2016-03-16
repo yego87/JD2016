@@ -1,10 +1,12 @@
 package by.it.knyazev.JD02.less_01.A;
 
+import by.it.novik.JD01_14.B;
+
 /**
  * Created by Mac on 09.03.16.
  */
-public class Buyer extends Thread implements Runnable, IBuyer {
-    //номер покупателя
+public class Buyer extends Thread implements Runnable, IBuyer,IUseBacket {
+
     int num; //номер покупателя
 
     //конструктор покупателя с его номером
@@ -17,7 +19,9 @@ public class Buyer extends Thread implements Runnable, IBuyer {
     @Override //покупатель приходит в зал и выбирает товары.
     public void run() {
         enterToMarket();
+        takeBacket();
         chooseGoods();
+        putGoodsToBacket();
         goToOut();
     }
 
@@ -49,5 +53,17 @@ public class Buyer extends Thread implements Runnable, IBuyer {
     @Override
     public void goToOut() {
         System.out.println(this + "вышел из магазина");
+    }
+
+    @Override
+    public void takeBacket() {
+        int pause = Rnd.fromTo(500, 2000);
+        System.out.println(this+" взял корзину");
+    }
+
+    @Override
+    public void putGoodsToBacket() {
+        int pause = Rnd.fromTo(500, 2000);
+        System.out.println();
     }
 }
