@@ -2,7 +2,7 @@ package by.it.predkel.JD0201Thread;
 //вспомогательный класс с общими для всех классов величинами и методами
 public class Dispatcher {
     //сколько планируется покупателей
-    public static final int planCount=100;
+    public static final int planCount=10;
     //это для начала обслуживания
     static int countBuyers=0; //общий счетчик покупателей
     static boolean planComplete() {   //метод определяющий выполнение плана

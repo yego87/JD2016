@@ -10,7 +10,7 @@ public class Cashier extends Thread implements Runnable {
     int num; //номер кассира
     Buyer buy;
     private final static Integer fakeBalance=0;
-    public static Double fullSum;
+    public static Double fullSum=0.0;
     MyQueue myq;
     StringBuilder otstup=new StringBuilder("\t");
 
@@ -61,9 +61,9 @@ public class Cashier extends Thread implements Runnable {
         for (Double temp:buy.basket.getBasket().values()){
             sum+=temp;
         }
-        /*synchronized(fakeBalance) {
+        synchronized(fakeBalance) {
             fullSum=fullSum+ sum;
-        }*/
+        }
         Set set = buy.basket.getBasket().entrySet();
         Iterator it = set.iterator();
         System.out.println(otstup+"Список купленных товаров:");
@@ -78,7 +78,7 @@ public class Cashier extends Thread implements Runnable {
             buy.notify();
         }
         System.out.println(otstup+"Итог за чек:"+sum.toString());
-     //   System.out.println("Общий итог:"+fullSum.toString());
+        System.out.println("Общий итог:"+fullSum.toString());
     }
     public String toString() {
         return this.getName();

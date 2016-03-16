@@ -19,10 +19,10 @@ class Runner {
         executor.execute(new Cashier(ochered));
 
 
-            for (int i = 0; i < Dispatcher.planCount; i++) {
-                Thread.sleep(1000);
-                Buyer buyer=new Buyer(ochered);
-            }
+        for (int i = 0; i < Dispatcher.planCount; i++) {
+            Thread.sleep(1000);
+            Buyer buyer = new Buyer(ochered);
+        }
         executor.shutdown();
     }
 }
