@@ -1,5 +1,6 @@
 package by.it.predkel.JD0201Thread;
 
+import by.it.predkel.SimplyUsefulClasses.Rnd;
 import java.util.*;
 
 /**
@@ -7,52 +8,53 @@ import java.util.*;
  */
 public class Cashier extends Thread implements Runnable {
     int num; //номер кассира
-    boolean haveTheBuyer=false;
     Buyer buy;
     private final static Integer fakeBalance=0;
-    public static Double fullSum;
+    public static Double fullSum=0.0;
     MyQueue myq;
+    StringBuilder otstup=new StringBuilder("\t");
 
-    public Cashier(int num,MyQueue cl) {
-        this.num = num;
+    public Cashier(MyQueue cl) {
+        synchronized (fakeBalance) {
+            this.num = ++Dispatcher.countCashiers;
+        }
         myq=cl;
+        for (int i=0;i<num;i++){
+            for (int j=0;j<15;j++) {
+                otstup.append("\t");
+            }
+        }
         this.setName("Кассир № "+ num+" ");
         start();
     }
 
     @Override
     public void run() {
-        while (true) {
-            while (!myq.checkQueue()) {
+        while (!Dispatcher.finish()) {
+            getBuyerFromQueue();
+            if (buy!=null){
+                printCheck();
+            }else {
                 try {
-                    sleep(50);
+                    sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            getBuyerFromQueue();
-            printCheck();
         }
     }
 
     public void getBuyerFromQueue() {
-
-        if (!haveTheBuyer) {
-            try {
-                while (myq.checkQueue()) {
-                    wait(50);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             synchronized (fakeBalance) {
                 buy = (Buyer) myq.pollFirst();
             }
-            haveTheBuyer=true;
-        }else{
-            System.out.print("Ошибка у "+this);
+        try {
+            sleep(Rnd.fromTo(1000,5000));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
+
 
     public void printCheck() {
         Double sum=0.0;
@@ -60,18 +62,22 @@ public class Cashier extends Thread implements Runnable {
             sum+=temp;
         }
         synchronized(fakeBalance) {
-            fullSum+=sum;
+            fullSum=fullSum+ sum;
         }
         Set set = buy.basket.getBasket().entrySet();
         Iterator it = set.iterator();
-        System.out.println("Список купленных товаров:");
+        System.out.println(otstup+"Список купленных товаров:");
         while (it.hasNext()) {
             Map.Entry me = (Map.Entry) it.next();
-            System.out.println(me.getKey().toString());
+            System.out.println(otstup+me.getKey().toString());
         }
         buy.basket.deleteGoods();
-        notify();
-        System.out.println("Итог за чек:"+sum.toString());
+        synchronized (buy) {
+            Dispatcher.countCompleteBuyers++;
+            buy.iWait=false;
+            buy.notify();
+        }
+        System.out.println(otstup+"Итог за чек:"+sum.toString());
         System.out.println("Общий итог:"+fullSum.toString());
     }
     public String toString() {
