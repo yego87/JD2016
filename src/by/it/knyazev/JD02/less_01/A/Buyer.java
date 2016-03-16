@@ -1,6 +1,11 @@
 package by.it.knyazev.JD02.less_01.A;
 
-import by.it.novik.JD01_14.B;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Mac on 09.03.16.
@@ -16,11 +21,13 @@ public class Buyer extends Thread implements Runnable, IBuyer,IUseBacket {
         start();
     }
 
+    @Test
     @Override //покупатель приходит в зал и выбирает товары.
     public void run() {
         enterToMarket();
         takeBacket();
         chooseGoods();
+        takeRandomGood();
         putGoodsToBacket();
         goToOut();
     }
@@ -48,6 +55,27 @@ public class Buyer extends Thread implements Runnable, IBuyer,IUseBacket {
         }
         //ожидание окончено
         System.out.println(this + "выбрал товар");
+
+
+        Map<String,Integer> buyerBacketMap = new HashMap<>();
+        int goodsQuantity = Rnd.fromTo(1,4);
+        for (int i = 0; i < goodsQuantity; i++){
+
+            String randomGood = takeRandomGood();
+            putGoodsIntoBacket(randomGood);
+        }
+    }
+    @Test
+    public void putGoodsIntoBacket(String good) {
+        try{
+            int pause = Rnd.fromTo(500, 2000);
+            Thread.sleep(pause);
+
+        } catch (InterruptedException e) {
+            System.out.println(this+" некорректное завершение ожидания.");
+        }
+        System.out.println(this+" положил "+good+" в корзину");
+
     }
 
     @Override
@@ -65,5 +93,14 @@ public class Buyer extends Thread implements Runnable, IBuyer,IUseBacket {
     public void putGoodsToBacket() {
         int pause = Rnd.fromTo(500, 2000);
         System.out.println();
+    }
+
+    static Map<String, Integer> goodsMap = Utility.FromFileToMap();
+
+    public static String takeRandomGood (){
+
+        List<String> goodsList = new ArrayList<>(goodsMap.keySet());
+        return goodsList.get(Rnd.fromTo(0, goodsList.size()-1));
+
     }
 }
