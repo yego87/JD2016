@@ -5,7 +5,7 @@ public class CountBuyersInMoment {
         int countBuyersInOneMoment;
         if (1 != countSeconds)
         {
-            countBuyersInOneMoment = 3;
+            countBuyersInOneMoment = 2;
         }
         else
             countBuyersInOneMoment = 10;
