@@ -5,15 +5,18 @@ import by.it.predkel.JD0201Thread.Int.IUseBasket;
 import by.it.predkel.SimplyUsefulClasses.Rnd;
 
 class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
-
-    final Integer num; //номер покупателя
+    private final static Integer fakeBalance=0;
+    Integer num; //номер покупателя
     Basket basket;
     public boolean pensioneer=false;
     MyQueue myq;
+    boolean iWait=false;
     //конструктор покупателя с его номером
 
-    public Buyer(int num, MyQueue cl) {
-        this.num = num;
+    public Buyer(MyQueue cl) {
+        synchronized (fakeBalance) {
+            this.num = ++Dispatcher.countBuyers;
+        }
         if (Rnd.fromTo(0,3)==0)
         pensioneer=true;
         myq=cl;
@@ -61,17 +64,16 @@ class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
     public synchronized void goToCashier() {
         if (pensioneer) {
             myq.addFirst(this);
-        }else {
+        } else {
             myq.addLast(this);
         }
-            while (!basket.getBasket().isEmpty()) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+        iWait = true;
+        while (iWait) try {
+            wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+    }
 
 
     @Override
@@ -83,7 +85,7 @@ class Buyer extends Thread implements Runnable, IBuyer,IUseBasket {
         } catch (InterruptedException e) {
             System.out.println(this+" //некорректное завершение ожидания");
         }
-        System.out.println(this+""+ basket);
+       // System.out.println(this+""+ basket);
         returnBasket();
         this.basket=null;
         System.out.println(this + "вышел из магазина "+(pensioneer?"Шустрик":"Пенсионер"));

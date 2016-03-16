@@ -22,10 +22,10 @@ public class MyQueue<T extends Object> extends ArrayDeque<T> {
         }
     }
     @Override
-    public T pollFirst(){
-        synchronized(fakeBalance) {
+    public synchronized T pollFirst(){
+
             return ochered.pollFirst();
-        }
+
     }
 
     public boolean checkQueue() {
