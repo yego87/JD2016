@@ -1,4 +1,4 @@
-package by.it.chetovich.JD02_03.JD02_01;
+package by.it.chetovich.JD02_03;
 
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
@@ -51,15 +51,6 @@ public class Cashier implements Runnable, ICashier {
         if (this.buyer!=null) {
             ShopDispatcher.addCountCashier();
             ShopDispatcher.addCountBuyersOut();
-            System.out.println(buyer.getNum()+", total out "+ShopDispatcher.countBuyersOut);
-
-
-            /*try {
-                countLock.lock();
-                ShopDispatcher.countBuyersOut++;
-            } finally {
-                countLock.unlock();
-            }*/
             System.out.println(buyer + " went to Cashier.");
         }
         else{

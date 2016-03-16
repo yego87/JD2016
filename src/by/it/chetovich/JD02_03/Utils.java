@@ -1,4 +1,4 @@
-package by.it.chetovich.JD02_03.JD02_01;
+package by.it.chetovich.JD02_03;
 
 
 import java.io.BufferedReader;
@@ -82,12 +82,7 @@ public class Utils {
             else{
                 new Buyer(countBuyers, false);
             }
-            /*try {
-                countLock.lock();
-                ShopDispatcher.countBuyersIn++;
-            } finally {
-                countLock.unlock();
-            }*/
+
             if (countBuyers== ShopDispatcher.planBuyers) break;
 
         }
@@ -104,19 +99,18 @@ public class Utils {
             String profit = "shop profit:" + Profit.getTotalProfit();
             switch (c.getNum()) {
                 case 1:
-                    System.out.printf("%11s%s%s%s%s%9s%21s", cashierData, s, s, s, s, queue, profit); break;
+                    System.out.printf("%11s%s%s%s%s%9s%21s", cashierData, s, s, s, s, queue, profit+'\n'); break;
                 case 2:
-                    System.out.printf("%s%11s%s%s%s%9s%21s", s, cashierData, s, s, s, queue, profit); break;
+                    System.out.printf("%s%11s%s%s%s%9s%21s", s, cashierData, s, s, s, queue, profit+'\n'); break;
                 case 3:
-                    System.out.printf("%s%s%11s%s%s%9s%21s", s, s, cashierData, s, s, queue, profit); break;
+                    System.out.printf("%s%s%11s%s%s%9s%21s", s, s, cashierData, s, s, queue, profit+'\n'); break;
                 case 4:
-                    System.out.printf("%s%s%s%11s%s%9s%21s", s, s, s, cashierData, s, queue, profit); break;
+                    System.out.printf("%s%s%s%11s%s%9s%21s", s, s, s, cashierData, s, queue, profit+'\n'); break;
                 case 5:
-                    System.out.printf("%s%s%s%s%11s%9s%21s", s, s, s, s, cashierData, queue, profit); break;
+                    System.out.printf("%s%s%s%s%11s%9s%21s", s, s, s, s, cashierData, queue, profit+'\n'); break;
                 default:
                     break;
             }
-            System.out.println();
         }
     }
 }

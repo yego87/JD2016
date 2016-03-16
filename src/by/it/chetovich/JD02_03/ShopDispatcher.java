@@ -1,4 +1,4 @@
-package by.it.chetovich.JD02_03.JD02_01;
+package by.it.chetovich.JD02_03;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

@@ -1,4 +1,4 @@
-package by.it.chetovich.JD02_03.JD02_01;
+package by.it.chetovich.JD02_03;
 
 
 import java.util.HashMap;
@@ -19,7 +19,6 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
 
         ShopDispatcher.addCountBuyersIn();
         this.num = num;
-        System.out.println(num+", total in "+ ShopDispatcher.countBuyersIn);
         this.retired = retired;
         this.setName("Buyer " + num + " ");
         start();

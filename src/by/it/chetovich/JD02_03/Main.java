@@ -1,4 +1,4 @@
-package by.it.chetovich.JD02_03.JD02_01;
+package by.it.chetovich.JD02_03;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,7 +25,8 @@ public class Main {
             countBuyers = Utils.createNewBuyer(countBuyers);
         }
 
-        Thread.sleep(20000);
+
+        Thread.sleep(25000);
         System.out.println("Total profit: "+ Profit.getTotalProfit());
         System.out.println("Each cashier profit: "+ Profit.getEachCashierProfit());
     }
