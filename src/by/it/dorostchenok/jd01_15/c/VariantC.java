@@ -11,55 +11,59 @@ public class VariantC {
 
     private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy  HH:mm");
+    private File currentDirectory = new File(".");
 
     public void run(){
-
 
         String line;
         try {
             do {
                 line = bufferedReader.readLine();
-                if ("dir".equals(line.toLowerCase())){
-                    File file = new File(".");
-                    System.out.println(" Содержимое папки " + file.getCanonicalPath() + "\n");
-                    File[] files = file.listFiles();
-
-                    int fileCount = 0;
-                    int totalFileSize = 0;
-                    int directoryCount = 0;
-
-                    for (File currentFile : files){
-                        if (currentFile.isDirectory()){
-                            directoryCount++;
-                        } else {
-                            totalFileSize += currentFile.length();
-                            fileCount++;
-                        }
-                    }
-
-                    for (File f1 : files){
-                        String name = f1.getName();
-                        String date = sdf.format(new Date(f1.lastModified()));
-                        String dirString = "\t";
-                        long size = 0;
-                        if (f1.isDirectory()){
-                            dirString = "<DIR>";
-                        } else {
-                            size = f1.length();
-                        }
-                        System.out.printf("%s\t%s\t%8s  %s\n", date, dirString, sizeToString(size), name);
-
-
-                    }
-                    System.out.printf("\t\t\t%d файлов %16d байт\n", fileCount, totalFileSize);
-                    System.out.printf("\t\t\t%d папок  %16d байт свободно\n", directoryCount, file.getFreeSpace());
-                }
+                parseCommand(line);
 
             } while (!"q".equals(line.toLowerCase()));
 
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    private void dir(File file) throws IOException {
+        //File current = file;
+        System.out.println(" Содержимое папки " + file.getCanonicalPath() + "\n");
+        File[] files = file.listFiles();
+
+        int fileCount = 0;
+        int totalFileSize = 0;
+        int directoryCount = 0;
+
+        for (File currentFile : files){
+            if (currentFile.isDirectory()){
+                directoryCount++;
+            } else {
+                totalFileSize += currentFile.length();
+                fileCount++;
+            }
+        }
+
+        for (File f1 : files){
+            String name = f1.getName();
+            String date = sdf.format(new Date(f1.lastModified()));
+            String dirString = "\t";
+            long size = 0;
+            if (f1.isDirectory()){
+                dirString = "<DIR>";
+            } else {
+                size = f1.length();
+            }
+            System.out.printf("%s\t%s\t%8s  %s\n", date, dirString, sizeToString(size), name);
+
+
+        }
+        System.out.printf("\t\t\t%d файлов %16d байт\n", fileCount, totalFileSize);
+        System.out.printf("\t\t\t%d папок  %16d байт свободно\n", directoryCount, file.getFreeSpace());
+        System.out.println();
+        System.out.print(currentDirectory.getCanonicalFile() + ">");
     }
 
     private String sizeToString(long size){
@@ -78,5 +82,34 @@ public class VariantC {
 
             return builder.toString().trim();
         }
+    }
+
+    private void parseCommand(String command) throws IOException {
+        String cmd = command.trim().toLowerCase();
+        if (cmd.startsWith("dir")){
+            if ("dir".equals(cmd)){
+                dir(currentDirectory);
+            } else {
+                String[] params = cmd.split(" ");
+                if (params.length > 2){
+                    System.out.println("Неверная команда");
+                    printHelp();
+                } else {
+                    String directory = params[1];
+
+                    // System.out.println(currentDirectory.getCanonicalFile());
+                    dir(new File(currentDirectory.getCanonicalFile() + "/" + directory));
+                }
+            }
+
+        }
+
+    }
+
+    private void printHelp(){
+        System.out.println();
+        System.out.println("dir - посмотреть директорию");
+        System.out.println("cd - сменить директорию");
+        System.out.println("q - выход");
     }
 }
