@@ -11,14 +11,14 @@ public class Customer extends Thread implements ICustomer, IUseBasket {
     String name;
     Prices priceList;
     Basket basket;
-
+    static int customersNum = 0;
     ArrayList<String> chosenProducts = new ArrayList<>();
 
 
     public Customer(String name) {
         this.name = name;
         this.priceList = Prices.getInstance();
-
+        this.customersNum++;
         this.setName("Покупатель " + name);
 
         start();
