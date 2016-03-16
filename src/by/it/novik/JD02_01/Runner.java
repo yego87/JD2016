@@ -11,17 +11,17 @@ public class Runner {
     public static void main(String[] args) throws InterruptedException {
 
         ExecutorService executor= Executors.newFixedThreadPool(5);
-        executor.execute(Cashier.getInstance());
-        executor.execute(Cashier.getInstance());
+        executor.execute(new Cashier());
+        executor.execute(new Cashier());
 
 
-         int customersNum = 0;
 
-        while (!(customersNum>=Cashier.planNumOfCustomers)) {
+
+        while (!(Customer.customersNum>=Cashier.planNumOfCustomers)) {
             Customer.think();
             for(int i = 0; i <= 2; i++) {
                 new Customer(getRandomName());
-                if(customersNum>=Cashier.planNumOfCustomers){
+                if(Customer.customersNum>=Cashier.planNumOfCustomers){
                     break;
                 }
             }
