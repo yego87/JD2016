@@ -15,7 +15,7 @@ public class CalcTest {
     @Test
     public void testSub() throws Exception {
         int res = Calc.sub(1, 2);
-        assertEquals(1, res, 0.001);
+        assertEquals(-1, res, 0.001);
     }
 
     @Test
