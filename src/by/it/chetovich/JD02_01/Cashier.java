@@ -1,102 +1,112 @@
 package by.it.chetovich.JD02_01;
 
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Cashier
  */
-public class Cashier implements Runnable {
+public class Cashier implements Runnable, ICashier {
 
-    private   Buyer buyer;
+    private  Buyer buyer;
     private int num;
-    private int income;
-    private static int totalIncome;
+    private int bill = 0;
+    private final Lock countLock = new ReentrantLock();
+
 
     public Cashier(int num){
         this.num = num;
     }
 
+    public int getNum() {
+        return num;
+    }
+
+    public int getBill() {
+        return bill;
+    }
+
     @Override
     public void run() {
 
-            try {
-                Thread.sleep(15000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        while (ShopDispatcher.countBuyersIn==0||ShopDispatcher.countBuyersIn>ShopDispatcher.countBuyersOut) {
 
-
-        while (!Buyer.getQueue().isEmpty()) {
-            /*try {
-                waitingForCostumers();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
-            takeBuyerFromQueue();
-            //synchronized (this){
+            if (QueueToPay.queueToPay.size()>=ShopDispatcher.countCashier*5) {
+                takeBuyerFromQueue();
                 accountCashier();
-            //}
-            clientMayExit();
-            //System.out.println(buyer.getBacket());
-        }
-
-
-    }
-
-
-    //@Override
-    public synchronized void takeBuyerFromQueue() {
-        synchronized (Cashier.class){
-            if (!QueueToPay.queueToPay.isEmpty()) {
-                this.buyer = QueueToPay.getBuyer();
-                Buyer.getQueue().remove(this.buyer);
-                System.out.println(buyer + " went to Cashier.");
+                clientMayExit();
+                calculateProfit();
             }
+            Utils.sleep(1000);
         }
     }
 
 
+    @Override
+    public  void takeBuyerFromQueue() {
+
+
+        this.buyer = QueueToPay.getBuyer();
+        if (this.buyer!=null) {
+            ShopDispatcher.addCountCashier();
+            ShopDispatcher.addCountBuyersOut();
+            System.out.println(buyer.getNum()+", total out "+ShopDispatcher.countBuyersOut);
+
+
+            /*try {
+                countLock.lock();
+                ShopDispatcher.countBuyersOut++;
+            } finally {
+                countLock.unlock();
+            }*/
+            System.out.println(buyer + " went to Cashier.");
+        }
+        else{
+            Utils.sleep(1000);
+            takeBuyerFromQueue();
+        }
+    }
+
+
+    @Override
     public synchronized void accountCashier(){
-        try {
-            Thread.sleep(Rnd.fromTo(2000,5000));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //synchronized (Cashier.class) {
-            int bill = 0;
-            StringBuilder sb = new StringBuilder();
-            String s = this.buyer + " is buying: ";
-            sb.append(s);
-            Map <String, Integer> map = this.buyer.getBacket();
-            System.out.println(map);
-            for (Map.Entry<String, Integer> entry : map.entrySet()) {
-                String good = entry.getKey();
-                Integer price = entry.getValue();
-                String item = good + " : " + price + ", ";
-                sb.append(item);
-                bill += price;
-            }
+        Utils.sleep(Rnd.fromTo(2000, 5000));
+        String s = this.buyer + " is buying: ";
+        StringBuilder buyerBill = new StringBuilder(s);
 
-            String billToPay = "Bill to pay: " + bill+". ";
-            String paid = this.buyer + " paid.";
-            sb.append(billToPay);
-            sb.append(paid);
-            System.out.println(sb);
-            //buyer.notifyAll();
-       // }
+        for (Map.Entry<String, Integer> entry : this.buyer.getBacket().entrySet()) {
+            String good = entry.getKey();
+            Integer price = entry.getValue();
+            String item = good + " : " + price + "; ";
+            buyerBill.append(item);
+            this.bill += price;
+        }
+
+        String billToPay = "Bill to pay: " + this.bill+". ";
+        buyerBill.append(billToPay);
+        System.out.println(buyerBill);
     }
 
-
-    public synchronized void clientMayExit(){
-        this.buyer.clearBacket();
+    @Override
+    public  void clientMayExit(){
+        //this.buyer.clearBacket();
         synchronized (this.buyer) {
+            this.buyer.setWaitInTheQueue(false);
             this.buyer.notify();
         }
     }
 
-    public synchronized void waitingForCostumers() throws InterruptedException {
 
-        while (QueueToPay.queueToPay.size()<5)
-            this.wait();
+    @Override
+    public  void calculateProfit (){
+
+        Profit.addCashierProfit(this.num, this.bill);
+        Profit.addTotalProfit(this.bill);
+        Utils.printCashierTable(this);
+        ShopDispatcher.reduceCountCashier();
+
+        this.bill=0;
+
     }
 }

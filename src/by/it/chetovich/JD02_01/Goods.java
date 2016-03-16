@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class Goods {
 
-    static Map<String, Integer> goodsMap = Utils02_01.putGoodsFromFileIntoMap();
+    static Map<String, Integer> goodsMap = Utils.putGoodsFromFileIntoMap();
 
     public static String takeRandomGood (){
 
