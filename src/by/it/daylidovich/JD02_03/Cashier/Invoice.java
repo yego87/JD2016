@@ -21,7 +21,7 @@ public class Invoice {
         for (int i = 0; i < 5 - countSpace; i++) {
             spEnd+= "                              ";
         }
-        StringBuilder invoice = new StringBuilder(spStart + "Чек " + buyer.getName() + "\n");
+        StringBuilder invoice = new StringBuilder("\n" + spStart + "Чек " + buyer.getName() + "\n");
         for (String goods: backet){
             Formatter f = new Formatter();
             invoice.append(spStart).append(f.format("%-20s %7d\n", goods, Goods.getGoods().get(goods)));

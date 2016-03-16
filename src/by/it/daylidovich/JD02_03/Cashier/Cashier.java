@@ -8,8 +8,8 @@ import by.it.daylidovich.JD02_03.Utils.SleepTime;
 public class Cashier extends Thread{
 
     public boolean iWork = true;
-
     private int idCashier;
+    public boolean isBuyerOnCashier = false;
 
     public Cashier(int numberCashier){
         this.setName("касса №" + numberCashier);
@@ -25,16 +25,18 @@ public class Cashier extends Thread{
 
     //метод забирает покупателя из очереди
     public Buyer freeCashier(){
-            Buyer buyer = QueueBuyer.exitQueue();
-            while (null == buyer)
-                buyer = QueueBuyer.exitQueue();
-            return buyer;
+        Buyer buyer = QueueBuyer.exitQueue();
+        isBuyerOnCashier = true;
+        while (null == buyer)
+            buyer = QueueBuyer.exitQueue();
+        return buyer;
     }
 
     public void releaseBuyer(Buyer buyer){
         //System.out.println(buyer.getName() + " обслужен на " + this.getName());
         Buyer.iWait = false;
         buyer.notify();
+        isBuyerOnCashier = false;
     }
 
 

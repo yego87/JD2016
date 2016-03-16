@@ -26,6 +26,8 @@ public class Manager extends Thread{
         Cashier cashier = cashierLinkedList.pollLast();
         //System.out.println(cashier.getName() + " закрыта.");
         cashier.iWork = false;
+        while (cashier.isBuyerOnCashier)
+            yield();
     }
 
     //метод закрывает все нити "касса"
