@@ -12,17 +12,18 @@ public class Main {
     public static void main (String [] args) throws IOException, ErrorException {
 
         Map<String,Var> map = UtilsMatlab.putVarsFromFileIntoMap() ;//восстанавливаем ранее сохранённые переменные из файла
-        List<String> list = new ArrayList<>(map.keySet());  //в лист запишем имена переменных для сортировки
+        //List<String> list = new ArrayList<>(map.keySet());  //в лист запишем имена переменных для сортировки
 
         System.out.println("Вводите выражения, которые хотите вычислить. Для выхода нажмите enter.");
 
         while(true) {
 
             System.out.println("Введите выражение для вычисления: ");
-            String line = UtilsMatlab.enterLine();
+            String line = InitialLine.enterLine();
             if (line.isEmpty()) break;
+            Parser.pars(line);
 
-            String[] array = UtilsMatlab.convertLineToArray(line); //разбиваем строку на массив из 2 операндов
+            /*String[] array = UtilsMatlab.convertLineToArray(line); //разбиваем строку на массив из 2 операндов
 
             try {
                 if (!line.contains("=")) { //если строка не содержит знака равно, определяем тип переменных и вычисляем
@@ -40,7 +41,7 @@ public class Main {
             }
             catch (NumberFormatException e){
                 System.out.println("Неверный формат строки.");
-            }
+            }*/
         }
 
         // записываем присвоенные переменные из map в файл
