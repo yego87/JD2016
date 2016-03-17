@@ -1,12 +1,12 @@
 package by.it.daylidovich.FreeMathLab;
 
-import by.it.daylidovich.FreeMathLab.Calculation.CalculationExpression;
+import by.it.daylidovich.FreeMathLab.Calculation.Parser;
 import by.it.daylidovich.FreeMathLab.InputOutput.SaveReadVariables;
 import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 import java.io.IOException;
 
-import static by.it.daylidovich.FreeMathLab.InputOutput.Reader.*;
+import static by.it.daylidovich.FreeMathLab.InputOutput.Reader.readInput;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -24,11 +24,12 @@ public class Main {
                     break;
                 }
                 case "clear base":{
-                    System.out.println(SaveReadVariables.clearBase());
+                    //System.out.println(SaveReadVariables.clearBase());
+                    System.out.println("База очищена.");
                     break;
                 }
                 default:{
-                    CalculationExpression.processExpression(stringInput);
+                    Parser.processExpression(stringInput);
                 }
             }
             System.out.println("\nВведите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
