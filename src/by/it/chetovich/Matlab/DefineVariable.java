@@ -1,5 +1,6 @@
 package by.it.chetovich.Matlab;
 
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,6 +14,16 @@ public class DefineVariable {
      * @return FloatVar, VectorVar or MatrixVar instance
      */
     public static Var defineVar (String s) throws NumberFormatException{
+
+
+        //проверяем, является ли полученная строка является именем переменной, которая уже содержится в карте переменных
+        Map<String, Var> map = MapVariables.getMap();
+        for (Map.Entry<String, Var> entry : map.entrySet()) {
+            //если да, возвращаем из карты её значение
+            if (s.equalsIgnoreCase(entry.getKey())) return entry.getValue();
+        }
+
+
 
         Pattern pat = Pattern.compile(Patterns.vector); //ищем числа, заключённые в круглые или квадратные скобки
         Matcher mat = pat.matcher(s);

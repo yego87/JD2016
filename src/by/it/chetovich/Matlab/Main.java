@@ -54,7 +54,7 @@ public class Main {
         System.out.println("Если вы хотите отсортированный список переменных со значениями, введите sortvar.");
         System.out.println("Если всё это вам не интересно, нажмите enter, и всё закончится. ");
         String line = UtilsMatlab.enterLine();
-        UtilsMatlab.printVarList(line, map); //печатаем список новых переменных в зависимости от того, что ввел пользователь
+        UtilsMatlab.printVarList(line, MapVariables.getMap()); //печатаем список новых переменных в зависимости от того, что ввел пользователь
 
     }
 }

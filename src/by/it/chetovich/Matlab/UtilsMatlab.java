@@ -34,7 +34,7 @@ public class UtilsMatlab {
     public static void saveVarsInFile ( File file){
 
         Map<String, Var> map = MapVariables.getMap();
-        try (PrintWriter print = new PrintWriter(new FileWriter(file))){
+        try (PrintWriter print = new PrintWriter(new FileWriter(file,true))){
             for (Map.Entry<String, Var> entry : map.entrySet()) {
                 print.println(entry.getKey()+" = "+entry.getValue());
             }
@@ -51,7 +51,7 @@ public class UtilsMatlab {
      */
     public static Map <String, Var> putVarsFromFileIntoMap(){
 
-        Map<String,Var> map = new TreeMap<>();
+        Map<String,Var> map = MapVariables.getMap();
         String src = System.getProperty("user.dir") + "/src/by/it/chetovich/Matlab/vars.txt";
         File file = new File(src);
         try(BufferedReader r = new BufferedReader(new FileReader(file))){
