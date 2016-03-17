@@ -7,5 +7,7 @@ public class Patterns {
     static public String exVal="((-?)([0-9.])+)";
     static public String exVector="{((-?)([0-9.])+)}";
     static public String exOperations="([A1-Za-z0-9\\}]+)([-/*+=]{1})";
+    static public String braces="[(]+.*[)]+";
+    static public String variables="[A-Za-z]{1+}[0-9]*";
 
 }
