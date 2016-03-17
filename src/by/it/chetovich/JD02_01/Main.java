@@ -1,9 +1,7 @@
 package by.it.chetovich.JD02_01;
 
-
-import java.util.ArrayDeque;
-import java.util.Calendar;
-import java.util.Queue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * JD02_01
@@ -12,45 +10,23 @@ public class Main {
 
     public static void main (String [] args) throws InterruptedException {
 
-        int countByers = 0;
-        Queue<Buyer> queue = new ArrayDeque<>();
+        //создаём пулл на пять потоков для касс
+        ExecutorService executor= Executors.newFixedThreadPool(5);
+        for (int i = 1; i < 5; i++) {
+            executor.execute(new Cashier(i));
+        }
+        executor.shutdown();
 
-        for (int i = 1; i < 6; i++) {
-            new Thread(new Cashier(i)).start();
+        int countBuyers = 0;
+        while (ShopDispatcher.countBuyersIn<ShopDispatcher.planBuyers){
+            //как часто заходят покупатели в начале и в конце минуты
+            Utils.sleep(Utils.howlongToSleep());
+            //создаём нового покупателя
+            countBuyers = Utils.createNewBuyer(countBuyers);
         }
 
-        while (countByers<10){
-            Calendar c = Calendar.getInstance();
-            int currentSecond = c.get(Calendar.SECOND);
-
-            if (currentSecond>30) Thread.sleep(1000);
-            else Thread.sleep(3000);
-            //(currentSecond>30)?Thread.sleep(1000):Thread.sleep(3000);
-
-            int count = Rnd.fromTo(0,2);
-            for (int i = 0; i < count; i++) {
-                countByers++;
-                if (countByers<11){
-                    if (countByers%4==0) {
-                        Buyer buyer = new Buyer(countByers, true);
-                        queue.add(buyer);
-                    }
-                    else {
-                        Buyer buyer = new Buyer(countByers, false);
-                        queue.add(buyer);
-                    }
-
-                }
-            }
-
-        }
-
-
-
-
-
-
-
-
+        Thread.sleep(20000);
+        System.out.println("Total profit: "+Profit.getTotalProfit());
+        System.out.println("Each cashier profit: "+Profit.getEachCashierProfit());
     }
 }

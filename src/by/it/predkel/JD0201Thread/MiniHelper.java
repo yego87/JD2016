@@ -11,11 +11,11 @@ import java.util.regex.Pattern;
  * Created by Admin on 10.03.2016.
  */
 public class MiniHelper {
-
+    static HashMap<String,Double> listOfAllGoods=ReadListOfGoods();
     public static HashMap<String, Double> chooseGoods() {
         HashMap<String, Double> listOfChosenGoods=new HashMap<>();
         ArrayList<String> listNames=new ArrayList<>();
-        HashMap<String,Double> listOfAllGoods=ReadListOfGoods();
+
 
         int iter = Rnd.fromTo(1, 5);//kolicestvo tovarov
         for (int i = 0; i < iter; i++) {

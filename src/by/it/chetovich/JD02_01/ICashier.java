@@ -6,5 +6,8 @@ package by.it.chetovich.JD02_01;
 public interface ICashier {
 
     void takeBuyerFromQueue ();
+    void accountCashier();
+    void clientMayExit();
+    void calculateProfit();
 
 }

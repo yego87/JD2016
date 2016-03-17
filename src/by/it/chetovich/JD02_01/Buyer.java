@@ -3,6 +3,7 @@ package by.it.chetovich.JD02_01;
 
 import java.util.*;
 
+
 /**
  * class for buyers
  */
@@ -11,14 +12,15 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
     private int num;
     private Backet backet;
     private boolean retired;
-    private static Queue<Buyer> queue = new ArrayDeque<>();
-
+    private boolean waitInTheQueue = true;
 
     public Buyer(int num, boolean retired) {
+
+        ShopDispatcher.addCountBuyersIn();
         this.num = num;
+        System.out.println(num+", total in "+ShopDispatcher.countBuyersIn);
         this.retired = retired;
         this.setName("Buyer " + num + " ");
-        queue.add(this);
         start();
     }
 
@@ -30,18 +32,14 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         return num;
     }
 
+    public  void setWaitInTheQueue(boolean wait) {
+         this.waitInTheQueue = wait;
+    }
+
     public Map<String, Integer> getBacket() {
         return backet.getGoods();
     }
 
-
-    public static Queue<Buyer> getQueue() {
-        return queue;
-    }
-
-    public void clearBacket(){
-        backet.getGoods().clear();
-    }
 
     @Override
     public void run (){
@@ -53,24 +51,6 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        try {
-            waitingInTheQueue();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        /*synchronized (this){
-                while (!backet.getGoods().isEmpty()){
-                    try {
-                        this.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            //this.notifyAll();
-        }*/
-
-        //Cashier.takeBuyerFromQueue();
-
         exitMarket();
 
     }
@@ -83,6 +63,7 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
 
     @Override
     public void enterMarket(){
+
         System.out.println(this+" entered the market.");
     }
 
@@ -105,30 +86,21 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
 
     @Override
     public void exitMarket(){
-        System.out.println(this+" exited the market.");
 
+        System.out.println(this+" exited the market.");
     }
 
     @Override
     public void takeBacket() {
-        try{
-            int pause = retired?Rnd.fromTo(200, 500):Rnd.fromTo(300, 700);
-            Thread.sleep(pause);
-        } catch (InterruptedException e) {
-            System.out.println(this+" некорректное завершение ожидания.");
-        }
+        int pause = retired?Rnd.fromTo(200, 500):Rnd.fromTo(300, 700);
+        Utils.sleep(pause);
         System.out.println(this+" took a backet.");
     }
 
     @Override
     public void putGoodsIntoBacket(String good) {
-        try{
-            int pause = retired?Rnd.fromTo(100, 200):Rnd.fromTo(150, 300);
-            Thread.sleep(pause);
-
-        } catch (InterruptedException e) {
-            System.out.println(this+" некорректное завершение ожидания.");
-        }
+        int pause = retired?Rnd.fromTo(100, 200):Rnd.fromTo(150, 300);
+        Utils.sleep(pause);
         System.out.println(this+" put "+good+" into backet.");
 
     }
@@ -136,19 +108,16 @@ public class Buyer extends Thread implements Runnable,IBuyer, IUseBacket {
 
     @Override
     public void goToQueue() throws InterruptedException {
-        synchronized (QueueToPay.queueToPay){
+        synchronized (this){
             QueueToPay.putBuyer(this);
-            System.out.println("Buyer " + num + " is in the queue");
+            System.out.println(this + " is in the queue");
+            while (waitInTheQueue){
+                this.wait();
+            }
 
         }
 
     }
 
-
-    @Override
-    public synchronized void waitingInTheQueue() throws InterruptedException {
-        while (!backet.getGoods().isEmpty())
-            this.wait();
-    }
 }
 
