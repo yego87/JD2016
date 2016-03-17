@@ -47,7 +47,7 @@ public class Main {
         // записываем присвоенные переменные из map в файл
         String src = System.getProperty("user.dir") + "/src/by/it/chetovich/Matlab/vars.txt";
         File file = new File(src);
-        UtilsMatlab.saveVarsInFile(map, file);
+        UtilsMatlab.saveVarsInFile( file);
 
 
         System.out.println("Если вы хотите увидеть список созданных во время присваивания переменных, введите printvar. ");

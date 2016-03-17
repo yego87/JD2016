@@ -14,7 +14,7 @@ public class MapVariables {
         return map;
     }
 
-    public static void addVariable (String s, Var var){
-        map.put(s,var);
+    public static void addVariable (String var, Var value){
+        map.put(var, value);
     }
 }

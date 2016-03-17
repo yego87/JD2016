@@ -29,7 +29,12 @@ public class Parser {
             Var a = DefineVariable.defineVar(lineInBraces[0]);
             Var b = DefineVariable.defineVar(lineInBraces[1]);
             //выполняем вычисления с а и b, line нужна для определения типа вычисления;
-            String result = Counting.count(a, b, groupNoBraces);
+            String result = "";
+            try {
+                result = Counting.count(a, b, groupNoBraces).toString();
+            } catch (NullPointerException e) {
+                System.out.println("Выражение не посчитано. ");
+            }
             System.out.println(result);
             //создаём новую строку, где заменяем выражение со скобками на полученный результат вычисления
             String newLine = s.replace(mat.group(), result);
@@ -49,12 +54,15 @@ public class Parser {
                     //выполняем вычисления с элементами массива, s нужна для определения типа вычисления;
                     System.out.println(InitialLine.getLine() + " = " + UtilsMatlab.calculateWith2Operands(s,array));
 
-                } else { //если строка содержит знак равно,
-                    // разбиваем её по знаку равно на имя переменной  для присваивания и выражение для вычисления
-                    String[] array = UtilsMatlab.convertLineToArray(s,"=");
-                    String a = array[0].trim();
-                    Var b = DefineVariable.defineVar(array[1]);  //второй операнд
-                    MapVariables.addVariable(a, b);
+                } else { //если строка содержит знак равно, разбиваем её по знаку равно
+                    //  на имя переменной для присваивания varName и выражение для вычисления exToCalculate
+                    String[] arrayWithVarName = UtilsMatlab.convertLineToArray(s,"=");
+                    String varName = arrayWithVarName[0];
+                    String exToCalculate = arrayWithVarName[1];
+                    //получаем массив из операндов для вычисления
+                    String [] array = UtilsMatlab.convertLineToArray(exToCalculate.trim(),Patterns.operationType);
+                    //записываем в карту переменных имя и вычисленное значение выражения
+                    MapVariables.addVariable(varName, UtilsMatlab.calculateWith2Operands(exToCalculate,array));
                     System.out.println("Операция присваивания выполнена.");
                 }
             } catch (NumberFormatException e) {
