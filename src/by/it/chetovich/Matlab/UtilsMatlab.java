@@ -16,9 +16,9 @@ public class UtilsMatlab {
      * @param s line to convert to array
      * @return array of 2 elements
      */
-    public static String[] convertLineToArray(String s){
+    public static String[] convertLineToArray(String s, String regex){
 
-        Pattern pat = Pattern.compile(Patterns.operationType); //разбиваем на 2 переменных и  заносим их в массив
+        Pattern pat = Pattern.compile(regex); //разбиваем на 2 переменных и  заносим их в массив
         String[] array = pat.split(s);
         for (int i = 0; i < array.length; i++) {
             array[i] = array[i].trim();
@@ -56,7 +56,7 @@ public class UtilsMatlab {
         try(BufferedReader r = new BufferedReader(new FileReader(file))){
             String line;
             while ((line = r.readLine())!=null){
-                String[] array = UtilsMatlab.convertLineToArray(line);
+                String[] array = UtilsMatlab.convertLineToArray(line, Patterns.operationType);
                 String a = array[0].trim();// имя переменной
                 Var b = DefineVariable.defineVar(array[1]);  //второй операнд
                 map.put(a, b);
@@ -138,6 +138,14 @@ public class UtilsMatlab {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         return reader.readLine();
+    }
+
+
+    public static String calculateWith2Operands (String s, String[] array) throws ErrorException {
+
+        Var a = DefineVariable.defineVar(array[0]);  //первый операнд
+        Var b = DefineVariable.defineVar(array[1]);  //второй операнд
+        return Counting.count(a, b, s);
     }
 
 
