@@ -21,27 +21,11 @@ public class Main {
             System.out.println("Введите выражение для вычисления: ");
             String line = InitialLine.enterLine();
             if (line.isEmpty()) break;
-            Parser.pars(line);
-
-            /*String[] array = UtilsMatlab.convertLineToArray(line); //разбиваем строку на массив из 2 операндов
-
             try {
-                if (!line.contains("=")) { //если строка не содержит знака равно, определяем тип переменных и вычисляем
-                    Var a = DefineVariable.defineVar(array[0]);  //первый операнд
-                    Var b = DefineVariable.defineVar(array[1]);  //второй операнд
-                    Counting.count(a, b, line);  //выполняем вычисления с а и b, line нужна для определения типа вычисления;
-
-                } else { //если строка содержит знак равно, определяем второй операнд и записываем имя переменной и значение в map
-                    String a = array[0].trim();
-                    Var b = DefineVariable.defineVar(array[1]);  //второй операнд
-                    map.put(a, b);
-                    System.out.println("Операция присваивания выполнена.");
-                    list.add(a);//также записываем имя переменной в лист, чтобы можно было впоследствии отсортировать
-                }
+                Parser.pars(line);
+            } catch (Exception e) {
+                System.out.println("Не получится посчитать выражение");
             }
-            catch (NumberFormatException e){
-                System.out.println("Неверный формат строки.");
-            }*/
         }
 
         // записываем присвоенные переменные из map в файл

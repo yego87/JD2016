@@ -16,10 +16,15 @@ public class UtilsMatlab {
      * @param s line to convert to array
      * @return array of 2 elements
      */
-    public static String[] convertLineToArray(String s, String regex){
+    public static String[] convertLineToArray (String s, String regex)throws ArrayIndexOutOfBoundsException,NullPointerException{
 
         Pattern pat = Pattern.compile(regex); //разбиваем на 2 переменных и  заносим их в массив
-        String[] array = pat.split(s);
+        String[] array = new String[0];
+        try {
+            array = pat.split(s);
+        } catch (NullPointerException e) {
+            System.out.println("Не получится посчитать выражение.");
+        }
         for (int i = 0; i < array.length; i++) {
             array[i] = array[i].trim();
         }
@@ -142,7 +147,7 @@ public class UtilsMatlab {
     }
 
 
-    public static Var calculateWith2Operands (String s, String[] array) throws ErrorException {
+    public static Var calculateWith2Operands (String s, String[] array) throws ErrorException, ArrayIndexOutOfBoundsException,NullPointerException {
 
         Var a = DefineVariable.defineVar(array[0]);  //первый операнд
         Var b = DefineVariable.defineVar(array[1]);  //второй операнд
