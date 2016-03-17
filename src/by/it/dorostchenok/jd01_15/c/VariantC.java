@@ -28,8 +28,13 @@ public class VariantC {
         }
     }
 
+    private void cd (File file) throws IOException {
+        currentDirectory = file;
+        System.out.print(currentDirectory.getCanonicalFile() + ">");
+    }
+
     private void dir(File file) throws IOException {
-        //File current = file;
+
         System.out.println(" Содержимое папки " + file.getCanonicalPath() + "\n");
         File[] files = file.listFiles();
 
@@ -85,10 +90,12 @@ public class VariantC {
     }
 
     private void parseCommand(String command) throws IOException {
-        String cmd = command.trim().toLowerCase();
-        if (cmd.startsWith("dir")){
-            if ("dir".equals(cmd)){
+        String cmd = command.trim();
+        if (cmd.toLowerCase().startsWith("dir") || cmd.toLowerCase().startsWith("cd")){
+            if ("dir".equals(cmd.toLowerCase())){
                 dir(currentDirectory);
+            } else if ("cd".equals(cmd.toLowerCase())){
+                cd(new File("."));
             } else {
                 String[] params = cmd.split(" ");
                 if (params.length > 2){
@@ -97,8 +104,22 @@ public class VariantC {
                 } else {
                     String directory = params[1];
 
-                    // System.out.println(currentDirectory.getCanonicalFile());
-                    dir(new File(currentDirectory.getCanonicalFile() + "/" + directory));
+                    File newFile = new File(currentDirectory.getCanonicalFile() + "/" + directory);
+                    if (newFile.exists()){
+                        if (newFile.isDirectory()){
+                            if (params[0].toLowerCase().equals("dir")){
+                                dir(newFile);
+                            } else {
+                                cd(newFile);
+                            }
+                        } else {
+                            System.out.println(directory + " не является директорией");
+                            System.out.print(currentDirectory.getCanonicalFile() + ">");
+                        }
+                    } else {
+                        System.out.println("Нет директории с именем " + directory);
+                        System.out.print(currentDirectory.getCanonicalFile() + ">");
+                    }
                 }
             }
 
