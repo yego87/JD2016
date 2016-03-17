@@ -10,10 +10,6 @@ public abstract class Variable implements IOperation {
 
     private static Map<String, Variable> base = new HashMap<>();
 
-    public static void setBase(Map<String, Variable> base) {
-        Variable.base = base;
-    }
-
     public static Map<String, Variable> getBase() {
         return base;
     }
@@ -61,5 +57,7 @@ public abstract class Variable implements IOperation {
             System.out.println(pair.getKey() + "=" + pair.getValue());
     }
 
-
+    public static void clearBase() {
+        Variable.base.clear();
+    }
 }

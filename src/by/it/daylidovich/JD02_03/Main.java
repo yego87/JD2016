@@ -3,7 +3,7 @@ package by.it.daylidovich.JD02_03;
 import by.it.daylidovich.JD02_03.Buyer.Buyer;
 import by.it.daylidovich.JD02_03.Cashier.Manager;
 import by.it.daylidovich.JD02_03.Goods.Goods;
-import by.it.daylidovich.JD02_03.Utils.CountBuyersInMoment;
+import by.it.daylidovich.JD02_03.Buyer.CountBuyersInMoment;
 
 public class Main {
     static int countBuyers = 0;
