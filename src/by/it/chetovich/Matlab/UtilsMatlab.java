@@ -29,10 +29,11 @@ public class UtilsMatlab {
 
     /**
      *
-     * @param map map with variables, that should be saved in txt file
+     * @param file where we should save variables
      */
-    public static void saveVarsInFile (Map <String, Var> map, File file){
+    public static void saveVarsInFile ( File file){
 
+        Map<String, Var> map = MapVariables.getMap();
         try (PrintWriter print = new PrintWriter(new FileWriter(file))){
             for (Map.Entry<String, Var> entry : map.entrySet()) {
                 print.println(entry.getKey()+" = "+entry.getValue());
@@ -56,7 +57,7 @@ public class UtilsMatlab {
         try(BufferedReader r = new BufferedReader(new FileReader(file))){
             String line;
             while ((line = r.readLine())!=null){
-                String[] array = UtilsMatlab.convertLineToArray(line, Patterns.operationType);
+                String[] array = UtilsMatlab.convertLineToArray(line, "=");
                 String a = array[0].trim();// имя переменной
                 Var b = DefineVariable.defineVar(array[1]);  //второй операнд
                 map.put(a, b);
@@ -141,7 +142,7 @@ public class UtilsMatlab {
     }
 
 
-    public static String calculateWith2Operands (String s, String[] array) throws ErrorException {
+    public static Var calculateWith2Operands (String s, String[] array) throws ErrorException {
 
         Var a = DefineVariable.defineVar(array[0]);  //первый операнд
         Var b = DefineVariable.defineVar(array[1]);  //второй операнд
