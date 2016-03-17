@@ -10,16 +10,13 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Ekaterina on 2/25/16.
- */
 public class ReadingFromConsole {
     public static int  numberExpression=0;
     public static Map<String,VarImpl> tmpHashMap=new HashMap<>();
+
     public static String ReadLine()throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String rLine = bufferedReader.readLine();
-        return rLine;
+        return bufferedReader.readLine();
     }
 
     public static String[] Determine (String str){
@@ -70,8 +67,7 @@ public class ReadingFromConsole {
         String newstr=str;
         newstr=ReadingFromConsole.purse(newstr);
         VarImpl var=MakeAnOperation.makeAnOpetation(newstr);
-        String varstr=var.toString();
-        return varstr;
+        return var.toString();
     }
 
     public static String purse (String str) throws IOException{
