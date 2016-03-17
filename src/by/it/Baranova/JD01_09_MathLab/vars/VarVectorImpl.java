@@ -8,9 +8,6 @@ import by.it.Baranova.JD01_09_MathLab.Patterns;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Ekaterina on 2/22/16.
- */
 
 public class VarVectorImpl extends VarImpl implements ICalculations, IVariable {
 
@@ -46,7 +43,7 @@ public class VarVectorImpl extends VarImpl implements ICalculations, IVariable {
         //Второй аргумент - Вектор
 
         try {
-            if (((VarVectorImpl) var).vector.length != this.vector.length) {
+            if (var instanceof VarVectorImpl&&((VarVectorImpl) var).vector.length != this.vector.length) {
                 throw new DifferentSizesException("Вектора имеют разную длину");
             }
             if (var instanceof VarVectorImpl && ((VarVectorImpl) var).vector.length == this.vector.length) {
@@ -81,7 +78,7 @@ public class VarVectorImpl extends VarImpl implements ICalculations, IVariable {
     public VarImpl sub(VarImpl var) {
         //Второй аргумент - Вектор
         try {
-            if (((VarVectorImpl) var).vector.length != this.vector.length) {
+            if (var instanceof VarVectorImpl&&((VarVectorImpl) var).vector.length != this.vector.length) {
                 throw new DifferentSizesException("Вектора имеют разную длину");
             }
             if (var instanceof VarVectorImpl && ((VarVectorImpl) var).vector.length == this.vector.length) {
@@ -117,7 +114,7 @@ public class VarVectorImpl extends VarImpl implements ICalculations, IVariable {
     public VarImpl mul(VarImpl var) {
         //Второй аргумент - Вектор
         try {
-            if (((VarVectorImpl) var).vector.length != this.vector.length) {
+            if (var instanceof VarVectorImpl&&((VarVectorImpl) var).vector.length != this.vector.length) {
                 throw new DifferentSizesException("Вектора имеют разную длину");
             }
 
@@ -132,7 +129,6 @@ public class VarVectorImpl extends VarImpl implements ICalculations, IVariable {
             }
 
         } catch (DifferentSizesException e) {
-
         }
 
         //Второй аргумент - скалярная величина

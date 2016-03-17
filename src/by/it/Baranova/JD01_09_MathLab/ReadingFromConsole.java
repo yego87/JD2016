@@ -87,7 +87,6 @@ public class ReadingFromConsole {
                 Runner.putElement(initExpression, MakeAnOperation.makeAnOpetation(pursestring));
             }
         }
-        System.out.println(newstr);
         return newstr;
     }
 }

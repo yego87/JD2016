@@ -10,11 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * Created by Ekaterina on 2/22/16.
- */
+
 public class Runner {
 
+    //попробовать добавить true /false чтоб не распечатывалось
     public static void one(VarImpl v) {
         if (v != null) System.out.println(v);
     }

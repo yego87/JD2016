@@ -8,9 +8,6 @@ import by.it.Baranova.JD01_09_MathLab.Patterns;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Ekaterina on 2/22/16.
- */
 public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
 
 
@@ -65,11 +62,9 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
         }
         //Второй операнд - матрица
         try {
-            System.out.println(((VarMatrixImpl)var).matrix[0].length+"  "+this.matrix[0].length);
-            System.out.println(((VarMatrixImpl)var).matrix.length+"  "+this.matrix.length);
-            if (((VarMatrixImpl) var).matrix.length!=this.matrix.length&&
+            if (var instanceof VarMatrixImpl &&((VarMatrixImpl) var).matrix.length!=this.matrix.length&&
                     ((VarMatrixImpl)var).matrix[0].length!=this.matrix[0].length) {
-                    throw new DifferentSizesException("Матрицы имеют размер, не подходящую для сложения");
+                    throw new DifferentSizesException("Матрицы имеют размер, не подходящий для сложения");
             }
             if (var instanceof VarMatrixImpl && ((VarMatrixImpl) var).matrix.length == this.matrix.length) {
                 VarMatrixImpl v1 = new VarMatrixImpl(this);
@@ -97,7 +92,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
     public VarImpl sub(VarImpl var) {
         //второй операнд - матрица
         try {
-            if (((VarMatrixImpl) var).matrix.length != this.matrix.length&&
+            if (var instanceof VarMatrixImpl &&((VarMatrixImpl) var).matrix.length != this.matrix.length&&
                     ((VarMatrixImpl)var).matrix[0].length!=this.matrix[0].length) {
                 throw new DifferentSizesException("Матрицы имеют размер, не подходящую для вычитания");
             }
@@ -139,7 +134,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
         //Второй операнд - матрица
 
         try {
-            if (((VarMatrixImpl) var).matrix.length != this.matrix[0].length) {
+            if (var instanceof VarMatrixImpl &&((VarMatrixImpl) var).matrix.length != this.matrix[0].length) {
                 throw new DifferentSizesException("Матрицы имеют размер, не подходящий для умножения");
             }
             if (var instanceof VarMatrixImpl && ((VarMatrixImpl) var).matrix.length == this.matrix[0].length) {
@@ -171,8 +166,8 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
                     }
                 }
             }
-            VarMatrixImpl result=new VarMatrixImpl(z);
-            return result;
+
+            return new VarMatrixImpl(z);
         }
 
         return super.mul(var);
