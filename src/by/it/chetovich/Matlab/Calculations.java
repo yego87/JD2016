@@ -195,7 +195,7 @@ public class Calculations {
      * @return the multiplication of a and b
      */
     public static float multi (float [] a, float [] b) throws IndexOutOfBoundsException{
-        float result = 1;
+        float result = 0;
         //умножаем соответствующие элементы двух векторов по длине наибольшего вектора, если длины векторов не равны, выскочит исключение
         int length = a.length>b.length?a.length:b.length;
 

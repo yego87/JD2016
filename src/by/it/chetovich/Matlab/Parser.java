@@ -13,7 +13,7 @@ public class Parser {
         while (s.contains("(")&&s.contains(")")){
 
             //паттерн на круглые скобки, внутри любые цифры, знаки, квадратные и фигурные скобки
-            Pattern pat = Pattern.compile("\\([\\w\\.\\+\\-\\*\\/\\[\\]\\{\\},]+\\)");
+            Pattern pat = Pattern.compile("\\([ \\w\\.\\+\\-\\*\\/\\[\\]\\{\\},]+\\)");
             Matcher mat = pat.matcher(s);
             //получаем первое вхождение
             //удаляем первый символ(открывающую круглую скобку)
@@ -25,13 +25,14 @@ public class Parser {
             groupNoBraces = groupNoBraces.replace(")", "");
             //получаем массив операндов выражения
             System.out.println(groupNoBraces);
-            String[] lineInBraces = UtilsMatlab.convertLineToArray(groupNoBraces, Patterns.operationType);
-            Var a = DefineVariable.defineVar(lineInBraces[0]);
-            Var b = DefineVariable.defineVar(lineInBraces[1]);
+            String[] arrayFromGroup = UtilsMatlab.convertLineToArray(groupNoBraces, Patterns.operationType);
+            //Var a = DefineVariable.defineVar(lineInBraces[0]);
+            //Var b = DefineVariable.defineVar(lineInBraces[1]);
             //выполняем вычисления с а и b, line нужна для определения типа вычисления;
             String result = "";
             try {
-                result = Counting.count(a, b, groupNoBraces).toString();
+                result = UtilsMatlab.calculateWith2Operands(groupNoBraces,arrayFromGroup).toString();
+                //result = Counting.count(a, b, groupNoBraces).toString();
             } catch (NullPointerException e) {
                 System.out.println("Выражение не посчитано. ");
             }
@@ -57,13 +58,17 @@ public class Parser {
                 } else { //если строка содержит знак равно, разбиваем её по знаку равно
                     //  на имя переменной для присваивания varName и выражение для вычисления exToCalculate
                     String[] arrayWithVarName = UtilsMatlab.convertLineToArray(s,"=");
-                    String varName = arrayWithVarName[0];
-                    String exToCalculate = arrayWithVarName[1];
+                    String varName = arrayWithVarName[0].trim();
+                    String exToCalculate = arrayWithVarName[1].trim();
                     //получаем массив из операндов для вычисления
-                    String [] array = UtilsMatlab.convertLineToArray(exToCalculate.trim(),Patterns.operationType);
+                    String [] array = UtilsMatlab.convertLineToArray(exToCalculate,Patterns.operationType);
                     //записываем в карту переменных имя и вычисленное значение выражения
-                    MapVariables.addVariable(varName, UtilsMatlab.calculateWith2Operands(exToCalculate,array));
-                    System.out.println("Операция присваивания выполнена.");
+                    Var var = UtilsMatlab.calculateWith2Operands(exToCalculate,array);
+                    if (var!=null) {
+                        MapVariables.addVariable(varName, var);
+                        System.out.println("Операция присваивания выполнена.");
+                    }
+                    System.out.println(MapVariables.getMap());
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Неверный формат строки.");
