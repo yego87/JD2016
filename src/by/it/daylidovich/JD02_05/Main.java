@@ -1,33 +1,35 @@
 package by.it.daylidovich.JD02_05;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        String input = "";
+        Locale.setDefault(Locale.US);
         for (int i = 0; i < 3; i++) {
-            String country = "";
-            String language = "";
             switch (i){
                 case (1):{
-                    country = "RU";
-                    language = "ru";
-                    System.out.println("Русский язык.");
+                    HelloDzmitry.hello("ru");
                     break;
                 }
                 case (2):{
-                    country = "BY";
-                    language = "be";
-                    System.out.println("Беларуская мова.");
+                    HelloDzmitry.hello("be");
                     break;
                 }
                 default:{
-                    System.out.println("English language.");
+                    HelloDzmitry.hello("");
                 }
             }
-            Locale current = new Locale(language, country);
-            ResourceBundle resourceBundle = ResourceBundle.getBundle("by\\it\\daylidovich\\JD02_05\\filePropertis.str", current);
-            System.out.println(resourceBundle.getString("st1") + "\n");
+        }
+        while (!"exit".equals(input)){
+            System.out.println("Введите язык приветствия или введите \"exit\" для выхода.");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+            input = bufferedReader.readLine();
+            HelloDzmitry.hello(input);
         }
     }
 }
+
