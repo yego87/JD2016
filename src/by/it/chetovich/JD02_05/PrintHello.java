@@ -9,10 +9,9 @@ import java.util.ResourceBundle;
  */
 public class PrintHello {
 
-    public static void printHello(String language, String country){
+    public static void printHello(Locale locale){
 
-        Locale locale = new Locale(language,country);
-        locale.setDefault(Locale.ENGLISH);
+        //locale.setDefault(Locale.ENGLISH);
         ResourceBundle resource = ResourceBundle.getBundle("by.it.chetovich.JD02_05.hello", locale);
         System.out.println(resource.getString("line1"));
     }
