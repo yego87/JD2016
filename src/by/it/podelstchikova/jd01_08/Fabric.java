@@ -1,4 +1,4 @@
-package by.it.podelstchikova.jd08;
+package by.it.podelstchikova.jd01_08;
 
 /**
  * Created by мое не трошь on 19.02.2016.

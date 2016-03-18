@@ -1,4 +1,4 @@
-package by.it.podelstchikova.jd08;
+package by.it.podelstchikova.jd01_08;
 
 
 public abstract class Clothes implements Fabric
