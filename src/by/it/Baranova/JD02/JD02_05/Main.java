@@ -1,36 +1,31 @@
 package by.it.Baranova.JD02.JD02_05;
 
+import javafx.scene.input.DataFormat;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 
 public class Main {
-    public static void main(String[] args){
-        for (Integer j=0;j<3;j++){
-            char i=j.toString().charAt(0);
-            String country="";
-            String language="";
-            switch (i) {
-                case('1'):
-                    country="RU";
-                    language="RU";
-                    System.out.println("\n"+i+" - русский");
-                break;
-                case ('2'):
-                    country="BY";
-                    language="be";
-                    System.out.println("\n"+i+" - беларуский");
-                break;
-                default:
-                    System.out.println("\n"+i+" - английский");
-            }
+    public static void main(String[] args)throws IOException {
+        DateFormat df=DateFormat.getDateInstance(DateFormat.MEDIUM,Locale.US);
+        for (Integer j=0;j<3;j++) {
+            String i = j.toString();
+            PrintToConsole.printToConsole(i);
+        }
+        System.out.println("Введите язык: en/ be/ ru");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String rLine=bufferedReader.readLine();
 
-            Locale current=new Locale(language,country);
-
-            Locale.setDefault(new Locale("en","US"));
-            ResourceBundle res=ResourceBundle.getBundle("by.it.Baranova.JD02.JD02_05.test", current);
-            String s1=res.getString("str1");
-            System.out.println(s1);
+        while (rLine.trim().length()>0){
+            PrintToConsole.printToConsole(rLine);
+            System.out.println("Введите язык: en/ be/ ru");
+            rLine=bufferedReader.readLine();
         }
     }
 }

@@ -66,7 +66,7 @@ public class ReadingFromConsole {
     public static String purser(String str)throws IOException{
         String newstr=str;
         newstr=ReadingFromConsole.purse(newstr);
-        VarImpl var=MakeAnOperation.makeAnOpetation(newstr);
+        VarImpl var=MakeAnOperation.makeAnOpetation(newstr,true);
         return var.toString();
     }
 
@@ -78,13 +78,23 @@ public class ReadingFromConsole {
             while (m1.find()) {
                 numberExpression++;
                 String initExpression = "tmp" + numberExpression;
-                pursestring = m1.group();
+                int startposition=m1.start();
+                int j=startposition+1;
+                int endposition=0;
+                int kolopening=1;int kolending=0;
+                while (kolopening!=kolending&&j<=newstr.length()){
+                    if (newstr.charAt(j)=='('){kolopening++;}
+                    if (newstr.charAt(j)==')'){kolending++;}
+                    endposition=j;
+                    j++;
+                }
+                pursestring = newstr.substring(startposition,endposition+1);
                 newstr = newstr.replace(pursestring, initExpression);
                 pursestring = pursestring.substring(1, pursestring.length() - 1);
                 if (pursestring.contains("(") || pursestring.contains(")")) {
                     pursestring = ReadingFromConsole.purse(pursestring);
                 }
-                Runner.putElement(initExpression, MakeAnOperation.makeAnOpetation(pursestring));
+                Runner.putElement(initExpression, MakeAnOperation.makeAnOpetation(pursestring,false));
             }
         }
         return newstr;
