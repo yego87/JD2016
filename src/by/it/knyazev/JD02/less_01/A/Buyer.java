@@ -21,7 +21,6 @@ public class Buyer extends Thread implements Runnable, IBuyer,IUseBacket {
         start();
     }
 
-    @Test
     @Override //покупатель приходит в зал и выбирает товары.
     public void run() {
         enterToMarket();
@@ -65,7 +64,7 @@ public class Buyer extends Thread implements Runnable, IBuyer,IUseBacket {
             putGoodsIntoBacket(randomGood);
         }
     }
-    @Test
+    @Override
     public void putGoodsIntoBacket(String good) {
         try{
             int pause = Rnd.fromTo(500, 2000);
@@ -75,7 +74,6 @@ public class Buyer extends Thread implements Runnable, IBuyer,IUseBacket {
             System.out.println(this+" некорректное завершение ожидания.");
         }
         System.out.println(this+" положил "+good+" в корзину");
-
     }
 
     @Override
@@ -97,7 +95,7 @@ public class Buyer extends Thread implements Runnable, IBuyer,IUseBacket {
 
     static Map<String, Integer> goodsMap = Utility.FromFileToMap();
 
-    public static String takeRandomGood (){
+    public static String takeRandomGood(){
 
         List<String> goodsList = new ArrayList<>(goodsMap.keySet());
         return goodsList.get(Rnd.fromTo(0, goodsList.size()-1));

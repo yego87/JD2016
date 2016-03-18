@@ -1,0 +1,11 @@
+
+MFN_MENU_TITLE = Nominate map;
+MFN_MENU_BACK = Back
+MFN_MENU_NEXT = Next
+MFN_MENU_EXIT = Exit
+
+[ru]
+MFN_MENU_TITLE = Номинировать карту
+MFN_MENU_BACK = Назад
+MFN_MENU_NEXT = Вперед
+MFN_MENU_EXIT = Выход
