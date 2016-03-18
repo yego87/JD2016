@@ -1,4 +1,8 @@
-package by.it.predkel.MatLab.OtherClasses;
+package by.it.predkel.MatLab.Utils;
+
+
+import by.it.predkel.MatLab.*;
+import by.it.predkel.MatLab.OtherClasses.Patterns;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -9,13 +13,14 @@ import java.util.regex.Pattern;
  */
 public class InputExpression {
 
-    public static double[][] inputMatrix(String rLine) throws IOException,IllegalArgumentException {
+    public static Var findExprission(String rLine) throws IOException,IllegalArgumentException {
 
         Pattern pat = Pattern.compile(Patterns.exMat);
         Pattern pat1 = Pattern.compile(Patterns.exVec);
-        Pattern pat2 = Pattern.compile(Patterns.exVal);
-        //for (int i = 0; i < expression.length; i += 2) {
+        Pattern pat2 = Pattern.compile("((-?)([0-9.])+)");
+        Matcher chislo=pat2.matcher(rLine);
         Matcher mat = pat.matcher(rLine);
+
         if (mat.matches()) {
             int countRow = 0, countCol = 0;
             Matcher mat1 = pat1.matcher(mat.group());
@@ -38,19 +43,17 @@ public class InputExpression {
                 }
                 l++;
             }
-            return mass;
+            return new MatrixVar(mass);
         } else if (!mat.matches()) {
             int countCol = 0;
             Matcher mat1 = pat1.matcher(rLine);
             if (mat1.matches()) {
-                //countRow++;
                 Matcher mat2 = pat2.matcher(mat1.group());
                 while (mat2.find()) {
                     countCol++;
                 }
 
                 double[][] mass = new double[0][countCol];
-                //int l = 0;
                 while (mat1.find()) {
                     mat2 = pat2.matcher(mat1.group());
                     int m = 0;
@@ -59,12 +62,11 @@ public class InputExpression {
                         m++;
                     }
                 }
-                return mass;
-
+                return new MatrixVar(mass);
             }
-        }else
-            throw new IllegalArgumentException();
-            //System.out.print("Введены некорректные данные");
-            return null;
+        }else if(chislo.find()) {
+            return new FloatVar(chislo.group());
+        }else System.out.print("Некорректный ввод данных");
+        return null;
     }
 }

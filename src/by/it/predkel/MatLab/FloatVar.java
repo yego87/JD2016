@@ -79,6 +79,11 @@ public class FloatVar extends Var {
         System.out.println(val);
     }
 
+    public String toString(){
+        String temp=""+val;
+        return temp;
+    }
+
     @Override
     public void setForm(String str) throws IOException {
         val=Double.parseDouble(str);
