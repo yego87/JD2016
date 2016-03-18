@@ -1,0 +1,1 @@
+c:\Program Files\Java\jdk1.8.0_25\bin\native2ascii.exe -encoding -utf8 str.txt str.properties
