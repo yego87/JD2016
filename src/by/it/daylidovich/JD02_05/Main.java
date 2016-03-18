@@ -28,7 +28,8 @@ public class Main {
             System.out.println("Введите язык приветствия или введите \"exit\" для выхода.");
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
             input = bufferedReader.readLine();
-            HelloDzmitry.hello(input);
+            if (!"exit".equals(input))
+                HelloDzmitry.hello(input);
         }
     }
 }
