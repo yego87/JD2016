@@ -1,4 +1,4 @@
-package by.it.daylidovich.FreeMathLab;
+package by.it.daylidovich.FreeMathLab.InputOutput;
 
 import by.it.daylidovich.FreeMathLab.variables.Float.VariableFloat;
 import by.it.daylidovich.FreeMathLab.variables.Matrix.VariableMatrix;
@@ -14,11 +14,11 @@ import java.util.regex.Pattern;
 public class Reader {
     public static String readInput() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        return reader.readLine();
+        return reader.readLine().trim();
     }
 
     public static String readFirstTerm(String string){
-        Matcher matcher = Pattern.compile("([0-9\\[\\]\\{\\}.,]+)([+\\-*/])").matcher(string);
+        Matcher matcher = Pattern.compile("([0-9\\[\\]\\{\\}.,]+)([+\\-*/ ])").matcher(string);
         if (matcher.find())
             return matcher.group(1);
         else
@@ -42,9 +42,17 @@ public class Reader {
     }
 
     public static String readNameVariable(String string){
-        Matcher matcher = Pattern.compile("([A-z]+)([ =])").matcher(string);
+        Matcher matcher = Pattern.compile("([A-z0-9]+)([ =])").matcher(string);
         if (matcher.find())
             return matcher.group(1);
+        else
+            return null;
+    }
+
+    public static String readExpression(String string){
+        Matcher matcher = Pattern.compile("([= ])([A-z+\\-*/0-9\\[\\]\\{\\}., ]+)").matcher(string);
+        if (matcher.find())
+            return matcher.group(2).trim();
         else
             return null;
     }

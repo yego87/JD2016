@@ -1,18 +1,20 @@
 package by.it.daylidovich.FreeMathLab;
 
+import by.it.daylidovich.FreeMathLab.Calculation.Parser;
+import by.it.daylidovich.FreeMathLab.InputOutput.SaveReadVariables;
 import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 import java.io.IOException;
 
-import static by.it.daylidovich.FreeMathLab.Reader.*;
+import static by.it.daylidovich.FreeMathLab.InputOutput.Reader.readInput;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         SaveReadVariables.readBase();
         System.out.println("Введите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
-        String string = readInput();
-        while (string.trim().length() != 0){
-            switch (string){
+        String stringInput = readInput();
+        while (stringInput.length() != 0){
+            switch (stringInput){
                 case "printvar":{
                     Variable.printVariables();
                     break;
@@ -21,64 +23,17 @@ public class Main {
                     Variable.sortVariable();
                     break;
                 }
+                case "clear base":{
+                    //System.out.println(SaveReadVariables.clearBase());
+                    System.out.println("База очищена.");
+                    break;
+                }
                 default:{
-                    String operation = readOperation(string);
-                    if (operation != null && !operation.equals("=")){
-                        String firstTerm = readFirstTerm(string);
-                        String secondTerm = readSecondTerm(string);
-                        if (firstTerm != null && secondTerm != null){
-                            switch (operation){
-                                case "+":
-                                    try{
-                                        System.out.println(getVariable(firstTerm).add(getVariable(secondTerm)));
-                                    }
-                                    catch (ArrayIndexOutOfBoundsException e){
-                                        System.out.println(e.getMessage());
-                                    }
-                                    break;
-                                case "-":
-                                    try{
-                                        System.out.println(getVariable(firstTerm).sub(getVariable(secondTerm)));
-                                    }
-                                    catch (ArrayIndexOutOfBoundsException e){
-                                        System.out.println(e.getMessage());
-                                    }
-                                    break;
-                                case "*":
-                                    try{
-                                        System.out.println(getVariable(firstTerm).mult(getVariable(secondTerm)));
-                                    }
-                                    catch (ArrayIndexOutOfBoundsException e){
-                                        System.out.println(e.getMessage());
-                                    }
-                                    break;
-                                case "/":
-                                    try{
-                                        System.out.println(getVariable(firstTerm).div(getVariable(secondTerm)));
-                                    }
-                                    catch (ArithmeticException e){
-                                        System.out.println(e.getMessage());
-                                    }
-                                    break;
-                                default:
-                                    System.out.println("Некоректный ввод.");
-                            }
-                        }
-                        else System.out.println("Некоректный ввод.");
-                    }
-                    else
-                    {
-                        String name = readNameVariable(string);
-                        String variable = readSecondTerm(string);
-                        if (name != null && variable != null)
-                            getVariable(variable).save(name);
-                        else
-                            System.out.println("Некоректный ввод.");
-                    }
+                    Parser.processExpression(stringInput);
                 }
             }
             System.out.println("\nВведите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
-            string = readInput();
+            stringInput = readInput();
         }
         SaveReadVariables.saveBase();
     }
