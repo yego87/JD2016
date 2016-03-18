@@ -1,5 +1,7 @@
 package by.it.knyazev.JD02.less_05;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -8,32 +10,34 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
-        for (Integer j = 0; j < 3; j++) {
-            char i = j.toString().charAt(0);
-            String country = "";
-            String language = "";
-            switch (i) {
-                case '1':
-                    country = "RU";
-                    language = "RU";
-                    System.out.println("\n"+i+" — РУC");
+        System.out.println("ru | pl | en");
+        String line = new Scanner(System.in).nextLine();
+        String country = "";
+        String language = "";
 
-                    break;
-                case '2':
-                    country = "KUR";
-                    language = "kuro4ka";
-                    System.out.println("\n"+i+" — Бел");
-                    break;
-                default:
-                    System.out.println("\n"+i+" — Англ ");
-
+        switch (line) {
+            case "ru": {
+                country = "RU";
+                language = "RU";
+                break;
             }
-            Locale current = new Locale(language, country);
-            ResourceBundle rb = ResourceBundle.getBundle("by.it.knyazev.JD02.less_05.lang",current);
-            String s1 = rb.getString("MFN_MENU_TITLE");
-            System.out.println(s1);
-            String s2 = rb.getString("MFN_MENU_BACK");
-            System.out.println(s2);
+            case "pl": {
+                country = "PL";
+                language = "pol";
+                break;
+            }
+            default: {
+                break;
+            }
         }
+
+        Locale current = new Locale(language, country);
+        ResourceBundle rb = ResourceBundle.getBundle("by.it.knyazev.JD02.less_05.lang",current);
+        String s1 = rb.getString("MFN_DATE");
+        String s2 = rb.getString("MFN_TIME");
+        SimpleDateFormat date = new SimpleDateFormat("yyyy.MM.dd");
+        SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss:S");
+        System.out.println(s1+": "+date.format(new Date())+" "+s2+": "+time.format(new Date()));
+        System.out.println();
     }
 }
