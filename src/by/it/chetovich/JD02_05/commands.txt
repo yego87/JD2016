@@ -1,0 +1,4 @@
+"c:\Program Files\Java\jdk1.8.0_25\bin\native2ascii.exe" -encoding utf-8 hello_be_BY.txt hello_be_BY.properties
+"c:\Program Files\Java\jdk1.8.0_25\bin\native2ascii.exe" -encoding utf-8 hello_ru_RU.txt hello_ru_RU.properties
+"c:\Program Files\Java\jdk1.8.0_25\bin\native2ascii.exe" -encoding utf-8 hello_en_US.txt hello_en_US.properties
+"c:\Program Files\Java\jdk1.8.0_25\bin\native2ascii.exe" -encoding utf-8 hello.txt hello.properties

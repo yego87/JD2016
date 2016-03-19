@@ -16,10 +16,15 @@ public class UtilsMatlab {
      * @param s line to convert to array
      * @return array of 2 elements
      */
-    public static String[] convertLineToArray(String s){
+    public static String[] convertLineToArray (String s, String regex)throws ArrayIndexOutOfBoundsException,NullPointerException{
 
-        Pattern pat = Pattern.compile(Patterns.operationType); //разбиваем на 2 переменных и  заносим их в массив
-        String[] array = pat.split(s);
+        Pattern pat = Pattern.compile(regex); //разбиваем на 2 переменных и  заносим их в массив
+        String[] array = new String[0];
+        try {
+            array = pat.split(s);
+        } catch (NullPointerException e) {
+            System.out.println("Не получится посчитать выражение.");
+        }
         for (int i = 0; i < array.length; i++) {
             array[i] = array[i].trim();
         }
@@ -29,11 +34,12 @@ public class UtilsMatlab {
 
     /**
      *
-     * @param map map with variables, that should be saved in txt file
+     * @param file where we should save variables
      */
-    public static void saveVarsInFile (Map <String, Var> map, File file){
+    public static void saveVarsInFile ( File file){
 
-        try (PrintWriter print = new PrintWriter(new FileWriter(file))){
+        Map<String, Var> map = MapVariables.getMap();
+        try (PrintWriter print = new PrintWriter(new FileWriter(file,true))){
             for (Map.Entry<String, Var> entry : map.entrySet()) {
                 print.println(entry.getKey()+" = "+entry.getValue());
             }
@@ -50,13 +56,13 @@ public class UtilsMatlab {
      */
     public static Map <String, Var> putVarsFromFileIntoMap(){
 
-        Map<String,Var> map = new TreeMap<>();
+        Map<String,Var> map = MapVariables.getMap();
         String src = System.getProperty("user.dir") + "/src/by/it/chetovich/Matlab/vars.txt";
         File file = new File(src);
         try(BufferedReader r = new BufferedReader(new FileReader(file))){
             String line;
             while ((line = r.readLine())!=null){
-                String[] array = UtilsMatlab.convertLineToArray(line);
+                String[] array = UtilsMatlab.convertLineToArray(line, "=");
                 String a = array[0].trim();// имя переменной
                 Var b = DefineVariable.defineVar(array[1]);  //второй операнд
                 map.put(a, b);
@@ -138,6 +144,23 @@ public class UtilsMatlab {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         return reader.readLine();
+    }
+
+
+    /**
+     *
+     * @param s expression to calculate
+     * @param array numbers to calculate
+     * @return result, calculated by method count
+     * @throws ErrorException
+     * @throws ArrayIndexOutOfBoundsException
+     * @throws NullPointerException
+     */
+    public static Var calculateWith2Operands (String s, String[] array) throws ErrorException, ArrayIndexOutOfBoundsException,NullPointerException {
+
+        Var a = DefineVariable.defineVar(array[0]);  //первый операнд
+        Var b = DefineVariable.defineVar(array[1]);  //второй операнд
+        return Counting.count(a, b, s);
     }
 
 
