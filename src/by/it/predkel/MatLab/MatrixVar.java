@@ -1,7 +1,11 @@
 package by.it.predkel.MatLab;
 
+import by.it.predkel.MatLab.OtherClasses.Patterns;
 import by.it.predkel.MatLab.Utils.InputExpression;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static by.it.predkel.MatLab.OtherClasses.InverseMatrixJordanGauss.Inverse_matrix_jordan_gauss;
 
 /**
@@ -10,6 +14,10 @@ import static by.it.predkel.MatLab.OtherClasses.InverseMatrixJordanGauss.Inverse
 public class MatrixVar extends Var {
 
     double[][] val;
+
+    public double[][] getMatrix(){
+        return this.val;
+    }
 
     public MatrixVar(double[][] val){
         this.val=val;
@@ -181,7 +189,7 @@ public class MatrixVar extends Var {
 
     @Override
     public void setForm(String str) throws IOException {
-
+        val=InputExpression.findMassExpression(str);
     }
 
     ////////////////доп. методы\\\\\\\\\\\\\\\\\

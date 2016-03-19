@@ -1,4 +1,4 @@
-package by.it.predkel.MatLab.OtherClasses;
+package by.it.predkel.MatLab.Utils;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -30,8 +30,7 @@ public class Recursion {
             str.delete(k+1,k+mat.group().length()+1);
             str.insert(k,realRecurs((new StringBuilder(mat.group())).deleteCharAt(0).deleteCharAt(str.length()-1)));
         }else {
-            RunnerObj op=new RunnerObj();//здесь необходимо сделать нормальные вычисления
-            //return new StringBuilder((op.input(str.toString())));
+            CalculationClass.input(str.toString());
         }
         return null;
     }

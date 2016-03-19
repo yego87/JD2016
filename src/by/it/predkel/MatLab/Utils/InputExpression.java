@@ -12,15 +12,23 @@ import java.util.regex.Pattern;
  * Разбиение строки на объекты
  */
 public class InputExpression {
+    static Pattern pat = Pattern.compile(Patterns.exMat);
+    static Pattern pat1 = Pattern.compile(Patterns.exVec);
+    static Pattern pat2 = Pattern.compile(Patterns.exVal);
 
-    public static Var findExprission(String rLine) throws IOException,IllegalArgumentException {
-
-        Pattern pat = Pattern.compile(Patterns.exMat);
-        Pattern pat1 = Pattern.compile(Patterns.exVec);
-        Pattern pat2 = Pattern.compile("((-?)([0-9.])+)");
+    public static Var findExpression(String rLine) throws IOException,IllegalArgumentException {
         Matcher chislo=pat2.matcher(rLine);
+        Matcher mat1 = pat1.matcher(rLine);
+        if (mat1.matches()){
+            return new MatrixVar(findMassExpression(rLine));
+        }else if (chislo.matches()) {
+            return new FloatVar(chislo.group());
+        }else
+        System.out.print("Некорректный ввод данных");
+        return null;
+    }
+    public static double[][] findMassExpression(String rLine) throws IOException,IllegalArgumentException {
         Matcher mat = pat.matcher(rLine);
-
         if (mat.matches()) {
             int countRow = 0, countCol = 0;
             Matcher mat1 = pat1.matcher(mat.group());
@@ -38,12 +46,12 @@ public class InputExpression {
                 Matcher mat2 = pat2.matcher(mat3.group());
                 int m = 0;
                 while (mat2.find()) {
-                    mass[l][m] = Float.parseFloat(mat2.group());
+                    mass[l][m] = Double.parseDouble(mat2.group());
                     m++;
                 }
                 l++;
             }
-            return new MatrixVar(mass);
+            return mass;
         } else if (!mat.matches()) {
             int countCol = 0;
             Matcher mat1 = pat1.matcher(rLine);
@@ -58,15 +66,14 @@ public class InputExpression {
                     mat2 = pat2.matcher(mat1.group());
                     int m = 0;
                     while (mat2.find()) {
-                        mass[m][0] = Float.parseFloat(mat2.group());
+                        mass[m][0] = Double.parseDouble(mat2.group());
                         m++;
                     }
                 }
-                return new MatrixVar(mass);
+                return mass;
             }
-        }else if(chislo.find()) {
-            return new FloatVar(chislo.group());
-        }else System.out.print("Некорректный ввод данных");
+        }
+        System.out.print("чтото пошло не так");
         return null;
     }
 }

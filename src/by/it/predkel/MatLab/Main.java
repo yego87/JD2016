@@ -1,7 +1,5 @@
 package by.it.predkel.MatLab;
 
-import by.it.predkel.MatLab.OtherClasses.Recursion;
-import by.it.predkel.MatLab.OtherClasses.RunnerObj;
 import by.it.predkel.MatLab.Utils.CalculationClass;
 
 import java.io.BufferedReader;
