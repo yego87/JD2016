@@ -19,7 +19,8 @@ public class InputExpression {
     public static Var findExpression(String rLine) throws IOException,IllegalArgumentException {
         Matcher chislo=pat2.matcher(rLine);
         Matcher mat1 = pat1.matcher(rLine);
-        if (mat1.matches()){
+        Matcher mat2 = pat.matcher(rLine);
+        if ((mat2.matches())|(mat1.matches())){
             return new MatrixVar(findMassExpression(rLine));
         }else if (chislo.matches()) {
             return new FloatVar(chislo.group());
@@ -61,15 +62,15 @@ public class InputExpression {
                     countCol++;
                 }
 
-                double[][] mass = new double[0][countCol];
-                while (mat1.find()) {
-                    mat2 = pat2.matcher(mat1.group());
+                double[][] mass = new double[1][countCol];
+                //while (mat1.find()) {
+                    Matcher mat5 = pat2.matcher(mat1.group());
                     int m = 0;
-                    while (mat2.find()) {
-                        mass[m][0] = Double.parseDouble(mat2.group());
+                    while (mat5.find()) {
+                        mass[0][m] = Double.parseDouble(mat5.group());
                         m++;
                     }
-                }
+               // }
                 return mass;
             }
         }
