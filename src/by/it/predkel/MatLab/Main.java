@@ -1,6 +1,8 @@
 package by.it.predkel.MatLab;
 
 import by.it.predkel.MatLab.Utils.CalculationClass;
+import by.it.predkel.MatLab.Utils.InputExpression;
+import by.it.predkel.MatLab.Utils.Recursion;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -56,8 +58,12 @@ public class Main{
 
         do{
             rLine = bufferedReader.readLine();
-            CalculationClass.input(rLine);
-
+            if (rLine.equals("print")){
+                CalculationClass.sortvar();
+            }else {
+                //CalculationClass.input(rLine);
+                Recursion.preparationForRerecurs(new StringBuilder(rLine));
+            }
         }while (!rLine.equals("end"));
         bufferedReader.close();
 
