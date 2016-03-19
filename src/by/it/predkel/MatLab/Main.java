@@ -1,6 +1,6 @@
 package by.it.predkel.MatLab;
 
-import by.it.predkel.MatLab.OtherClasses.RunnerObj;
+import by.it.predkel.MatLab.Utils.CalculationClass;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class Main{
     }
 
     public static void main (String [] args) throws IOException {
-        try {
+        /*try {
             System.out.println("\nпроверка операций со скалярами");
             one(new FloatVar("1").add(new FloatVar("2")));
             one(new FloatVar("9").sub(new FloatVar("7")));
@@ -49,20 +49,24 @@ public class Main{
             one(new MatrixVar(mat).sub(new MatrixVar(vec)));
             one(new MatrixVar(mat).mul(new MatrixVar(vec)));
             one(new MatrixVar(mat).div(new MatrixVar(vec)));
-
+*/
             InputStreamReader inputStreamReader = new InputStreamReader(System.in);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String rLine = bufferedReader.readLine();
-            bufferedReader.close();
+            String rLine = "";
 
-            RunnerObj myMiniObj=new RunnerObj();
-            myMiniObj.input(rLine);
-            myMiniObj.sortvar();
+        do{
+            rLine = bufferedReader.readLine();
+            CalculationClass.input(rLine);
 
+        }while (!rLine.equals("end"));
+        bufferedReader.close();
+
+/*
         }catch  (IOException | IllegalArgumentException e){
             System.out.println("Некорректный ввод данных");
         }catch (ArithmeticException e){
             System.out.println("Деление на ноль!");
         }
+        */
     }
 }
