@@ -10,13 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * Created by Ekaterina on 2/22/16.
- */
+
 public class Runner {
 
-    public static void one(VarImpl v) {
-        if (v != null) System.out.println(v);
+    //попробовать добавить true /false чтоб не распечатывалось
+    public static void one(VarImpl v,boolean print) {
+        if (v != null&&print) System.out.println(v);
     }
 
     public static TreeMap<String, VarImpl> getTreeMap() {
@@ -52,7 +51,7 @@ public class Runner {
 
         while (rLine.trim().length() != 0) {
             try {
-                MakeAnOperation.makeAnOpetation(rLine);
+                MakeAnOperation.makeAnOpetation(rLine,true);
             }
             catch (Exception e) {
                 System.err.println("Введено некорректное выражение");

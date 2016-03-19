@@ -10,16 +10,13 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Ekaterina on 2/25/16.
- */
 public class ReadingFromConsole {
     public static int  numberExpression=0;
     public static Map<String,VarImpl> tmpHashMap=new HashMap<>();
+
     public static String ReadLine()throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String rLine = bufferedReader.readLine();
-        return rLine;
+        return bufferedReader.readLine();
     }
 
     public static String[] Determine (String str){
@@ -66,15 +63,14 @@ public class ReadingFromConsole {
         return check;
     }
 
-    public static String purser(String str)throws IOException{
+    public static String parser(String str)throws IOException{
         String newstr=str;
-        newstr=ReadingFromConsole.purse(newstr);
-        VarImpl var=MakeAnOperation.makeAnOpetation(newstr);
-        String varstr=var.toString();
-        return varstr;
+        newstr=ReadingFromConsole.parse(newstr);
+        VarImpl var=MakeAnOperation.makeAnOpetation(newstr,true);
+        return var.toString();
     }
 
-    public static String purse (String str) throws IOException{
+    public static String parse(String str) throws IOException{
         String newstr=str;
         String pursestring="";
         while (newstr.contains("(")||newstr.contains(")")) {
@@ -82,16 +78,25 @@ public class ReadingFromConsole {
             while (m1.find()) {
                 numberExpression++;
                 String initExpression = "tmp" + numberExpression;
-                pursestring = m1.group();
+                int startposition=m1.start();
+                int j=startposition+1;
+                int endposition=0;
+                int kolopening=1;int kolending=0;
+                while (kolopening!=kolending&&j<=newstr.length()){
+                    if (newstr.charAt(j)=='('){kolopening++;}
+                    if (newstr.charAt(j)==')'){kolending++;}
+                    endposition=j;
+                    j++;
+                }
+                pursestring = newstr.substring(startposition,endposition+1);
                 newstr = newstr.replace(pursestring, initExpression);
                 pursestring = pursestring.substring(1, pursestring.length() - 1);
                 if (pursestring.contains("(") || pursestring.contains(")")) {
-                    pursestring = ReadingFromConsole.purse(pursestring);
+                    pursestring = ReadingFromConsole.parse(pursestring);
                 }
-                Runner.putElement(initExpression, MakeAnOperation.makeAnOpetation(pursestring));
+                Runner.putElement(initExpression, MakeAnOperation.makeAnOpetation(pursestring,false));
             }
         }
-        System.out.println(newstr);
         return newstr;
     }
 }

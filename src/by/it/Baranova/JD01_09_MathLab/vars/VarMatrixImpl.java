@@ -8,9 +8,6 @@ import by.it.Baranova.JD01_09_MathLab.Patterns;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Ekaterina on 2/22/16.
- */
 public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
 
 
@@ -65,11 +62,9 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
         }
         //Второй операнд - матрица
         try {
-            System.out.println(((VarMatrixImpl)var).matrix[0].length+"  "+this.matrix[0].length);
-            System.out.println(((VarMatrixImpl)var).matrix.length+"  "+this.matrix.length);
-            if (((VarMatrixImpl) var).matrix.length!=this.matrix.length&&
+            if (var instanceof VarMatrixImpl &&((VarMatrixImpl) var).matrix.length!=this.matrix.length&&
                     ((VarMatrixImpl)var).matrix[0].length!=this.matrix[0].length) {
-                    throw new DifferentSizesException("Матрицы имеют размер, не подходящую для сложения");
+                    throw new DifferentSizesException("Матрицы имеют размер, не подходящий для сложения");
             }
             if (var instanceof VarMatrixImpl && ((VarMatrixImpl) var).matrix.length == this.matrix.length) {
                 VarMatrixImpl v1 = new VarMatrixImpl(this);
@@ -97,7 +92,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
     public VarImpl sub(VarImpl var) {
         //второй операнд - матрица
         try {
-            if (((VarMatrixImpl) var).matrix.length != this.matrix.length&&
+            if (var instanceof VarMatrixImpl &&((VarMatrixImpl) var).matrix.length != this.matrix.length&&
                     ((VarMatrixImpl)var).matrix[0].length!=this.matrix[0].length) {
                 throw new DifferentSizesException("Матрицы имеют размер, не подходящую для вычитания");
             }
@@ -121,7 +116,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
     /**
      * Умножение - первый операнд матрица
      * @param var - второй операнд
-     * @return
+     * @return матрица после операции умножения
      */
     @Override
     public VarImpl mul(VarImpl var) {
@@ -139,7 +134,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
         //Второй операнд - матрица
 
         try {
-            if (((VarMatrixImpl) var).matrix.length != this.matrix[0].length) {
+            if (var instanceof VarMatrixImpl &&((VarMatrixImpl) var).matrix.length != this.matrix[0].length) {
                 throw new DifferentSizesException("Матрицы имеют размер, не подходящий для умножения");
             }
             if (var instanceof VarMatrixImpl && ((VarMatrixImpl) var).matrix.length == this.matrix[0].length) {
@@ -163,16 +158,14 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
         if (var instanceof VarVectorImpl){
             VarMatrixImpl v1=new VarMatrixImpl(this);
             VarVectorImpl v2=new VarVectorImpl((VarVectorImpl)var);
-            double [][] z=new double[v1.matrix.length][1];
+            double [] z=new double[v1.matrix.length];
             for (int i=0;i<v1.matrix.length;i++) {
-                for (int j = 0; j < 1; j++) {
                     for (int k = 0; k < v2.getVector().length; k++) {
-                        z[i][j] = z[i][j] + v1.matrix[i][k] * v2.getVector()[k];
+                        z[i] = z[i] + v1.matrix[i][k] * v2.getVector()[k];
                     }
-                }
             }
-            VarMatrixImpl result=new VarMatrixImpl(z);
-            return result;
+
+            return new VarVectorImpl(z);
         }
 
         return super.mul(var);
@@ -211,7 +204,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
             for (int j=0;j<matrix[i].length;j++) {
                 result.append(matrix[i][j]);
                 if (j!=matrix[i].length-1){
-                    result.append(", ");
+                    result.append(",");
                 }
             }
            result.append('}');
@@ -223,26 +216,23 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
 
     @Override
     public void setFrom(String str) {
-        String regex="}";
-        Pattern p1=Pattern.compile(regex);
-        Matcher m1=p1.matcher(str);
+        Matcher m1=Pattern.compile("}").matcher(str);
         int koli=0;
         while ( m1.find()){
             koli++;
         }
-        String regex2=",";
-        Pattern p2=Pattern.compile(regex2);
-        Matcher m2=p2.matcher(str);
+        koli--;
+        Matcher m2=Pattern.compile(",").matcher(str);
         int kol=0;
         while ( m2.find()){
             kol++;
         }
         int kolj=(kol+koli)/koli;
-        matrix=new double[koli-1][kolj];
+        matrix=new double[koli][kolj];
         Pattern p3=Pattern.compile(Patterns.exVal);
         Matcher m3=p3.matcher(str);
         int i=0;int j=0;
-        while (m3.find()&&i<(koli-1)&&j<kolj) {
+        while (m3.find()&&i<(koli)&&j<kolj) {
             matrix[i][j]=Double.parseDouble(m3.group());
             j++;
             if (j==kolj){
