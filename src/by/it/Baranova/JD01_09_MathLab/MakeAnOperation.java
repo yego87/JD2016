@@ -3,8 +3,6 @@ package by.it.Baranova.JD01_09_MathLab;
 import by.it.Baranova.JD01_09_MathLab.vars.VarImpl;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.TreeMap;
 
 
 public class MakeAnOperation {
@@ -54,7 +52,7 @@ public class MakeAnOperation {
                     case "=": {
                         boolean toResolve = ReadingFromConsole.toResolve(operands[1]);
                         if (toResolve) {
-                            operands[1]= ReadingFromConsole.purser(operands[1]);
+                            operands[1]= ReadingFromConsole.parser(operands[1]);
                         }
                         VarImpl b = DefineType.Define(operands[1]);
                         Runner.putElement(operands[0], b);

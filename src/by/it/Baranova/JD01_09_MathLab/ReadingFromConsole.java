@@ -63,14 +63,14 @@ public class ReadingFromConsole {
         return check;
     }
 
-    public static String purser(String str)throws IOException{
+    public static String parser(String str)throws IOException{
         String newstr=str;
-        newstr=ReadingFromConsole.purse(newstr);
+        newstr=ReadingFromConsole.parse(newstr);
         VarImpl var=MakeAnOperation.makeAnOpetation(newstr,true);
         return var.toString();
     }
 
-    public static String purse (String str) throws IOException{
+    public static String parse(String str) throws IOException{
         String newstr=str;
         String pursestring="";
         while (newstr.contains("(")||newstr.contains(")")) {
@@ -92,7 +92,7 @@ public class ReadingFromConsole {
                 newstr = newstr.replace(pursestring, initExpression);
                 pursestring = pursestring.substring(1, pursestring.length() - 1);
                 if (pursestring.contains("(") || pursestring.contains(")")) {
-                    pursestring = ReadingFromConsole.purse(pursestring);
+                    pursestring = ReadingFromConsole.parse(pursestring);
                 }
                 Runner.putElement(initExpression, MakeAnOperation.makeAnOpetation(pursestring,false));
             }
