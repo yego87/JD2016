@@ -12,11 +12,11 @@ import java.util.Locale;
  */
 public class PrintDate {
 
+    /**
+     *
+     * @param locale locale with language and country
+     */
     public static void printDate (Locale locale){
-
-        /*Date d = new Date();
-        DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, locale);
-        System.out.println(df.format(d));*/
 
         Date d = new Date();
         DateFormat df = new SimpleDateFormat("EEEE, d MMMM yyyy HH:mm:ss",locale);

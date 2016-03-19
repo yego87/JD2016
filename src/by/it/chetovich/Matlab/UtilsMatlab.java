@@ -147,6 +147,15 @@ public class UtilsMatlab {
     }
 
 
+    /**
+     *
+     * @param s expression to calculate
+     * @param array numbers to calculate
+     * @return result, calculated by method count
+     * @throws ErrorException
+     * @throws ArrayIndexOutOfBoundsException
+     * @throws NullPointerException
+     */
     public static Var calculateWith2Operands (String s, String[] array) throws ErrorException, ArrayIndexOutOfBoundsException,NullPointerException {
 
         Var a = DefineVariable.defineVar(array[0]);  //первый операнд

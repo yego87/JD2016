@@ -8,6 +8,13 @@ import java.util.regex.Pattern;
  */
 public class Parser {
 
+    /**
+     *
+     * @param s line entered by user
+     * @throws ErrorException
+     * @throws NullPointerException
+     * @throws ArrayIndexOutOfBoundsException
+     */
     public static void pars(String s) throws ErrorException, NullPointerException, ArrayIndexOutOfBoundsException {
 
         while (s.contains("(")&&s.contains(")")){
@@ -49,8 +56,8 @@ public class Parser {
 
             } else { //если строка содержит знак равно, разбиваем её по знаку равно
                 //  на имя переменной для присваивания varName и выражение для вычисления exToCalculate
-                String varName = null;
-                String exToCalculate = null;
+                String varName;
+                String exToCalculate;
 
                 String[] arrayWithVarName = UtilsMatlab.convertLineToArray(s,"=");
                 varName = arrayWithVarName[0].trim();
