@@ -38,7 +38,7 @@ public class CalculationClass {
             }
         } else {
             if ((exp[0] != null) & (exp[1] != null) & (exp[2] != null)) {
-                checkMap(2);
+                checkMap(0);
                 Var my = myOperation(exp[0], exp[1], exp[2]);
                 one(my);
             }
