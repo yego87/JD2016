@@ -1,6 +1,6 @@
 package by.it.akhmelev.JD02_01.demo;
 
-class Buyer extends Thread implements Runnable, IBuyer{
+public class Buyer extends Thread implements Runnable, IBuyer{
 
     //номер покупателя
     int num; //номер покупателя

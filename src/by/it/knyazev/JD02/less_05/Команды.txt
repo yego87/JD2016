@@ -1,0 +1,2 @@
+file -I file.txt //узнаем кодировку
+iconv -f utf-8 -t us-ascii file.txt > file.txt //перезапишем файл

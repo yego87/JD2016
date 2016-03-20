@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Created by Artsem Kniazeu on 13.02.2016.
  */
 public class Main {
-    public static void main(String... args){
+     public static void main(String... args){
         Scanner scan = new Scanner(System.in);
         String s = scan.nextLine();
         int n = Integer.valueOf(s);

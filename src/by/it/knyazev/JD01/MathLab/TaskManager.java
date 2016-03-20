@@ -2,6 +2,8 @@ package by.it.knyazev.JD01.MathLab;
 
 import by.it.knyazev.JD01.MathLab.Interfaces.ITaskManager;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,7 +105,6 @@ public class TaskManager implements ITaskManager{
         }
         System.out.println("Min: " + minSign + " Max: " + maxSign);
     }
-
 
     @Deprecated
     public void cutOut(){
