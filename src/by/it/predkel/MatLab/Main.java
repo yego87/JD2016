@@ -55,7 +55,9 @@ public class Main{
             InputStreamReader inputStreamReader = new InputStreamReader(System.in);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String rLine = "";
-
+        System.out.print("Введите выражение. Все кроме скобок через пробел. " +
+                "Введите 'print' если хотите вывести введенные вами ранее переменные. " +
+                "Введите 'end', если хотите выйти");
         do{
             rLine = bufferedReader.readLine();
             if (rLine.equals("print")){
