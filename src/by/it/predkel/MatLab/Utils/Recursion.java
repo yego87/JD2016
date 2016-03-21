@@ -16,17 +16,19 @@ public class Recursion {
         System.out.println(str);
     }
     public static StringBuilder realRecurs(StringBuilder str) throws IOException {
+
         Matcher mat=anyBracket.matcher(str);
-        if (mat.matches()){
+        if (mat.find()){
             int start =mat.start();
             int end =mat.end();
             String tmp=mat.group();
             StringBuilder sb=(new StringBuilder(tmp).deleteCharAt(tmp.length() - 1).deleteCharAt(0));
             str.delete(start,end);
             str.insert(start,realRecurs(sb));
-        }else {
-            return new StringBuilder(CalculationClass.input(str.toString()));
         }
-        return null;
+        if (str.toString().trim().split(" ").length<2){
+            return str;
+        }
+        return new StringBuilder(CalculationClass.input(str.toString()));
     }
 }
