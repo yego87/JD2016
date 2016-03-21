@@ -46,8 +46,11 @@ public class DefineVariable {
         mat1.reset();
         mat.reset();
 
+        Creator c = null;
+
         if(lineQuantity==0) { //если в строке нет круглых или квадратных скобок, значит это просто число
-            return new FloatVar(Float.parseFloat(s));
+            //return new FloatVar(Float.parseFloat(s));
+            c = new FloatCreator();
         }
         else{
             if (lineQuantity==1){ //если есть одна строка чисел в скобках, значит это одномерный массив вектор
@@ -71,6 +74,7 @@ public class DefineVariable {
                 return new MatrixVar(array);
             }
         }
+        return null;
 
 
     }
