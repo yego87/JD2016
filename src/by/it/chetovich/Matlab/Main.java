@@ -1,5 +1,4 @@
 package by.it.chetovich.Matlab;
-
 import java.io.*;
 import java.util.*;
 
@@ -25,6 +24,8 @@ public class Main {
                 Parser.pars(line);
             } catch (Exception e) {
                 System.out.println("Не получится посчитать выражение");
+                Logger.getInstance().writeToLog("Строка "+line+": ошибка, ");
+
             }
         }
 
