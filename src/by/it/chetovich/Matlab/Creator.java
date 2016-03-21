@@ -5,5 +5,5 @@ package by.it.chetovich.Matlab;
  */
 public abstract class Creator {
 
-    public abstract Var create(String s);
+    public abstract Var create(String s, int lineQuantity);
 }

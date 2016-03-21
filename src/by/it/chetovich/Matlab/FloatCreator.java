@@ -1,12 +1,12 @@
 package by.it.chetovich.Matlab;
 
 /**
- * Created by user_2 on 21.03.2016.
+ * FloatVar Creator
  */
 public class FloatCreator extends Creator {
 
     @Override
-    public Var create(String s) {
+    public Var create(String s, int lineQuantity) {
         return new FloatVar(Float.parseFloat(s));
     }
 }
