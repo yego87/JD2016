@@ -42,7 +42,7 @@ public class Reader {
     }
 
     public static String readNameVariable(String string){
-        Matcher matcher = Pattern.compile("([A-z0-9]+)([ =])").matcher(string);
+        Matcher matcher = Pattern.compile("([A-z0-9]+)([ ]*[=][ ]*)").matcher(string);
         if (matcher.find())
             return matcher.group(1);
         else
@@ -50,9 +50,17 @@ public class Reader {
     }
 
     public static String readExpression(String string){
-        Matcher matcher = Pattern.compile("([= ])([A-z+\\-*/0-9\\[\\]\\{\\}., ]+)").matcher(string);
+        Matcher matcher = Pattern.compile("([ ]*[=][ ]*)([A-z+\\-*/0-9\\[\\]\\{\\}\\(\\)., ]+)").matcher(string);
         if (matcher.find())
             return matcher.group(2).trim();
+        else
+            return null;
+    }
+
+    public static String readBrackets(String string){
+        Matcher matcher = Pattern.compile("[\\(][+\\-*/0-9\\[\\]\\{\\}., ]+[\\)]").matcher(string);
+        if (matcher.find())
+            return matcher.group();
         else
             return null;
     }

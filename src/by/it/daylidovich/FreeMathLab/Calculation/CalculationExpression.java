@@ -48,12 +48,12 @@ public class CalculationExpression {
                     }
                     break;
                 default:
-                    System.out.println("Некоректный ввод.");
+                    System.out.println("Некорректный ввод.");
                     return null;
             }
         }
         else{
-            System.out.println("Некоректный ввод.");
+            System.out.println("Некорректный ввод.");
         }
         return null;
     }
