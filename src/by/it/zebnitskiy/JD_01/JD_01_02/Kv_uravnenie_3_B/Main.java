@@ -1,4 +1,4 @@
-package by.it.zebnitskiy.hw1.kv_uravnenie;
+package by.it.zebnitskiy.JD_01.JD_01_02.Kv_uravnenie_3_B;
 
 /**
  * Created by Зебницкий Максим on 2/10/2016.
