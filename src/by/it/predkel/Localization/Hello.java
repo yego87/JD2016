@@ -11,6 +11,5 @@ public class Hello {
         ResourceBundle rb=ResourceBundle.getBundle("by.it.predkel.Localization.LocalFiles.string", current);
         String str=rb.getString("str");
         System.out.println(str);
-
     }
 }

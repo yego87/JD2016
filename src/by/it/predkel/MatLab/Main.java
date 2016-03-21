@@ -62,7 +62,7 @@ public class Main{
                 CalculationClass.sortvar();
             }else {
                 //CalculationClass.input(rLine);
-                Recursion.preparationForRerecurs(new StringBuilder(rLine));
+                System.out.println(Recursion.realRecurs(new StringBuilder(rLine)));
             }
         }while (!rLine.equals("end"));
         bufferedReader.close();
