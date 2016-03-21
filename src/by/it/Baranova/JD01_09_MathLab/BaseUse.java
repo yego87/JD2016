@@ -56,7 +56,6 @@ public class BaseUse {
                 fr.close();
             }
         }
-
         return hashMap;
     }
 }
