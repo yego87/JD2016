@@ -46,6 +46,7 @@ public class Runner {
 
         Runner.setHashMap();
         Runner.setTreeMap();
+        Log log=Log.getInstance();
         System.out.println("Введите выражение, которое хотите вычислить");
         String rLine = ReadingFromConsole.ReadLine();
 
@@ -55,6 +56,7 @@ public class Runner {
             }
             catch (Exception e) {
                 System.err.println("Введено некорректное выражение");
+                log.saveLog("Введено некорректное выражение");
             }
             System.out.println("Введите выражение, которое хотите вычислить");
             rLine = ReadingFromConsole.ReadLine();

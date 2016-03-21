@@ -7,9 +7,7 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Ekaterina on 3/8/16.
- */
+
 public class BaseUse {
 
     public static void saveVariable(Map<String,VarImpl> hashMap) throws IOException{
@@ -24,6 +22,7 @@ public class BaseUse {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файла нет:" + filename);
+
         } finally {
             if (wr != null) {
                 wr.close();
