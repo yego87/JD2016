@@ -63,17 +63,9 @@ public class DateWriter {
 
             System.out.println(greeting);
 
-            DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, eng);
+            Date date = new Date();
 
-            Date date = null;
-            String todayDate = "March 18, 2016";
-            try {
-                date = df.parse(todayDate);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-            df = DateFormat.getDateInstance(DateFormat.LONG,cur);
+            DateFormat df = DateFormat.getDateInstance(DateFormat.LONG,cur);
             String day = df.format(date);
             System.out.println(day);
         }
