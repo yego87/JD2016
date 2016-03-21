@@ -1,16 +1,19 @@
 package by.it.Baranova.JD01_09_MathLab;
 
+import by.it.Baranova.JD01_09_MathLab.Creator.Creator;
+import by.it.Baranova.JD01_09_MathLab.Creator.CreatorVarFLoat;
+import by.it.Baranova.JD01_09_MathLab.Creator.CreatorVarMatrix;
+import by.it.Baranova.JD01_09_MathLab.Creator.CreatorVarVector;
 import by.it.Baranova.JD01_09_MathLab.vars.VarFloatImpl;
 import by.it.Baranova.JD01_09_MathLab.vars.VarImpl;
 import by.it.Baranova.JD01_09_MathLab.vars.VarMatrixImpl;
 import by.it.Baranova.JD01_09_MathLab.vars.VarVectorImpl;
+import sun.lwawt.macosx.CImage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Ekaterina on 2/25/16.
- */
+
 public class DefineType {
 
     public static VarImpl Define (String str) {
@@ -22,16 +25,16 @@ public class DefineType {
             kol++;
         }
         if (kol==0){
-            VarFloatImpl a=new VarFloatImpl(str);
-            return a;
+            Creator creator=new CreatorVarFLoat();
+            return creator.factoryMethod(str);
         }
         if (kol==1){
-            VarVectorImpl a=new VarVectorImpl(str);
-            return  a;
+            Creator creator=new CreatorVarVector();
+            return  creator.factoryMethod(str);
         }
         if (kol>1){
-           VarMatrixImpl a=new VarMatrixImpl(str);
-            return a;
+            Creator creator=new CreatorVarMatrix();
+            return creator.factoryMethod(str);
         }
         return null;
     }

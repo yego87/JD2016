@@ -4,9 +4,6 @@ package by.it.Baranova.JD01_09_MathLab.vars;
 import by.it.Baranova.JD01_09_MathLab.Int.ICalculations;
 import by.it.Baranova.JD01_09_MathLab.MyError;
 
-/**
- * Created by Ekaterina on 2/22/16.
- */
 public abstract class VarImpl implements ICalculations {
 
     @Override
