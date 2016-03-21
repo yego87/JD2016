@@ -14,7 +14,7 @@ public class GreetingA {
 
 
 
-            Locale rus = Locale.getDefault();
+            Locale rus = new Locale("ru", "RU");
             Locale bel = new Locale("be", "BY");
             Locale eng = new Locale("en", "US");
             Locale cur = Locale.getDefault();
