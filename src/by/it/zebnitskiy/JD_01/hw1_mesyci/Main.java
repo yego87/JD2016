@@ -1,4 +1,4 @@
-package by.it.zebnitskiy.hw1_mesyci;
+package by.it.zebnitskiy.JD_01.hw1_mesyci;
 
 /**
  * Created by Зебницкий Максим on 2/10/2016.
