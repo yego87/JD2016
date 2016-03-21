@@ -23,11 +23,14 @@ public class Log {
     }
 
     public void saveLog(String error) {
-        PrintWriter pw = null;
+
+        String src = System.getProperty("user.dir") + "/src/by/it/Baranova/";
+        String filename = src + "JD01_09_MathLab/Log.txt";
+        File f = new File(filename);PrintWriter pw = null;
         Date today = new Date(System.currentTimeMillis());
         synchronized (Log.class) {
             try {
-                pw = new PrintWriter(new FileWriter("src\\by\\it\\Baranova\\JD01_09_MathLab\\Log.txt", true));
+                pw = new PrintWriter(new FileWriter(f, true));
                 pw.println(error + "  " + today);
 
             } catch (IOException e) {
