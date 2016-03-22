@@ -27,8 +27,7 @@ public class Main {
                     break;
                 }
                 case "clear base":{
-                    //System.out.println(SaveReadVariables.clearBase());
-                    System.out.println("База очищена.");
+                    System.out.println(SaveReadVariables.clearBase());
                     break;
                 }
                 default:{
