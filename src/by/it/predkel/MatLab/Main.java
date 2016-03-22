@@ -52,9 +52,9 @@ public class Main{
 */          MyLogger log=MyLogger.GetLogger();
 
         try {
-            TextBuilder report=new TextBuilder();
-            report.createHeader();
-            report.createTime();
+            TextBuilder txt=new TextBuilder();
+            txt.createHeader();
+            txt.createTime();
             InputStreamReader inputStreamReader = new InputStreamReader(System.in);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String rLine = "";
@@ -63,19 +63,19 @@ public class Main{
                     "Введите 'end', если хотите выйти");
             do {
                 rLine = bufferedReader.readLine();
-                report.createOperation(rLine);
+                txt.createOperation(rLine);
                 if (rLine.equals("print")) {
                     CalculationClass.sortvar();
                 } else {
                     //CalculationClass.input(rLine);
-                    StringBuilder result=Recursion.realRecurs(new StringBuilder(rLine));
-                    System.out.println(result);
-                    report.createResult(result.toString());
+                    StringBuilder text=Recursion.realRecurs(new StringBuilder(rLine));
+                    System.out.println(text);
+                    txt.createResult(text.toString());
                 }
             } while (!rLine.equals("end"));
             bufferedReader.close();
-            report.createTime();
-            report.getText();
+            txt.createTime();
+            txt.getText();
         }catch (NullPointerException e){
             log.write(e);
         }
