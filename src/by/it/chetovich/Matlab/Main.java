@@ -1,5 +1,4 @@
 package by.it.chetovich.Matlab;
-
 import java.io.*;
 import java.util.*;
 
@@ -10,6 +9,12 @@ import java.util.*;
 public class Main {
 
     public static void main (String [] args) throws IOException, ErrorException {
+
+        Date startTime = new Date();
+        ReportDirector reportDirector = new ReportDirector();
+        ReportBuilder operReportBuilder = new OperationReportBuilder(startTime);
+        reportDirector.setReportBuilder(operReportBuilder);
+        reportDirector.createReport();
 
         Map<String,Var> map = UtilsMatlab.putVarsFromFileIntoMap() ;//восстанавливаем ранее сохранённые переменные из файла
         //List<String> list = new ArrayList<>(map.keySet());  //в лист запишем имена переменных для сортировки
@@ -24,8 +29,20 @@ public class Main {
             try {
                 Parser.pars(line);
             } catch (Exception e) {
-                System.out.println("Не получится посчитать выражение");
+                System.out.println("Не получится посчитать выражение ");
+                Logger.getInstance().writeToLog("Строка "+line+": ошибка, ");
+                synchronized (QueueOperationsForReport.getQueueOperationsForReport()){
+                    QueueOperationsForReport.addOperation(line);
+                    QueueOperationsForReport.getQueueOperationsForReport().notifyAll();
+
+                }
+
             }
+        }
+        OperationReportBuilder.setFinish(true);
+        synchronized (QueueOperationsForReport.getQueueOperationsForReport()){
+            QueueOperationsForReport.getQueueOperationsForReport().notifyAll();
+
         }
 
         // записываем присвоенные переменные из map в файл
@@ -38,7 +55,10 @@ public class Main {
         System.out.println("Если вы хотите отсортированный список переменных со значениями, введите sortvar.");
         System.out.println("Если всё это вам не интересно, нажмите enter, и всё закончится. ");
         String line = UtilsMatlab.enterLine();
-        UtilsMatlab.printVarList(line, MapVariables.getMap()); //печатаем список новых переменных в зависимости от того, что ввел пользователь
+        //печатаем список новых переменных в зависимости от того, что ввел пользователь
+        UtilsMatlab.printVarList(line, MapVariables.getMap());
+
+        File report = reportDirector.getReport();
 
     }
 }

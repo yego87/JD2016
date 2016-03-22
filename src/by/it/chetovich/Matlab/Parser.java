@@ -17,6 +17,7 @@ public class Parser {
      */
     public static void pars(String s) throws ErrorException, NullPointerException, ArrayIndexOutOfBoundsException {
 
+        String operationPlusResult = null;
         while (s.contains("(")&&s.contains(")")){
 
             //паттерн на круглые скобки, внутри любые цифры, знаки, квадратные и фигурные скобки
@@ -52,7 +53,8 @@ public class Parser {
                 String[] array = UtilsMatlab.convertLineToArray(s,Patterns.operationType);
                 //выполняем вычисления с элементами массива, s нужна для определения типа вычисления;
 
-                System.out.println(InitialLine.getLine() + " = " + UtilsMatlab.calculateWith2Operands(s,array));
+                operationPlusResult = InitialLine.getLine() + " = " + UtilsMatlab.calculateWith2Operands(s,array);
+                System.out.println(operationPlusResult);
 
             } else { //если строка содержит знак равно, разбиваем её по знаку равно
                 //  на имя переменной для присваивания varName и выражение для вычисления exToCalculate
@@ -71,8 +73,17 @@ public class Parser {
                     MapVariables.addVariable(varName, var);
                     System.out.println("Операция присваивания выполнена.");
                 }
-                System.out.println(InitialLine.getLine() +" = "+var);
+                //выводим на экран введенное выражение и результат вычислений
+                operationPlusResult = InitialLine.getLine() +" = "+var;
+                System.out.println(operationPlusResult);
+
             }
+
+        }
+        //добавляем операцию с результатом одной строкой в listOperationsForReport
+        synchronized (QueueOperationsForReport.getQueueOperationsForReport()){
+            QueueOperationsForReport.addOperation(operationPlusResult);
+            QueueOperationsForReport.getQueueOperationsForReport().notifyAll();
 
         }
 
