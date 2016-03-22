@@ -19,7 +19,7 @@ public class CalculationClass {
     static String[] expression;
     static ArrayList<Var> varArr = new ArrayList<>();
     static StringBuilder[] exp;
-    public static void input(String rLine) throws IOException,IllegalArgumentException,ArithmeticException {
+    public static String input(String rLine) throws IOException,IllegalArgumentException,ArithmeticException {
         expression = rLine.trim().split(" ");
         exp=new StringBuilder[rLine.trim().split(" ").length];
         for (int i = 0; i < expression.length; i++)
@@ -34,15 +34,18 @@ public class CalculationClass {
                     Var my = myOperation(exp[2], exp[3], exp[4]);
                     assignment.put(exp[0].toString().trim(), my);
                     one(my);
+                    return my.toString();
                 } else System.out.print("Некорректные данные");
             }
         } else {
             if ((exp[0] != null) & (exp[1] != null) & (exp[2] != null)) {
-                checkMap(2);
+                checkMap(0);
                 Var my = myOperation(exp[0], exp[1], exp[2]);
                 one(my);
+                return my.toString();
             }
         }
+        return null;
     }
 
 
