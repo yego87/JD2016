@@ -30,7 +30,7 @@ public class MatrixVar extends Var {
     ////////операции\\\\\\\\\
 
     @Override
-    public Var add (Var value){
+    public Var add (Var value) {
         if (value instanceof FloatVar) {//матрица+число
             for (int i = 0; i < this.val.length; i++) {
                 for (int j = 0; j < this.val[i].length; j++) {
@@ -39,20 +39,21 @@ public class MatrixVar extends Var {
             }
             return this;
         }
-        MatrixVar v1 = (MatrixVar)value;
-        if (checkMatrixToSum(this,((MatrixVar)value))){
-            for (int i=0;i<this.val.length;i++){//матрица+матрица
-                for (int j=0;j<this.val[i].length;j++){
-                    this.val[i][j]+=((MatrixVar)value).val[i][j];
+        MatrixVar v1 = (MatrixVar) value;
+        if (checkMatrixToSum(this, ((MatrixVar) value))) {
+            for (int i = 0; i < this.val.length; i++) {//матрица+матрица
+                for (int j = 0; j < this.val[i].length; j++) {
+                    this.val[i][j] += ((MatrixVar) value).val[i][j];
                 }
             }
             return this;
-        }else{
+        } else {
             throw new IllegalArgumentException();
             //System.out.println("Эти массивы складывать нельзя");
             //return null;
-        }
 
+
+        }
     }
 
     @Override
