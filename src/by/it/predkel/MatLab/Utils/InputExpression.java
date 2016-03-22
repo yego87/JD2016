@@ -21,9 +21,9 @@ public class InputExpression {
         Matcher mat1 = pat1.matcher(rLine);
         Matcher mat2 = pat.matcher(rLine);
         if ((mat2.matches())|(mat1.matches())){
-            return new MatrixVar(findMassExpression(rLine));
+            return Factory.createVariable("mat",rLine);// new MatrixVar(findMassExpression(rLine));
         }else if (chislo.matches()) {
-            return new FloatVar(chislo.group());
+            return Factory.createVariable("flo",chislo.group()); //new FloatVar(chislo.group());
         }else
         System.out.print("Некорректный ввод данных");
         return null;
