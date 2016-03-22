@@ -1,6 +1,6 @@
 package by.it.daylidovich.FreeMathLab;
 
-import by.it.daylidovich.FreeMathLab.Calculation.Parser;
+import by.it.daylidovich.FreeMathLab.Parser.Parser;
 import by.it.daylidovich.FreeMathLab.InputOutput.SaveReadVariables;
 import by.it.daylidovich.FreeMathLab.Logger.Logger;
 import by.it.daylidovich.FreeMathLab.variables.Variable;
@@ -35,8 +35,7 @@ public class Main {
                         Parser.processExpression(stringInput);
                     }
                     catch (IOException e){
-                        Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
-                        System.out.println(e.getMessage());
+                        Logger.writeLog(e.toString(), new Date(System.currentTimeMillis()));
                     }
                 }
             }

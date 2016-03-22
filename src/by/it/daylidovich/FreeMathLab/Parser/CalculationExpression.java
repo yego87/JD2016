@@ -1,4 +1,4 @@
-package by.it.daylidovich.FreeMathLab.Calculation;
+package by.it.daylidovich.FreeMathLab.Parser;
 
 import by.it.daylidovich.FreeMathLab.Logger.Logger;
 import by.it.daylidovich.FreeMathLab.variables.Variable;
