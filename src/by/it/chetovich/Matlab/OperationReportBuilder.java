@@ -64,16 +64,16 @@ public class OperationReportBuilder extends ReportBuilder implements Runnable {
     @Override
     public void addOperation() {
         int operationNum =1;
-        synchronized (ListOperationsForReport.getListOperationsForReport()){
+        synchronized (QueueOperationsForReport.getQueueOperationsForReport()){
             while (!finish) {
                 try {
-                    ListOperationsForReport.getListOperationsForReport().wait();
+                    QueueOperationsForReport.getQueueOperationsForReport().wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
                 try (PrintWriter print = new PrintWriter(new FileWriter(file, true))) {
-                    String op = ListOperationsForReport.getOperation();
+                    String op = QueueOperationsForReport.getOperation();
                     if (op!=null){
                         print.println("Операция " + operationNum + ": " + op);
                         operationNum++;
@@ -81,12 +81,7 @@ public class OperationReportBuilder extends ReportBuilder implements Runnable {
                 } catch (IOException e) {
                     System.out.println("Adding operation has failed.");
                 }
-                /*
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
+
             }
 
         }

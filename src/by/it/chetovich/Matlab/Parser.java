@@ -81,9 +81,9 @@ public class Parser {
 
         }
         //добавляем операцию с результатом одной строкой в listOperationsForReport
-        synchronized (ListOperationsForReport.getListOperationsForReport()){
-            ListOperationsForReport.addOperation(operationPlusResult);
-            ListOperationsForReport.getListOperationsForReport().notifyAll();
+        synchronized (QueueOperationsForReport.getQueueOperationsForReport()){
+            QueueOperationsForReport.addOperation(operationPlusResult);
+            QueueOperationsForReport.getQueueOperationsForReport().notifyAll();
 
         }
 

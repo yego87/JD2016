@@ -31,17 +31,17 @@ public class Main {
             } catch (Exception e) {
                 System.out.println("Не получится посчитать выражение ");
                 Logger.getInstance().writeToLog("Строка "+line+": ошибка, ");
-                synchronized (ListOperationsForReport.getListOperationsForReport()){
-                    ListOperationsForReport.addOperation(line);
-                    ListOperationsForReport.getListOperationsForReport().notifyAll();
+                synchronized (QueueOperationsForReport.getQueueOperationsForReport()){
+                    QueueOperationsForReport.addOperation(line);
+                    QueueOperationsForReport.getQueueOperationsForReport().notifyAll();
 
                 }
 
             }
         }
         OperationReportBuilder.setFinish(true);
-        synchronized (ListOperationsForReport.getListOperationsForReport()){
-            ListOperationsForReport.getListOperationsForReport().notifyAll();
+        synchronized (QueueOperationsForReport.getQueueOperationsForReport()){
+            QueueOperationsForReport.getQueueOperationsForReport().notifyAll();
 
         }
 
