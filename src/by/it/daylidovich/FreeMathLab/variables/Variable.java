@@ -1,5 +1,6 @@
 package by.it.daylidovich.FreeMathLab.variables;
 
+import by.it.daylidovich.FreeMathLab.InputOutput.ConsolePrinter;
 import by.it.daylidovich.FreeMathLab.interfaces.IOperation;
 
 import java.util.HashMap;
@@ -16,19 +17,19 @@ public abstract class Variable implements IOperation {
 
     @Override
     public Variable add(Variable variable) {
-        System.out.println("Сложение невозможно.");
+        ConsolePrinter.printToConsole("Сложение невозможно.");
         return null;
     }
 
     @Override
     public Variable sub(Variable variable) {
-        System.out.println("Вычитание невозможно.");
+        ConsolePrinter.printToConsole("Вычитание невозможно.");
         return null;
     }
 
     @Override
     public Variable mult(Variable variable) {
-        System.out.println("Умножение невозможно.");
+        ConsolePrinter.printToConsole("Умножение невозможно.");
         return null;
     }
 
@@ -40,10 +41,9 @@ public abstract class Variable implements IOperation {
     @Override
     public void save(String name) {
         if (base.containsKey(name))
-            System.out.println("Измените имя переменной.");
+            ConsolePrinter.printToConsole("Измените имя переменной.");
         else
             base.put(name, this);
-
     }
 
     public static void printVariables(){

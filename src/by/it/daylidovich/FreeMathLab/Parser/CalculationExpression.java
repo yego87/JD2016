@@ -1,8 +1,11 @@
-package by.it.daylidovich.FreeMathLab.Calculation;
+package by.it.daylidovich.FreeMathLab.Parser;
 
+import by.it.daylidovich.FreeMathLab.InputOutput.ConsolePrinter;
+import by.it.daylidovich.FreeMathLab.Logger.Logger;
 import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 import java.io.IOException;
+import java.util.Date;
 
 import static by.it.daylidovich.FreeMathLab.InputOutput.Reader.*;
 import static by.it.daylidovich.FreeMathLab.InputOutput.Reader.getVariable;
@@ -20,7 +23,8 @@ public class CalculationExpression {
                         return getVariable(firstTerm).add(getVariable(secondTerm));
                     }
                     catch (ArrayIndexOutOfBoundsException e){
-                        System.out.println(e.getMessage());
+                        Logger.writeLog(e.toString(), new Date(System.currentTimeMillis()));
+                        ConsolePrinter.printToConsole(e.getMessage());
                     }
                     break;
                 case "-":
@@ -28,7 +32,8 @@ public class CalculationExpression {
                         return getVariable(firstTerm).sub(getVariable(secondTerm));
                     }
                     catch (ArrayIndexOutOfBoundsException e){
-                        System.out.println(e.getMessage());
+                        Logger.writeLog(e.toString(), new Date(System.currentTimeMillis()));
+                        ConsolePrinter.printToConsole(e.getMessage());
                     }
                     break;
                 case "*":
@@ -36,7 +41,8 @@ public class CalculationExpression {
                         return getVariable(firstTerm).mult(getVariable(secondTerm));
                     }
                     catch (ArrayIndexOutOfBoundsException e){
-                        System.out.println(e.getMessage());
+                        Logger.writeLog(e.toString(), new Date(System.currentTimeMillis()));
+                        ConsolePrinter.printToConsole(e.getMessage());
                     }
                     break;
                 case "/":
@@ -44,16 +50,17 @@ public class CalculationExpression {
                        return getVariable(firstTerm).div(getVariable(secondTerm));
                     }
                     catch (ArithmeticException e){
-                        System.out.println(e.getMessage());
+                        Logger.writeLog(e.toString(), new Date(System.currentTimeMillis()));
+                        ConsolePrinter.printToConsole(e.getMessage());
                     }
                     break;
                 default:
-                    System.out.println("Некоректный ввод.");
+                    ConsolePrinter.printToConsole("Некорректный ввод.");
                     return null;
             }
         }
         else{
-            System.out.println("Некоректный ввод.");
+            ConsolePrinter.printToConsole("Некорректный ввод.");
         }
         return null;
     }
