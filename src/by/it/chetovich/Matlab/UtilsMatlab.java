@@ -19,12 +19,8 @@ public class UtilsMatlab {
     public static String[] convertLineToArray (String s, String regex)throws ArrayIndexOutOfBoundsException,NullPointerException{
 
         Pattern pat = Pattern.compile(regex); //разбиваем на 2 переменных и  заносим их в массив
-        String[] array = new String[0];
-        try {
-            array = pat.split(s);
-        } catch (NullPointerException e) {
-            System.out.println("Не получится посчитать выражение.");
-        }
+        String[] array = pat.split(s);
+
         for (int i = 0; i < array.length; i++) {
             array[i] = array[i].trim();
         }
