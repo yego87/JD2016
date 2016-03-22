@@ -1,5 +1,6 @@
 package by.it.daylidovich.FreeMathLab.Parser;
 
+import by.it.daylidovich.FreeMathLab.InputOutput.ConsolePrinter;
 import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 import java.io.IOException;
@@ -30,12 +31,12 @@ public class Parser {
         }
         if (flag)
             if (!expression.contains("(") && !expression.contains(")")){
-                System.out.println(expression);
+                ConsolePrinter.printToConsole(expression);
                 if (null != name)
                     getVariable(expression).save(name);
             }
             else
-                System.out.println("Некорректный ввод.");
+                ConsolePrinter.printToConsole("Некорректный ввод.");
     }
 
     //метод заменяет переменные в выражении на их значения

@@ -1,6 +1,8 @@
 package by.it.daylidovich.FreeMathLab.Logger;
 
 
+import by.it.daylidovich.FreeMathLab.InputOutput.ConsolePrinter;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,7 +35,7 @@ public class Logger {
             printer.println(logText);
             printer.close();
         } catch (IOException e) {
-            System.out.println("Ошибка записи LogFile.");
+            ConsolePrinter.printToConsole("Ошибка записи LogFile.");
         }
     }
 }

@@ -1,5 +1,6 @@
 package by.it.daylidovich.FreeMathLab;
 
+import by.it.daylidovich.FreeMathLab.InputOutput.ConsolePrinter;
 import by.it.daylidovich.FreeMathLab.Parser.Parser;
 import by.it.daylidovich.FreeMathLab.InputOutput.SaveReadVariables;
 import by.it.daylidovich.FreeMathLab.Logger.Logger;
@@ -27,7 +28,7 @@ public class Main {
                     break;
                 }
                 case "clear base":{
-                    System.out.println(SaveReadVariables.clearBase());
+                    ConsolePrinter.printToConsole(SaveReadVariables.clearBase());
                     break;
                 }
                 default:{
