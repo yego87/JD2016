@@ -29,7 +29,8 @@ public class Logger {
     public static void writeLog(String logText, Date date){
         try {
             PrintWriter printer = new PrintWriter(new FileWriter("src\\by\\it\\daylidovich\\FreeMathLab\\Logger\\Log.txt", true));
-            printer.println(date + "\n" + logText + "\n");
+            printer.println(date);
+            printer.println(logText);
             printer.close();
         } catch (IOException e) {
             System.out.println("Ошибка записи LogFile.");

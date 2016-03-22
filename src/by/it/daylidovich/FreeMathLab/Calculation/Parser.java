@@ -18,16 +18,24 @@ public class Parser {
             expression = stringInput;
         expression = "(" + replacementVariadles(expression) + ")";
         String brackets;
-        while (null != (brackets = readBrackets(expression))){
-            expression = expression.replace(brackets, CalculationExpression.calculationExpression(brackets).toString());
+        boolean flag = true;
+        while (null != (brackets = readBrackets(expression))) {
+            if (null != CalculationExpression.calculationExpression(brackets))
+                //noinspection ConstantConditions
+                expression = expression.replace(CalculationExpression.calculationExpression(brackets).toString(), brackets);
+            else{
+                flag = false;
+                break;
+            }
         }
-        if (!expression.contains("(") && !expression.contains(")")){
-            System.out.println(expression);
-            if (null != name)
-                getVariable(expression).save(name);
-        }
-        else
-            System.out.println("Некорректный ввод.");
+        if (flag)
+            if (!expression.contains("(") && !expression.contains(")")){
+                System.out.println(expression);
+                if (null != name)
+                    getVariable(expression).save(name);
+            }
+            else
+                System.out.println("Некорректный ввод.");
     }
 
     //метод заменяет переменные в выражении на их значения

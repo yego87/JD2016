@@ -37,6 +37,7 @@ public class Main {
                     }
                     catch (IOException e){
                         Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
+                        System.out.println(e.getMessage());
                     }
                 }
             }

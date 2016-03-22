@@ -23,6 +23,7 @@ public class CalculationExpression {
                     }
                     catch (ArrayIndexOutOfBoundsException e){
                         Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "-":
@@ -31,6 +32,7 @@ public class CalculationExpression {
                     }
                     catch (ArrayIndexOutOfBoundsException e){
                         Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "*":
@@ -39,6 +41,7 @@ public class CalculationExpression {
                     }
                     catch (ArrayIndexOutOfBoundsException e){
                         Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
+                        System.out.println(e.getMessage());
                     }
                     break;
                 case "/":
@@ -47,6 +50,7 @@ public class CalculationExpression {
                     }
                     catch (ArithmeticException e){
                         Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
+                        System.out.println(e.getMessage());
                     }
                     break;
                 default:
