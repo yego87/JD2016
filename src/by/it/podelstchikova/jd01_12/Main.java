@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
-import static by.it.podelstchikova.jd01.jd01_12.SortArray.*;
+import static by.it.podelstchikova.jd01_12.SortArray.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -56,8 +56,6 @@ public class Main {
         System.out.println(map);
         Map<String,String> mapSharpened = CreatMap.sharMap(map);
         System.out.println(mapSharpened);
-
-
 
     }
 }
