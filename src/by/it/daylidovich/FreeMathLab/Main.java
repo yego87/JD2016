@@ -2,15 +2,18 @@ package by.it.daylidovich.FreeMathLab;
 
 import by.it.daylidovich.FreeMathLab.Calculation.Parser;
 import by.it.daylidovich.FreeMathLab.InputOutput.SaveReadVariables;
+import by.it.daylidovich.FreeMathLab.Logger.Logger;
 import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 import java.io.IOException;
+import java.util.Date;
 
 import static by.it.daylidovich.FreeMathLab.InputOutput.Reader.readInput;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
         SaveReadVariables.readBase();
+        Logger.getInstanse();
         System.out.println("Введите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");
         String stringInput = readInput();
         while (stringInput.length() != 0){
@@ -29,7 +32,12 @@ public class Main {
                     break;
                 }
                 default:{
-                    Parser.processExpression(stringInput);
+                    try{
+                        Parser.processExpression(stringInput);
+                    }
+                    catch (IOException e){
+                        Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
+                    }
                 }
             }
             System.out.println("\nВведите выражение для рассчета или сохранения переменной.\n" + "Нажмите Enter для выхода.");

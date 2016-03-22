@@ -1,8 +1,10 @@
 package by.it.daylidovich.FreeMathLab.InputOutput;
 
+import by.it.daylidovich.FreeMathLab.Logger.Logger;
 import by.it.daylidovich.FreeMathLab.variables.Variable;
 
 import java.io.*;
+import java.util.Date;
 import java.util.Map;
 
 import static by.it.daylidovich.FreeMathLab.variables.Variable.getBase;
@@ -17,7 +19,7 @@ public class SaveReadVariables {
             }
             printer.close();
         } catch (IOException e) {
-            System.out.println("Ошибка записи.");
+            Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
         }
     }
 
@@ -32,9 +34,9 @@ public class SaveReadVariables {
             }
             reader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден.");
+            Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
         } catch (IOException e) {
-            System.out.println("Ошибка чтения.");
+            Logger.writeLog(e.getMessage(), new Date(System.currentTimeMillis()));
         }
     }
 
