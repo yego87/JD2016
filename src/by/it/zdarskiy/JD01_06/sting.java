@@ -39,7 +39,7 @@ public class sting {
                 "Под ним сидел, и кот учёный\n" +
                 "Свои мне сказки говорил.");
 
-        Letter.main(s);
+        //Letter.main(s);
         ReapitWords.main(s);
        ChangeSumbols.main(s);
 
