@@ -23,7 +23,7 @@ public class Parser {
         while (null != (brackets = readBrackets(expression))) {
             if (null != CalculationExpression.calculationExpression(brackets))
                 //noinspection ConstantConditions
-                expression = expression.replace(CalculationExpression.calculationExpression(brackets).toString(), brackets);
+                expression = expression.replace(brackets, CalculationExpression.calculationExpression(brackets).toString());
             else{
                 flag = false;
                 break;
