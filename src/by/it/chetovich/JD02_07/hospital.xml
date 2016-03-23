@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE hospital [
+        <!ELEMENT hospital (diagnoses, prescribings)+>
+        <!ELEMENT diagnoses (diagnosis)+>
+        <!ELEMENT diagnosis (nameD,drugs,recoveryTime)>
+        <!ATTLIST diagnosis
+                id ID #REQUIRED
+                >
+        <!ELEMENT nameD (#PCDATA)>
+        <!ELEMENT drugs (drug)+>
+        <!ELEMENT drug (name,dosage)>
+        <!ELEMENT dosage (#PCDATA)>
+        <!ELEMENT recoveryTime (#PCDATA)>
+        <!ELEMENT name (#PCDATA)>
+
+        <!ELEMENT prescribings (prescribing)+>
+        <!ELEMENT prescribing (type,price)>
+        <!ATTLIST prescribing
+                id ID #REQUIRED
+                executor CDATA #IMPLIED
+                >
+        <!ELEMENT type (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>
+
+        ]>
+
+<hospital>
+        <diagnoses>
+    <diagnosis id="Flu">
+        <nameD>influenza</nameD>
+        <drugs>
+            <drug>
+                <name>paracetamol</name>
+                <dosage>1pill3times</dosage>
+            </drug>
+            <drug>
+                <name>arpetol</name>
+                <dosage>2pills3times</dosage>
+            </drug>
+        </drugs>
+        <recoveryTime>7</recoveryTime>
+    </diagnosis>
+
+    <diagnosis id="angina">
+        <nameD>angina</nameD>
+        <drugs>
+            <drug>
+                <name>tonsilgon</name>
+                <dosage>2pill3times</dosage>
+            </drug>
+            <drug>
+                <name>ingalipt</name>
+                <dosage>1spray3times</dosage>
+            </drug>
+        </drugs>
+        <recoveryTime>5</recoveryTime>
+    </diagnosis>
+        </diagnoses>
+
+    <prescribings>
+        <prescribing id="massage" executor="employee">
+            <type>physiotherapy</type>
+            <price>100</price>
+        </prescribing>
+
+        <prescribing id="quartz" executor="employee">
+            <type>physiotherapy</type>
+            <price>50</price>
+        </prescribing>
+
+        <prescribing id="injection" executor="patient">
+            <type>medication</type>
+            <price>80</price>
+        </prescribing>
+
+    </prescribings>
+</hospital>
