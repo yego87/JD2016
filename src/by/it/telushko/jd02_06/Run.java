@@ -18,8 +18,8 @@ public class Run {
             }
         }
         catch (ArrayIndexOutOfBoundsException e){
-            System.out.println("Слишком много элементов: "+e);
-            log.getInstance().entry("Слишком много элементов: "+e);
+            System.out.println(e+": Слишком много элементов");
+            log.getInstance().entry(e+": Слишком много элементов");
         }
         log.getInstance().close();
     }
