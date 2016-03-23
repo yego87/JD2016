@@ -25,17 +25,16 @@ public class Log {
                 if(localInstance==null){
                     instance=localInstance=new Log();
                 }
-                else System.out.println("Лог уже создан!");
+                else System.out.println("Лог уже создан.");
             }
         }
-        else System.out.println("Лог уже создан!");
+        else System.out.println("Лог уже создан.");
         return localInstance;
     }
     public void entry(String error){
 
             //печать в файл
                     this.printer.println(error);
-
     }
-    public void close(){this.printer.close();System.out.println("Работа закончена");}
+    public void close(){this.printer.close();System.out.println("Работа закончена.");}
 }

@@ -1,0 +1,2 @@
+Деление на ноль: java.lang.ArithmeticException: / by zero
+Слишком много элементов: java.lang.ArrayIndexOutOfBoundsException: 3

@@ -6,7 +6,10 @@ public class Run {
         Log log2 =new Log().getInstance();
 
         try {int b = 1 / 0;}
-        catch (ArithmeticException e){System.out.println("Деление на  ноль");}
+        catch (ArithmeticException e){
+            System.out.println("Деление на  ноль: "+e);
+            log.getInstance().entry("Деление на ноль: "+e);
+        }
 
         try{
             int[] array = new int[3];
@@ -14,7 +17,10 @@ public class Run {
                 array[i]=1;
             }
         }
-        catch (ArrayIndexOutOfBoundsException e){System.out.println("Слишком много элементов");}
+        catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Слишком много элементов: "+e);
+            log.getInstance().entry("Слишком много элементов: "+e);
+        }
         log.getInstance().close();
     }
 }
