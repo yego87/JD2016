@@ -1,7 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE project [
+        <!ELEMENT project (rooms,applications)>
+        <!ELEMENT rooms (room)+>
+        <!ELEMENT room (people_quantity,bed_size,seaview,floor,price,air_conditioner)>
+        <!ATTLIST room
+            number ID #REQUIRED
+            >
+        <!ELEMENT people_quantity (#PCDATA)>
+        <!ELEMENT bed_size (first_Bed_size,second_Bed_size)>
+        <!ELEMENT seaview (#PCDATA)>
+        <!ELEMENT floor (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>
+        <!ELEMENT air_conditioner (#PCDATA)>
+        <!ELEMENT first_Bed_size (#PCDATA)>
+        <!ELEMENT second_Bed_size (#PCDATA)>
+
+        <!ELEMENT applications (application)+>
+        <!ELEMENT application (surname, name, quest_quantity,telefon, mail,extrarequirement)>
+        <!ATTLIST application
+            number ID #REQUIRED
+            login CDATA #REQUIRED
+            >
+
+        <!ELEMENT surname (#PCDATA)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT quest_quantity (#PCDATA)>
+        <!ELEMENT telefon (#PCDATA)>
+        <!ELEMENT mail (#PCDATA)>
+        <!ELEMENT extrarequirement (#PCDATA)>
+    ]>
     <project>
         <rooms>
-        <room number="1">
+        <room number="R1">
             <people_quantity>3</people_quantity>
             <bed_size>
                 <first_Bed_size>king</first_Bed_size>
@@ -13,7 +43,7 @@
             <air_conditioner>yes</air_conditioner>
         </room>
 
-        <room number="2">
+        <room number="R2">
             <people_quantity>4</people_quantity>
             <bed_size>
                 <first_Bed_size>queen</first_Bed_size>
@@ -23,16 +53,47 @@
             <floor>2</floor>
             <price>130</price>
             <air_conditioner>yes</air_conditioner>
+        </room>
+            <room number="R3">
+                <people_quantity>1</people_quantity>
+                <bed_size>
+                    <first_Bed_size>twin</first_Bed_size>
+                    <second_Bed_size>none</second_Bed_size>
+                </bed_size>
+                <seaview>no</seaview>
+                <floor>1</floor>
+                <price>80</price>
+                <air_conditioner>yes</air_conditioner>
             </room>
+
         </rooms>
 
         <applications>
-            <application number="1" login="34name">
+            <application number="A001" login="34name">
                 <surname>Losev</surname>
                 <name>Vadim</name>
                 <quest_quantity>4</quest_quantity>
                 <telefon>23456356</telefon>
-                <mail>dsbdibsd&amp;dkskd.sd</mail>
+                <mail>los&amp;tut.by</mail>
+                <extrarequirement>seaview</extrarequirement>
+            </application>
+
+            <application number="A002" login="klava">
+                <surname>Tsyper</surname>
+                <name>Klaudia</name>
+                <quest_quantity>2</quest_quantity>
+                <telefon>56835475</telefon>
+                <mail>klav_tsyper&amp;mail.ru</mail>
+                <extrarequirement>air conditioner</extrarequirement>
+            </application>
+
+            <application number="A003" login="chydik">
+                <surname>Chydov</surname>
+                <name>Mikhail</name>
+                <quest_quantity>1</quest_quantity>
+                <telefon>56835475</telefon>
+                <mail>klav_tsyper&amp;mail.ru</mail>
+                <extrarequirement>1 floor</extrarequirement>
             </application>
         </applications>
     </project>
