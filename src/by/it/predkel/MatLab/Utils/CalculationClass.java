@@ -28,6 +28,7 @@ public class CalculationClass {
         if (expression[1].trim().equals("=")) {//проверка на наличие присваивания
             if (expression.length == 3) { //если обычное присваивание
                 assignment.put(exp[0].toString().trim(), InputExpression.findExpression(exp[2].toString()));
+                return new String("Присваивание выполнено");
             } else if (exp.length > 3) {
                 checkMap(2);
                 if ((exp[2] != null) & (exp[3] != null) & (exp[4] != null)) {

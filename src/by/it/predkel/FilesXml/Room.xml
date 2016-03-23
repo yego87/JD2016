@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rooms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.it-academy.by/xml/students"
+          xsi:schemaLocation="http://www.it-academy.by/xml/students">
+    <room>
+        <position>1</position>
+        <name>Зал учебно-тренировочных занятий по теннису на 3 корта</name>
+        <square>2179.0</square>
+        <height>1111</height>
+        <perimeter>1111</perimeter>
+        <volume>20694.7</volume>
+        <squareOfConstruction>1111</squareOfConstruction>
+        <aperture>
+            <typeOfAperture>дверь (ось С; 5-6)</typeOfAperture>
+            <width>1.60</width>
+            <height>2.10</height>
+            <count>1</count>
+            <squareOfAperture>3.36</squareOfAperture>
+        </aperture>
+        <aperture>
+            <typeOfAperture>окна трапециевидные (по приведенной высоте)</typeOfAperture>
+            <width>2.60</width>
+            <height>7.42</height>
+            <count>2</count>
+            <squareOfAperture>19.292</squareOfAperture>
+        </aperture>
+    </room>
+</rooms>
