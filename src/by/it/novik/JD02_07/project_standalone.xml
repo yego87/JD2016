@@ -1,0 +1,41 @@
+<?xml version = "1.0" encoding = "UTF-8" standalone = "yes"?>
+<!DOCTYPE flights [
+        <!ELEMENT flights (flight)+>
+        <!ELEMENT flight (aircrew)>
+        <!ATTLIST flight
+                ID CDATA #REQUIRED
+                >
+        <!ELEMENT aircrew (crewman)+>
+        <!ELEMENT crewman (name,surname,qualification,experience)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT surname (#PCDATA)>
+        <!ELEMENT qualification (#PCDATA)>
+        <!ELEMENT experience (#PCDATA)>
+        ]>
+<flights>
+    <flight ID = "MS100">
+        <aircrew>
+            <crewman>
+                <name>Victor</name>
+                <surname>Ivanov</surname>
+                <qualification>pilot</qualification>
+                <experience>15</experience>
+            </crewman>
+
+            <crewman>
+                <name>Olga</name>
+                <surname>Petrova</surname>
+                <qualification>stewardess</qualification>
+                <experience>4</experience>
+            </crewman>
+
+            <crewman>
+                <name>Denis</name>
+                <surname>Ogurtcov</surname>
+                <qualification>flight operator</qualification>
+                <experience>3</experience>
+            </crewman>
+        </aircrew>
+    </flight>
+
+</flights>

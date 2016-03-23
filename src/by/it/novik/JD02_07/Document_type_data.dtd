@@ -1,0 +1,12 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!ELEMENT flights (flight)+>
+        <!ELEMENT flight (aircrew)>
+        <!ATTLIST flight
+                ID CDATA #REQUIRED
+                >
+        <!ELEMENT aircrew (crewman)+>
+        <!ELEMENT crewman (name,surname,qualification,experience)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT surname (#PCDATA)>
+        <!ELEMENT qualification (#PCDATA)>
+        <!ELEMENT experience (#PCDATA)>
