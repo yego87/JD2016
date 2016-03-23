@@ -12,7 +12,7 @@ public class Recursion {
     static Pattern anyBracket=Pattern.compile("[(].*[)]");
 
     public static void preparationForRerecurs(StringBuilder str) throws IOException {
-            realRecurs(str);
+            //realRecurs(str);
         System.out.println(str);
     }
     public static StringBuilder realRecurs(StringBuilder str) throws IOException {
