@@ -1,19 +1,15 @@
 package by.it.Baranova.JD01_09_MathLab;
 
 
+import by.it.Baranova.JD01_09_MathLab.Builder.*;
 import by.it.Baranova.JD01_09_MathLab.vars.VarImpl;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 
 public class Runner {
 
-    //попробовать добавить true /false чтоб не распечатывалось
     public static void one(VarImpl v,boolean print) {
         if (v != null&&print) System.out.println(v);
     }
@@ -42,8 +38,10 @@ public class Runner {
         treeMap.put(str,var);
     }
 
-    public static void main(String[] args) throws IOException {
 
+
+    public static void main(String[] args) throws IOException {
+        Date startTime=new Date(System.currentTimeMillis());
         Runner.setHashMap();
         Runner.setTreeMap();
         Log log=Log.getInstance();
@@ -52,7 +50,7 @@ public class Runner {
 
         while (rLine.trim().length() != 0) {
             try {
-                MakeAnOperation.makeAnOpetation(rLine,true);
+                MakeAnOperation.makeAnOpetation(rLine,true,true);
             }
             catch (Exception e) {
                 System.err.println("Введено некорректное выражение");
@@ -63,6 +61,19 @@ public class Runner {
         }
 
         BaseUse.saveVariable(hashMap);
+        Date endTime=new Date(System.currentTimeMillis());
+        Queue<String> operations=QueueForBuilder.getOperations();
+        String s="Отчет о действиях в MathLab";
+        Director director=new Director();
+        ReportBuilder actionsReportBuilder=new ActionsReportBuilder();
+        /*actionsReportBuilder.buildName(s);
+        actionsReportBuilder.buildStartTime(startTime);
+        actionsReportBuilder.buildEndTime(endTime);
+        actionsReportBuilder.buildOperationsQueue(operations);*/
+        director.setReportBuilder(actionsReportBuilder);
+        director.constructReport(s,startTime,operations,endTime);
+        Report report=director.getReport();
+        report.writeReportToFile();
     }
 
 }
