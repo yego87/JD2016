@@ -50,3 +50,56 @@
                      maxOccurs="1"/>
         </sequence>
     </complexType>
+
+    <complexType name="Drugs">
+        <sequence>
+            <element name="name"
+                     type="string"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+            <element name="dosage"
+                     type="tns:Dosage"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="Dosage">
+        <restriction base="string">
+            <pattern value="[1-9]+[a-z]+[1-9]times"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="Prescribings">
+        <sequence>
+            <element name="prescribing"
+                     type="tns:Prescribing"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="id" type="tns:ID" use="required" />
+        <attribute name="executor" use="optional" default="patient">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="patient"/>
+                    <enumeration value="employee"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+
+    <complexType name="Prescribing">
+        <sequence>
+            <element name="type">
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="physiotherapy"/>
+                            <enumeration value="medication"/>
+                            <enumeration value="psychotherapy"/>
+                        </restriction>
+                    </simpleType>
+            </element>
+            <element name="price" type="integer"/>
+        </sequence>
+    </complexType>
+    </schema>
