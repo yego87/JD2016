@@ -1,23 +1,32 @@
 package by.it.Baranova.JD01_09_MathLab;
 
+import by.it.Baranova.JD01_09_MathLab.Builder.QueueForBuilder;
 import by.it.Baranova.JD01_09_MathLab.vars.VarImpl;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MakeAnOperation {
+    public static int numberOfoperation=1;
 
-    public static VarImpl makeAnOpetation(String rLine,boolean print) throws IOException {
+    public static VarImpl makeAnOpetation(String rLine,boolean print,boolean mainoperation) throws IOException {
         //Преобразование переменных в переменные типа VarImpl
+        Map<String,String> operations=new HashMap<>();
         VarImpl v = null;
         switch (rLine) {
             case "printvar": {
                 Print.printvar(Runner.getHashMap());
+                QueueForBuilder.addOperation(ToString.toStringOperation(numberOfoperation,rLine));
+                MakeAnOperation.numberOfoperation++;
                 break;
             }
 
             case "sortvar": {
                 Print.sortvar(Runner.getTreeMap());
+                QueueForBuilder.addOperation(ToString.toStringOperation(numberOfoperation,rLine));
+                MakeAnOperation.numberOfoperation++;
                 break;
             }
 
@@ -29,24 +38,40 @@ public class MakeAnOperation {
                         VarImpl a = DefineType.Define(operands[0]);
                         VarImpl b = DefineType.Define(operands[1]);
                         Runner.one(v=a.add(b),print);
+                        if (mainoperation) {
+                            QueueForBuilder.addOperation(ToString.toStringOperation(numberOfoperation, rLine, v));
+                            MakeAnOperation.numberOfoperation++;
+                        }
                         break;
                     }
                     case "-": {
                         VarImpl a = DefineType.Define(operands[0]);
                         VarImpl b = DefineType.Define(operands[1]);
                         Runner.one(v=a.sub(b),print);
+                        if (mainoperation) {
+                            QueueForBuilder.addOperation(ToString.toStringOperation(numberOfoperation, rLine, v));
+                            MakeAnOperation.numberOfoperation++;
+                        }
                         break;
                     }
                     case "/": {
                         VarImpl a = DefineType.Define(operands[0]);
                         VarImpl b = DefineType.Define(operands[1]);
                         Runner.one(v=a.div(b),print);
+                        if (mainoperation) {
+                            QueueForBuilder.addOperation(ToString.toStringOperation(numberOfoperation, rLine, v));
+                            MakeAnOperation.numberOfoperation++;
+                        }
                         break;
                     }
                     case "*": {
                         VarImpl a = DefineType.Define(operands[0]);
                         VarImpl b = DefineType.Define(operands[1]);
                         Runner.one(v=a.mul(b),print);
+                        if (mainoperation) {
+                            QueueForBuilder.addOperation(ToString.toStringOperation(numberOfoperation, rLine, v));
+                            MakeAnOperation.numberOfoperation++;
+                        }
                         break;
                     }
                     case "=": {
@@ -57,6 +82,14 @@ public class MakeAnOperation {
                         VarImpl b = DefineType.Define(operands[1]);
                         Runner.putElement(operands[0], b);
                         Runner.putElementTree(operands[0], b);
+                        if (!toResolve) {
+                            QueueForBuilder.addOperation(ToString.toStringOperation(numberOfoperation, rLine));
+                            MakeAnOperation.numberOfoperation++;
+                        }
+                        if (toResolve){
+                            QueueForBuilder.addOperation(ToString.toStringOperation(numberOfoperation,rLine,b));
+                            MakeAnOperation.numberOfoperation++;
+                        }
                         break;
                     }
                 }

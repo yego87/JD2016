@@ -26,7 +26,8 @@ public class Log {
 
         String src = System.getProperty("user.dir") + "/src/by/it/Baranova/";
         String filename = src + "JD01_09_MathLab/Log.txt";
-        File f = new File(filename);PrintWriter pw = null;
+        File f = new File(filename);
+        PrintWriter pw = null;
         Date today = new Date(System.currentTimeMillis());
         synchronized (Log.class) {
             try {
