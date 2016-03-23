@@ -33,7 +33,7 @@ public class CalculationClass {
                 if ((exp[2] != null) & (exp[3] != null) & (exp[4] != null)) {
                     Var my = myOperation(exp[2], exp[3], exp[4]);
                     assignment.put(exp[0].toString().trim(), my);
-                    one(my);
+                   // one(my);
                     return my.toString();
                 } else System.out.print("Некорректные данные");
             }
@@ -41,7 +41,7 @@ public class CalculationClass {
             if ((exp[0] != null) & (exp[1] != null) & (exp[2] != null)) {
                 checkMap(0);
                 Var my = myOperation(exp[0], exp[1], exp[2]);
-                one(my);
+                //one(my);
                 return my.toString();
             }
         }
