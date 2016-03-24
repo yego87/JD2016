@@ -1,0 +1,18 @@
+Деление на ноль: java.lang.ArithmeticException: / by zero
+Слишком много элементов: java.lang.ArrayIndexOutOfBoundsException: 3
+Деление на ноль: java.lang.ArithmeticException: / by zero
+Слишком много элементов: java.lang.ArrayIndexOutOfBoundsException: 3
+23 марта 2016 г.Деление на ноль: java.lang.ArithmeticException: / by zero
+23 марта 2016 г.Слишком много элементов: java.lang.ArrayIndexOutOfBoundsException: 3
+23 марта 2016 г. Деление на ноль: java.lang.ArithmeticException: / by zero
+23 марта 2016 г. Слишком много элементов: java.lang.ArrayIndexOutOfBoundsException: 3
+23.03.16 Деление на ноль: java.lang.ArithmeticException: / by zero
+23.03.16 Слишком много элементов: java.lang.ArrayIndexOutOfBoundsException: 3
+Wed Mar 23 05:28:34 BRT 2016 Деление на ноль: java.lang.ArithmeticException: / by zero
+Wed Mar 23 05:28:34 BRT 2016 Слишком много элементов: java.lang.ArrayIndexOutOfBoundsException: 3
+Wed Mar 23 05:29:46 BRT 2016 Деление на ноль: java.lang.ArithmeticException: / by zero
+Wed Mar 23 05:29:46 BRT 2016 Слишком много элементов: java.lang.ArrayIndexOutOfBoundsException: 3
+Wed Mar 23 05:31:12 BRT 2016 Деление на ноль: java.lang.ArithmeticException: / by zero
+Wed Mar 23 05:31:12 BRT 2016 java.lang.ArrayIndexOutOfBoundsException: 3: Слишком много элементов
+Wed Mar 23 05:35:36 BRT 2016 Деление на ноль: java.lang.ArithmeticException: / by zero
+Wed Mar 23 05:35:36 BRT 2016 java.lang.ArrayIndexOutOfBoundsException: 3: Слишком много элементов
