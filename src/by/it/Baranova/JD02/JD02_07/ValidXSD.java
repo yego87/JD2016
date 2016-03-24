@@ -14,16 +14,13 @@ import java.io.IOException;
 public class ValidXSD {
     public static void main(String[] args){
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String fileName =   "src/by/it/Baranova/JD02/JD02_07/04+XSD.xml";
-        String schemaName = "src/by/it/Baranova/JD02_07/04.xsd";
+        String fileName =   "src/by/it/Baranova/JD02/JD02_07/Project+xsd.xml";
+        String schemaName = "src/by/it/Baranova/JD02/JD02_07/Project.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
-            // создание схемы
             Schema schema = factory.newSchema(schemaLocation);
-            // создание валидатора на основе схемы
             Validator validator = schema.newValidator();
-            // проверка документа
             Source source = new StreamSource(fileName);
             validator.validate(source);
             System.out.println(fileName + " валиден.");

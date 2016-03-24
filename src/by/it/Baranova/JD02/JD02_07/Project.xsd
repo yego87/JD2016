@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.it-academy.by/xml/project"
-        xmlns:tns="http://www.it-academy.by/xml/project"
+        targetNamespace="http://www.it-academy.by/xml/Project+xsd"
+        xmlns:tns="http://www.it-academy.by/xml/Project+xsd"
         elementFormDefault="qualified">
-    <element name="rooms">
+    <element name="project">
         <complexType>
+            <sequence>
+                <element name="rooms"
+                         type="tns:Rooms"
+                         minOccurs="1"
+                         maxOccurs="1"/>
+                <element name="applications"
+                         type="tns:Applications"
+                         minOccurs="1"
+                         maxOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Rooms">
             <sequence>
                 <element name="room"
                          type="tns:Room"
                          minOccurs="2"
                          maxOccurs="unbounded"/>
             </sequence>
-        </complexType>
-    </element>
+    </complexType>
     <complexType name="Room">
         <sequence>
             <element name="people_quantity" type="positiveInteger"/>
@@ -32,7 +45,7 @@
     </complexType>
     <simpleType name="Number">
         <restriction base="ID">
-            <pattern value="R[1-9]+"/>
+            <pattern value="R[0-9]+"/>
         </restriction>
     </simpleType>
     <simpleType name="First_Bed_size">
@@ -49,19 +62,19 @@
             <enumeration value="double"/>
             <enumeration value="queen"/>
             <enumeration value="king"/>
+            <enumeration value="none"/>
         </restriction>
     </simpleType>
 
-    <element name="applications">
-        <complexType>
-            <sequence>
-                <element name="application"
-                         type="tns:Application"
-                         minOccurs="1"
-                         maxOccurs="unbounded"/>
+    <complexType name="Applications">
+        <sequence>
+            <element name="application"
+                     type="tns:Application"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
             </sequence>
-        </complexType>
-    </element>
+    </complexType>
+
     <complexType name="Application">
         <sequence>
             <element name="surname" type="string"/>
@@ -71,11 +84,17 @@
             <element name="mail" type="string"/>
             <element name="extrarequirement" type="string"/>
         </sequence>
+        <attribute name="number_application" type="tns:Number_application" use="required"/>
+        <attribute name="login" type="tns:Login" use="required"/>
     </complexType>
-
-
-
-
-
-
+    <simpleType name="Number_application">
+        <restriction base="ID">
+            <pattern value="A[0-9]{3}"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="Login">
+        <restriction base="string">
+            <pattern value="[a-zA-z0-9]+"/>
+        </restriction>
+    </simpleType>
 </schema>

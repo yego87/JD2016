@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+    <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.it-academy.by/xml/Project+xsd"
+             xsi:schemaLocation="http://www.it-academy.by/xml/Project+xsd">
+        <rooms>
+        <room number="R1">
+            <people_quantity>3</people_quantity>
+            <bed_size>
+                <first_Bed_size>king</first_Bed_size>
+                <second_Bed_size>twin</second_Bed_size>
+            </bed_size>
+            <seaview>true</seaview>
+            <floor>1</floor>
+            <price>100</price>
+            <air_conditioner>true</air_conditioner>
+        </room>
+
+        <room number="R2">
+            <people_quantity>4</people_quantity>
+            <bed_size>
+                <first_Bed_size>queen</first_Bed_size>
+                <second_Bed_size>queen</second_Bed_size>
+            </bed_size>
+            <seaview>true</seaview>
+            <floor>2</floor>
+            <price>130</price>
+            <air_conditioner>true</air_conditioner>
+        </room>
+            <room number="R3">
+                <people_quantity>1</people_quantity>
+                <bed_size>
+                    <first_Bed_size>twin</first_Bed_size>
+                    <second_Bed_size>none</second_Bed_size>
+                </bed_size>
+                <seaview>false</seaview>
+                <floor>1</floor>
+                <price>80</price>
+                <air_conditioner>true</air_conditioner>
+            </room>
+
+        </rooms>
+
+        <applications>
+            <application number_application="A001" login="34name">
+                <surname>Losev</surname>
+                <name>Vadim</name>
+                <quest_quantity>4</quest_quantity>
+                <phone_number>23456356</phone_number>
+                <mail>los&amp;tut.by</mail>
+                <extrarequirement>seaview</extrarequirement>
+            </application>
+
+            <application number_application="A002" login="klava">
+                <surname>Tsyper</surname>
+                <name>Klaudia</name>
+                <quest_quantity>2</quest_quantity>
+                <phone_number>56835475</phone_number>
+                <mail>klav_tsyper&amp;mail.ru</mail>
+                <extrarequirement>air conditioner</extrarequirement>
+            </application>
+
+            <application number_application="A003" login="chydik">
+                <surname>Chydov</surname>
+                <name>Mikhail</name>
+                <quest_quantity>1</quest_quantity>
+                <phone_number>56835475</phone_number>
+                <mail>klav_tsyper&amp;mail.ru</mail>
+                <extrarequirement>1 floor</extrarequirement>
+            </application>
+        </applications>
+    </project>
+
+
