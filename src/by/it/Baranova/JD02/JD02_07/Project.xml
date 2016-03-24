@@ -16,7 +16,7 @@
         <!ELEMENT second_Bed_size (#PCDATA)>
 
         <!ELEMENT applications (application)+>
-        <!ELEMENT application (surname, name, quest_quantity,telefon, mail,extrarequirement)>
+        <!ELEMENT application (surname, name, quest_quantity,phone_number, mail,extrarequirement)>
         <!ATTLIST application
             number ID #REQUIRED
             login CDATA #REQUIRED
@@ -25,7 +25,7 @@
         <!ELEMENT surname (#PCDATA)>
         <!ELEMENT name (#PCDATA)>
         <!ELEMENT quest_quantity (#PCDATA)>
-        <!ELEMENT telefon (#PCDATA)>
+        <!ELEMENT phone_number (#PCDATA)>
         <!ELEMENT mail (#PCDATA)>
         <!ELEMENT extrarequirement (#PCDATA)>
     ]>
@@ -73,7 +73,7 @@
                 <surname>Losev</surname>
                 <name>Vadim</name>
                 <quest_quantity>4</quest_quantity>
-                <telefon>23456356</telefon>
+                <phone_number>23456356</phone_number>
                 <mail>los&amp;tut.by</mail>
                 <extrarequirement>seaview</extrarequirement>
             </application>
@@ -82,7 +82,7 @@
                 <surname>Tsyper</surname>
                 <name>Klaudia</name>
                 <quest_quantity>2</quest_quantity>
-                <telefon>56835475</telefon>
+                <phone_number>56835475</phone_number>
                 <mail>klav_tsyper&amp;mail.ru</mail>
                 <extrarequirement>air conditioner</extrarequirement>
             </application>
@@ -91,7 +91,7 @@
                 <surname>Chydov</surname>
                 <name>Mikhail</name>
                 <quest_quantity>1</quest_quantity>
-                <telefon>56835475</telefon>
+                <phone_number>56835475</phone_number>
                 <mail>klav_tsyper&amp;mail.ru</mail>
                 <extrarequirement>1 floor</extrarequirement>
             </application>
