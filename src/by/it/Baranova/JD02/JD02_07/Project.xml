@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <project>
+        <rooms>
+        <room number="1">
+            <people_quantity>3</people_quantity>
+            <bed_size>
+                <first_Bed_size>king</first_Bed_size>
+                <second_Bed_size>twin</second_Bed_size>
+            </bed_size>
+            <seaview>yes</seaview>
+            <floor>1</floor>
+            <price>100</price>
+            <air_conditioner>yes</air_conditioner>
+        </room>
+
+        <room number="2">
+            <people_quantity>4</people_quantity>
+            <bed_size>
+                <first_Bed_size>queen</first_Bed_size>
+                <second_Bed_size>queen</second_Bed_size>
+            </bed_size>
+            <seaview>yes</seaview>
+            <floor>2</floor>
+            <price>130</price>
+            <air_conditioner>yes</air_conditioner>
+            </room>
+        </rooms>
+
+        <applications>
+            <application number="1" login="34name">
+                <surname>Losev</surname>
+                <name>Vadim</name>
+                <quest_quantity>4</quest_quantity>
+                <telefon>23456356</telefon>
+                <mail>dsbdibsd&amp;dkskd.sd</mail>
+            </application>
+        </applications>
+    </project>
+
+

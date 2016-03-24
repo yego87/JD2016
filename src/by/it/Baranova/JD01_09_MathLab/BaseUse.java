@@ -7,12 +7,11 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Ekaterina on 3/8/16.
- */
+
 public class BaseUse {
 
     public static void saveVariable(Map<String,VarImpl> hashMap) throws IOException{
+        Log log=Log.getInstance();
         String src= System.getProperty("user.dir")+"/src/by/it/Baranova/";
         String filename=src+"JD01_09_MathLab/Variables.txt";
         File f=new File(filename);
@@ -24,6 +23,8 @@ public class BaseUse {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файла нет:" + filename);
+            log.saveLog("Файл не найден");
+
         } finally {
             if (wr != null) {
                 wr.close();
@@ -33,6 +34,7 @@ public class BaseUse {
     }
 
     public  static Map<String,VarImpl> restoreBase()throws IOException{
+        Log log=Log.getInstance();
         String src= System.getProperty("user.dir")+"/src/by/it/Baranova/";
         String filename=src+"JD01_09_MathLab/Variables.txt";
         File f=new File(filename);
@@ -52,12 +54,12 @@ public class BaseUse {
             }
         }catch (IOException e){
             System.out.println("Ошибка файла: "+e);
+            log.saveLog("Файл не найден");
         } finally {
             if (fr!=null){
                 fr.close();
             }
         }
-
         return hashMap;
     }
 }

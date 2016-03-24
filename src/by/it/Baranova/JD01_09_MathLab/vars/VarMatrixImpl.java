@@ -3,6 +3,7 @@ package by.it.Baranova.JD01_09_MathLab.vars;
 import by.it.Baranova.JD01_09_MathLab.Exceptions.DifferentSizesException;
 import by.it.Baranova.JD01_09_MathLab.Int.ICalculations;
 import by.it.Baranova.JD01_09_MathLab.Int.IVariable;
+import by.it.Baranova.JD01_09_MathLab.Log;
 import by.it.Baranova.JD01_09_MathLab.Patterns;
 
 import java.util.regex.Matcher;
@@ -49,6 +50,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
      */
     @Override
     public VarImpl add(VarImpl var) {
+        Log log=Log.getInstance();
         //Второй операнд - скалярная величина
         if (var instanceof VarFloatImpl){
             VarMatrixImpl v1=new VarMatrixImpl(this);
@@ -78,6 +80,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
             }
         }catch (DifferentSizesException e){
             System.out.println("Матрицы имеют размер, не подходящую для сложения");
+            log.saveLog("Введены матрицы с размерами,не подходящими для сложения");
         }
         return super.add(var);
     }
@@ -90,6 +93,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
      */
     @Override
     public VarImpl sub(VarImpl var) {
+        Log log=Log.getInstance();
         //второй операнд - матрица
         try {
             if (var instanceof VarMatrixImpl &&((VarMatrixImpl) var).matrix.length != this.matrix.length&&
@@ -107,7 +111,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
                 return v1;
             }
         } catch (DifferentSizesException e){
-
+            log.saveLog("Введены матрицы с размерами,не подходящими для вычитания");
         }
         return super.sub(var);
     }
@@ -120,6 +124,7 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
      */
     @Override
     public VarImpl mul(VarImpl var) {
+        Log log=Log.getInstance();
         //Второй операнд - скалярная величина
         if (var  instanceof VarFloatImpl){
             VarMatrixImpl v1 = new VarMatrixImpl(this);
@@ -148,10 +153,10 @@ public class VarMatrixImpl extends VarImpl implements ICalculations,IVariable {
                         }
                     }
                 }
-                VarMatrixImpl result = new VarMatrixImpl(z);
-                return result;
+                return new VarMatrixImpl(z);
             }
         } catch (DifferentSizesException e){
+            log.saveLog("Введены матрицы с размерами,не подходящими для умножения");
 
         }
         //Второй операнд - вектор

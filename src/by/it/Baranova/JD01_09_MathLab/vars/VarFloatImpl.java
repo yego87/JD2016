@@ -3,10 +3,10 @@ package by.it.Baranova.JD01_09_MathLab.vars;
 import by.it.Baranova.JD01_09_MathLab.Exceptions.ZeroDivisionException;
 import by.it.Baranova.JD01_09_MathLab.Int.ICalculations;
 import by.it.Baranova.JD01_09_MathLab.Int.IVariable;
+import by.it.Baranova.JD01_09_MathLab.Log;
 
-/**
- * Created by Ekaterina on 2/22/16.
- */
+
+
 public class VarFloatImpl extends VarImpl implements ICalculations,IVariable {
     private double value;
     //Конструкторы
@@ -44,12 +44,13 @@ public class VarFloatImpl extends VarImpl implements ICalculations,IVariable {
 
     @Override //Деление
     public VarImpl div(VarImpl var) {
+        Log log=Log.getInstance();
         try {
             if (((VarFloatImpl) var).value==0){throw new ZeroDivisionException("Деление на 0 невозможно");}
             if (var instanceof VarFloatImpl)
                 return new VarFloatImpl(this.value / ((VarFloatImpl) var).value);
         } catch (ZeroDivisionException e) {
-            //System.err.print("Ошибка: деление на ноль");
+            log.saveLog("Деление на 0");
         }
         return super.div(var);
     }

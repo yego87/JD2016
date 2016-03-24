@@ -66,7 +66,7 @@ public class ReadingFromConsole {
     public static String parser(String str)throws IOException{
         String newstr=str;
         newstr=ReadingFromConsole.parse(newstr);
-        VarImpl var=MakeAnOperation.makeAnOpetation(newstr,true);
+        VarImpl var=MakeAnOperation.makeAnOpetation(newstr,true,false);
         return var.toString();
     }
 
@@ -94,7 +94,7 @@ public class ReadingFromConsole {
                 if (pursestring.contains("(") || pursestring.contains(")")) {
                     pursestring = ReadingFromConsole.parse(pursestring);
                 }
-                Runner.putElement(initExpression, MakeAnOperation.makeAnOpetation(pursestring,false));
+                Runner.putElement(initExpression, MakeAnOperation.makeAnOpetation(pursestring,false,false));
             }
         }
         return newstr;
