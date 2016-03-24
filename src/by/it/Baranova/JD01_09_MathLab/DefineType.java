@@ -4,11 +4,7 @@ import by.it.Baranova.JD01_09_MathLab.Creator.Creator;
 import by.it.Baranova.JD01_09_MathLab.Creator.CreatorVarFLoat;
 import by.it.Baranova.JD01_09_MathLab.Creator.CreatorVarMatrix;
 import by.it.Baranova.JD01_09_MathLab.Creator.CreatorVarVector;
-import by.it.Baranova.JD01_09_MathLab.vars.VarFloatImpl;
 import by.it.Baranova.JD01_09_MathLab.vars.VarImpl;
-import by.it.Baranova.JD01_09_MathLab.vars.VarMatrixImpl;
-import by.it.Baranova.JD01_09_MathLab.vars.VarVectorImpl;
-import sun.lwawt.macosx.CImage;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
