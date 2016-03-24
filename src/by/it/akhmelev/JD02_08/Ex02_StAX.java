@@ -1,0 +1,54 @@
+package by.it.akhmelev.JD02_08;
+
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
+import java.io.FileInputStream;
+
+//
+public class Ex02_StAX {
+    static String tab="";
+    public static void main(String[] args) {
+        //runner
+        try {
+            //возьмем пример из предыдущего занятия
+            String fileName = "src/by/it/akhmelev/JD02_07/04+XSD.xml";
+            //создадим фабрику и стандартный парсер
+            FileInputStream input=new FileInputStream(fileName);
+            XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+            XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
+            //пуск парсера
+            String el="";
+            while (reader.hasNext()) {
+                int type=reader.next();
+                switch (type) {
+                    case XMLStreamConstants.START_ELEMENT:
+                    {
+                        System.out.println(tab+"[" + reader.getLocalName() + "]");
+                        tab=tab+"\t";
+                        break;
+                    }
+                    case XMLStreamConstants.CHARACTERS:
+                    {
+                        el=el.concat(reader.getText().trim());
+                        break;
+                    }
+                    case XMLStreamConstants.END_ELEMENT:
+                    {
+                        if (!el.isEmpty())
+                            System.out.println(tab+el);
+                        tab=tab.substring(1);
+                        el="";
+                        System.out.println(tab+"[/" + reader.getLocalName() + "]");
+                        break;
+                    }
+                }
+            }
+
+
+        } catch (Exception e) {
+            System.out.print("Ошибка! " + e.toString());
+        }
+    }
+}
+
