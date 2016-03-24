@@ -1,0 +1,31 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<flights xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.it-academy.by/xml/flights"
+        xsi:schemaLocation="http://www.it-academy.by/xml/flights">
+
+    <flight ID = "MS100">
+        <aircrew>
+            <crewman>
+                <name>Victor</name>
+                <surname>Ivanov</surname>
+                <qualification>pilot</qualification>
+                <experience>15</experience>
+            </crewman>
+
+            <crewman>
+                <name>Olga</name>
+                <surname>Petrova</surname>
+                <qualification>stewardess</qualification>
+                <experience>4</experience>
+            </crewman>
+
+            <crewman>
+                <name>Denis</name>
+                <surname>Ogurtcov</surname>
+                <qualification>flight operator</qualification>
+                <experience>3</experience>
+            </crewman>
+        </aircrew>
+    </flight>
+</flights>

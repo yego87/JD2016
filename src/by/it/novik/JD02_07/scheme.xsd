@@ -1,0 +1,46 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+   <schema xmlns="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.it-academy.by/xml/flights"
+           xmlns:tns="http://www.it-academy.by/xml/flights"
+           elementFormDefault="qualified">
+    
+        <element name="flights">
+            <complexType>
+                    <sequence>
+                        <element name="flight"
+                             type="tns:flight"
+                             minOccurs="1"
+                             maxOccurs="unbounded"/>
+                    </sequence>
+            </complexType>
+        </element>
+
+            <complexType name="flight">
+                    <sequence>
+                        <element name="aircrew"
+                             type="tns:aircrew"
+                             minOccurs="1"
+                             maxOccurs="unbounded"/>
+                    </sequence>
+                <attribute name="ID" type="ID" use="required"/>
+            </complexType>
+
+            <complexType name="aircrew">
+                    <sequence>
+                        <element name="crewman"
+                         type="tns:crewman"
+                         minOccurs="1"
+                         maxOccurs="unbounded"/>
+                    </sequence>
+            </complexType>
+
+            <complexType name="crewman">
+                    <sequence>
+                        <element name="name" type="string"/>
+                        <element name="surname" type="string"/>
+                        <element name="qualification" type="string"/>
+                        <element name="experience" type="positiveInteger"/>
+                    </sequence>
+            </complexType>
+
+    </schema>

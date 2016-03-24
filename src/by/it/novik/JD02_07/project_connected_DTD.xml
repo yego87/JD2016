@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE flights SYSTEM "Document_type_data.dtd" >
+<flights>
+    <flight ID = "MS100">
+        <aircrew>
+            <crewman>
+                <name>Victor</name>
+                <surname>Ivanov</surname>
+                <qualification>pilot</qualification>
+                <experience>15</experience>
+            </crewman>
+
+            <crewman>
+                <name>Olga</name>
+                <surname>Petrova</surname>
+                <qualification>stewardess</qualification>
+                <experience>4</experience>
+            </crewman>
+
+            <crewman>
+                <name>Denis</name>
+                <surname>Ogurtcov</surname>
+                <qualification>flight operator</qualification>
+                <experience>3</experience>
+            </crewman>
+        </aircrew>
+    </flight>
+
+</flights>
