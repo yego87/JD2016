@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.it-academy.by/xml/hospital"
+        xmlns:tns="http://www.it-academy.by/xml/hospital"
+        elementFormDefault="qualified">
+    <element name="hospital">
+        <complexType>
+            <sequence>
+                <element name="diagnoses"
+                         type="tns:Diagnoses"
+                         minOccurs="1"
+                         maxOccurs="1"/>
+                <element name="prescribings"
+                         type="tns:Prescribings"
+                         minOccurs="1"
+                         maxOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Diagnoses">
+        <sequence>
+            <element name="diagnosis"
+                     type="tns:Diagnosis"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="id" type="tns:ID" use="required" />
+    </complexType>
+
+    <simpleType name="ID">
+        <restriction base="ID">
+            <pattern value="[a-zA-Z1-9]+"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="Diagnosis">
+        <sequence>
+            <element name="nameD"
+                     type="string"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+            <element name="drugs"
+                     type="tns:Drugs"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+            <element name="recoveryTime"
+                     type="integer"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Drugs">
+        <sequence>
+            <element name="name"
+                     type="string"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+            <element name="dosage"
+                     type="tns:Dosage"
+                     minOccurs="1"
+                     maxOccurs="1"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="Dosage">
+        <restriction base="string">
+            <pattern value="[1-9]+[a-z]+[1-9]times"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="Prescribings">
+        <sequence>
+            <element name="prescribing"
+                     type="tns:Prescribing"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="id" type="tns:ID" use="required" />
+        <attribute name="executor" use="optional" default="patient">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="patient"/>
+                    <enumeration value="employee"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+    </complexType>
+
+    <complexType name="Prescribing">
+        <sequence>
+            <element name="type">
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="physiotherapy"/>
+                            <enumeration value="medication"/>
+                            <enumeration value="psychotherapy"/>
+                        </restriction>
+                    </simpleType>
+            </element>
+            <element name="price" type="integer"/>
+        </sequence>
+    </complexType>
+    </schema>
