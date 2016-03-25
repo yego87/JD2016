@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT cars (auto)+>
+      <!ATTLIST auto
+         id ID #REQUIRED>
+        <!ELEMENT auto (brand,year,fuel,mileage,Transmission)>
+        <!ELEMENT brand (#PCDATA)>
+        <!ELEMENT year (#PCDATA)>
+        <!ELEMENT fuel (#PCDATA)>
+        <!ELEMENT mileage (#PCDATA)>
+        <!ELEMENT Transmission (#PCDATA)>
