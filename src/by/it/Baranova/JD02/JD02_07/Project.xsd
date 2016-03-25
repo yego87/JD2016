@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.it-academy.by/xml/Project+xsd"
+        xmlns:tns="http://www.it-academy.by/xml/Project+xsd"
+        elementFormDefault="qualified">
+    <element name="project">
+        <complexType>
+            <sequence>
+                <element name="rooms"
+                         type="tns:Rooms"
+                         minOccurs="1"
+                         maxOccurs="1"/>
+                <element name="applications"
+                         type="tns:Applications"
+                         minOccurs="1"
+                         maxOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Rooms">
+            <sequence>
+                <element name="room"
+                         type="tns:Room"
+                         minOccurs="2"
+                         maxOccurs="unbounded"/>
+            </sequence>
+    </complexType>
+    <complexType name="Room">
+        <sequence>
+            <element name="people_quantity" type="positiveInteger"/>
+            <element name="bed_size" type="tns:Bed_size"/>
+            <element name="seaview" type="boolean"/>
+            <element name="floor" type="positiveInteger"/>
+            <element name="price" type="positiveInteger"/>
+            <element name="air_conditioner" type="boolean"/>
+        </sequence>
+        <attribute name="number" type="tns:Number" use="required"/>
+    </complexType>
+    <complexType name="Bed_size">
+        <sequence>
+            <element name="first_Bed_size" type="tns:First_Bed_size"/>
+            <element name="second_Bed_size" type="tns:Second_Bed_size"/>
+        </sequence>
+    </complexType>
+    <simpleType name="Number">
+        <restriction base="ID">
+            <pattern value="R[0-9]+"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="First_Bed_size">
+        <restriction base="string">
+            <enumeration value="twin"/>
+            <enumeration value="double"/>
+            <enumeration value="queen"/>
+            <enumeration value="king"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="Second_Bed_size">
+        <restriction base="string">
+            <enumeration value="twin"/>
+            <enumeration value="double"/>
+            <enumeration value="queen"/>
+            <enumeration value="king"/>
+            <enumeration value="none"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="Applications">
+        <sequence>
+            <element name="application"
+                     type="tns:Application"
+                     minOccurs="1"
+                     maxOccurs="unbounded"/>
+            </sequence>
+    </complexType>
+
+    <complexType name="Application">
+        <sequence>
+            <element name="surname" type="string"/>
+            <element name="name" type="string"/>
+            <element name="quest_quantity" type="positiveInteger"/>
+            <element name="phone_number" type="positiveInteger"/>
+            <element name="mail" type="string"/>
+            <element name="extrarequirement" type="string"/>
+        </sequence>
+        <attribute name="number_application" type="tns:Number_application" use="required"/>
+        <attribute name="login" type="tns:Login" use="required"/>
+    </complexType>
+    <simpleType name="Number_application">
+        <restriction base="ID">
+            <pattern value="A[0-9]{3}"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="Login">
+        <restriction base="string">
+            <pattern value="[a-zA-z0-9]+"/>
+        </restriction>
+    </simpleType>
+</schema>
