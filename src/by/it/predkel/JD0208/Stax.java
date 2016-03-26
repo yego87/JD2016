@@ -10,7 +10,7 @@ import java.io.FileInputStream;
  */
 public class Stax {
     static String tab="";
-    public static void main(String[] args) {
+    public static void main(String[] args) {//почти аналогичная ситуация с Sax-ом только надо было добавить атрибуты...
         try {
             String fileName = "../JD2016/src/by/it/predkel/FilesXml/Room.xml";
             FileInputStream input=new FileInputStream(fileName);
