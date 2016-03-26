@@ -14,8 +14,8 @@ public class StAXMaker {
     public static void main(String[] args) {
 
         try {
-            String fileName = "src/by/it/chetovich/JD02_07/hospital.xml";
-            FileInputStream input=new FileInputStream(fileName);
+            String filename = System.getProperty("user.dir")+"/src/by/it/chetovich/JD02_07/hospital.xml";
+            FileInputStream input=new FileInputStream(filename);
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
             XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
             String el="";
