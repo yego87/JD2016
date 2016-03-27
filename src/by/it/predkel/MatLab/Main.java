@@ -1,8 +1,6 @@
 package by.it.predkel.MatLab;
 
-import by.it.predkel.MatLab.Utils.CalculationClass;
-import by.it.predkel.MatLab.Utils.InputExpression;
-import by.it.predkel.MatLab.Utils.Recursion;
+import by.it.predkel.MatLab.Utils.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,23 +49,36 @@ public class Main{
             one(new MatrixVar(mat).sub(new MatrixVar(vec)));
             one(new MatrixVar(mat).mul(new MatrixVar(vec)));
             one(new MatrixVar(mat).div(new MatrixVar(vec)));
-*/
+*/          MyLogger log=MyLogger.GetLogger();
+
+        try {
+            TextBuilder report=new TextBuilder();
+            report.createHeader();
+            report.createTime();
             InputStreamReader inputStreamReader = new InputStreamReader(System.in);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String rLine = "";
-        System.out.println("Введите выражение. Все кроме скобок через пробел. " +
-                "Введите 'print' если хотите вывести введенные вами ранее переменные. " +
-                "Введите 'end', если хотите выйти");
-        do{
-            rLine = bufferedReader.readLine();
-            if (rLine.equals("print")){
-                CalculationClass.sortvar();
-            }else {
-                //CalculationClass.input(rLine);
-                System.out.println(Recursion.realRecurs(new StringBuilder(rLine)));
-            }
-        }while (!rLine.equals("end"));
-        bufferedReader.close();
+            System.out.println("Введите выражение. Все кроме скобок через пробел. " +
+                    "Введите 'print' если хотите вывести введенные вами ранее переменные. " +
+                    "Введите 'end', если хотите выйти");
+            do {
+                rLine = bufferedReader.readLine();
+                report.createOperation(rLine);
+                if (rLine.equals("print")) {
+                    CalculationClass.sortvar();
+                } else {
+                    //CalculationClass.input(rLine);
+                    StringBuilder result=Recursion.realRecurs(new StringBuilder(rLine));
+                    System.out.println(result);
+                    report.createResult(result.toString());
+                }
+            } while (!rLine.equals("end"));
+            bufferedReader.close();
+            report.createTime();
+            report.getText();
+        }catch (NullPointerException e){
+            log.write(e);
+        }
 
 /*
         }catch  (IOException | IllegalArgumentException e){

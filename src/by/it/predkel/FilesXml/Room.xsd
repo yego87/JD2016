@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.it-academy.by/xml/students"
+        xmlns:tns="http://www.it-academy.by/xml/students"
+        elementFormDefault="qualified">
+    <element name="rooms">
+        <complexType>
+            <sequence>
+                <element name="room"
+                         type="tns:Room"
+                         minOccurs="1"
+                         maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Room">
+        <sequence>
+            <element name="position" type="string" />
+            <element name="name" type="string" />
+            <element name="square" type="double" />
+            <element name="height" type="double" />
+            <element name="perimeter" type="double" />
+            <element name="volume" type="double" />
+            <element name="squareOfConstruction" type="double" />
+            <element name="aperture" type="tns:Aperture" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="Aperture">
+        <sequence>
+            <element name="typeOfAperture" type="string" />
+            <element name="width" type="double" />
+            <element name="height" type="double" />
+            <element name="count" type="integer" />
+            <element name="squareOfAperture" type="double" />
+        </sequence>
+    </complexType>
+</schema>

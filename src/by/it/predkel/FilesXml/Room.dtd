@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!ELEMENT rooms (room)+>
+        <!ELEMENT room (position, name, square, height, perimeter, volume,squareOfConstruction, aperture)>
+        <!ELEMENT position (#PCDATA)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT square (#PCDATA)>
+        <!ELEMENT height (#PCDATA)>
+        <!ELEMENT perimeter (#PCDATA)>
+        <!ELEMENT volume (#PCDATA)>
+        <!ELEMENT squareOfConstruction (#PCDATA)>
+        <!ELEMENT aperture (width, height1, count,typeOfAperture, squareOfAperture)>
+            <!ELEMENT width (#PCDATA)>
+            <!ELEMENT height1 (#PCDATA)>
+            <!ELEMENT count (#PCDATA)>
+            <!ELEMENT typeOfAperture (#PCDATA)>
+            <!ELEMENT squareOfAperture (#PCDATA)>
