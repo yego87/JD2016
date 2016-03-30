@@ -1,0 +1,40 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<paymentList>
+    <clients>
+            <client login="" password="">
+                <name>
+                Александр
+                </name>
+                <telephone>
+                123456789
+                </telephone>
+                <address>
+                            <city>
+                                    Минск
+                            </city>
+
+                           <street>
+                                    Зеленая
+                           </street>
+                            <build>
+                                    4
+                            </build>
+                            <flat>
+                                    5
+                            </flat>
+                </address>
+                <bills>
+                    <bill>
+                        <number>
+                                    12348765
+                        </number>
+                        <balance>
+                                    15000000
+                        </balance>
+                    </bill>
+                </bills>
+
+            </client>
+    </clients>
+
+</paymentList>

@@ -1,0 +1,20 @@
+<? xml version = "1.0" encording = "UTF-8" ?>
+
+    <!ELEMENT paymentList (clients)>
+
+        <!ELEMENT clients (client)+>
+
+        <!ELEMENT client (name, telephone, address, bills)+>
+<!ATTLIST client login #REQUIRED>
+<!ATTLIST client password CDATA>
+        <!ELEMENT name (#PCDATA)>
+<!ELEMENT flat (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT build (#PCDATA)>
+<!ELEMENT address (city, street, build, flat)+ >
+<!ELEMENT telephone (#PCDATA)>
+        <!ELEMENT bills (bill)>
+        <!ELEMENT balance (#PCDATA)>
+        <!ELEMENT number (#PCDATA)>
+        <!ELEMENT bill (balance, number)>
